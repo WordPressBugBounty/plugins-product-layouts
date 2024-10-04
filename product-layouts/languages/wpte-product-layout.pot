@@ -1,0 +1,2212 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2024-08-25 14:05+0600\n"
+"PO-Revision-Date: 2024-08-25 14:07+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;esc_html__;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: assets\n"
+"X-Poedit-SearchPathExcluded-1: .github\n"
+"X-Poedit-SearchPathExcluded-2: .git\n"
+"X-Poedit-SearchPathExcluded-3: freemius\n"
+
+#: Includes/Admin/Ajax.php:51 Includes/Admin/Ajax.php:99
+#: Includes/Admin/Ajax.php:120 Includes/Admin/Ajax.php:160
+#: Includes/Admin/Ajax.php:219 Includes/Admin/Ajax.php:349
+#: Includes/Admin/Ajax.php:374 Includes/Frontend/Ajax.php:59
+#: Includes/Frontend/Ajax.php:97 Includes/Frontend/Ajax.php:173
+#: Includes/Frontend/Ajax.php:273 Includes/Frontend/Ajax.php:293
+#: Includes/Frontend/Ajax.php:396 Includes/Frontend/Ajax.php:434
+#: Includes/Frontend/Ajax.php:522
+msgid "Nonce Varification Failed!"
+msgstr ""
+
+#: Includes/Admin/Ajax.php:81 Includes/Admin/Ajax.php:330
+msgid "Data Insert Failed Please retry again!"
+msgstr ""
+
+#: Includes/Admin/Ajax.php:255
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: Includes/Admin/Ajax.php:300
+msgid "Invalid JSON File! Please import a exported valid JSON file."
+msgstr ""
+
+#: Includes/Admin/Ajax.php:388
+msgid "Settings Saved"
+msgstr ""
+
+#: Includes/Admin/Menu.php:40 Includes/Admin/Menu.php:41
+msgid "Product Layouts"
+msgstr ""
+
+#: Includes/Admin/Menu.php:42 Includes/functions.php:692
+msgid "Shortcode List"
+msgstr ""
+
+#: Includes/Admin/Menu.php:43 Includes/Admin/Pages/AdminRender.php:367
+#: product-layouts.php:239
+msgid "Settings"
+msgstr ""
+
+#: Includes/Admin/Menu.php:44
+msgid "Getting Started"
+msgstr ""
+
+#: Includes/Admin/Menu.php:45
+msgid "Status"
+msgstr ""
+
+#: Includes/Admin/Menu.php:87 Includes/Admin/Pages/AdminRender.php:174
+#: Includes/Admin/Pages/AdminRender.php:180 Includes/Admin/Pages/Create.php:122
+#: Includes/Admin/Pages/Create.php:128
+#: Includes/Admin/Pages/Layout_list/Import.php:30
+#: Includes/Admin/Pages/Layout_list/Shortcode.php:34
+#: Includes/Admin/Pages/Layout_list/Shortcode.php:44 Includes/Assets.php:279
+msgid "Something Went Wrong!"
+msgstr ""
+
+#: Includes/Admin/Notice.php:66
+#, php-format
+msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
+msgstr ""
+
+#: Includes/Admin/Notice.php:67 Includes/Admin/Notice.php:100
+#: Includes/Admin/Notice.php:116 Includes/Admin/Notice.php:134
+#: Includes/Admin/Notice.php:150
+msgid "Product Layouts for Woocommerce"
+msgstr ""
+
+#: Includes/Admin/Notice.php:68
+msgid "PHP"
+msgstr ""
+
+#: Includes/Admin/Notice.php:100
+msgid " not working because you need to activate the WooCommerce plugin."
+msgstr ""
+
+#: Includes/Admin/Notice.php:101
+msgid "Activate WooCommerce Now"
+msgstr ""
+
+#: Includes/Admin/Notice.php:116
+msgid " not working because you need to install the WooCommerce plugin."
+msgstr ""
+
+#: Includes/Admin/Notice.php:117
+msgid "Install WooCommerce Now"
+msgstr ""
+
+#: Includes/Admin/Notice.php:133
+msgid " requires "
+msgstr ""
+
+#: Includes/Admin/Notice.php:133
+msgid " version "
+msgstr ""
+
+#: Includes/Admin/Notice.php:133
+msgid "or greater."
+msgstr ""
+
+#: Includes/Admin/Notice.php:135
+msgid "Woocommerce"
+msgstr ""
+
+#: Includes/Admin/Notice.php:151
+msgid ""
+"Love our plugin? Leave us a 5-star review! Your feedback helps us thrive, "
+"motivating us to continuously update the plugin."
+msgstr ""
+
+#: Includes/Admin/Notice.php:152
+msgid "Already Given"
+msgstr ""
+
+#: Includes/Admin/Notice.php:153
+msgid "You Deserve It"
+msgstr ""
+
+#: Includes/Admin/Notice.php:154
+msgid "Don't Show Again"
+msgstr ""
+
+#: Includes/Admin/Pages/AdminRender.php:289
+#: Includes/Admin/Pages/Layout_list/Layouts_List.php:48
+#: Includes/Admin/Pages/Layout_list/Layouts_List.php:119
+#: Includes/Admin/Pages/Layout_list/Shortcode.php:66
+#: Includes/Admin/Pages/Settings.php:113
+msgid "Shortcode"
+msgstr ""
+
+#: Includes/Admin/Pages/AdminRender.php:297
+msgid "Shortcode for posts/pages/plugins"
+msgstr ""
+
+#: Includes/Admin/Pages/AdminRender.php:298
+msgid ""
+"Copy & paste the shortcode directly into any WordPress post, page or Page "
+"Builder."
+msgstr ""
+
+#: Includes/Admin/Pages/AdminRender.php:303
+msgid "Shortcode for templates/themes"
+msgstr ""
+
+#: Includes/Admin/Pages/AdminRender.php:304
+msgid ""
+"Copy & paste this code into a template file to include the slideshow within "
+"your theme."
+msgstr ""
+
+#: Includes/Admin/Pages/AdminRender.php:315
+msgid "Shortcode Name"
+msgstr ""
+
+#: Includes/Admin/Pages/AdminRender.php:327
+msgid "Update"
+msgstr ""
+
+#: Includes/Admin/Pages/AdminRender.php:336
+msgid "Action"
+msgstr ""
+
+#: Includes/Admin/Pages/AdminRender.php:343
+msgid "EXPORT"
+msgstr ""
+
+#: Includes/Admin/Pages/AdminRender.php:344
+msgid "IMPORT"
+msgstr ""
+
+#: Includes/Admin/Pages/AdminRender.php:403 Includes/Admin/Pages/Create.php:282
+#: Includes/Admin/Pages/Layout_list/Shortcode.php:124
+msgid "Save"
+msgstr ""
+
+#: Includes/Admin/Pages/AdminRender.php:422
+msgid "Opps! Please upgrade!"
+msgstr ""
+
+#: Includes/Admin/Pages/AdminRender.php:459
+msgid "Preview"
+msgstr ""
+
+#: Includes/Admin/Pages/Create.php:169
+msgid " Layouts › Create New"
+msgstr ""
+
+#: Includes/Admin/Pages/Create.php:169
+msgid ""
+"Select Product layouts, Input your Product Layout name and create new "
+"Product layouts."
+msgstr ""
+
+#: Includes/Admin/Pages/Create.php:224
+#: Includes/Admin/Pages/ProductLayout.php:55
+#: Includes/Admin/Pages/ProductLayout.php:56
+msgid "Premium"
+msgstr ""
+
+#: Includes/Admin/Pages/Create.php:230
+msgid "Create Style"
+msgstr ""
+
+#: Includes/Admin/Pages/Create.php:279
+msgid "New Product Layout"
+msgstr ""
+
+#: Includes/Admin/Pages/Create.php:280
+#: Includes/Admin/Pages/Layout_list/Layouts_List.php:46
+#: Includes/Admin/Pages/Layout_list/Shortcode.php:122
+#: Layouts/Table/Frontend/Layout1.php:66
+msgid "Name"
+msgstr ""
+
+#: Includes/Admin/Pages/Create.php:281
+#: Includes/Admin/Pages/Layout_list/Shortcode.php:123
+msgid "Close"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Import.php:31
+msgid "Error"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Import.php:31
+msgid "Please upload a exported valid Json file."
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Import.php:49
+msgid "Product Layouts › Import"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Import.php:49
+msgid "WC Product Layout. Import your shortcode exported json file"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Import.php:63
+msgid "Drag and drop files here"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Import.php:65
+msgid "Or"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Import.php:68
+msgid "Browse files"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Import.php:78
+msgid "Import Layout"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Layouts_List.php:47
+msgid "Templates"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Layouts_List.php:88
+msgid "Edit"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Layouts_List.php:89
+msgid "Clone"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Layouts_List.php:90
+msgid "Export"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Layouts_List.php:91
+msgid "Delete"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Layouts_List.php:119
+msgid "Php Code"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Layouts_List.php:143
+msgid "Delete Permanently"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Layouts_List.php:158
+msgid "Show"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Shortcode.php:35
+msgid "Are you sure?"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Shortcode.php:60
+msgid "Product Layouts › Shortcodes"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Shortcode.php:60
+msgid "Collect WC Product Layout Shortcode, Edit, Delete, Clone or Export it.."
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Shortcode.php:67
+msgid "Add New"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Shortcode.php:68
+msgid "Import"
+msgstr ""
+
+#: Includes/Admin/Pages/Layout_list/Shortcode.php:121
+msgid "Clone Layout"
+msgstr ""
+
+#: Includes/Admin/Pages/ProductLayout.php:55
+#: Includes/Admin/Pages/ProductLayout.php:100
+#: Includes/Admin/Pages/ProductLayout.php:124
+msgid "New"
+msgstr ""
+
+#: Includes/Admin/Pages/ProductLayout.php:64
+msgid "Popular"
+msgstr ""
+
+#: Includes/Admin/Pages/ProductLayout.php:112
+msgid "Updated"
+msgstr ""
+
+#: Includes/Admin/Pages/ProductLayout.php:175
+msgid "Coming..."
+msgstr ""
+
+#: Includes/Admin/Pages/Settings.php:40 Includes/Admin/Pages/Settings.php:46
+msgid "General Settings"
+msgstr ""
+
+#: Includes/Admin/Pages/Settings.php:41 Includes/Admin/Pages/Settings.php:71
+msgid "Archive Page"
+msgstr ""
+
+#: Includes/Admin/Pages/Settings.php:50
+msgid "Google Font Support"
+msgstr ""
+
+#: Includes/Admin/Pages/Settings.php:54
+msgid "Google Font"
+msgstr ""
+
+#: Includes/Admin/Pages/Settings.php:56
+msgid ""
+"Load Google Font CSS at shortcode loading, If your theme already loaded, "
+"select No."
+msgstr ""
+
+#: Includes/Admin/Pages/Settings.php:61 Includes/Helper/Helper.php:430
+#: Includes/Helper/Helper.php:836 Includes/Helper/Helper.php:937
+#: Includes/Helper/Helper.php:1696 Includes/Helper/Helper.php:1746
+#: Includes/Helper/Helper.php:1828 Includes/Helper/Helper.php:1877
+#: Includes/Helper/Helper.php:1957 Includes/Helper/Helper.php:1991
+#: Includes/Helper/Helper.php:2390 Layouts/Call_to_action/Layout.php:162
+#: Layouts/Call_to_action/Layout.php:175 Layouts/Call_to_action/Layout.php:188
+#: Layouts/Call_to_action/Layout.php:201 Layouts/Call_to_action/Layout.php:214
+#: Layouts/Call_to_action/Layout.php:227 Layouts/Call_to_action/Layout.php:240
+#: Layouts/Call_to_action/Layout.php:264 Layouts/Call_to_action/Layout.php:1143
+#: Layouts/Call_to_action/Layout.php:1155
+#: Layouts/Call_to_action/Layout.php:1168 Layouts/Caption/Layout.php:175
+#: Layouts/Caption/Layout.php:188 Layouts/Caption/Layout.php:201
+#: Layouts/Caption/Layout.php:214 Layouts/Caption/Layout.php:227
+#: Layouts/Caption/Layout.php:240 Layouts/Caption/Layout.php:254
+#: Layouts/Caption/Layout.php:282 Layouts/Carousel/Layout.php:135
+#: Layouts/Carousel/Layout.php:176 Layouts/Carousel/Layout.php:190
+#: Layouts/Carousel/Layout.php:204 Layouts/Carousel/Layout.php:218
+#: Layouts/Carousel/Layout.php:232 Layouts/Carousel/Layout.php:246
+#: Layouts/Filter/Layout.php:65 Layouts/Filter/Layout.php:95
+#: Layouts/Filter/Layout.php:121 Layouts/Filter/Layout.php:216
+#: Layouts/Filter/Layout.php:230 Layouts/Filter/Layout.php:259
+#: Layouts/Filter/Layout.php:272 Layouts/Flipbox/Layout.php:176
+#: Layouts/Flipbox/Layout.php:189 Layouts/Flipbox/Layout.php:202
+#: Layouts/Flipbox/Layout.php:215 Layouts/Flipbox/Layout.php:228
+#: Layouts/Flipbox/Layout.php:241 Layouts/Flipbox/Layout.php:269
+#: Layouts/General/Layout.php:184 Layouts/General/Layout.php:197
+#: Layouts/General/Layout.php:210 Layouts/General/Layout.php:223
+#: Layouts/General/Layout.php:236 Layouts/General/Layout.php:249
+#: Layouts/General/Layout.php:262 Layouts/General/Layout.php:286
+#: Layouts/General/Layout.php:968 Layouts/General/Layout.php:980
+#: Layouts/General/Layout.php:993 Layouts/General/Layout.php:1134
+#: Layouts/General/Layout.php:1146 Layouts/General/Layout.php:1159
+#: Layouts/Product_list/Backend/Layout1.php:56
+#: Layouts/Product_list/Backend/Layout1.php:69
+#: Layouts/Product_list/Backend/Layout1.php:82
+#: Layouts/Product_list/Backend/Layout1.php:95
+#: Layouts/Product_list/Backend/Layout1.php:108
+#: Layouts/Product_list/Backend/Layout1.php:121
+#: Layouts/Product_list/Layout.php:148 Layouts/Product_list/Layout.php:433
+#: Layouts/Product_list/Layout.php:445 Layouts/Product_list/Layout.php:458
+#: Layouts/Table/Backend/Layout1.php:54 Layouts/Table/Backend/Layout1.php:67
+#: Layouts/Table/Backend/Layout1.php:80 Layouts/Table/Backend/Layout1.php:93
+#: Layouts/Table/Backend/Layout1.php:106 Layouts/Table/Backend/Layout1.php:119
+#: Layouts/Table/Layout.php:70 Layouts/Table/Layout.php:481
+#: Layouts/Table/Layout.php:493 Layouts/Table/Layout.php:506
+#: Layouts/Tabs/Backend/Layout1.php:65
+msgid "Yes"
+msgstr ""
+
+#: Includes/Admin/Pages/Settings.php:63 Includes/Helper/Helper.php:431
+#: Includes/Helper/Helper.php:837 Includes/Helper/Helper.php:938
+#: Includes/Helper/Helper.php:1697 Includes/Helper/Helper.php:1747
+#: Includes/Helper/Helper.php:1829 Includes/Helper/Helper.php:1878
+#: Includes/Helper/Helper.php:1958 Includes/Helper/Helper.php:1992
+#: Layouts/Call_to_action/Layout.php:163 Layouts/Call_to_action/Layout.php:176
+#: Layouts/Call_to_action/Layout.php:189 Layouts/Call_to_action/Layout.php:202
+#: Layouts/Call_to_action/Layout.php:215 Layouts/Call_to_action/Layout.php:228
+#: Layouts/Call_to_action/Layout.php:241 Layouts/Call_to_action/Layout.php:265
+#: Layouts/Call_to_action/Layout.php:1144
+#: Layouts/Call_to_action/Layout.php:1156
+#: Layouts/Call_to_action/Layout.php:1169 Layouts/Caption/Layout.php:176
+#: Layouts/Caption/Layout.php:189 Layouts/Caption/Layout.php:202
+#: Layouts/Caption/Layout.php:215 Layouts/Caption/Layout.php:228
+#: Layouts/Caption/Layout.php:241 Layouts/Caption/Layout.php:255
+#: Layouts/Caption/Layout.php:283 Layouts/Carousel/Layout.php:136
+#: Layouts/Carousel/Layout.php:177 Layouts/Carousel/Layout.php:191
+#: Layouts/Carousel/Layout.php:205 Layouts/Carousel/Layout.php:219
+#: Layouts/Carousel/Layout.php:233 Layouts/Carousel/Layout.php:247
+#: Layouts/Filter/Layout.php:66 Layouts/Filter/Layout.php:96
+#: Layouts/Filter/Layout.php:122 Layouts/Filter/Layout.php:217
+#: Layouts/Filter/Layout.php:231 Layouts/Filter/Layout.php:260
+#: Layouts/Filter/Layout.php:273 Layouts/Flipbox/Layout.php:177
+#: Layouts/Flipbox/Layout.php:190 Layouts/Flipbox/Layout.php:203
+#: Layouts/Flipbox/Layout.php:216 Layouts/Flipbox/Layout.php:229
+#: Layouts/Flipbox/Layout.php:242 Layouts/Flipbox/Layout.php:270
+#: Layouts/General/Layout.php:185 Layouts/General/Layout.php:198
+#: Layouts/General/Layout.php:211 Layouts/General/Layout.php:224
+#: Layouts/General/Layout.php:237 Layouts/General/Layout.php:250
+#: Layouts/General/Layout.php:263 Layouts/General/Layout.php:287
+#: Layouts/General/Layout.php:969 Layouts/General/Layout.php:981
+#: Layouts/General/Layout.php:994 Layouts/General/Layout.php:1135
+#: Layouts/General/Layout.php:1147 Layouts/General/Layout.php:1160
+#: Layouts/Product_list/Backend/Layout1.php:57
+#: Layouts/Product_list/Backend/Layout1.php:70
+#: Layouts/Product_list/Backend/Layout1.php:83
+#: Layouts/Product_list/Backend/Layout1.php:96
+#: Layouts/Product_list/Backend/Layout1.php:109
+#: Layouts/Product_list/Backend/Layout1.php:122
+#: Layouts/Product_list/Layout.php:149 Layouts/Product_list/Layout.php:434
+#: Layouts/Product_list/Layout.php:446 Layouts/Product_list/Layout.php:459
+#: Layouts/Table/Backend/Layout1.php:55 Layouts/Table/Backend/Layout1.php:68
+#: Layouts/Table/Backend/Layout1.php:81 Layouts/Table/Backend/Layout1.php:94
+#: Layouts/Table/Backend/Layout1.php:107 Layouts/Table/Backend/Layout1.php:120
+#: Layouts/Table/Layout.php:71 Layouts/Table/Layout.php:482
+#: Layouts/Table/Layout.php:494 Layouts/Table/Layout.php:507
+#: Layouts/Tabs/Backend/Layout1.php:66
+msgid "No"
+msgstr ""
+
+#: Includes/Admin/Pages/Settings.php:75 Includes/Admin/Pages/Settings.php:79
+msgid "Category Page"
+msgstr ""
+
+#: Includes/Admin/Pages/Settings.php:81
+msgid "Select shortcode to change category page layout design."
+msgstr ""
+
+#: Includes/Admin/Pages/Settings.php:96
+msgid "Filter"
+msgstr ""
+
+#: Includes/Admin/Pages/Settings.php:98
+msgid "Select filter shortcode to add filter in the category page."
+msgstr ""
+
+#: Includes/Admin/Pages/Settings.php:115
+msgid ""
+"Use this shortcode in the category page. This shortcode only works in the "
+"category page. You can only use this shortcode if you design category page "
+"usign any page builder ( elementor, divi, etc ) or code."
+msgstr ""
+
+#: Includes/Admin/Pages/Status.php:41
+msgid " System Status"
+msgstr ""
+
+#: Includes/Admin/Pages/Status.php:46
+msgid "Site Url"
+msgstr ""
+
+#: Includes/Admin/Pages/Status.php:50
+msgid "Define WP_CACHE"
+msgstr ""
+
+#: Includes/Admin/Pages/Status.php:59
+msgid "WordPress Version"
+msgstr ""
+
+#: Includes/Admin/Pages/Status.php:63
+msgid "PHP Version"
+msgstr ""
+
+#: Includes/Admin/Pages/Status.php:67
+msgid "WooCommerce Version"
+msgstr ""
+
+#: Includes/Admin/Pages/Status.php:75
+msgid "Available Memory"
+msgstr ""
+
+#: Includes/Admin/Pages/Status.php:79
+msgid "Memory Limit"
+msgstr ""
+
+#: Includes/Admin/Pages/Support.php:32
+msgid "Welcome to Product Layouts for WooCommerce"
+msgstr ""
+
+#: Includes/Admin/Pages/Support.php:33
+msgid ""
+"Thank you for installiing Product Layouts for WooCommerce. Let's start "
+"decorating your shop!"
+msgstr ""
+
+#: Includes/Admin/Pages/Support.php:51 Includes/Admin/Pages/Support.php:53
+msgid "Documentation"
+msgstr ""
+
+#: Includes/Admin/Pages/Support.php:52
+msgid ""
+"Get started by spending some time with the documentation to get familiar "
+"with Product Layouts for Woocommerce. Build awesome Product layouts for you "
+"or your clients with ease."
+msgstr ""
+
+#: Includes/Admin/Pages/Support.php:65
+msgid "Contribute to Product Layouts"
+msgstr ""
+
+#: Includes/Admin/Pages/Support.php:66
+msgid ""
+"You can contribute to make Product Layouts better reporting bugs & creating "
+"issues. Our Development team always try to make more powerfull Plugins day "
+"by day with solved Issues."
+msgstr ""
+
+#: Includes/Admin/Pages/Support.php:67
+msgid "Report a bug"
+msgstr ""
+
+#: Includes/Admin/Pages/Support.php:79 Includes/Admin/Pages/Support.php:81
+msgid "Video Tutorials"
+msgstr ""
+
+#: Includes/Admin/Pages/Support.php:80
+msgid ""
+"Unable to use Product Layouts for Woocommerce? Don't worry you can check "
+"your web tutorials to make easier to use."
+msgstr ""
+
+#: Includes/Admin/Pages/Support.php:93
+msgid "Support"
+msgstr ""
+
+#: Includes/Admin/Pages/Support.php:94
+msgid ""
+"Do you need our support? don't worry, Our exprienced developer will help you."
+msgstr ""
+
+#: Includes/Admin/Pages/Support.php:95
+msgid "Get Support"
+msgstr ""
+
+#: Includes/Frontend/Ajax.php:182
+msgid "Product id not found!"
+msgstr ""
+
+#: Includes/Frontend/Ajax.php:233
+msgid "Something went wrong!"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:27 Includes/Helper/Advanced.php:553
+#: Includes/Helper/Advanced.php:998 Layouts/Call_to_action/Layout.php:700
+#: Layouts/Call_to_action/Layout.php:1084
+#: Layouts/Call_to_action/Layout.php:1690
+#: Layouts/Call_to_action/Layout.php:2070
+#: Layouts/Call_to_action/Layout.php:2171
+#: Layouts/Call_to_action/Layout.php:2272
+#: Layouts/Call_to_action/Layout.php:2363 Layouts/Caption/Layout.php:868
+#: Layouts/Caption/Layout.php:959 Layouts/Caption/Layout.php:1038
+#: Layouts/Caption/Layout.php:1138 Layouts/Caption/Layout.php:1215
+#: Layouts/Filter/Layout.php:447 Layouts/Filter/Layout.php:748
+#: Layouts/Flipbox/Layout.php:602 Layouts/Flipbox/Layout.php:692
+#: Layouts/Flipbox/Layout.php:767 Layouts/Flipbox/Layout.php:867
+#: Layouts/Flipbox/Layout.php:944 Layouts/General/Backend/Layout5.php:342
+#: Layouts/General/Layout.php:914 Layouts/General/Layout.php:1777
+#: Layouts/General/Layout.php:2143 Layouts/General/Layout.php:2217
+#: Layouts/General/Layout.php:2317 Layouts/General/Layout.php:2416
+#: Layouts/General/Layout.php:2506 Layouts/Tabs/Backend/Layout1.php:458
+msgid "Margin"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:68 Includes/Helper/Advanced.php:955
+#: Layouts/Call_to_action/Layout.php:512 Layouts/Call_to_action/Layout.php:666
+#: Layouts/Call_to_action/Layout.php:1050
+#: Layouts/Call_to_action/Layout.php:1326
+#: Layouts/Call_to_action/Layout.php:1851
+#: Layouts/Call_to_action/Layout.php:2035
+#: Layouts/Call_to_action/Layout.php:2633 Layouts/Caption/Layout.php:778
+#: Layouts/Caption/Layout.php:1528 Layouts/Carousel/Layout.php:635
+#: Layouts/Filter/Layout.php:406 Layouts/Filter/Layout.php:671
+#: Layouts/Filter/Layout.php:1875 Layouts/Flipbox/Layout.php:1257
+#: Layouts/General/Backend/Layout4.php:425 Layouts/General/Layout.php:542
+#: Layouts/General/Layout.php:880 Layouts/General/Layout.php:1079
+#: Layouts/General/Layout.php:1414 Layouts/General/Layout.php:1927
+#: Layouts/General/Layout.php:2108 Layouts/Product_list/Layout.php:377
+#: Layouts/Product_list/Layout.php:587 Layouts/Product_list/Layout.php:730
+#: Layouts/Product_list/Layout.php:821 Layouts/Product_list/Layout.php:983
+#: Layouts/Product_list/Layout.php:1254 Layouts/Table/Layout.php:274
+#: Layouts/Table/Layout.php:358 Layouts/Table/Layout.php:670
+#: Layouts/Table/Layout.php:793 Layouts/Table/Layout.php:1001
+#: Layouts/Table/Layout.php:1271 Layouts/Tabs/Backend/Layout1.php:422
+msgid "Padding"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:118 Includes/Helper/Advanced.php:125
+msgid "Pagination"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:124 Includes/Helper/Helper.php:2251
+#: Includes/Helper/Helper.php:2391 Includes/Helper/Helper.php:2585
+msgid "None"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:126
+msgid "Load More Button"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:134 Layouts/Filter/Layout.php:44
+#: Layouts/Filter/Layout.php:196
+msgid "Preset"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:139
+msgid "Preset 1"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:140
+msgid "Preset 2"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:141
+msgid "Preset 3"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:169 Includes/Helper/Advanced.php:739
+#: Layouts/Call_to_action/Layout.php:1380 Layouts/General/Layout.php:1466
+#: Layouts/Tabs/Backend/Layout1.php:112
+msgid "Align"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:175 Includes/Helper/Advanced.php:745
+#: Layouts/Call_to_action/Layout.php:571 Layouts/Call_to_action/Layout.php:937
+#: Layouts/Filter/Layout.php:511 Layouts/General/Layout.php:399
+#: Layouts/General/Layout.php:778 Layouts/Product_list/Layout.php:282
+#: Layouts/Table/Layout.php:204 Layouts/Tabs/Backend/Layout1.php:118
+msgid "Left"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:179 Includes/Helper/Advanced.php:749
+#: Layouts/Call_to_action/Layout.php:575 Layouts/Call_to_action/Layout.php:941
+#: Layouts/Call_to_action/Layout.php:1390 Layouts/General/Layout.php:403
+#: Layouts/General/Layout.php:782 Layouts/General/Layout.php:1476
+#: Layouts/Product_list/Layout.php:286 Layouts/Table/Layout.php:208
+#: Layouts/Tabs/Backend/Layout1.php:122
+msgid "Center"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:183 Includes/Helper/Advanced.php:753
+#: Layouts/Call_to_action/Layout.php:579 Layouts/Call_to_action/Layout.php:945
+#: Layouts/Filter/Layout.php:515 Layouts/General/Layout.php:407
+#: Layouts/General/Layout.php:786 Layouts/Product_list/Layout.php:290
+#: Layouts/Table/Layout.php:212 Layouts/Tabs/Backend/Layout1.php:126
+msgid "Right"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:199 Layouts/Call_to_action/Layout.php:852
+#: Layouts/Call_to_action/Layout.php:1413 Layouts/Filter/Layout.php:544
+#: Layouts/General/Layout.php:693 Layouts/General/Layout.php:1499
+msgid "Min Width"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:235 Layouts/Call_to_action/Layout.php:887
+#: Layouts/Call_to_action/Layout.php:1226
+#: Layouts/Call_to_action/Layout.php:1449 Layouts/General/Layout.php:728
+#: Layouts/General/Layout.php:1535
+msgid "Min Height"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:271 Includes/Helper/Advanced.php:769
+#: Layouts/Call_to_action/Layout.php:392 Layouts/Call_to_action/Layout.php:1485
+#: Layouts/Call_to_action/Layout.php:1916
+#: Layouts/Call_to_action/Layout.php:2498 Layouts/Caption/Layout.php:1350
+#: Layouts/Flipbox/Layout.php:1079 Layouts/General/Backend/Layout4.php:30
+#: Layouts/General/Backend/Layout4.php:290
+#: Layouts/General/Backend/Layout5.php:139 Layouts/General/Layout.php:422
+#: Layouts/General/Layout.php:1279 Layouts/General/Layout.php:1571
+#: Layouts/General/Layout.php:1989 Layouts/Product_list/Layout.php:1119
+#: Layouts/Table/Layout.php:1136 Layouts/Tabs/Backend/Layout1.php:151
+msgid "Normal "
+msgstr ""
+
+#: Includes/Helper/Advanced.php:272 Includes/Helper/Advanced.php:770
+#: Layouts/Call_to_action/Layout.php:393 Layouts/Call_to_action/Layout.php:1486
+#: Layouts/Call_to_action/Layout.php:1917
+#: Layouts/Call_to_action/Layout.php:2499 Layouts/Caption/Layout.php:1351
+#: Layouts/Flipbox/Layout.php:1080 Layouts/General/Backend/Layout4.php:31
+#: Layouts/General/Backend/Layout4.php:291
+#: Layouts/General/Backend/Layout5.php:140 Layouts/General/Layout.php:423
+#: Layouts/General/Layout.php:1280 Layouts/General/Layout.php:1572
+#: Layouts/General/Layout.php:1990 Layouts/Product_list/Layout.php:1120
+#: Layouts/Table/Layout.php:1137 Layouts/Tabs/Backend/Layout1.php:152
+msgid "Hover "
+msgstr ""
+
+#: Includes/Helper/Advanced.php:273 Layouts/Carousel/Layout.php:856
+msgid "Active"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:284 Includes/Helper/Advanced.php:375
+#: Includes/Helper/Advanced.php:466 Includes/Helper/Advanced.php:781
+#: Includes/Helper/Advanced.php:867 Layouts/Call_to_action/Layout.php:402
+#: Layouts/Call_to_action/Layout.php:438 Layouts/Call_to_action/Layout.php:593
+#: Layouts/Call_to_action/Layout.php:763 Layouts/Call_to_action/Layout.php:792
+#: Layouts/Call_to_action/Layout.php:821 Layouts/Call_to_action/Layout.php:1494
+#: Layouts/Call_to_action/Layout.php:1525
+#: Layouts/Call_to_action/Layout.php:1779
+#: Layouts/Call_to_action/Layout.php:1939
+#: Layouts/Call_to_action/Layout.php:1969
+#: Layouts/Call_to_action/Layout.php:2507
+#: Layouts/Call_to_action/Layout.php:2539
+#: Layouts/Caption/Backend/Layout5.php:123 Layouts/Caption/Layout.php:471
+#: Layouts/Caption/Layout.php:716 Layouts/Caption/Layout.php:1359
+#: Layouts/Caption/Layout.php:1426 Layouts/Carousel/Layout.php:512
+#: Layouts/Carousel/Layout.php:561 Layouts/Carousel/Layout.php:866
+#: Layouts/Carousel/Layout.php:895 Layouts/Carousel/Layout.php:924
+#: Layouts/Filter/Layout.php:321 Layouts/Filter/Layout.php:529
+#: Layouts/Flipbox/Layout.php:375 Layouts/Flipbox/Layout.php:474
+#: Layouts/Flipbox/Layout.php:1088 Layouts/Flipbox/Layout.php:1155
+#: Layouts/General/Backend/Layout4.php:39
+#: Layouts/General/Backend/Layout4.php:68
+#: Layouts/General/Backend/Layout4.php:299
+#: Layouts/General/Backend/Layout4.php:331
+#: Layouts/General/Backend/Layout5.php:148
+#: Layouts/General/Backend/Layout5.php:179 Layouts/General/Layout.php:432
+#: Layouts/General/Layout.php:468 Layouts/General/Layout.php:603
+#: Layouts/General/Layout.php:633 Layouts/General/Layout.php:662
+#: Layouts/General/Layout.php:1288 Layouts/General/Layout.php:1320
+#: Layouts/General/Layout.php:1580 Layouts/General/Layout.php:1611
+#: Layouts/General/Layout.php:1866 Layouts/General/Layout.php:2012
+#: Layouts/General/Layout.php:2042 Layouts/Product_list/Layout.php:304
+#: Layouts/Product_list/Layout.php:514 Layouts/Product_list/Layout.php:908
+#: Layouts/Product_list/Layout.php:1128 Layouts/Product_list/Layout.php:1160
+#: Layouts/Table/Layout.php:247 Layouts/Table/Layout.php:597
+#: Layouts/Table/Layout.php:926 Layouts/Table/Layout.php:1145
+#: Layouts/Table/Layout.php:1177 Layouts/Tabs/Backend/Layout1.php:174
+#: Layouts/Tabs/Backend/Layout1.php:261 Layouts/Tabs/Backend/Layout1.php:347
+msgid "Background"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:296 Includes/Helper/Advanced.php:387
+#: Includes/Helper/Advanced.php:478 Includes/Helper/Advanced.php:793
+#: Includes/Helper/Advanced.php:879 Includes/Helper/Helper.php:2516
+#: Includes/Helper/Helper.php:2634 Layouts/Call_to_action/Layout.php:775
+#: Layouts/Call_to_action/Layout.php:804 Layouts/Call_to_action/Layout.php:833
+#: Layouts/Call_to_action/Layout.php:1507
+#: Layouts/Call_to_action/Layout.php:1538
+#: Layouts/Call_to_action/Layout.php:1751
+#: Layouts/Call_to_action/Layout.php:1926
+#: Layouts/Call_to_action/Layout.php:2142
+#: Layouts/Call_to_action/Layout.php:2520
+#: Layouts/Call_to_action/Layout.php:2552 Layouts/Caption/Layout.php:630
+#: Layouts/Caption/Layout.php:688 Layouts/Caption/Layout.php:840
+#: Layouts/Caption/Layout.php:930 Layouts/Caption/Layout.php:1023
+#: Layouts/Caption/Layout.php:1372 Layouts/Caption/Layout.php:1439
+#: Layouts/Carousel/Layout.php:499 Layouts/Carousel/Layout.php:548
+#: Layouts/Filter/Layout.php:334 Layouts/Filter/Layout.php:733
+#: Layouts/Filter/Layout.php:858 Layouts/Filter/Layout.php:1002
+#: Layouts/Filter/Layout.php:1164 Layouts/Filter/Layout.php:1296
+#: Layouts/Filter/Layout.php:1538 Layouts/Filter/Layout.php:1646
+#: Layouts/Filter/Layout.php:1787 Layouts/Filter/Layout.php:1972
+#: Layouts/Filter/Layout.php:2187 Layouts/Flipbox/Layout.php:574
+#: Layouts/Flipbox/Layout.php:663 Layouts/Flipbox/Layout.php:752
+#: Layouts/Flipbox/Layout.php:1101 Layouts/Flipbox/Layout.php:1168
+#: Layouts/General/Backend/Layout4.php:51
+#: Layouts/General/Backend/Layout4.php:80
+#: Layouts/General/Backend/Layout4.php:312
+#: Layouts/General/Backend/Layout4.php:344
+#: Layouts/General/Backend/Layout5.php:160
+#: Layouts/General/Backend/Layout5.php:191 Layouts/General/Layout.php:616
+#: Layouts/General/Layout.php:645 Layouts/General/Layout.php:674
+#: Layouts/General/Layout.php:1301 Layouts/General/Layout.php:1333
+#: Layouts/General/Layout.php:1593 Layouts/General/Layout.php:1624
+#: Layouts/General/Layout.php:1838 Layouts/General/Layout.php:1999
+#: Layouts/General/Layout.php:2202 Layouts/General/Layout.php:2288
+#: Layouts/Product_list/Layout.php:659 Layouts/Product_list/Layout.php:715
+#: Layouts/Product_list/Layout.php:921 Layouts/Product_list/Layout.php:1141
+#: Layouts/Product_list/Layout.php:1173 Layouts/Table/Layout.php:261
+#: Layouts/Table/Layout.php:732 Layouts/Table/Layout.php:778
+#: Layouts/Table/Layout.php:939 Layouts/Table/Layout.php:1158
+#: Layouts/Table/Layout.php:1190 Layouts/Tabs/Backend/Layout1.php:162
+#: Layouts/Tabs/Backend/Layout1.php:249 Layouts/Tabs/Backend/Layout1.php:335
+#: Templates/Compare.php:152
+msgid "Color"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:337 Includes/Helper/Advanced.php:428
+#: Includes/Helper/Advanced.php:514 Includes/Helper/Advanced.php:829
+#: Includes/Helper/Advanced.php:916 Includes/Helper/Advanced.php:1087
+#: Layouts/Call_to_action/Layout.php:475 Layouts/Call_to_action/Layout.php:629
+#: Layouts/Call_to_action/Layout.php:981 Layouts/Call_to_action/Layout.php:1287
+#: Layouts/Call_to_action/Layout.php:1654
+#: Layouts/Call_to_action/Layout.php:1816
+#: Layouts/Call_to_action/Layout.php:1999
+#: Layouts/Call_to_action/Layout.php:2597
+#: Layouts/Caption/Backend/Layout5.php:170 Layouts/Caption/Layout.php:515
+#: Layouts/Caption/Layout.php:743 Layouts/Caption/Layout.php:1388
+#: Layouts/Caption/Layout.php:1455 Layouts/Carousel/Layout.php:599
+#: Layouts/Carousel/Layout.php:954 Layouts/Filter/Layout.php:349
+#: Layouts/Filter/Layout.php:614 Layouts/Filter/Layout.php:885
+#: Layouts/Filter/Layout.php:1191 Layouts/Filter/Layout.php:1839
+#: Layouts/Filter/Layout.php:1999 Layouts/Flipbox/Layout.php:411
+#: Layouts/Flipbox/Layout.php:510 Layouts/Flipbox/Layout.php:1117
+#: Layouts/Flipbox/Layout.php:1184 Layouts/General/Backend/Layout4.php:157
+#: Layouts/General/Backend/Layout4.php:389
+#: Layouts/General/Backend/Layout5.php:307 Layouts/General/Layout.php:505
+#: Layouts/General/Layout.php:811 Layouts/General/Layout.php:1040
+#: Layouts/General/Layout.php:1378 Layouts/General/Layout.php:1741
+#: Layouts/General/Layout.php:1892 Layouts/General/Layout.php:2072
+#: Layouts/Product_list/Layout.php:341 Layouts/Product_list/Layout.php:551
+#: Layouts/Product_list/Layout.php:948 Layouts/Product_list/Layout.php:1218
+#: Layouts/Table/Layout.php:424 Layouts/Table/Layout.php:634
+#: Layouts/Table/Layout.php:966 Layouts/Table/Layout.php:1235
+#: Layouts/Tabs/Backend/Layout1.php:212 Layouts/Tabs/Backend/Layout1.php:299
+#: Layouts/Tabs/Backend/Layout1.php:385
+msgid "Border Radius"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:608
+msgid "Previus "
+msgstr ""
+
+#: Includes/Helper/Advanced.php:609
+msgid "Next "
+msgstr ""
+
+#: Includes/Helper/Advanced.php:621 Includes/Helper/Advanced.php:648
+msgid "Icon"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:632
+msgid "Text"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:634
+msgid "Previus"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:659 Includes/Helper/Advanced.php:661
+msgid "Next"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:674
+msgid "Icon Spacing"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:713
+msgid "Load More Text"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:715
+msgid "Load More"
+msgstr ""
+
+#: Includes/Helper/Advanced.php:1049 Layouts/Filter/Layout.php:844
+#: Layouts/Filter/Layout.php:1150 Layouts/Filter/Layout.php:1524
+#: Layouts/Filter/Layout.php:1772 Layouts/Filter/Layout.php:1956
+msgid "Background Color"
+msgstr ""
+
+#: Includes/Helper/Helper.php:20
+msgid "Advanced"
+msgstr ""
+
+#: Includes/Helper/Helper.php:136 Includes/Helper/Helper.php:275
+#: Includes/Helper/Helper.php:390
+msgid "Pro"
+msgstr ""
+
+#: Includes/Helper/Helper.php:263
+msgid "Sort"
+msgstr ""
+
+#: Includes/Helper/Helper.php:833
+msgid "Show Cart"
+msgstr ""
+
+#: Includes/Helper/Helper.php:849
+msgid "Cart Icon"
+msgstr ""
+
+#: Includes/Helper/Helper.php:863
+msgid "Added Cart Icon"
+msgstr ""
+
+#: Includes/Helper/Helper.php:877
+msgid "Grouped Icon"
+msgstr ""
+
+#: Includes/Helper/Helper.php:891
+msgid "External Icon"
+msgstr ""
+
+#: Includes/Helper/Helper.php:905
+msgid "Variable Icon"
+msgstr ""
+
+#: Includes/Helper/Helper.php:934 Includes/Helper/Helper.php:1743
+#: Includes/Helper/Helper.php:1874 Includes/Helper/Helper.php:1988
+msgid "Show Tooltip"
+msgstr ""
+
+#: Includes/Helper/Helper.php:951
+msgid "Cart Tooltip"
+msgstr ""
+
+#: Includes/Helper/Helper.php:953 Includes/Helper/Helper.php:1017
+msgid "Add to Cart"
+msgstr ""
+
+#: Includes/Helper/Helper.php:966
+msgid "Grouped Tooltip"
+msgstr ""
+
+#: Includes/Helper/Helper.php:981
+msgid "External Tooltip"
+msgstr ""
+
+#: Includes/Helper/Helper.php:996
+msgid "Variable Tooltip"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1015
+msgid "Cart Text"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1029
+msgid "View Cart"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1043
+msgid "Grouped Text"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1057
+msgid "External Text"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1071
+msgid "Variable Text"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1600 Includes/Helper/Helper.php:1625
+#: Includes/Helper/Helper.php:1651
+msgid "Column Size"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1606 Includes/Helper/Helper.php:1632
+#: Includes/Helper/Helper.php:1658
+msgid "Col 1"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1607 Includes/Helper/Helper.php:1633
+#: Includes/Helper/Helper.php:1659
+msgid "Col 2"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1608 Includes/Helper/Helper.php:1634
+#: Includes/Helper/Helper.php:1660
+msgid "Col 3"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1609 Includes/Helper/Helper.php:1635
+#: Includes/Helper/Helper.php:1661
+msgid "Col 4"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1610 Includes/Helper/Helper.php:1636
+#: Includes/Helper/Helper.php:1662
+msgid "Col 5"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1611 Includes/Helper/Helper.php:1637
+#: Includes/Helper/Helper.php:1663
+msgid "Col 6"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1612 Includes/Helper/Helper.php:1638
+#: Includes/Helper/Helper.php:1664
+msgid "Col 7"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1613 Includes/Helper/Helper.php:1639
+#: Includes/Helper/Helper.php:1665
+msgid "Col 8"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1614 Includes/Helper/Helper.php:1640
+#: Includes/Helper/Helper.php:1666
+msgid "Col 12"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1631 Includes/Helper/Helper.php:1657
+#: Includes/Helper/Helper.php:2198 Includes/Helper/Helper.php:2212
+#: Includes/Helper/Helper.php:2230 Includes/Helper/Helper.php:2247
+#: Layouts/Filter/Frontend/Layout1.php:83
+#: Layouts/Filter/Frontend/Layout2.php:83
+msgid "Default"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1693 Layouts/Caption/Layout.php:251
+msgid "Show Wishlist"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1710
+msgid "Wishlist Icon"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1726 Includes/Helper/Helper.php:1858
+msgid "Added Icon"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1762 Includes/Helper/Helper.php:1893
+#: Includes/Helper/Helper.php:2007
+msgid "Tooltip Text"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1764 Includes/Helper/Helper.php:1783
+#: Layouts/Call_to_action/Backend/Layout1.php:95
+#: Layouts/Call_to_action/Backend/Layout2.php:93 Layouts/Caption/Layout.php:443
+#: Layouts/General/Backend/Layout1.php:95
+#: Layouts/General/Backend/Layout3.php:94
+#: Layouts/General/Backend/Layout5.php:468
+#: Layouts/General/Backend/Layout6.php:104
+#: Layouts/General/Backend/Layout7.php:104
+msgid "Wishlist"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1781
+msgid "Wishlist Text"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1794 Includes/Helper/Helper.php:1923
+msgid "Added Text"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1796 Includes/Helper/Helper.php:1925
+msgid "Added"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1825
+msgid "Show Compare"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1842
+msgid "Compare Icon"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1895 Includes/Helper/Helper.php:1912
+#: Layouts/Call_to_action/Backend/Layout1.php:150
+#: Layouts/Call_to_action/Backend/Layout2.php:148
+#: Layouts/General/Backend/Layout1.php:150
+#: Layouts/General/Backend/Layout3.php:149
+#: Layouts/General/Backend/Layout5.php:523
+#: Layouts/General/Backend/Layout6.php:159
+#: Layouts/General/Backend/Layout7.php:159
+msgid "Compare"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1910
+msgid "Compare Text"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1954
+msgid "Show Quickview"
+msgstr ""
+
+#: Includes/Helper/Helper.php:1971
+msgid "Quickview Icon"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2009 Includes/Helper/Helper.php:2028
+msgid "Quick view"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2026
+msgid "Quickview Text"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2124
+msgid "Typography"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2138
+msgid "Font Family"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2148 Layouts/Call_to_action/Layout.php:2426
+#: Layouts/Caption/Layout.php:1278 Layouts/Filter/Layout.php:1489
+#: Layouts/Flipbox/Layout.php:1007 Layouts/General/Backend/Layout4.php:218
+#: Layouts/Product_list/Layout.php:1047 Layouts/Table/Layout.php:1064
+#: Templates/Compare.php:168
+msgid "Size"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2184 Templates/Compare.php:120
+msgid "Weight"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2189
+msgid "100"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2190
+msgid "200"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2191
+msgid "300"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2192
+msgid "400"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2193
+msgid "500"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2194
+msgid "600"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2195
+msgid "700"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2196
+msgid "800"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2197
+msgid "900"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2199 Includes/Helper/Helper.php:2216
+#: Layouts/Carousel/Layout.php:490 Layouts/Carousel/Layout.php:854
+#: Layouts/Filter/Layout.php:51 Layouts/Filter/Layout.php:203
+msgid "Normal"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2200
+msgid "Bold"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2208
+msgid "Transform"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2213
+msgid "Uppercase"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2214
+msgid "Lowercase"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2215
+msgid "Capitalize"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2226 Layouts/Call_to_action/Layout.php:366
+#: Layouts/Caption/Layout.php:1575 Layouts/Carousel/Layout.php:32
+#: Layouts/Filter/Layout.php:182 Layouts/Filter/Layout.php:1922
+#: Layouts/General/Layout.php:32 Layouts/Product_list/Layout.php:250
+#: Layouts/Table/Layout.php:172 Layouts/Tabs/Layout.php:31
+msgid "Style"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2231
+msgid "normal"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2232
+msgid "Italic"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2233
+msgid "Oblique"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2243
+msgid "Decoration"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2248
+msgid "Underline"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2249
+msgid "Overline"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2250
+msgid "Line Through"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2262
+msgid "Line Height"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2289
+msgid "Letter Spacing"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2376
+msgid "Box Shadow"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2387
+msgid "Shadow"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2399 Includes/Helper/Helper.php:2581
+msgid "Type"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2404
+msgid "Outline"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2408 Includes/Helper/Helper.php:2592
+msgid "Inset"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2420
+msgid "Horizontal"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2444
+msgid "Vertical"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2468
+msgid "Blur"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2492
+msgid "Spread"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2569
+msgid "Border"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2586
+msgid "Solid"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2587
+msgid "Dotted"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2588
+msgid "Dashed"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2589
+msgid "Double"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2590
+msgid "Groove"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2591
+msgid "Ridge"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2593
+msgid "Outset"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2594
+msgid "Hidden"
+msgstr ""
+
+#: Includes/Helper/Helper.php:2604 Layouts/Carousel/Layout.php:689
+#: Layouts/General/Backend/Layout5.php:33 Layouts/Product_list/Layout.php:874
+#: Layouts/Table/Layout.php:892
+msgid "Width"
+msgstr ""
+
+#: Includes/Helper/Public_Render.php:815
+msgid "Sale"
+msgstr ""
+
+#: Includes/Helper/Public_Render.php:820
+msgid "Sold out"
+msgstr ""
+
+#: Includes/Helper/Public_Render.php:824
+msgid "Hot"
+msgstr ""
+
+#: Includes/functions.php:38
+msgid "Failed to insert data"
+msgstr ""
+
+#: Includes/functions.php:294
+msgid " not working because you need to activate the "
+msgstr ""
+
+#: Includes/functions.php:294
+msgid " plugin."
+msgstr ""
+
+#: Includes/functions.php:295
+msgid "Activate "
+msgstr ""
+
+#: Includes/functions.php:295 Includes/functions.php:313
+msgid " Now"
+msgstr ""
+
+#: Includes/functions.php:312
+msgid " not working because you need to install the "
+msgstr ""
+
+#: Includes/functions.php:312
+msgid " plugin"
+msgstr ""
+
+#: Includes/functions.php:313
+msgid "Install "
+msgstr ""
+
+#: Includes/functions.php:659
+msgid "General Layouts"
+msgstr ""
+
+#: Includes/functions.php:662
+msgid "Call To Action Layouts"
+msgstr ""
+
+#: Includes/functions.php:665
+msgid "Product Table Layouts"
+msgstr ""
+
+#: Includes/functions.php:668
+msgid "Product List Layouts"
+msgstr ""
+
+#: Includes/functions.php:671
+msgid "Caption Layouts"
+msgstr ""
+
+#: Includes/functions.php:674
+msgid "Flipbox Layouts"
+msgstr ""
+
+#: Includes/functions.php:677 Includes/functions.php:716
+msgid "Filter & Sorting"
+msgstr ""
+
+#: Includes/functions.php:680 Includes/functions.php:713
+msgid "Product Tabs"
+msgstr ""
+
+#: Includes/functions.php:683
+msgid "Carousel"
+msgstr ""
+
+#: Includes/functions.php:686
+msgid "Accordion"
+msgstr ""
+
+#: Includes/functions.php:689
+msgid "Product Layouts"
+msgstr ""
+
+#: Includes/functions.php:695
+msgid "General"
+msgstr ""
+
+#: Includes/functions.php:698
+msgid "Call To Action"
+msgstr ""
+
+#: Includes/functions.php:701
+msgid "Product Table"
+msgstr ""
+
+#: Includes/functions.php:704
+msgid "Product List"
+msgstr ""
+
+#: Includes/functions.php:707
+msgid "Caption"
+msgstr ""
+
+#: Includes/functions.php:710
+msgid "Flipbox"
+msgstr ""
+
+#: Layouts/Call_to_action/Backend/Layout1.php:49
+#: Layouts/Call_to_action/Backend/Layout2.php:47 Layouts/Caption/Layout.php:390
+#: Layouts/Flipbox/Backend/Layout1.php:90
+#: Layouts/General/Backend/Layout1.php:49
+#: Layouts/General/Backend/Layout2.php:53
+#: Layouts/General/Backend/Layout3.php:48
+#: Layouts/General/Backend/Layout4.php:509
+#: Layouts/General/Backend/Layout5.php:422
+#: Layouts/General/Backend/Layout6.php:58
+#: Layouts/General/Backend/Layout7.php:58
+#: Layouts/Product_list/Backend/Layout1.php:180
+#: Layouts/Table/Backend/Layout1.php:178
+msgid "Cart Icons"
+msgstr ""
+
+#: Layouts/Call_to_action/Backend/Layout1.php:123
+#: Layouts/Call_to_action/Backend/Layout2.php:121
+#: Layouts/General/Backend/Layout1.php:123
+#: Layouts/General/Backend/Layout3.php:122
+#: Layouts/General/Backend/Layout4.php:586
+#: Layouts/General/Backend/Layout5.php:496
+#: Layouts/General/Backend/Layout6.php:132
+#: Layouts/General/Backend/Layout7.php:132
+msgid "Quick View"
+msgstr ""
+
+#: Layouts/Call_to_action/Frontend/Layout1.php:83
+#: Layouts/Call_to_action/Frontend/Layout2.php:82
+#: Layouts/Caption/Frontend/Layout1.php:65
+#: Layouts/Caption/Frontend/Layout2.php:65
+#: Layouts/Caption/Frontend/Layout3.php:65
+#: Layouts/Caption/Frontend/Layout4.php:65
+#: Layouts/Caption/Frontend/Layout5.php:65
+#: Layouts/Caption/Frontend/Layout6.php:65
+#: Layouts/Caption/Frontend/Layout7.php:65
+#: Layouts/Caption/Frontend/Layout8.php:65
+#: Layouts/Flipbox/Frontend/Layout1.php:61
+#: Layouts/General/Frontend/Layout1.php:81
+#: Layouts/General/Frontend/Layout2.php:69
+#: Layouts/General/Frontend/Layout3.php:81
+#: Layouts/General/Frontend/Layout4.php:75
+#: Layouts/General/Frontend/Layout5.php:81
+#: Layouts/General/Frontend/Layout6.php:81
+#: Layouts/General/Frontend/Layout7.php:81
+#: Layouts/Product_list/Frontend/Layout1.php:68
+#: Layouts/Table/Frontend/Layout1.php:195
+msgid "Product not found!"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:25 Layouts/Caption/Layout.php:25
+#: Layouts/Flipbox/Layout.php:25 Layouts/General/Layout.php:45
+#: Layouts/Product_list/Layout.php:25 Layouts/Table/Layout.php:25
+msgid "Recent Products"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:26 Layouts/Caption/Layout.php:26
+#: Layouts/Flipbox/Layout.php:26 Layouts/General/Layout.php:46
+#: Layouts/Product_list/Layout.php:26 Layouts/Table/Layout.php:26
+msgid "Featured Products"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:27 Layouts/Caption/Layout.php:27
+#: Layouts/Flipbox/Layout.php:27 Layouts/General/Layout.php:47
+#: Layouts/Product_list/Layout.php:27 Layouts/Table/Layout.php:27
+msgid "Best Selling Products"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:28 Layouts/Caption/Layout.php:28
+#: Layouts/Flipbox/Layout.php:28 Layouts/General/Layout.php:48
+#: Layouts/Product_list/Layout.php:28 Layouts/Table/Layout.php:28
+msgid "Sale Products"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:29 Layouts/Caption/Layout.php:29
+#: Layouts/Flipbox/Layout.php:29 Layouts/General/Layout.php:49
+#: Layouts/Product_list/Layout.php:29 Layouts/Table/Layout.php:29
+msgid "Top Rated Products"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:38 Layouts/Caption/Layout.php:38
+#: Layouts/Caption/Layout.php:55 Layouts/Flipbox/Layout.php:38
+#: Layouts/Flipbox/Layout.php:55 Layouts/General/Layout.php:58
+#: Layouts/Product_list/Layout.php:38 Layouts/Table/Layout.php:38
+msgid "Product ID"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:39 Layouts/Caption/Layout.php:39
+#: Layouts/Caption/Layout.php:56 Layouts/Flipbox/Layout.php:39
+#: Layouts/Flipbox/Layout.php:56 Layouts/General/Layout.php:59
+#: Layouts/Product_list/Layout.php:39 Layouts/Table/Layout.php:39
+msgid "Product Title"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:40 Layouts/Caption/Layout.php:40
+#: Layouts/Caption/Layout.php:57 Layouts/Flipbox/Layout.php:40
+#: Layouts/Flipbox/Layout.php:57 Layouts/General/Layout.php:60
+#: Layouts/Product_list/Layout.php:40 Layouts/Table/Frontend/Layout1.php:70
+#: Layouts/Table/Layout.php:40 Templates/Compare.php:199
+msgid "Price"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:41 Layouts/Caption/Layout.php:41
+#: Layouts/Caption/Layout.php:58 Layouts/Flipbox/Layout.php:41
+#: Layouts/Flipbox/Layout.php:58 Layouts/General/Layout.php:61
+#: Layouts/Product_list/Layout.php:41 Layouts/Table/Layout.php:41
+msgid "SKU"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:42 Layouts/Caption/Layout.php:42
+#: Layouts/Caption/Layout.php:59 Layouts/Flipbox/Layout.php:42
+#: Layouts/Flipbox/Layout.php:59 Layouts/General/Layout.php:62
+#: Layouts/Product_list/Layout.php:42 Layouts/Table/Layout.php:42
+msgid "Date"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:43 Layouts/Caption/Layout.php:43
+#: Layouts/Caption/Layout.php:60 Layouts/Flipbox/Layout.php:43
+#: Layouts/Flipbox/Layout.php:60 Layouts/General/Layout.php:63
+#: Layouts/Product_list/Layout.php:43 Layouts/Table/Layout.php:43
+msgid "Last Modified Date"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:44 Layouts/Caption/Layout.php:44
+#: Layouts/Caption/Layout.php:61 Layouts/Flipbox/Layout.php:44
+#: Layouts/Flipbox/Layout.php:61 Layouts/General/Layout.php:64
+#: Layouts/Product_list/Layout.php:44 Layouts/Table/Layout.php:44
+msgid "Parent Id"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:45 Layouts/Caption/Layout.php:45
+#: Layouts/Caption/Layout.php:62 Layouts/Flipbox/Layout.php:45
+#: Layouts/Flipbox/Layout.php:62 Layouts/General/Layout.php:65
+#: Layouts/Product_list/Layout.php:45 Layouts/Table/Layout.php:45
+msgid "Random"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:46 Layouts/Caption/Layout.php:46
+#: Layouts/Caption/Layout.php:63 Layouts/Flipbox/Layout.php:46
+#: Layouts/Flipbox/Layout.php:63 Layouts/General/Layout.php:66
+#: Layouts/Product_list/Layout.php:46 Layouts/Table/Layout.php:46
+msgid "Menu Order"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:78 Layouts/Caption/Layout.php:86
+#: Layouts/Flipbox/Layout.php:86 Layouts/General/Layout.php:98
+#: Layouts/Product_list/Layout.php:59
+msgid "Column Gap"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:113 Layouts/Caption/Layout.php:121
+#: Layouts/Flipbox/Layout.php:121 Layouts/General/Layout.php:134
+#: Layouts/Product_list/Layout.php:95
+msgid "Row Gap"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:159 Layouts/General/Layout.php:181
+msgid "Show Badge"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:172 Layouts/Caption/Layout.php:172
+#: Layouts/Flipbox/Layout.php:173 Layouts/General/Layout.php:194
+msgid "Show Category"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:185 Layouts/Caption/Layout.php:185
+#: Layouts/Filter/Layout.php:256 Layouts/Flipbox/Layout.php:186
+#: Layouts/General/Layout.php:207
+msgid "Show Title"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:198 Layouts/Caption/Layout.php:211
+#: Layouts/Flipbox/Layout.php:212 Layouts/General/Layout.php:220
+msgid "Show Rating"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:211 Layouts/General/Layout.php:233
+#: Layouts/Product_list/Backend/Layout1.php:53
+#: Layouts/Table/Backend/Layout1.php:51
+msgid "Show Image"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:224 Layouts/Caption/Layout.php:224
+#: Layouts/Flipbox/Layout.php:225 Layouts/General/Layout.php:246
+#: Layouts/Product_list/Backend/Layout1.php:92
+#: Layouts/Table/Backend/Layout1.php:90
+msgid "Show Price"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:237 Layouts/General/Layout.php:259
+msgid "Show icons"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:261 Layouts/Caption/Layout.php:279
+#: Layouts/Flipbox/Layout.php:266 Layouts/General/Layout.php:283
+#: Layouts/Product_list/Layout.php:145 Layouts/Table/Layout.php:67
+msgid "Hide out of stock products"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:308 Layouts/Caption/Layout.php:326
+#: Layouts/Flipbox/Layout.php:313 Layouts/General/Layout.php:330
+#: Layouts/Product_list/Layout.php:192 Layouts/Table/Layout.php:114
+msgid "Filter By"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:318 Layouts/Caption/Layout.php:336
+#: Layouts/Flipbox/Layout.php:323 Layouts/General/Layout.php:340
+#: Layouts/Product_list/Layout.php:202 Layouts/Table/Layout.php:124
+msgid "Order By"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:328 Layouts/Caption/Layout.php:346
+#: Layouts/Flipbox/Layout.php:333 Layouts/General/Layout.php:350
+#: Layouts/Product_list/Layout.php:212 Layouts/Table/Layout.php:134
+msgid "Order"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:343 Layouts/Caption/Layout.php:361
+#: Layouts/Flipbox/Layout.php:348 Layouts/General/Layout.php:365
+#: Layouts/Product_list/Layout.php:227 Layouts/Table/Layout.php:149
+msgid "Product Per Page"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:365 Layouts/Caption/Layout.php:1574
+#: Layouts/Carousel/Layout.php:31 Layouts/Filter/Layout.php:1921
+#: Layouts/Flipbox/Layout.php:1303 Layouts/General/Layout.php:31
+#: Layouts/Product_list/Layout.php:249 Layouts/Table/Layout.php:171
+#: Layouts/Tabs/Layout.php:30
+msgid "Content"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:565 Layouts/General/Layout.php:393
+#: Layouts/Product_list/Layout.php:276 Layouts/Table/Layout.php:198
+msgid "Text Align"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:753 Layouts/General/Layout.php:593
+msgid "Onsale "
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:754 Layouts/General/Layout.php:594
+msgid "Hot "
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:755 Layouts/General/Layout.php:595
+msgid "Out Stock"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:931 Layouts/Filter/Layout.php:505
+#: Layouts/General/Layout.php:772
+msgid "Position"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:1016 Layouts/General/Layout.php:846
+msgid "Badge Space"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:1140 Layouts/General/Layout.php:965
+#: Layouts/General/Layout.php:1131 Layouts/Product_list/Layout.php:430
+#: Layouts/Table/Layout.php:478
+msgid "Hyperlink"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:1152 Layouts/General/Layout.php:977
+#: Layouts/General/Layout.php:1143 Layouts/Product_list/Layout.php:442
+#: Layouts/Table/Layout.php:490
+msgid "Open in new window"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:1165 Layouts/General/Layout.php:990
+#: Layouts/General/Layout.php:1156 Layouts/Product_list/Layout.php:455
+#: Layouts/Table/Layout.php:503
+msgid "Add nofollow"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:1177 Layouts/Caption/Layout.php:565
+#: Layouts/Flipbox/Layout.php:462 Layouts/General/Layout.php:1002
+#: Layouts/General/Layout.php:1168 Layouts/Product_list/Layout.php:467
+#: Layouts/Table/Layout.php:515
+msgid "Image Size"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:1190 Layouts/Product_list/Layout.php:480
+#: Layouts/Table/Layout.php:563
+msgid "Max Width"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:1386 Layouts/General/Layout.php:1472
+msgid "Start"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:1394 Layouts/General/Layout.php:1480
+msgid "End"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:1558
+#: Layouts/Call_to_action/Layout.php:2237 Layouts/Caption/Layout.php:597
+#: Layouts/Caption/Layout.php:1103 Layouts/Carousel/Layout.php:276
+#: Layouts/Filter/Layout.php:1311 Layouts/Filter/Layout.php:2068
+#: Layouts/Flipbox/Layout.php:832 Layouts/General/Backend/Layout4.php:99
+#: Layouts/General/Backend/Layout5.php:212 Layouts/General/Layout.php:1207
+#: Layouts/General/Layout.php:1644 Layouts/General/Layout.php:2381
+msgid "Icon Size"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:1595
+#: Layouts/Call_to_action/Layout.php:2462 Layouts/Caption/Layout.php:1314
+#: Layouts/Flipbox/Layout.php:1043 Layouts/General/Backend/Layout4.php:254
+#: Layouts/General/Backend/Layout5.php:250 Layouts/General/Layout.php:1243
+#: Layouts/General/Layout.php:1681 Layouts/Product_list/Layout.php:1083
+#: Layouts/Table/Layout.php:1100
+msgid "Icon Gap"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:1764 Layouts/Caption/Layout.php:701
+#: Layouts/General/Layout.php:1851
+msgid "Indigator Color"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:1956
+#: Layouts/Call_to_action/Layout.php:2156 Layouts/Caption/Layout.php:644
+#: Layouts/Caption/Layout.php:853 Layouts/Caption/Layout.php:944
+#: Layouts/Flipbox/Layout.php:587 Layouts/Flipbox/Layout.php:677
+#: Layouts/General/Layout.php:2029 Layouts/General/Layout.php:2302
+#: Layouts/Product_list/Layout.php:673 Layouts/Table/Layout.php:746
+msgid "Hover Color"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:2121 Layouts/General/Layout.php:2267
+#: Layouts/Product_list/Layout.php:648 Layouts/Table/Layout.php:721
+msgid "Title Tag"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:2222 Layouts/Caption/Layout.php:1088
+#: Layouts/Flipbox/Layout.php:817 Layouts/General/Layout.php:2366
+msgid "Icon Color"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:2333 Layouts/General/Layout.php:2475
+#: Layouts/Product_list/Layout.php:791 Layouts/Table/Layout.php:844
+msgid "Regular Price Color"
+msgstr ""
+
+#: Layouts/Call_to_action/Layout.php:2347 Layouts/General/Layout.php:2489
+#: Layouts/Product_list/Layout.php:805 Layouts/Table/Layout.php:858
+msgid "Sale Price Color"
+msgstr ""
+
+#: Layouts/Caption/Backend/Layout1.php:53
+#: Layouts/Caption/Backend/Layout2.php:53
+#: Layouts/Caption/Backend/Layout3.php:63
+#: Layouts/Caption/Backend/Layout4.php:63
+#: Layouts/Caption/Backend/Layout5.php:63
+#: Layouts/Caption/Backend/Layout6.php:63
+#: Layouts/Caption/Backend/Layout7.php:63
+#: Layouts/Caption/Backend/Layout8.php:63
+#: Layouts/Flipbox/Backend/Layout1.php:53
+msgid "Effects Direction"
+msgstr ""
+
+#: Layouts/Caption/Layout.php:198 Layouts/Flipbox/Layout.php:199
+#: Layouts/Product_list/Backend/Layout1.php:79
+#: Layouts/Table/Backend/Layout1.php:77
+msgid "Show Description"
+msgstr ""
+
+#: Layouts/Caption/Layout.php:237 Layouts/Flipbox/Layout.php:238
+#: Layouts/Product_list/Backend/Layout1.php:118
+#: Layouts/Table/Backend/Layout1.php:116
+msgid "Show Button"
+msgstr ""
+
+#: Layouts/Caption/Layout.php:1198 Layouts/Flipbox/Layout.php:927
+msgid "Price Color"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:55
+msgid "Carousel Style"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:68
+msgid "Slider Per View"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:89
+msgid "Space Between"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:110
+msgid "Slides to Scroll"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:131
+msgid "Autoplay"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:145
+msgid "Autoplay Speed"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:160
+msgid "Animation Speed"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:172
+msgid "Pause on Hover"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:186
+msgid "Infinite Loop"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:200
+msgid "Adaptive Height"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:214
+msgid "Center Mode"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:228
+msgid "Arrows"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:242
+msgid "Dots"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:310 Layouts/Carousel/Layout.php:322
+msgid "Left Arrow"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:311 Layouts/Carousel/Layout.php:406
+msgid "Right Arrow"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:333 Layouts/Carousel/Layout.php:417
+#: Layouts/Carousel/Layout.php:749
+msgid "Position X"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:368 Layouts/Carousel/Layout.php:452
+#: Layouts/Carousel/Layout.php:784
+msgid "Position Y"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:491 Layouts/Carousel/Layout.php:855
+msgid "Hover"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:719 Layouts/General/Backend/Layout5.php:69
+msgid "Height"
+msgstr ""
+
+#: Layouts/Carousel/Layout.php:819 Layouts/Filter/Layout.php:1803
+#: Layouts/Filter/Layout.php:2288
+msgid "Spacing"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout1.php:55
+#: Layouts/Filter/Frontend/Layout1.php:71
+msgid "Sort by"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout1.php:87
+msgid "Sort by popularity"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout1.php:91
+msgid "Sort by latest"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout1.php:95
+msgid "Sort by price: low to high"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout1.php:99
+msgid "Sort by price: high to low"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout2.php:55
+#: Layouts/Filter/Frontend/Layout2.php:71
+msgid "Show per page"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout2.php:87
+msgid "10 per page"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout2.php:91
+msgid "20 per page"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout2.php:95
+msgid "30 per page"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout3.php:74
+#: Layouts/Filter/Frontend/Layout3.php:90
+msgid "Category"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout4.php:56
+#: Layouts/Filter/Frontend/Layout4.php:72
+msgid "Rating"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout5.php:56
+#: Layouts/Filter/Frontend/Layout5.php:72
+msgid "Price Range"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout5.php:84
+msgid "Any Price"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout5.php:88
+msgid "Upto $20"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout5.php:92
+msgid "$21-$40"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout5.php:96
+msgid "$41-$70"
+msgstr ""
+
+#: Layouts/Filter/Frontend/Layout5.php:100
+msgid "Above $70"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:32 Layouts/Filter/Layout.php:158
+msgid "Filter for"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:52 Layouts/Filter/Layout.php:204
+#: Layouts/Filter/Layout.php:495
+msgid "DropDown"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:62 Layouts/Filter/Layout.php:227
+msgid "Show Post Count"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:83
+msgid "Category Query"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:92
+msgid "Show Custom Categories"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:106
+msgid "Categories"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:118
+msgid "Show Custom Subcategories"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:132
+msgid "Sub Categories"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:170
+msgid "Attributes"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:188
+msgid "Style 1"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:189
+msgid "Style 2"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:213
+msgid "Show Text"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:269
+msgid "Custom Title?"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:283
+msgid "Title Text"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:302
+msgid "Box Style"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:579 Layouts/Table/Layout.php:528
+msgid "Max Height"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:713
+msgid "Title"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:790 Layouts/Filter/Layout.php:1938
+msgid "Checkbox"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:809 Layouts/Filter/Layout.php:1115
+#: Layouts/Filter/Layout.php:2034
+msgid "Box Size"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:920 Layouts/Filter/Layout.php:1226
+#: Layouts/Filter/Layout.php:2103
+msgid "Checkbox position"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:950 Layouts/Filter/Layout.php:1256
+#: Layouts/Filter/Layout.php:2133
+msgid "Checkbox Inner position"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:1029 Layouts/Filter/Layout.php:1357
+#: Layouts/Filter/Layout.php:1673
+msgid "Spacing ( Item to Item )"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:1064
+msgid "Spacing ( Checkbox to text )"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:1106
+msgid "Checkbox and Icon"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:1392
+msgid "Spacing ( Checkbox to Icon )"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:1428
+msgid "Spacing ( Icon to Icon )"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:1470
+msgid "Radio"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:1564
+msgid "Circle position"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:1594
+msgid "Inner circle position"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:1708
+msgid "Spacing ( Circle to text )"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:1751
+msgid "Post Count"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:2215
+msgid "Spacing ( Vertical )"
+msgstr ""
+
+#: Layouts/Filter/Layout.php:2250
+msgid "Spacing ( Horizontal )"
+msgstr ""
+
+#: Layouts/Flipbox/Layout.php:1304
+msgid "Front"
+msgstr ""
+
+#: Layouts/Flipbox/Layout.php:1305
+msgid "Back"
+msgstr ""
+
+#: Layouts/General/Backend/Layout4.php:558
+msgid "WishList Icons"
+msgstr ""
+
+#: Layouts/General/Backend/Layout5.php:104
+msgid "Hover Height"
+msgstr ""
+
+#: Layouts/Product_list/Backend/Layout1.php:66
+#: Layouts/Table/Backend/Layout1.php:64
+msgid "Show Name"
+msgstr ""
+
+#: Layouts/Product_list/Backend/Layout1.php:105
+#: Layouts/Table/Backend/Layout1.php:103
+msgid "Show Quantity"
+msgstr ""
+
+#: Layouts/Product_list/Backend/Layout1.php:150
+#: Layouts/Table/Backend/Layout1.php:148
+msgid "Product Excerpt"
+msgstr ""
+
+#: Layouts/Table/Frontend/Layout1.php:64 Layouts/Table/Frontend/Layout1.php:79
+msgid "Image"
+msgstr ""
+
+#: Layouts/Table/Frontend/Layout1.php:68 Templates/Compare.php:82
+msgid "Description"
+msgstr ""
+
+#: Layouts/Table/Frontend/Layout1.php:72
+msgid "Quantity"
+msgstr ""
+
+#: Layouts/Table/Frontend/Layout1.php:74
+msgid "Add to cart"
+msgstr ""
+
+#: Layouts/Table/Frontend/Layout1.php:81
+msgid "Details"
+msgstr ""
+
+#: Layouts/Table/Frontend/Layout1.php:90
+msgid "Product not found"
+msgstr ""
+
+#: Layouts/Table/Layout.php:329
+msgid "Odd Background"
+msgstr ""
+
+#: Layouts/Table/Layout.php:343
+msgid "Even Background"
+msgstr ""
+
+#: Layouts/Tabs/Backend/Layout1.php:38
+msgid "Tab Layout"
+msgstr ""
+
+#: Layouts/Tabs/Backend/Layout1.php:62
+msgid "Enable button (All)"
+msgstr ""
+
+#: Layouts/Tabs/Backend/Layout1.php:153
+msgid "Active "
+msgstr ""
+
+#: Layouts/Tabs/Frontend/Layout1.php:54
+msgid "All"
+msgstr ""
+
+#: Templates/Compare.php:35
+msgid "Compare Products"
+msgstr ""
+
+#: Templates/Compare.php:97
+msgid "Availability"
+msgstr ""
+
+#: Templates/Compare.php:136
+msgid "Dimensions"
+msgstr ""
+
+#: Templates/Compare.php:184
+msgid "Sku"
+msgstr ""
+
+#: Templates/QuickView.php:54
+msgid "In Stock"
+msgstr ""
+
+#: Templates/QuickView.php:61
+msgid "Out of stock"
+msgstr ""
+
+#: Templates/QuickView.php:83
+msgid "review"
+msgstr ""
+
+#: product-layouts.php:17
+msgid "You can't access this page"
+msgstr ""

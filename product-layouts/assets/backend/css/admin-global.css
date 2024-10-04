@@ -1,0 +1,41 @@
+.menu-top.toplevel_page_product-layouts .wp-menu-image img {
+  padding-top: 4px !important;
+}
+#wpte-get-review{
+	padding: 4px 10px 20px 14px;
+}
+.wpte-notice-review{
+	border-left-color: #1323e1 !important;
+}
+#wpte-get-review h2{
+	font-size: 20px;
+	line-height: 1;
+	margin: 1em 0 !important;
+}
+#wpte-get-review p{
+	font-size: 18px;
+	line-height: 1;
+	padding-bottom: 10px;
+}
+#wpte-get-review button{
+	color: #fff;
+    font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+    text-align: center;
+    border: 0;
+    border-radius: 8px;
+    padding: 10px;
+    margin-right: 10px;
+}
+#wpte-get-review .wpte-btn-given{
+	background: orange;
+}
+#wpte-get-review .wpte-btn-deserve{
+	background: green;
+}
+#wpte-get-review .wpte-btn-never{
+	background: red;
+}
+
+

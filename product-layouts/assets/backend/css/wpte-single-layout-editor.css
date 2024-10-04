@@ -1,0 +1,1080 @@
+.wpte-wpl-wrapper p {
+  margin: 0;
+}
+
+#wpcontent {
+  padding-left: 0 !important;
+}
+
+#wpcontent, 
+#wpfooter {
+  margin-left: 0 !important;
+}
+#wpfooter{
+  display: none !important;
+}
+#wpbody-content{
+  padding-bottom: 0 !important;
+}
+
+html.wp-toolbar{
+  padding-top: 0 !important;
+}
+
+#adminmenumain,
+#wpadminbar,
+.notice{
+  display: none !important;
+}
+div.fs-notice.updated,
+div.fs-notice.success,
+div.fs-notice.promotion{
+  display: none !important;
+}
+
+/* .wpte-editor-page{
+  display: flex;
+  position: relative;
+} */
+
+.wpte-wpl-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.wpte-wpl-row {
+  width: 100%;
+  padding: 20px 20px 20px 40px;
+  box-sizing: border-box;
+}
+
+.wpte-wpl-column-left {
+  width: 85%;
+}
+
+.wpte-wpl-column-right {
+  width: 25%;
+}
+
+.wpte-editor-left-sidebar .ui-widget-content{
+  border: 0 !important;
+}
+
+.wpte-col-top-lap-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.wpte-card {
+  width: 100%;
+  float: left;
+}
+.wpte-card-heading {
+  width: 100%;
+  float: left;
+  font-size: 14px;
+  padding: 8px 12px;
+  margin: 0;
+  line-height: 1.4;
+  color: #23282d;
+  background-color: #fff;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e5e5;
+  box-sizing: border-box;
+}
+
+.wpte-card-body {
+  width: 100%;
+  float: left;
+  padding: 16px 10px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.wpte-card-body form input[type="text"] {
+  width: 74%;
+  height: 40px;
+  border: 1px solid #b6b6b6;
+  border-radius: 5px 0px 0px 5px;
+  padding: 5px 5px;
+  margin-top: 0px;
+}
+
+.wpte-card-body form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wpte-card-body form button {
+  border: none;
+  background: #5bc3c8;
+  padding: 10px 20px;
+  margin-left: -3px;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 0px 5px 5px 0px;
+  cursor: pointer;
+}
+
+.wpte-card-body form button:hover {
+  background: #469ba0;
+}
+
+.wpte-card-body em {
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  line-height: 1.4;
+  padding-bottom: 10px;
+}
+
+.wpte-card-body input[type="text"] {
+  width: 100%;
+  border: 1px solid #b6b6b6;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.wpte-wpl-layout-preview {
+  width: 100%;
+  float: left;
+  margin-top: -20px;
+}
+
+.wpte-single-layout-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 25px;
+  color: #5c5959;
+}
+
+.wpte-product-form-control-content .select2-container {
+  top: 6px;
+  margin-bottom: 8px;
+}
+
+/* ================================Start sidebar=================================== */
+
+.wpte-editor-left-sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 2;
+}
+
+.wpte-editor-content{
+  flex: 1;
+  transition: margin-left 0.3s ease;
+  margin-left: 300px;
+}
+
+.wpte-single-settings-card {
+  width: 300px;
+}
+
+.wpte-single-settings-card .wpte-single-settings-card-body {
+  height: calc( 100vh - 90px );
+  background: #e3e3e3;
+}
+.wpte-single-settings-card-body-wrapper{
+  height: calc( 100vh - 90px );
+  overflow: hidden;
+  padding: 0 2px;
+  visibility: hidden;
+}
+.wpte-single-settings-card .wpte-single-settings-card-body-inner,
+.wpte-single-settings-card:hover .wpte-single-settings-card-body-wrapper {
+  overflow: auto;
+  visibility: visible;
+}
+
+.wpte-sidebar-toggler{
+  color: #1c1b1b;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 50px;
+  width: 15px;
+  top: 50%;
+  right: 0;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  -webkit-transform: translate(100%, -50%);
+  transform: translate(100%, -50%);
+  z-index: 1;
+  box-shadow: 3px 1px 3px rgba(0,0,0,.05);
+}
+.wpte-sidebar-toggler:hover{
+  background: #f6f6f6;
+}
+
+#wpte_setting_bar[data-visibale='false']{
+  width: 0 !important;
+  max-width: none;
+  overflow: hidden;
+}
+#wpte_setting_bar{
+  transition: all 200ms ease;
+}
+
+.wpte-single-settings-card .wpte-single-settings-card-header {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  background: #9b5cff;
+  color: #fff;
+  font-size: 20px;
+  padding: 8px 14px;
+  border-bottom: 1px solid #ddd;
+}
+.wpte-editor-avatar{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.wpte-editor-avatar svg{
+  margin-top: 5px;
+  margin-bottom: -2px;
+  cursor: pointer;
+}
+
+.wpte-editor-dropdown-menu{
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 26px;
+  background: #9b5cff;
+  left: auto;
+  width: 100%;
+  border-radius: 4px;
+  padding: 20px;
+  transition: all .5s;
+  z-index: 999;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-top: 1px solid #ababab;
+}
+.wpte-editor-dropdown-menu li{
+  font-size: 1rem;
+  color: #ffffff;
+  text-align: left;
+  list-style: none;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+.wpte-editor-dropdown-menu li:last-child{
+  margin-bottom: 0;
+}
+
+.wpte-editor-dropdown-menu li a{
+  font-size: 1rem;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.wpte-editor-dropdown-menu li a:hover{
+  color: #e2e1e1;
+}
+.wpte-editor-dropdown-menu li a:hover,
+.wpte-editor-dropdown-menu li a:focus,
+.wpte-editor-dropdown-menu li a:active{
+  box-shadow: none;
+  box-shadow: border;
+}
+
+.wpte-editor-dropdown-menu li.wpte-editor-back {
+  position: absolute;
+  right: 28px;
+  top: 36px;
+}
+.wpte-editor-dropdown-menu li.wpte-editor-back a{
+  font-size: 20px;
+}
+.wpte-editor-dropdown-menu li .wpte-icon,
+.wpte-editor-dropdown-menu li .dashicons{
+  margin-right: 8px;
+}
+
+.wpte-single-settings-card-footer {
+  width: 100%;
+  box-sizing: border-box;
+  background: #495157;
+  display: flex;
+  justify-content: end;
+  padding: 8px;
+}
+
+.wpte-single-settings-card-footer button {
+  padding: 4px 26px;
+  border: none;
+  background: #3dc63d;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.wpte-single-settings-card-footer button:hover {
+  background: #2ea72e;
+}
+
+/* Scroll Bar Design */
+.wpte-single-settings-card-body-wrapper::-webkit-scrollbar {
+  width: 6px;
+  height: 150px;
+}
+
+/* Track */
+.wpte-single-settings-card-body-wrapper::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+/* Handle */
+.wpte-single-settings-card-body-wrapper::-webkit-scrollbar-thumb {
+  background: rgb(206, 206, 206);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.wpte-single-settings-card-body-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgb(165, 165, 165);
+}
+
+/* ================================End sidebar=================================== */
+
+/* ================================Single Page Settings=================================== */
+
+/* Responsive */
+.wpte-product-from-lable{
+  display: flex;
+}
+.wpte-form-control-responsive-switchers {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 5px;
+}
+
+.wpte-product-from-lable a.wpte-form-responsive-switcher {
+  display: inline-block;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+  background-color: #a4afb7;
+  cursor: pointer;
+  position: relative;
+  color: #fff;
+  font-size: 8px;
+  text-align: center;
+  -webkit-transition: background-color 0.5s;
+  -o-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+  margin-right: 5px;
+}
+
+.wpte-product-from-lable a.wpte-form-responsive-switcher:hover {
+  color: #fff;
+  background-color: #d7d7d7;
+}
+
+.wpte-form-responsive-switcher .dashicons {
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  line-height: 18px;
+}
+
+.wpte-product-from-lable a.wpte-form-responsive-switcher.active, 
+.wpte-product-from-lable a.wpte-form-responsive-switcher.active:hover {
+  color: #fff;
+  background-color: #6d7882;
+}
+
+.wpte-product-responsive-display-none{
+  display: none;
+}
+.wpte-form-responsive-switcher-tablet,
+.wpte-form-responsive-switcher-mobile{
+  display: none !important;
+}
+.wpte-responsive-switchers-open .wpte-form-responsive-switcher-tablet,
+.wpte-responsive-switchers-open .wpte-form-responsive-switcher-mobile{
+  display: inline-block !important;
+}
+
+/* Tabs */
+.wpte-start-tabs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  margin: 0;
+  font-weight: 500;
+}
+
+.wpte-start-tabs-header li {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  margin: 0;
+  cursor: pointer;
+  border-bottom: 2px solid #fff;
+}
+
+.wpte-start-tabs-header li.active {
+  background: #ddd;
+  border-bottom: 2px solid #9b5cff;
+}
+
+.wpte-layout-content-tabs {
+  display: none;
+}
+
+.wpte-layout-content-tabs.active {
+  display: block;
+}
+
+/*  Accordion  */
+.wpte-ac-admin-section-area {
+  background: #fff;
+  margin: 10px 0;
+}
+
+.wpte-ac-admin-section-d-none {
+  display: none;
+}
+
+.wpte-ac-admin-section-head {
+  color: #495157;
+  font-weight: 700;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+.wpte-ac-admin-section-head span{
+  margin-right: 6px;
+}
+
+.wpte-ac-admin-section-body {
+  padding-top: 10px;
+  display: none;
+}
+
+.wpte-ac-admin-section-body.wpte-ac-active {
+  display: block;
+}
+
+/* Wraper */
+.wpte-product-form-control {
+  width: 100%;
+  padding: 0 10px 10px;
+  box-sizing: border-box;
+}
+.wpte-product-form-control-content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wpte-product-form-control-input-wrapper,
+.wpte-product-form-control-description {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.wpte-product-form-control-input-wrapper{
+  margin-top: 6px;
+}
+.select2-container {
+  width: 100% !important;
+}
+
+.wpte-product-form-control-content .wpte-product-form-units-choices input {
+  display: none;
+}
+
+.wpte-product-form-control-content input,
+.wpte-product-form-control-content select,
+.wpte-product-form-control-content textarea {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 12px;
+  width: 100%;
+  background: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #6d7882;
+  border: 1px solid;
+  outline: none;
+  height: 26px;
+  min-height: 26px;
+}
+
+.wpte-product-form-control-input-select-wrapper{
+  width: 100%;
+}
+
+.wpte-product-form-control-description {
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.4;
+  color: #a4afb7;
+}
+
+.wpte-product-form-control-content input:not(:focus),
+.wpte-product-form-control-content select:not(:focus),
+.wpte-product-form-control-content textarea:not(:focus) {
+  border-color: #d5dadf;
+}
+
+/* Range Slider */
+.wpte-product-form-slider {
+  float: left;
+  width: 70%;
+  margin: 10px auto;
+  height: 4px;
+  background-color: #b4b5b6;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.wpte-product-form-slider-input input {
+  max-width: 90%;
+  float: right;
+  padding: 5px 5px;
+}
+
+.wpte-product-form-units-choices label {
+  cursor: pointer;
+  padding: 0 2px;
+  text-transform: uppercase;
+  font-size: 9px;
+}
+
+.wpte-product-form-units-choices input:checked + label {
+  font-weight: 600;
+  color: #ff6138;
+}
+
+/* Switcher */
+.wpte-product-switcher,
+.wpte-product-switcher:after,
+.wpte-product-switcher:before,
+.wpte-product-switcher *,
+.wpte-product-switcher *:after,
+.wpte-product-switcher *:before,
+.wpte-product-switcher + .wpte-product-switcher-btn {
+  box-sizing: border-box;
+}
+.wpte-product-switcher {
+  position: relative;
+  outline: 0;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 0 0 0;
+}
+
+.wpte-product-switcher input[type="checkbox"] {
+  display: none !important;
+}
+
+.wpte-product-switcher span {
+  position: relative;
+  min-width: 65px;
+  display: block;
+  height: 24px;
+  line-height: 23px;
+  overflow: hidden;
+  font-weight: normal;
+  text-align: center;
+  border-radius: 24px;
+  padding: 0px 5px;
+  border: 1px solid #fafafa;
+  -webkit-box-shadow: inset 0 1px 2px rgb(0 0 0 / 12%),
+    inset 0 0 2px rgb(0 0 0 / 15%);
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 12%), inset 0 0 2px rgb(0 0 0 / 15%);
+  transition: color 0.3s ease, padding 0.3s ease-in-out,
+    background 0.3s ease-in-out;
+}
+
+.wpte-product-switcher input[type="checkbox"]:not(:checked) + span:before {
+  content: attr(data-off);
+  color: #a4afb7;
+}
+
+.wpte-product-switcher input[type="checkbox"]:not(:checked) + span:after {
+  background: #ffffff;
+  left: 22px;
+}
+
+.wpte-product-switcher input[type="checkbox"]:not(:checked) + span {
+  background: #eceeef;
+  color: #ffffff;
+  padding-left: 15px;
+  padding-right: 5px;
+  text-align: right;
+}
+
+.wpte-product-switcher input[type="checkbox"]:checked + span {
+  background: #6d7882;
+  color: #ffffff;
+  padding-left: 6px;
+  padding-right: 24px;
+  text-align: left;
+}
+
+.wpte-product-switcher input[type="checkbox"]:checked + span:before {
+  content: attr(data-on);
+}
+
+.wpte-product-switcher span:before {
+  position: relative;
+  display: block;
+  padding: 0 4px;
+  font-size: 12px;
+}
+
+.wpte-product-switcher input[type="checkbox"]:checked + span:after {
+  background: #ffffff;
+  left: 100%;
+}
+
+.wpte-product-switcher span:after {
+  position: absolute;
+  display: block;
+  content: "";
+  border-radius: 2em;
+  width: 20px;
+  height: 20px;
+  margin-left: -21px;
+  top: 1px;
+  background: #ffffff;
+  transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 0.97);
+}
+
+/* Dimensions */
+ul.wpte-product-control-dimentions {
+  width: 100%;
+  overflow: hidden;
+  margin: 0px !important;
+}
+
+ul.wpte-product-control-dimentions li.wpte-product-control-dimention {
+  float: left;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0px !important;
+}
+
+ul.wpte-product-control-dimentions li.wpte-product-control-dimention input {
+  display: block;
+  text-align: center;
+  border-color: #d5dadf;
+  border-left: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  padding: 4px 0;
+}
+
+ul.wpte-product-control-dimentions
+  li.wpte-product-control-dimention:first-child
+  input {
+  border-left: 1px solid #d5dadf;
+  -webkit-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+
+ul.wpte-product-control-dimentions
+  li.wpte-product-control-dimention
+  .wpte-product-control-dimension-label {
+  display: block;
+  text-align: center;
+  color: #a4afb7;
+  font-size: 9px;
+  padding-top: 2px;
+  margin-bottom: 0px;
+}
+
+ul.wpte-product-control-dimentions .wpte-product-form-link-dimensions {
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid;
+  background-color: #a4afb7;
+  border-color: #a4afb7;
+  padding: 0;
+  outline: none;
+  -webkit-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+  position: relative;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul.wpte-product-control-dimentions .wpte-product-form-link-dimensions span{
+  color: #fff;
+  color: #fff;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+ul.wpte-product-control-dimentions .wpte-product-form-link-dimensions.link-dimensions-unlink {
+  background-color: #fff;
+  border-color: #d5dadf;
+}
+
+ul.wpte-product-control-dimentions .wpte-product-form-link-dimensions.link-dimensions-unlink span {
+  color: #a4afb7;
+}
+
+/* Gradient Color */
+.wpte-product-form-control-wrapper ._col_pick_tool ._col_input_preview {
+  width: 95px !important;
+}
+
+/* MiniColor */
+.wpte-product-form-control-wrapper .minicolors-theme-bootstrap .minicolors-swatch {
+  top: 0px;
+  left: 1px;
+  height: 23px;
+  border-radius: 2px;
+  border: solid 1px #ccc;
+}
+
+/* Choose */
+.wpte-product-form-choices {
+  display: -webkit-box;
+  display: -webkit-inline-flex;
+  display: -ms-flexbox;
+  display: inline-flex;
+  width: 130px;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+  border-spacing: 1px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 0.1px solid #a4afb7;
+}
+
+.wpte-product-form-control .wpte-product-form-choices-label {
+  border-right: 1px solid #a4afb7;
+  width: 100%;
+  font-size: 12px;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 0px;
+  display: inline-block;
+  color: #a4afb7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wpte-product-form-control .wpte-product-form-choices-label:last-child{
+  border-right: none;
+}
+
+.wpte-product-form-choices input {
+  display: none;
+}
+
+.wpte-product-form-choices input:checked + .wpte-product-form-choices-label {
+  color: #fff;
+  background-color: #a4afb7;
+  border-color: #a4afb7;
+}
+
+/**
+* Popover
+*/
+.wpte-product-control-type-popover{
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+.wpte-product-form-control-field-popover{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wpte-product-popover-set {
+  width: 50px;
+  height: 28px;
+  color: #6d7882;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #d5dadf;
+  cursor: pointer;
+}
+.wpte-product-popover-set:hover{
+  border: 1px solid #686868;
+}
+
+.wpte-product-form-control.popover-active .wpte-product-popover-set{
+  border: 1px solid #686868;
+}
+.wpte-product-form-control-content-popover-body{
+    display: none;
+    position: relative;
+    -webkit-box-shadow: 0 2px 15px rgb(0 0 0 / 30%);
+    box-shadow: 0 2px 15px rgb(0 0 0 / 30%);
+    -webkit-border-radius: 3px;
+    border-radius: 5px;
+    background-color: #fff;
+    padding-top: 10px;
+    margin-top: 4px;
+}
+
+.wpte-product-form-control-content-popover-body:before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  right: 18px;
+  border: 8px solid transparent;
+  border-bottom-color: #fff;
+}
+
+.wpte-product-form-control.popover-active .wpte-product-form-control-content-popover-body{
+    display: block;
+}
+
+.wpte-product-form-control .dashicons.popover-set:before {
+  content: '\f107';
+}
+
+.wpte-product-form-control.popover-active .dashicons.popover-set:before {
+  content: '\f153';
+}
+
+
+/* Topbar shortcode */
+
+.wpte-card-body-slider{
+  display: none;
+}
+.wpte-single-page-php-shortcode{
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+}
+.wpte-card-info{
+  border: 1px solid #e5e5e5;
+  overflow: hidden;
+}
+.wpte-card-info .wpte-card-heading{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.wpte-card-info .wpte-card-heading .dashicons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.wpte-card-info .wpte-card-heading .dashicons.card-icon-hide{
+  display: none;
+}
+
+.wpte-product-admin-icon-selector{
+  width: 100%;
+}
+.wpte-product-admin-icon-selector input{
+  width: 83%;
+}
+
+.input-group-addon{
+  display: inline-block;
+  margin-left: -5px;
+}
+.wpte-product-admin-icon-selector .popover-title input{
+  width: 100%;
+}
+
+.wpte-product-admin-text{
+  width: 100%;
+}
+
+.wpte-loading{
+  opacity: 0.5;
+}
+
+.wpte-product-layout-hidden-control{
+  display: none;
+}
+
+/* Seperator */
+.wpte_product_layout_before_separator{
+  border-top: 1px solid #cacaca;
+  padding-top: 10px;
+}
+.wpte_product_layout_after_separator{
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  width: 100%;
+}
+
+/* Heading */
+.wpte-product-layout-heading{
+  padding: 0 10px;
+}
+
+/* Controls Tabs */
+.wpte-product-form-control-tabs-close{
+  display: none;
+}
+
+.wpte-product-control-type-tabs .wpte-product-type-control-tab-child:first-child {
+  border-left: 1px solid #d5dadf;
+  -webkit-border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.wpte-product-form-control-field{
+  width: 100%;
+  display: flex;
+}
+.wpte-product-type-control-tab-child {
+  text-align: center;
+  width: 100%;
+  padding: 0;
+  line-height: 27px;
+  border-top: 1px solid #d5dadf;
+  border-bottom: 1px solid #d5dadf;
+  border-right: 1px solid #d5dadf;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.wpte-product-type-control-tab-child.wpte-product-control-tab-active {
+  background-color: #a4afb7;
+  border-color: #a4afb7;
+  color: #ffffff;
+}
+
+.wpte-product-control-type-tabs .wpte-product-control-tab-active.wpte-product-type-control-tab-child:first-child {
+  border-left: 1px solid #a4afb7;
+}
+
+/* Separator */
+.wpte-product-layout-separator{
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid #ddd;
+  padding: 0;
+}
+
+.wpte_pro_text{
+  color: rgb(247, 29, 29);
+}
+
+/* Export and Import Button */
+.wpte-single-page-shortcode .wpte-single-page-export,
+.wpte-single-page-shortcode .wpte-single-page-import{
+  border: 0;
+  width: 49%;
+  padding: 0;
+  border-radius: 5px;
+}
+.wpte-single-page-shortcode .wpte-single-page-export a,
+.wpte-single-page-shortcode .wpte-single-page-import a{
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 15px;
+  display: block;
+  box-sizing: border-box;
+  background: #f0f0f1;
+  border-radius: 5px;
+}
+.wpte-single-page-shortcode .wpte-single-page-export a:hover,
+.wpte-single-page-shortcode .wpte-single-page-import a:hover{
+  background: #cfcfcf;
+  color: #fff;
+}
+
+/** Min Color */
+.minicolors-input{
+  width: 124px !important;
+}
+
+/* Inner Accordion */
+.wpte-product-control-type-accordions {
+  padding: 5px 10px;
+}
+.wpte-product-control-type-accordions .wpte-product-control-content {
+  background: #fdfdfd;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+}
+
+.wpte-product-control-type-accordions .wpte-product-control-content .wpte-product-control-accordion-title {
+  color: #495157;
+  font-weight: 700;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.wpte-product-control-type-accordions .wpte-product-control-content .wpte-product-control-accordion-body {
+  padding-top: 10px;
+  display: none;
+}
