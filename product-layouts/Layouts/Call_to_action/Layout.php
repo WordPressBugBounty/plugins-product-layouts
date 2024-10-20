@@ -232,7 +232,7 @@ class Layout extends AdminRender {
 			);
 
 			$this->add_control(
-				'wpte_call_to_action_products_show_icons',
+				'wpte_general_products_show_icons',
 				$this->style,
 				[
 					'label'        => __( 'Show icons', 'wpte-product-layout' ),
@@ -1370,7 +1370,7 @@ class Layout extends AdminRender {
 			[
 				'label'     => 'Icon Styles',
 				'showing'   => true,
-				'condition' => [ 'wpte_call_to_action_products_show_icons' => 'yes' ],
+				'condition' => [ 'wpte_general_products_show_icons' => 'yes' ],
 			]
 		);
 

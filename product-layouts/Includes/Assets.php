@@ -161,7 +161,7 @@ class Assets {
 			'wpte-global-admin-js',
 			'wpteoffer',
 			[
-				'img'         => esc_url( WPTE_WPL_URL . '/Image/wpte-offer.png' ),
+				'img'         => esc_url( WPTE_WPL_URL . '/Image/' . $popup_data[5] ),
 				'u_text'      => $popup_data[0],
 				'discount'    => $popup_data[1],
 				'description' => $popup_data[2],

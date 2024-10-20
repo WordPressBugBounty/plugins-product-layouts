@@ -62,7 +62,7 @@ class Layout1 extends Public_Render {
 		$showRating   = isset( $settings['wpte_call_to_action_products_show_rating'] ) ? $settings['wpte_call_to_action_products_show_rating'] : '';
 		$showImage    = isset( $settings['wpte_call_to_action_products_show_image'] ) ? $settings['wpte_call_to_action_products_show_image'] : '';
 		$showPrice    = isset( $settings['wpte_call_to_action_products_show_price'] ) ? $settings['wpte_call_to_action_products_show_price'] : '';
-		$showIcons    = isset( $settings['wpte_call_to_action_products_show_icons'] ) ? $settings['wpte_call_to_action_products_show_icons'] : '';
+		$showIcons    = isset( $settings['wpte_general_products_show_icons'] ) ? $settings['wpte_general_products_show_icons'] : '';
 		$show_badge   = isset( $settings['wpte_call_to_action_products_show_badge'] ) ? $settings['wpte_call_to_action_products_show_badge'] : '';
 		$image_size   = isset( $settings['wpte_product_layout_call_to_action_style_1_image_size'] ) ? $settings['wpte_product_layout_call_to_action_style_1_image_size'] : '';
 		$iconPosition = isset( $settings['wpte_product_layout_icon_position'] ) ? $settings['wpte_product_layout_icon_position'] : '';

@@ -3,7 +3,7 @@
  * Plugin Name:       Product Layouts for Woocommerce
  * Plugin URI:        https://wpkin.com
  * Description:       This is woocommerce product layout plugin. you can design product using this plugin for your woocommerce store.
- * Version:           1.2.9
+ * Version:           1.2.10
  * Author:            WPKIN
  * Author URI:        https://wpkin.com
  * Text Domain:       wpte-product-layout
@@ -78,7 +78,7 @@ if ( function_exists( 'wpl_fs' ) ) {
 			/**
 			 * Plugin Version
 			 */
-			const VERSION = '1.2.9';
+			const VERSION = '1.2.10';
 
 			/**
 			 * Php Version

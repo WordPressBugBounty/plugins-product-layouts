@@ -5,7 +5,7 @@ Tags: Product showcase, Product layouts, Product Table, Product gallery, Product
 Requires at least: 6.2
 Tested up to: 6.6.1
 Requires PHP: 7.4
-Stable tag: 1.2.9
+Stable tag: 1.2.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -127,6 +127,10 @@ Yes you can Export Json file from Shortcode list and Import from Import page.
 
 
 == Changelog ==
+
+= 1.2.10 =
+* **Fix**: Fixed BoxShadow and Border issues for FlipBox.
+* **Fix**: Fixed BoxShadow and Border issues for Call to action.
 
 = 1.2.9 =
 * **Fix**: Fixed Button issue in the settings page.

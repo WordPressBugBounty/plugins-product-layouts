@@ -49,7 +49,7 @@ class Layout1 extends Layout {
 				'default'     => __( 'Cart Icons', 'wpte-product-layout' ),
 				'operator'    => 'icontext', // icon, text, icontext.
 				'condition'   => [
-					'wpte_call_to_action_products_show_icons' => 'yes',
+					'wpte_general_products_show_icons' => 'yes',
 				],
 				'description' => '',
 			]
@@ -88,14 +88,14 @@ class Layout1 extends Layout {
 		} else {
 
 			$this->add_group_control(
-				'wpte-product-call-to-action-style-1-quickview-icon',
+				'wpte-product-call-to-action-style-1-wishlist-icon',
 				$this->style,
 				[
 					'type'        => Controls::WISHLIST,
 					'default'     => __( 'Wishlist', 'wpte-product-layout' ),
 					'operator'    => 'icon', // icon, text, icontext.
 					'condition'   => [
-						'wpte_call_to_action_products_show_icons' => 'yes',
+						'wpte_general_products_show_icons' => 'yes',
 					],
 					'description' => '',
 				]
@@ -123,7 +123,7 @@ class Layout1 extends Layout {
 				'default'     => __( 'Quick View', 'wpte-product-layout' ),
 				'operator'    => 'icon', // icon, text, icontext.
 				'condition'   => [
-					'wpte_call_to_action_products_show_icons' => 'yes',
+					'wpte_general_products_show_icons' => 'yes',
 				],
 				'description' => '',
 			]
@@ -150,7 +150,7 @@ class Layout1 extends Layout {
 				'default'     => __( 'Compare', 'wpte-product-layout' ),
 				'operator'    => 'icon', // icon, text, icontext.
 				'condition'   => [
-					'wpte_call_to_action_products_show_icons' => 'yes',
+					'wpte_general_products_show_icons' => 'yes',
 				],
 				'description' => '',
 			]

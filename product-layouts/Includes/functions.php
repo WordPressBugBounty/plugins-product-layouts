@@ -757,13 +757,44 @@ function wpte_product_title_tags() {
  * @since 1.1.7
  */
 function wpte_get_upgrade_popup_data() {
-	return [
-		'Unlock PRO Features',
-		'<span class="wpte-upto">UPTO</span>40% OFF',
-		'Upgrade to the Pro version to enable Pro features.',
-		'Upgrade Now',
-		'https://product-layouts.com/pricing/',
-	];
+    // Get the current date
+    $current_date = date('Y-m-d');
+
+    // Define the Halloween period
+    $halloween_start = '2024-10-25';
+    $halloween_end   = '2024-11-05';
+
+	$blackfirday_start = '2024-11-22';
+	$blackfirday_end   = '2024-12-01';
+
+    if ( $current_date >= $halloween_start && $current_date <= $halloween_end ) {
+        return [
+            '🎃 Halloween Special Orders 🎃',
+            '<span class="wpte-upto">UPTO</span>30% OFF',
+            'Upgrade now to enjoy eerie savings on exclusive Halloween items!',
+            'Upgrade Now',
+            'https://product-layouts.com/pricing/',
+            'halloween.png'
+        ];
+    } elseif ( $current_date >= $blackfirday_start && $current_date <= $blackfirday_end ) {
+		return [
+            '🔥 Black Friday Mega Sale 🔥',
+            '<span class="wpte-upto">UPTO</span>50% OFF',
+            'Hurry! Grab this once-a-year deal on our Pro features!',
+            'Upgrade Now',
+            'https://product-layouts.com/pricing/',
+            'blackfriday.png'
+        ];
+	} {
+        return [
+            'Unlock PRO Features',
+            '<span class="wpte-upto">UPTO</span>25% OFF',
+            'Upgrade to the Pro version to enable Pro features.',
+            'Upgrade Now',
+            'https://product-layouts.com/pricing/',
+            'wpte-offer.png'
+        ];
+    }
 }
 
 /**

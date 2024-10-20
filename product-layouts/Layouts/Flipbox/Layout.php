@@ -453,8 +453,7 @@ class Layout extends AdminRender {
 			'wpte-product-flipbox-style-image',
 			[
 				'label'     => 'Image Styles',
-				'showing'   => true,
-				'condition' => [ 'wpte_flipbox_products_show_image' => 'yes' ],
+				'showing'   => true
 			]
 		);
 
