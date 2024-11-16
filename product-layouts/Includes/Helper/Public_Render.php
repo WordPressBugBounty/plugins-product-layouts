@@ -191,6 +191,35 @@ class Public_Render {
 	public function public_js() {
 		echo '';
 	}
+	
+	/**
+	 * Method tab_column_render.
+	 *
+	 * @param mixed $id .
+	 * @param mixed $style .
+	 * @return string
+	 */
+	public function tab_column_render( $id, $style ) {
+		if ( $style[ $id . '-lap' ] === 'wpte-col-lap-1' ) :
+			return 'wpte-col-tab-1';
+		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-2' ) :
+			return 'wpte-col-tab-2';
+		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-3' ) :
+			return 'wpte-col-tab-3';
+		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-4' ) :
+			return 'wpte-col-tab-4';
+		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-5' ) :
+			return 'wpte-col-tab-5';
+		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-6' ) :
+			return 'wpte-col-tab-6';
+		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-7' ) :
+			return 'wpte-col-tab-7';
+		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-8' ) :
+			return 'wpte-col-tab-8';
+		else :
+			return 'wpte-col-tab-12';
+		endif;
+	}
 
 	/**
 	 * Method wpte_get_woo_products.
@@ -439,35 +468,6 @@ class Public_Render {
 
 		return $args;
 	}
-	
-	/**
-	 * Method tab_column_render.
-	 *
-	 * @param mixed $id .
-	 * @param mixed $style .
-	 * @return string
-	 */
-	public function tab_column_render( $id, $style ) {
-		if ( $style[ $id . '-lap' ] === 'wpte-col-lap-1' ) :
-			return 'wpte-col-tab-1';
-		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-2' ) :
-			return 'wpte-col-tab-2';
-		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-3' ) :
-			return 'wpte-col-tab-3';
-		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-4' ) :
-			return 'wpte-col-tab-4';
-		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-5' ) :
-			return 'wpte-col-tab-5';
-		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-6' ) :
-			return 'wpte-col-tab-6';
-		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-7' ) :
-			return 'wpte-col-tab-7';
-		elseif ( $style[ $id . '-lap' ] === 'wpte-col-lap-8' ) :
-			return 'wpte-col-tab-8';
-		else :
-			return 'wpte-col-tab-12';
-		endif;
-	}
 
 	/**
 	 * Method mob_column_render
@@ -497,28 +497,6 @@ class Public_Render {
 		else :
 			return 'wpte-col-mob-12';
 		endif;
-	}
-
-	/**
-	 * Method column_render
-	 *
-	 * @param mixed $id .
-	 * @param mixed $style .
-	 * @return mixed
-	 */
-	public function column_render( $id, $style ) {
-		$file = $style[ $id . '-lap' ] . ' ';
-		if ( ! array_key_exists( $id . '-tab', $style ) || $style[ $id . '-tab' ] === '' ) :
-			$file .= $this->tab_column_render( $id, $style ) . ' ';
-		else :
-			$file .= $style[ $id . '-tab' ] . ' ';
-		endif;
-		if ( ! array_key_exists( $id . '-mob', $style ) || $style[ $id . '-mob' ] === '' ) :
-			$file .= $this->mob_column_render( $id, $style ) . ' ';
-		else :
-			$file .= $style[ $id . '-mob' ] . ' ';
-		endif;
-		return $file;
 	}
 
 	/**
@@ -570,6 +548,28 @@ class Public_Render {
 		}
 
 		return $html;
+	}
+
+	/**
+	 * Method column_render
+	 *
+	 * @param mixed $id .
+	 * @param mixed $style .
+	 * @return mixed
+	 */
+	public function column_render( $id, $style ) {
+		$file = $style[ $id . '-lap' ] . ' ';
+		if ( ! array_key_exists( $id . '-tab', $style ) || $style[ $id . '-tab' ] === '' ) :
+			$file .= $this->tab_column_render( $id, $style ) . ' ';
+		else :
+			$file .= $style[ $id . '-tab' ] . ' ';
+		endif;
+		if ( ! array_key_exists( $id . '-mob', $style ) || $style[ $id . '-mob' ] === '' ) :
+			$file .= $this->mob_column_render( $id, $style ) . ' ';
+		else :
+			$file .= $style[ $id . '-mob' ] . ' ';
+		endif;
+		return $file;
 	}
 
 	/**

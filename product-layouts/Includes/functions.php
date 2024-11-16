@@ -764,8 +764,8 @@ function wpte_get_upgrade_popup_data() {
     $halloween_start = '2024-10-25';
     $halloween_end   = '2024-11-05';
 
-	$blackfirday_start = '2024-11-22';
-	$blackfirday_end   = '2024-12-01';
+	$blackfirday_start = '2024-11-21';
+	$blackfirday_end   = '2024-12-05';
 
     if ( $current_date >= $halloween_start && $current_date <= $halloween_end ) {
         return [
@@ -779,7 +779,7 @@ function wpte_get_upgrade_popup_data() {
     } elseif ( $current_date >= $blackfirday_start && $current_date <= $blackfirday_end ) {
 		return [
             '🔥 Black Friday Mega Sale 🔥',
-            '<span class="wpte-upto">UPTO</span>50% OFF',
+            '<span class="wpte-upto">UPTO</span>80% OFF',
             'Hurry! Grab this once-a-year deal on our Pro features!',
             'Upgrade Now',
             'https://product-layouts.com/pricing/',

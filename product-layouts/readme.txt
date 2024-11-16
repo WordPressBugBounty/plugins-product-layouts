@@ -3,9 +3,9 @@
 Contributors: wpkin, richardmallick
 Tags: Product showcase, Product layouts, Product Table, Product gallery, Product List.
 Requires at least: 6.2
-Tested up to: 6.6.1
+Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.2.10
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,7 +15,7 @@ Create Impressive, Lightweight, Responsive WooCommerce Product Layouts. Compatib
 
 Use Product Layouts for Woocommerce Plugin to Show your product with awesome style to increase your online business.
 
-[youtube https://www.youtube.com/watch?v=lVpD_qs2f94]
+[youtube https://www.youtube.com/watch?v=rYcP_MGE2X4]
 
 👁️ [View Demo](https://product-layouts.com/demo/) | 🚀  [Get the Premium Version](https://product-layouts.com/pricing/) | 👩🏼‍💻 [Get Support](https://wordpress.org/support/plugin/product-layouts#new-post)
 
@@ -37,6 +37,7 @@ Use Product Layouts for Woocommerce Plugin to Show your product with awesome sty
 👉 Accordion ( Up Coming )
 👉 Product Pagination. ( with preset )
 👉 Load More Button.
+👉 Category Page Design.
 
 ==Features==
 1. **Custom Settings** – You can change layout style (Product Filter, Color, Banckground Color, Border, Boxshadow, etc) using custom setting.
@@ -127,6 +128,10 @@ Yes you can Export Json file from Shortcode list and Import from Import page.
 
 
 == Changelog ==
+
+= 1.3.0 =
+* **Update**: Compatible with WordPress 6.7.
+* **Fix**: Fixed data table sorting issue.
 
 = 1.2.10 =
 * **Fix**: Fixed BoxShadow and Border issues for FlipBox.

@@ -497,6 +497,28 @@ trait Helper {
 	}
 
 	/**
+	 * Method heading_extra_control.
+	 *
+	 * @param int   $id .
+	 * @param array $data .
+	 * @param array $arg .
+	 * @since 1.0.0
+	 */
+	public function heading_extra_control( $id, $data = [], $arg = [] ) {
+		$label           = isset($arg['label']) ? $arg['label'] : '';
+		$description     = isset($arg['description']) ? $arg['description'] : '';
+		$css             = isset($arg['css']) ? $arg['css'] : 'padding-top:10px; padding-bottom:10px';
+		$beforeSeparator = array_key_exists('separator', $arg) && $arg['separator'] === 'before' ? 'wpte_product_layout_before_separator' : '';
+		$condition       = $this->forms_condition($arg);
+		?>
+			<div class="wpte-product-layout-heading <?php echo esc_attr($beforeSeparator); ?>" style="<?php echo esc_attr( $css ); ?>" <?php echo wp_kses( (string) $condition, wpte_plugins_allowed_condition() ); ?> >
+				<strong><?php echo esc_html($label); ?></strong>
+				<p><?php echo esc_html($description); ?></p>
+			</div>
+		<?php
+	}
+
+	/**
 	 * Method multiple_selector_handler.
 	 *
 	 * @param array $data .
@@ -524,27 +546,6 @@ trait Helper {
 		return str_replace( '{{', '', str_replace( '}}', '', $val ) );
 	}
 
-	/**
-	 * Method heading_extra_control.
-	 *
-	 * @param int   $id .
-	 * @param array $data .
-	 * @param array $arg .
-	 * @since 1.0.0
-	 */
-	public function heading_extra_control( $id, $data = [], $arg = [] ) {
-		$label           = isset($arg['label']) ? $arg['label'] : '';
-		$description     = isset($arg['description']) ? $arg['description'] : '';
-		$css             = isset($arg['css']) ? $arg['css'] : 'padding-top:10px; padding-bottom:10px';
-		$beforeSeparator = array_key_exists('separator', $arg) && $arg['separator'] === 'before' ? 'wpte_product_layout_before_separator' : '';
-		$condition       = $this->forms_condition($arg);
-		?>
-			<div class="wpte-product-layout-heading <?php echo esc_attr($beforeSeparator); ?>" style="<?php echo esc_attr( $css ); ?>" <?php echo wp_kses( (string) $condition, wpte_plugins_allowed_condition() ); ?> >
-				<strong><?php echo esc_html($label); ?></strong>
-				<p><?php echo esc_html($description); ?></p>
-			</div>
-		<?php
-	}
 	/**
 	 * Method heading_extra_control.
 	 *
@@ -579,30 +580,6 @@ trait Helper {
 	}
 
 	/**
-	 * Method categories_admin_control.
-	 *
-	 * @param int   $id .
-	 * @param array $data .
-	 * @param array $arg .
-	 * @since 1.0.0
-	 */
-	public function categories_admin_control( $id, $data = [], $arg = [] ) {
-
-		$saved_cat = isset( $data[ $id ] ) ? $data[ $id ] : [];
-		$Categories = get_terms( [ 'taxonomy' => 'product_cat' ] );
-		?>
-		<select class="wpte-product-category-list" name="<?php echo esc_attr($id); ?>[]" id="wpte-product-<?php echo esc_attr($id); ?>" multiple="multiple">
-			<?php
-			foreach ( $Categories as $category ) {
-				$selected = in_array( $category->term_id, $saved_cat ) ? 'selected' : '';
-				printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $category->term_id ), esc_attr($selected), esc_html( ucfirst( $category->name ) ) );
-			}
-			?>
-		</select>
-		<?php
-	}
-
-	/**
 	 * Method parent_categories_admin_control.
 	 *
 	 * @param int   $id .
@@ -619,6 +596,30 @@ trait Helper {
 				'parent' => 0
 			] 
 		);
+		?>
+		<select class="wpte-product-category-list" name="<?php echo esc_attr($id); ?>[]" id="wpte-product-<?php echo esc_attr($id); ?>" multiple="multiple">
+			<?php
+			foreach ( $Categories as $category ) {
+				$selected = in_array( $category->term_id, $saved_cat ) ? 'selected' : '';
+				printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $category->term_id ), esc_attr($selected), esc_html( ucfirst( $category->name ) ) );
+			}
+			?>
+		</select>
+		<?php
+	}
+
+	/**
+	 * Method categories_admin_control.
+	 *
+	 * @param int   $id .
+	 * @param array $data .
+	 * @param array $arg .
+	 * @since 1.0.0
+	 */
+	public function categories_admin_control( $id, $data = [], $arg = [] ) {
+
+		$saved_cat = isset( $data[ $id ] ) ? $data[ $id ] : [];
+		$Categories = get_terms( [ 'taxonomy' => 'product_cat' ] );
 		?>
 		<select class="wpte-product-category-list" name="<?php echo esc_attr($id); ?>[]" id="wpte-product-<?php echo esc_attr($id); ?>" multiple="multiple">
 			<?php
@@ -687,40 +688,6 @@ trait Helper {
 			foreach ( $Categories as $category ) {
 				$selected = in_array( $category->term_id, $saved_cat ) ? 'selected' : '';
 				printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $category->term_id ), esc_attr($selected), esc_html( ucfirst( $category->name ) ) );
-			}
-			?>
-		</select>
-		<?php
-	}
-
-	/**
-	 * Method product_admin_control.
-	 *
-	 * @param int   $id .
-	 * @param array $data .
-	 * @param array $arg .
-	 * @since 1.0.0
-	 */
-	public function product_admin_control( $id, $data = [], $arg = [] ) {
-
-		$args = [
-			'post_type'      => 'product',
-			'post_status'    => [ 'publish', 'pending', 'future' ],
-			'posts_per_page' => -1,
-		];
-
-		$products = new \WP_Query( $args );
-		$saved_cat = isset( $data[ $id ] ) ? $data[ $id ] : [];
-		?>
-		<select class="wpte-product-category-list" name="<?php echo esc_attr($id); ?>[]" id="wpte-product-<?php echo esc_attr($id); ?>" multiple="multiple">
-			<?php
-			if ( $products->have_posts() ) {
-				while ( $products->have_posts() ) {
-					$products->the_post();
-					$selected = in_array( get_the_ID(), $saved_cat ) ? 'selected' : '';
-					printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( get_the_ID() ), esc_attr($selected), esc_html( ucfirst( get_the_title() ) ) );
-				}
-				wp_reset_postdata();
 			}
 			?>
 		</select>
@@ -804,6 +771,40 @@ trait Helper {
 			esc_attr( $arg['responsive'] ),
 			esc_attr( $retunvalue )
 		);
+	}
+
+	/**
+	 * Method product_admin_control.
+	 *
+	 * @param int   $id .
+	 * @param array $data .
+	 * @param array $arg .
+	 * @since 1.0.0
+	 */
+	public function product_admin_control( $id, $data = [], $arg = [] ) {
+
+		$args = [
+			'post_type'      => 'product',
+			'post_status'    => [ 'publish', 'pending', 'future' ],
+			'posts_per_page' => -1,
+		];
+
+		$products = new \WP_Query( $args );
+		$saved_cat = isset( $data[ $id ] ) ? $data[ $id ] : [];
+		?>
+		<select class="wpte-product-category-list" name="<?php echo esc_attr($id); ?>[]" id="wpte-product-<?php echo esc_attr($id); ?>" multiple="multiple">
+			<?php
+			if ( $products->have_posts() ) {
+				while ( $products->have_posts() ) {
+					$products->the_post();
+					$selected = in_array( get_the_ID(), $saved_cat ) ? 'selected' : '';
+					printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( get_the_ID() ), esc_attr($selected), esc_html( ucfirst( get_the_title() ) ) );
+				}
+				wp_reset_postdata();
+			}
+			?>
+		</select>
+		<?php
 	}
 
 	/**
