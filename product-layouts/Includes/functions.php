@@ -779,7 +779,7 @@ function wpte_get_upgrade_popup_data() {
     } elseif ( $current_date >= $blackfirday_start && $current_date <= $blackfirday_end ) {
 		return [
             '🔥 Black Friday Mega Sale 🔥',
-            '<span class="wpte-upto">UPTO</span>80% OFF',
+            '<span class="wpte-upto">UPTO</span>70% OFF',
             'Hurry! Grab this once-a-year deal on our Pro features!',
             'Upgrade Now',
             'https://product-layouts.com/pricing/',
