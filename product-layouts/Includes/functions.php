@@ -779,7 +779,7 @@ function wpte_get_upgrade_popup_data() {
     } elseif ( $current_date >= $blackfirday_start && $current_date <= $blackfirday_end ) {
 		return [
             '🔥 Black Friday Mega Sale 🔥',
-            '<span class="wpte-upto">UPTO</span>70% OFF',
+            '<span class="wpte-upto">UPTO</span>80% OFF',
             'Hurry! Grab this once-a-year deal on our Pro features!',
             'Upgrade Now',
             'https://product-layouts.com/pricing/',
@@ -819,15 +819,60 @@ function wpte_get_category_ids() {
  * @param mixed $product
  * @since 1.2.3
  */
-function wpte_get_product_price( $product ) {
-	$regular_price = $product->get_regular_price();
-	$sale_price    = $product->get_sale_price();
+function wpte_get_product_price($product) {
+    if ($product->is_type('variable')) {
+        $variations = $product->get_available_variations();
+        $has_sale_price = false;
+        $all_regular_prices = [];
+        $all_sale_prices = [];
 
-	if ( $product->is_type('variable') || $product->is_type('grouped') ) {
-		return $product->get_price_html();
-	} elseif ( $sale_price ) {
-		return "<del>" . wc_price( $regular_price ) . "</del> " . wc_price( $sale_price ) . "";
-	} else {
-		return wc_price( $regular_price );
-	}
+        foreach ($variations as $variation) {
+            $variation_obj = wc_get_product($variation['variation_id']);
+            $regular_price = $variation_obj->get_regular_price();
+            $sale_price = $variation_obj->get_sale_price();
+            
+            if ($regular_price) {
+                $all_regular_prices[] = $regular_price;
+            }
+            
+            if ($sale_price) {
+                $has_sale_price = true;
+                $all_sale_prices[] = $sale_price;
+            }
+        }
+
+        if (!$has_sale_price) {
+			if (empty($all_regular_prices)) {
+				return wc_price(0); // or handle empty case as needed
+			}
+			if (count(array_unique($all_regular_prices)) === 1) {
+				return wc_price($all_regular_prices[0]);
+			} else {
+				return wc_price(min($all_regular_prices)) . ' - ' . wc_price(max($all_regular_prices));
+			}
+		} else {
+			if (empty($all_regular_prices) || ($has_sale_price && empty($all_sale_prices))) {
+				return wc_price(0); // or handle empty case as needed
+			}
+			if (count(array_unique($all_regular_prices)) === 1 && count(array_unique($all_sale_prices)) === 1) {
+				return '<del>' . wc_price($all_regular_prices[0]) . '</del> ' . wc_price($all_sale_prices[0]);
+			} else {
+				$min_price = min(array_merge($all_regular_prices, $all_sale_prices));
+				$max_price = max($all_regular_prices);
+				return wc_price($min_price) . ' - ' . wc_price($max_price);
+			}
+		}
+    } elseif ($product->is_type('grouped')) {
+        return $product->get_price_html();
+    } else {
+        // Simple product
+        $regular_price = $product->get_regular_price();
+        $sale_price = $product->get_sale_price();
+
+        if ($sale_price) {
+            return '<del>' . wc_price($regular_price) . '</del> ' . wc_price($sale_price);
+        } else {
+            return wc_price($regular_price);
+        }
+    }
 }

@@ -35,7 +35,7 @@ class Support {
 					<div class="wpte-feature-section">
 						<div class="wpte-about-container">
 							<div class="wpte-about-addons-videos">
-								<iframe src="https://www.youtube.com/embed/lVpD_qs2f94" frameborder="0" allowfullscreen="" class="wpte-about-video" allowfullscreen></iframe>
+								<iframe src="https://www.youtube.com/embed/rYcP_MGE2X4" frameborder="0" allowfullscreen="" class="wpte-about-video" allowfullscreen></iframe>
 							</div>
 						</div>
 					</div>
@@ -78,7 +78,7 @@ class Support {
 										<div class="wpte-pl-support-content">
 											<h4><?php echo esc_html__( 'Video Tutorials', 'wpte-product-layout' ); ?></h4>
 											<p><?php echo esc_html__( 'Unable to use Product Layouts for Woocommerce? Don\'t worry you can check your web tutorials to make easier to use.', 'wpte-product-layout' ); ?></p>
-											<a href="https://www.youtube.com/playlist?list=PL-cc1qrrj0bbblxIQACqFb405Fr-3_ueC" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Video Tutorials', 'wpte-product-layout' ); ?></a>
+											<a href="https://www.youtube.com/playlist?list=PLnr-_fYXIk0UrNZ3-xEKeLVtZPFJadOIX" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Video Tutorials', 'wpte-product-layout' ); ?></a>
 										</div>
 									</div>
 								</div>
@@ -92,7 +92,7 @@ class Support {
 										<div class="wpte-pl-support-content">
 											<h4><?php echo esc_html__( 'Support', 'wpte-product-layout' ); ?></h4>
 											<p><?php echo esc_html__( 'Do you need our support? don\'t worry, Our exprienced developer will help you.', 'wpte-product-layout' ); ?></p>
-											<a href="https://wpkin.com/contact-us/" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Get Support', 'wpte-product-layout' ); ?></a>
+											<a href="https://wordpress.org/support/plugin/product-layouts/" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Get Support', 'wpte-product-layout' ); ?></a>
 										</div>
 									</div>
 								</div>
