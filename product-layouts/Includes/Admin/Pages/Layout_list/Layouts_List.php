@@ -19,11 +19,13 @@ class Layouts_List extends \WP_List_Table {
 	 */
 	public function __construct() {
 
-		parent::__construct( [
-			'singular' => 'layout',
-			'plural'   => 'layouts',
-			'ajax'     => false,
-		] );
+		parent::__construct(
+            [
+				'singular' => 'layout',
+				'plural'   => 'layouts',
+				'ajax'     => false,
+			]
+        );
 	}
 
 	/**
@@ -113,10 +115,12 @@ class Layouts_List extends \WP_List_Table {
 	 * @return mixed
 	 */
 	public function column_id( $item ) {
-		return sprintf( '
+		return sprintf(
+            '
 			%2$s <input type="text" onclick="this.setSelectionRange(0, this.value.length)" value=\'[wpte_product_layout id="%1$s"]\'>
 			<br>%3$s  &nbsp;<input type="text" onclick="this.setSelectionRange(0, this.value.length)" value=\'<?php echo do_shortcode("[wpte_product_layout id=%1$s]"); ?>\'
-		>', $item->id, esc_html__('Shortcode', 'wpte-product-layout'), esc_html__('Php Code', 'wpte-product-layout') );
+		>', $item->id, esc_html__( 'Shortcode', 'wpte-product-layout' ), esc_html__( 'Php Code', 'wpte-product-layout' )
+        );
 	}
 
 	/**
@@ -204,8 +208,8 @@ class Layouts_List extends \WP_List_Table {
 		];
 
 		if ( isset( $_REQUEST['orderby'] ) && isset( $_REQUEST['order'] ) ) {
-			$args['orderby'] = sanitize_text_field( wp_unslash($_REQUEST['orderby']) );
-			$args['order'] = sanitize_text_field( wp_unslash($_REQUEST['order']) );
+			$args['orderby'] = sanitize_text_field( wp_unslash( $_REQUEST['orderby'] ) );
+			$args['order'] = sanitize_text_field( wp_unslash( $_REQUEST['order'] ) );
 		}
 
 		if ( isset( $_REQUEST['s'] ) && ! empty( $_REQUEST['s'] ) ) {
@@ -219,9 +223,11 @@ class Layouts_List extends \WP_List_Table {
 
 		$this->items = $data;
 
-		$this->set_pagination_args( [
-			'total_items' => wpte_product_layouts_count(),
-			'per_page'    => $per_page,
-		] );
+		$this->set_pagination_args(
+            [
+				'total_items' => wpte_product_layouts_count(),
+				'per_page'    => $per_page,
+			]
+        );
 	}
 }

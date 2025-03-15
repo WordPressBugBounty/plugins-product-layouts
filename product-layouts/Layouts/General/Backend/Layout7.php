@@ -55,7 +55,7 @@ class Layout7 extends Layout {
 			$this->style,
 			[
 				'type'        => Controls::CART,
-				'default'     => __('Cart Icons', 'product-layouts-premium' ),
+				'default'     => __( 'Cart Icons', 'wpte-product-layout' ),
 				'operator'    => 'icon', // icon, text, icontext.
 				'condition'   => [
 					'wpte_general_products_show_icons' => 'yes',
@@ -77,7 +77,6 @@ class Layout7 extends Layout {
 			]
 		);
 		if ( ! class_exists( 'TInvWL_Admin_Base' ) ) {
-
 			$plugin    = 'ti-woocommerce-wishlist';
 			$file_path = 'ti-woocommerce-wishlist/ti-woocommerce-wishlist.php';
 			$notice    = 'Wish List';
@@ -88,20 +87,18 @@ class Layout7 extends Layout {
 				[
 					'label'       => '',
 					'type'        => Controls::NOTICE,
-					'notice'      => admin_notice_missing_plugin($plugin, $file_path, $notice),
+					'notice'      => admin_notice_missing_plugin( $plugin, $file_path, $notice ),
 					'css'         => 'padding-bottom:10px',
 					'description' => '',
 				]
 			);
-
 		} else {
-
 			$this->add_group_control(
 				'wpte-product-general-style-7-wishlist-icon',
 				$this->style,
 				[
 					'type'        => Controls::WISHLIST,
-					'default'     => __('Wishlist', 'product-layouts-premium' ),
+					'default'     => __( 'Wishlist', 'wpte-product-layout' ),
 					'operator'    => 'icon', // icon, text, icontext.
 					'condition'   => [
 						'wpte_general_products_show_icons' => 'yes',
@@ -109,7 +106,6 @@ class Layout7 extends Layout {
 					'description' => '',
 				]
 			);
-
 		}
 		$this->end_controls_section();
 
@@ -129,7 +125,7 @@ class Layout7 extends Layout {
 			$this->style,
 			[
 				'type'        => Controls::QUICKVIEW,
-				'default'     => __('Quick View', 'product-layouts-premium' ),
+				'default'     => __( 'Quick View', 'wpte-product-layout' ),
 				'operator'    => 'icon', // icon, text, icontext.
 				'condition'   => [
 					'wpte_general_products_show_icons' => 'yes',
@@ -156,7 +152,7 @@ class Layout7 extends Layout {
 			$this->style,
 			[
 				'type'        => Controls::COMPARE,
-				'default'     => __('Compare', 'product-layouts-premium' ),
+				'default'     => __( 'Compare', 'wpte-product-layout' ),
 				'operator'    => 'icon', // icon, text, icontext.
 				'condition'   => [
 					'wpte_general_products_show_icons' => 'yes',

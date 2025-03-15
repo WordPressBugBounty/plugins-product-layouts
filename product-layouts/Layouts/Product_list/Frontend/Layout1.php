@@ -76,12 +76,13 @@ class Layout1 extends Public_Render {
 				<?php if ( $showImage ) : ?>
 					<div class="wpte-product-list-product-image">
 						<?php
-						printf('<%1$s %2$s %3$s %4$s class="wpte-product-list-img">%5$s</%1$s>',
-						esc_html( $hyperlink ),
-						wp_kses( $img_href, true ),
-						wp_kses( $new_window, true ),
-						wp_kses( $nofollow, true ),
-						wp_kses_post( $product_image )
+						printf(
+                            '<%1$s %2$s %3$s %4$s class="wpte-product-list-img">%5$s</%1$s>',
+                            esc_html( $hyperlink ),
+                            wp_kses( $img_href, true ),
+                            wp_kses( $new_window, true ),
+                            wp_kses( $nofollow, true ),
+                            wp_kses_post( $product_image )
 						);
 						?>
 					</div>

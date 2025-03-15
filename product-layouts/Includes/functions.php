@@ -231,7 +231,7 @@ function wpte_thumbnail_sizes() {
  */
 function font_familly_validation( $data = [] ) {
 	$wepte_pl_settings = get_option( 'wpte_pl_settings' ) ? get_option( 'wpte_google_font' ) : [];
-	$google_font = isset( $wepte_pl_settings['wpte_google_font'] ) && $wepte_pl_settings['wpte_google_font'] ? $wepte_pl_settings['wpte_google_font'] : ''; 
+	$google_font = isset( $wepte_pl_settings['wpte_google_font'] ) && $wepte_pl_settings['wpte_google_font'] ? $wepte_pl_settings['wpte_google_font'] : '';
 	if ( $google_font !== 'no' && $data ) {
 		foreach ( $data as $value ) {
 			wp_enqueue_style( '' . esc_attr( $value ) . '', 'https://fonts.googleapis.com/css?family=' . $value . '', null, WPTE_WPL_VERSION );
@@ -251,16 +251,19 @@ function wpte_version_control() {
 *
 * @since 1.0.1
 */
-if ( is_admin() && defined( 'ABSPATH' ) ) {
 
-	if ( ! admin_url( 'admin.php?page=product-layouts' ) || ! isset( $_GET['layouts'] ) || ! file_exists( ABSPATH . 'wp-content/plugins/woocommerce/includes/class-wc-frontend-scripts.php' ) ) {
-		return;
-	} else {
-		include_once ABSPATH . 'wp-content/plugins/woocommerce/includes/class-wc-frontend-scripts.php';
-		add_action( 'admin_enqueue_scripts', [ new WC_Frontend_Scripts(), 'load_scripts' ] );
-		add_action( 'admin_print_scripts', [ new WC_Frontend_Scripts(), 'localize_printed_scripts' ], 5 );
-		add_action( 'admin_print_footer_scripts', [ new WC_Frontend_Scripts(), 'localize_printed_scripts' ], 5 );
-	}
+function wpkin_frontend_script_to_admin() {
+
+	if ( is_admin() ) {
+        if ( ! isset( $_GET['layouts'] ) || ! file_exists( ABSPATH . 'wp-content/plugins/woocommerce/includes/class-wc-frontend-scripts.php' ) ) {
+            return;
+        } else {
+            include_once ABSPATH . 'wp-content/plugins/woocommerce/includes/class-wc-frontend-scripts.php';
+            add_action( 'admin_enqueue_scripts', [ new WC_Frontend_Scripts(), 'load_scripts' ] );
+            add_action( 'admin_print_scripts', [ new WC_Frontend_Scripts(), 'localize_printed_scripts' ], 5 );
+            add_action( 'admin_print_footer_scripts', [ new WC_Frontend_Scripts(), 'localize_printed_scripts' ], 5 );
+        }
+    }
 }
 
 /**
@@ -284,8 +287,6 @@ function admin_notice_missing_plugin( $plugin_class, $path, $notice ) {
 	$file_path         = $path;
 	$installed_plugins = get_plugins();
 
-	
-
 	if ( isset( $installed_plugins[ $file_path ] ) ) { // check if plugin is installed.
 
 		if ( ! current_user_can( 'activate_plugins' ) ) {
@@ -295,9 +296,7 @@ function admin_notice_missing_plugin( $plugin_class, $path, $notice ) {
 
 		$message  = wp_sprintf( '<p><strong>%s</strong>%s</p>', esc_html( $notice ), esc_html__( ' not working because you need to activate the ' ) . esc_html( $notice ) . esc_html__( ' plugin.', 'wpte-product-layout' ) );
 		$message .= wp_sprintf( '<p><a href="%s" class="button-primary">%s</a></p>', $activation_url, esc_html__( 'Activate ' ) . esc_html( $notice ) . esc_html__( ' Now', 'wpte-product-layout' ) );
-
 	} else {
-
 		if ( ! current_user_can( 'install_plugins' ) ) {
 			return;
 		}
@@ -313,7 +312,6 @@ function admin_notice_missing_plugin( $plugin_class, $path, $notice ) {
 		);
 		$message     = wp_sprintf( '<p><strong>%s</strong>%s</p>', esc_html( $notice ), __( ' not working because you need to install the ' ) . esc_html( $notice ) . esc_html__( ' plugin', 'wpte-product-layout' ) );
 		$message    .= wp_sprintf( '<p><a href="%s" class="button-primary">%s</a></p>', $install_url, esc_html__( 'Install ' ) . esc_html( $notice ) . esc_html__( ' Now', 'wpte-product-layout' ) );
-
 	}
 
 	printf( '<div class="error"><p>%s</p></div>', wp_kses( $message, wpte_plugins_allowedtags() ) );
@@ -405,7 +403,7 @@ function wpte_get_attribute_list() {
 	$attributes = wc_get_attribute_taxonomies();
 
 	// Loop through each attribute
-	foreach ($attributes as $attribute) {
+	foreach ( $attributes as $attribute ) {
 		$attributes_array[ $attribute->attribute_name ] = $attribute->attribute_label;
 	}
 
@@ -733,7 +731,6 @@ function wpte_offer_popup() {
 		echo '<div id="wpte-offer-modal"></div>';
 	}
 }
-add_action( 'admin_print_footer_scripts', 'wpte_offer_popup' );
 
 /**
  * Wpte_product_title_tags.
@@ -758,7 +755,7 @@ function wpte_product_title_tags() {
  */
 function wpte_get_upgrade_popup_data() {
     // Get the current date
-    $current_date = date('Y-m-d');
+    $current_date = date( 'Y-m-d' );
 
     // Define the Halloween period
     $halloween_start = '2024-10-25';
@@ -774,7 +771,7 @@ function wpte_get_upgrade_popup_data() {
             'Upgrade now to enjoy eerie savings on exclusive Halloween items!',
             'Upgrade Now',
             'https://product-layouts.com/pricing/',
-            'halloween.png'
+            'halloween.png',
         ];
     } elseif ( $current_date >= $blackfirday_start && $current_date <= $blackfirday_end ) {
 		return [
@@ -783,7 +780,7 @@ function wpte_get_upgrade_popup_data() {
             'Hurry! Grab this once-a-year deal on our Pro features!',
             'Upgrade Now',
             'https://product-layouts.com/pricing/',
-            'blackfriday.png'
+            'blackfriday.png',
         ];
 	} {
         return [
@@ -792,9 +789,9 @@ function wpte_get_upgrade_popup_data() {
             'Upgrade to the Pro version to enable Pro features.',
             'Upgrade Now',
             'https://product-layouts.com/pricing/',
-            'wpte-offer.png'
+            'wpte-offer.png',
         ];
-    }
+		}
 }
 
 /**
@@ -819,60 +816,60 @@ function wpte_get_category_ids() {
  * @param mixed $product
  * @since 1.2.3
  */
-function wpte_get_product_price($product) {
-    if ($product->is_type('variable')) {
+function wpte_get_product_price( $product ) {
+    if ( $product->is_type( 'variable' ) ) {
         $variations = $product->get_available_variations();
         $has_sale_price = false;
         $all_regular_prices = [];
         $all_sale_prices = [];
 
-        foreach ($variations as $variation) {
-            $variation_obj = wc_get_product($variation['variation_id']);
+        foreach ( $variations as $variation ) {
+            $variation_obj = wc_get_product( $variation['variation_id'] );
             $regular_price = $variation_obj->get_regular_price();
             $sale_price = $variation_obj->get_sale_price();
-            
-            if ($regular_price) {
+
+            if ( $regular_price ) {
                 $all_regular_prices[] = $regular_price;
             }
-            
-            if ($sale_price) {
+
+            if ( $sale_price ) {
                 $has_sale_price = true;
                 $all_sale_prices[] = $sale_price;
             }
         }
 
-        if (!$has_sale_price) {
-			if (empty($all_regular_prices)) {
-				return wc_price(0); // or handle empty case as needed
+        if ( ! $has_sale_price ) {
+			if ( empty( $all_regular_prices ) ) {
+				return wc_price( 0 ); // or handle empty case as needed
 			}
-			if (count(array_unique($all_regular_prices)) === 1) {
-				return wc_price($all_regular_prices[0]);
+			if ( count( array_unique( $all_regular_prices ) ) === 1 ) {
+				return wc_price( $all_regular_prices[0] );
 			} else {
-				return wc_price(min($all_regular_prices)) . ' - ' . wc_price(max($all_regular_prices));
+				return wc_price( min( $all_regular_prices ) ) . ' - ' . wc_price( max( $all_regular_prices ) );
 			}
 		} else {
-			if (empty($all_regular_prices) || ($has_sale_price && empty($all_sale_prices))) {
-				return wc_price(0); // or handle empty case as needed
+			if ( empty( $all_regular_prices ) || ( $has_sale_price && empty( $all_sale_prices ) ) ) {
+				return wc_price( 0 ); // or handle empty case as needed
 			}
-			if (count(array_unique($all_regular_prices)) === 1 && count(array_unique($all_sale_prices)) === 1) {
-				return '<del>' . wc_price($all_regular_prices[0]) . '</del> ' . wc_price($all_sale_prices[0]);
+			if ( count( array_unique( $all_regular_prices ) ) === 1 && count( array_unique( $all_sale_prices ) ) === 1 ) {
+				return '<del>' . wc_price( $all_regular_prices[0] ) . '</del> ' . wc_price( $all_sale_prices[0] );
 			} else {
-				$min_price = min(array_merge($all_regular_prices, $all_sale_prices));
-				$max_price = max($all_regular_prices);
-				return wc_price($min_price) . ' - ' . wc_price($max_price);
+				$min_price = min( array_merge( $all_regular_prices, $all_sale_prices ) );
+				$max_price = max( $all_regular_prices );
+				return wc_price( $min_price ) . ' - ' . wc_price( $max_price );
 			}
 		}
-    } elseif ($product->is_type('grouped')) {
+    } elseif ( $product->is_type( 'grouped' ) ) {
         return $product->get_price_html();
     } else {
         // Simple product
         $regular_price = $product->get_regular_price();
         $sale_price = $product->get_sale_price();
 
-        if ($sale_price) {
-            return '<del>' . wc_price($regular_price) . '</del> ' . wc_price($sale_price);
+        if ( $sale_price ) {
+            return '<del>' . wc_price( $regular_price ) . '</del> ' . wc_price( $sale_price );
         } else {
-            return wc_price($regular_price);
+            return wc_price( $regular_price );
         }
     }
 }

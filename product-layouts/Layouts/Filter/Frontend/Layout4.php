@@ -4,7 +4,7 @@ namespace WPTE_PRODUCT_LAYOUT\Layouts\Filter\Frontend;
 
 use WPTE_PRODUCT_LAYOUT\Includes\Helper\Public_Render;
 
-if ( ! defined('ABSPATH') ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -39,7 +39,7 @@ class Layout4 extends Public_Render {
 
 		?>
 		<div class="wpte-product-filter-wrapper">
-			<form class="wpte-product-filter-form wpte-product-filter-form-<?php echo esc_attr($this->wpteid); ?>" classid = "wpte-product-filter-form-<?php echo esc_attr($this->wpteid); ?>" dataid="<?php echo esc_attr($this->wpteid); ?>" action="" method="POST">
+			<form class="wpte-product-filter-form wpte-product-filter-form-<?php echo esc_attr( $this->wpteid ); ?>" classid = "wpte-product-filter-form-<?php echo esc_attr( $this->wpteid ); ?>" dataid="<?php echo esc_attr( $this->wpteid ); ?>" action="" method="POST">
 				<div class="wpte-product-filter-items">
 					<div class="wpte-product-filter-item wpte-prduct-filter-sort-by">
 						<?php
@@ -50,11 +50,11 @@ class Layout4 extends Public_Render {
 								<div class="wpte-product-filter-heading-normal">
 									<span>
 										<?php
-											if ( $custom_title ) {
-												echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
-											} else {
-												echo esc_html__( 'Rating', 'wpte-product-layout' );
-											}
+										if ( $custom_title ) {
+											echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
+										} else {
+											echo esc_html__( 'Rating', 'wpte-product-layout' );
+										}
 										?>
 									</span>
 								</div>
@@ -66,11 +66,11 @@ class Layout4 extends Public_Render {
 							<div class="wpte-product-filter-heading">
 								<span>
 									<?php
-										if ( $custom_title ) {
-											echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
-										} else {
-											echo esc_html__( 'Rating', 'wpte-product-layout' );
-										}
+									if ( $custom_title ) {
+										echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
+									} else {
+										echo esc_html__( 'Rating', 'wpte-product-layout' );
+									}
 									?>
 								</span>
 								<span class="wpte-icon icon-arrow-5"></span>

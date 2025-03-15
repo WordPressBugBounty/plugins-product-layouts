@@ -67,7 +67,6 @@ class Layout3 extends Layout {
 			]
 		);
 		if ( ! class_exists( 'TInvWL_Admin_Base' ) ) {
-
 			$plugin    = 'ti-woocommerce-wishlist';
 			$file_path = 'ti-woocommerce-wishlist/ti-woocommerce-wishlist.php';
 			$notice    = 'Wish List';
@@ -83,9 +82,7 @@ class Layout3 extends Layout {
 					'description' => '',
 				]
 			);
-
 		} else {
-
 			$this->add_group_control(
 				'wpte-product-general-style-3-wishlist-icon',
 				$this->style,
@@ -99,7 +96,6 @@ class Layout3 extends Layout {
 					'description' => '',
 				]
 			);
-
 		}
 		$this->end_controls_section();
 

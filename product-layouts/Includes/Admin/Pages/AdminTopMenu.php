@@ -16,7 +16,7 @@ trait AdminTopMenu {
 	 * @since 1.0.0
 	 */
 	public function admin_url_convert( $arg ) {
-		return admin_url( strpos( $arg, 'edit') !== false ? $arg : 'admin.php?page=' . $arg );
+		return admin_url( strpos( $arg, 'edit' ) !== false ? $arg : 'admin.php?page=' . $arg );
 	}
 
 	/**
@@ -30,8 +30,7 @@ trait AdminTopMenu {
 
 		$response = ! empty( get_transient( $adminmenu ) ) ? get_transient( $adminmenu ) : [];
 
-		if ( ! array_key_exists('Product Layout', $response) ) :
-
+		if ( ! array_key_exists( 'Product Layout', $response ) ) :
 			$response['Product Layout']['Product Layout'] = [
 				'name'     => 'Product Layout',
 				'menupage' => 'product-layouts',
@@ -41,8 +40,7 @@ trait AdminTopMenu {
 				'menupage' => 'product-layouts-shortcode',
 			];
 
-			set_transient($adminmenu, $response, 10 * DAY_IN_SECONDS);
-
+			set_transient( $adminmenu, $response, 10 * DAY_IN_SECONDS );
 		endif;
 
 		$adminLogo = WPTE_WPL_URL . '/Image/wpl-logo.svg';
@@ -51,7 +49,7 @@ trait AdminTopMenu {
 		$menu = '<div class="wpte-wpl-wrapper">
 					<div class="wpte-wpl-admin-top-menu">
 						<div class="wpte-wpl-admin-top-logo">
-							<a href="' . esc_url($this->admin_url_convert('product-layouts')) . '" class="header-logo">
+							<a href="' . esc_url( $this->admin_url_convert( 'product-layouts' ) ) . '" class="header-logo">
 								<img src="' . $adminLogo . '"/>
 							</a>
 						</div>
@@ -64,20 +62,18 @@ trait AdminTopMenu {
 		if ( count( $response ) == 1 ) :
 			if ( $layouts != '' ) :
 				$menu .= '<li class="active" >
-							<a href="' . esc_url($this->admin_url_convert('product-layouts')) . '&layouts=' . esc_attr($layouts) . '">';
+							<a href="' . esc_url( $this->admin_url_convert( 'product-layouts' ) ) . '&layouts=' . esc_attr( $layouts ) . '">';
 				if ( $layouts == 'display' ) :
 					$menu .= 'Display Post';
 				else :
-					$menu .= name_converter($layouts) . ' Layouts';
+					$menu .= name_converter( $layouts ) . ' Layouts';
 				endif;
 				$menu . '   </a>
 						</li>';
-
 			endif;
 			foreach ( $response['Product Layout'] as $key => $value ) {
-
 				$active = ( ( $GETPage == $value['menupage'] && $layouts == '' ) ? ' class="active" ' : '' );
-				$menu  .= '<li ' . $active . '><a href="' . esc_url($this->admin_url_convert($value['menupage'])) . '">' . esc_html( name_converter( $value['name'] ) ) . '</a></li>';
+				$menu  .= '<li ' . $active . '><a href="' . esc_url( $this->admin_url_convert( $value['menupage'] ) ) . '">' . esc_html( name_converter( $value['name'] ) ) . '</a></li>';
 			}
 		else :
 			foreach ( $response as $key => $value ) {
@@ -86,7 +82,7 @@ trait AdminTopMenu {
 				$menu  .= '   <div class="wpte-wpl-d-menu">
 									<div class="wpte-wpl-drop-menu-li">';
 				foreach ( $value as $key2 => $submenu ) {
-					$menu .= '<a href="' . $this->admin_url_convert($submenu['menupage']) . '">' . esc_html( name_converter( $submenu['name'] ) ) . '</a>';
+					$menu .= '<a href="' . $this->admin_url_convert( $submenu['menupage'] ) . '">' . esc_html( name_converter( $submenu['name'] ) ) . '</a>';
 				}
 				$menu .= '</div>';
 				$menu .= '</li>';
@@ -94,19 +90,19 @@ trait AdminTopMenu {
 			if ( $GETPage == 'product-layouts' || $GETPage == 'product-layouts-shortcode' ) :
 				$sub .= '<div class="wpte-wpl-main-tab-header">';
 				if ( $layouts != '' ) :
-					$sub .= '<a href="' . esc_url($this->admin_url_convert('product-layouts')) . '&layouts=' . esc_attr( $layouts ) . '">
+					$sub .= '<a href="' . esc_url( $this->admin_url_convert( 'product-layouts' ) ) . '&layouts=' . esc_attr( $layouts ) . '">
 								<div class="wpte-wpl-header wpte-active">';
 					if ( $layouts == 'display' ) :
 						$sub .= 'Display Post';
 					else :
-						$sub .= name_converter($layouts) . ' Layouts';
+						$sub .= name_converter( $layouts ) . ' Layouts';
 					endif;
 					$sub .= '       </div>
 							</a>';
 				endif;
 				foreach ( $response['Product Layout'] as $key => $value ) {
 					$active = ( ( $GETPage == $value['menupage'] && $layouts == '' ) ? 'wpte-active' : '' );
-					$sub   .= '<a href="' . esc_url($this->admin_url_convert($value['menupage'])) . '">
+					$sub   .= '<a href="' . esc_url( $this->admin_url_convert( $value['menupage'] ) ) . '">
 								<div class="wpte-wpl-header ' . $active . '">' . esc_attr( name_converter( $value['name'] ) ) . '</div>
 							</a>';
 				}
@@ -120,7 +116,7 @@ trait AdminTopMenu {
 		}
 		$menu .= ' <li class="wpte-wpl-doc"><a target="_black" href="https://wpkin.com/docs-category/product-layouts/">Docs</a></li>
 						<li class="wpte-wpl-support"><a target="_black" href="https://wordpress.org/support/plugin/product-layouts#new-post">Support</a></li>
-						<li class="wpte-wpl-set"><a href="' . esc_url(admin_url('admin.php?page=product-layouts-settings')) . '"><span class="dashicons dashicons-admin-generic"></span></a></li>
+						<li class="wpte-wpl-set"><a href="' . esc_url( admin_url( 'admin.php?page=product-layouts-settings' ) ) . '"><span class="dashicons dashicons-admin-generic"></span></a></li>
 					</ul>
 				</nav>
 			</div>

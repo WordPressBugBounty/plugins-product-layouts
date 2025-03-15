@@ -35,7 +35,7 @@ class Layout1 extends Public_Render {
 		$args   = $this->wpte_get_woo_products( $settings ) ?? [];
 
 		// Wish List.
-		$is_wishlist_icon = isset($settings['wpte_general_products_show_icons']) ? $settings['wpte_general_products_show_icons'] : '';
+		$is_wishlist_icon = isset( $settings['wpte_general_products_show_icons'] ) ? $settings['wpte_general_products_show_icons'] : '';
 		$wishtlist_switch = isset( $settings['wpte_product_layout_wishlist_icon_switcher'] ) ? $settings['wpte_product_layout_wishlist_icon_switcher'] : '';
 
 		// Show and Hide.
@@ -56,7 +56,7 @@ class Layout1 extends Public_Render {
 			$max_page         = ceil( $found_posts / absint( $args['posts_per_page'] ) );
 			$args['max_page'] = $max_page;
 			?>
-			<div class="wpte-product-column wpte-product-caption-style-1-column <?php echo esc_attr($column); ?>">
+			<div class="wpte-product-column wpte-product-caption-style-1-column <?php echo esc_attr( $column ); ?>">
 			<?php
 			while ( $query->have_posts() ) {
 				$query->the_post();
@@ -77,7 +77,7 @@ class Layout1 extends Public_Render {
 				?>
 
 				<div class="wpte-product-hover-style-caption  wpte-swiper-slide">
-					<div class="wpte-product-hover wpte-product-caption-hover wpte-product-caption-hover-style-1 wpte-product-blinds-<?php echo esc_attr($blind_effect); ?>">
+					<div class="wpte-product-hover wpte-product-caption-hover wpte-product-caption-hover-style-1 wpte-product-blinds-<?php echo esc_attr( $blind_effect ); ?>">
 						<div class="wpte-product-hover-figure">
 							<div class="wpte-product-hover-image">
 								<?php echo wp_kses_post( $product_image ); ?>
@@ -99,13 +99,13 @@ class Layout1 extends Public_Render {
 												$_cat_link = get_term_link( $product_cats[ $i ]->term_id, 'product_cat' );
 												$cat_link  = esc_url( $_cat_link );
 												$cat_name  = esc_html( $product_cats[ $i ]->name );
-												echo "<a href='" . esc_url( $cat_link ) . "'>" . esc_html($cat_name) . '</a>';
+												echo "<a href='" . esc_url( $cat_link ) . "'>" . esc_html( $cat_name ) . '</a>';
 											}
 											?>
 										</div>
 									<?php endif; if ( $show_title ) : ?>
 										<h2 class="wpte-product-title wpte-fade-up">
-											<?php printf('<a href="%1$s">%2$s</a>', esc_url($product->get_permalink()), wp_kses_post($product->get_title())); ?>
+											<?php printf( '<a href="%1$s">%2$s</a>', esc_url( $product->get_permalink() ), wp_kses_post( $product->get_title() ) ); ?>
 										</h2>
 									<?php endif; if ( $show_description ) : ?>
 										<div class="wpte-product-content wpte-fade-down">
@@ -121,7 +121,7 @@ class Layout1 extends Public_Render {
 										</div>
 									<?php endif; if ( $show_rating ) : ?>
 										<div class="wpte-product-rating wpte-fade-up">
-											<?php echo wp_kses_post( (string) product_rating_render( $product )); ?>
+											<?php echo wp_kses_post( (string) product_rating_render( $product ) ); ?>
 										</div>
 									<?php endif; if ( $show_price ) : ?>
 										<div class="wpte-product-price wpte-fade-up">

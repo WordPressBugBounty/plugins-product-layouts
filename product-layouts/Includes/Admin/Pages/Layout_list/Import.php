@@ -24,12 +24,14 @@ class Import {
 	 */
 	public function loader() {
 		wp_enqueue_script( 'wpte-wpl-admin-js' );
-		wp_localize_script( 'wpte-wpl-admin-js', 'wpteImport', [
-			'ajaxUrl'     => admin_url( 'admin-ajax.php' ),
-			'wpte_nonce'  => wp_create_nonce( 'wpte-import-nonce' ),
-			'error'       => esc_html__( 'Something Went Wrong!', 'wpte-product-layout' ),
-			'importerror' => sprintf( '<strong>%s:</strong> %s', esc_html__( 'Error', 'wpte-product-layout' ), esc_html__( 'Please upload a exported valid Json file.', 'wpte-product-layout' ) ),
-		] );
+		wp_localize_script(
+            'wpte-wpl-admin-js', 'wpteImport', [
+				'ajaxUrl'     => admin_url( 'admin-ajax.php' ),
+				'wpte_nonce'  => wp_create_nonce( 'wpte-import-nonce' ),
+				'error'       => esc_html__( 'Something Went Wrong!', 'wpte-product-layout' ),
+				'importerror' => sprintf( '<strong>%s:</strong> %s', esc_html__( 'Error', 'wpte-product-layout' ), esc_html__( 'Please upload a exported valid Json file.', 'wpte-product-layout' ) ),
+			]
+        );
 	}
 
 	/**
@@ -45,8 +47,10 @@ class Import {
 			<div class="wpte-wpl-wrapper">
 				<div class="wpte-wpl-create-layouts text-center p-5">
 						<?php
-							printf( '<h1>%s</h1>
-							<p>%s</p>', esc_html__( 'Product Layouts › Import', 'wpte-product-layout' ), esc_html__( 'WC Product Layout. Import your shortcode exported json file', 'wpte-product-layout' ) );
+							printf(
+                                '<h1>%s</h1>
+							<p>%s</p>', esc_html__( 'Product Layouts › Import', 'wpte-product-layout' ), esc_html__( 'WC Product Layout. Import your shortcode exported json file', 'wpte-product-layout' )
+                            );
 						?>
 					</div>
 				</div>

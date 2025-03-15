@@ -25,7 +25,6 @@ class Installation {
 		if ( ! $is_data_exists ) {
 			$this->insert_first_shortcode();
 		}
-		
 	}
 
 	/**
@@ -38,7 +37,6 @@ class Installation {
 		$installed = get_option( 'WPTE_wpl_installed' );
 
 		if ( ! $installed ) {
-
 			update_option( 'WPTE_wpl_installed', time() );
 		}
 
@@ -105,19 +103,21 @@ class Installation {
 		$stylesheet  = $this->style_sheet_data();
 		$font_family = sanitize_text_field( '' );
 
-		$insert_id = wpte_layout_insert( [
-			'name'        => $name,
-			'style_name'  => $style_name,
-			'rawdata'     => $rawdata,
-			'stylesheet'  => $stylesheet,
-			'font_family' => $font_family,
-		] );
+		$insert_id = wpte_layout_insert(
+            [
+				'name'        => $name,
+				'style_name'  => $style_name,
+				'rawdata'     => $rawdata,
+				'stylesheet'  => $stylesheet,
+				'font_family' => $font_family,
+			]
+        );
 
 		$names       = [];
-		$is_match    = preg_match_all('/(wpte-product-layout-wrapper-)[0-9]+/', $stylesheet, $names);
+		$is_match    = preg_match_all( '/(wpte-product-layout-wrapper-)[0-9]+/', $stylesheet, $names );
 		$replaceData = "wpte-product-layout-wrapper-$insert_id";
 		$get_match   = $names[0][0];
-		$finalData   = preg_replace( "/$get_match/i", $replaceData, $stylesheet);
-		wpte_layout_update_style($insert_id, $finalData);
+		$finalData   = preg_replace( "/$get_match/i", $replaceData, $stylesheet );
+		wpte_layout_update_style( $insert_id, $finalData );
 	}
 }

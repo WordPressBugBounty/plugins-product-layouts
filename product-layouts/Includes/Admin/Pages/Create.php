@@ -85,7 +85,7 @@ class Create {
 	 * @since 1.0.1
 	 */
 	public function wpte_compare_script_loader() {
-		wp_enqueue_script('wpte-product-compare');
+		wp_enqueue_script( 'wpte-product-compare' );
 	}
 
 	/**
@@ -105,7 +105,7 @@ class Create {
 			wp_enqueue_script( 'wc-single-product' );
 		}
 
-		wp_enqueue_script('wpte-quick-view-js');
+		wp_enqueue_script( 'wpte-quick-view-js' );
 	}
 
 	/**
@@ -114,19 +114,23 @@ class Create {
 	 * @return void
 	 */
 	public function admin_create_js() {
-		wp_enqueue_script('wpte-wpl-admin-js');
+		wp_enqueue_script( 'wpte-wpl-admin-js' );
 		wp_enqueue_script( 'wpte-wpl-create-js' );
-		wp_localize_script('wpte-wpl-create-js', 'wpteLayout', [
-			'ajaxUrl'    => admin_url('admin-ajax.php'),
-			'wpte_nonce' => wp_create_nonce('wpte-new-create-nonce'),
-			'error'      => __( 'Something Went Wrong!', 'wpte-product-layout' ),
-		]);
+		wp_localize_script(
+            'wpte-wpl-create-js', 'wpteLayout', [
+				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
+				'wpte_nonce' => wp_create_nonce( 'wpte-new-create-nonce' ),
+				'error'      => __( 'Something Went Wrong!', 'wpte-product-layout' ),
+			]
+        );
 		wp_enqueue_script( 'wpte-global-js' );
-		wp_localize_script('wpte-global-js', 'wpteGlobal', [
-			'ajaxUrl'    => admin_url('admin-ajax.php'),
-			'wpte_nonce' => wp_create_nonce('wpte-global-nonce'),
-			'error'      => __( 'Something Went Wrong!', 'wpte-product-layout' ),
-		]);
+		wp_localize_script(
+            'wpte-global-js', 'wpteGlobal', [
+				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
+				'wpte_nonce' => wp_create_nonce( 'wpte-global-nonce' ),
+				'error'      => __( 'Something Went Wrong!', 'wpte-product-layout' ),
+			]
+        );
 	}
 
 	/**
@@ -166,7 +170,7 @@ class Create {
 		<div class="wpte-wpl-wrapper">
 			<div class="wpte-wpl-create-layouts text-center p-5">
 				<?php
-					printf( '<h1>%s</h1> <p>%s</p>', '' . esc_html( name_converter( (string) $this->layouts ) ) . esc_html__( ' Layouts › Create New', 'wpte-product-layout' ), esc_html__('Select Product layouts, Input your Product Layout name and create new Product layouts.', 'wpte-product-layout' ) );
+					printf( '<h1>%s</h1> <p>%s</p>', '' . esc_html( name_converter( (string) $this->layouts ) ) . esc_html__( ' Layouts › Create New', 'wpte-product-layout' ), esc_html__( 'Select Product layouts, Input your Product Layout name and create new Product layouts.', 'wpte-product-layout' ) );
 				?>
 
 			</div>
@@ -187,7 +191,7 @@ class Create {
 				foreach ( $this->TEMPLATE as $key => $value ) {
 					$id = explode( '-', $key )[1];
 					?>
-						<div class="col-sm-12" id="<?php echo esc_attr($key); ?>">
+						<div class="col-sm-12" id="<?php echo esc_attr( $key ); ?>">
 							<div class="wpte-product-style-preview">
 								<div class="wpte-product-style-preview-top wpte-product-center">
 									<?php
@@ -196,7 +200,7 @@ class Create {
 										$s           = explode( '-', $decode_data['style']['style_name'] );
 										echo '<div class="wpte-bt-col-lg-4 wpte-bt-col-md-6 wpte-bt-col-sm-12 p-3">';
 
-										$CLASS     = 'WPTE_PRODUCT_LAYOUT\Layouts\\' . ucfirst( $s[0] ) . '\Frontend\Layout' . $s[1];
+										$CLASS = 'WPTE_PRODUCT_LAYOUT\Layouts\\' . ucfirst( $s[0] ) . '\Frontend\Layout' . $s[1];
 
 										if ( class_exists( $CLASS ) ) :
 											new $CLASS( $decode_data['style'] );
@@ -204,14 +208,14 @@ class Create {
 											printf( '<div class="wpte_product_layout_premium_img"><img src="%s"/></div>', esc_attr( $value['src'] ) );
 										endif;
 
-										echo '<textarea style="display:none" id="wptestyle' . esc_attr($id) . 'data">' . esc_html( htmlentities( wp_json_encode( $decode_data ) ) ) . '</textarea>';
+										echo '<textarea style="display:none" id="wptestyle' . esc_attr( $id ) . 'data">' . esc_html( htmlentities( wp_json_encode( $decode_data ) ) ) . '</textarea>';
 										echo '</div>';
 									}
 									?>
 								</div>
 								<div class="wpte-product-style-preview-bottom">
 									<div class="wpte-product-style-preview-bottom-left">
-										<?php echo esc_html($value['name']); ?>
+										<?php echo esc_html( $value['name'] ); ?>
 									</div>
 									<?php
 
@@ -227,7 +231,7 @@ class Create {
 									} else {
 										?>
 										<div class="text-right">
-											<button type="button" class="btn btn-success wpte-product-layout-template-create" layouts-data="wptestyle<?php echo esc_attr($id); ?>data"><?php echo esc_html__( 'Create Style', 'wpte-product-layout' ); ?></button>
+											<button type="button" class="btn btn-success wpte-product-layout-template-create" layouts-data="wptestyle<?php echo esc_attr( $id ); ?>data"><?php echo esc_html__( 'Create Style', 'wpte-product-layout' ); ?></button>
 										</div>
 										<?php
 									}
@@ -249,7 +253,8 @@ class Create {
 	 * @return void
 	 */
 	public function create_new() {
-		printf( '<div class="modal fade" id="wpte-product-layout-create-modal">
+		printf(
+            '<div class="modal fade" id="wpte-product-layout-create-modal">
 					<form method="post" id="wpte-wpl-create-modal-form">
 						<div class="modal-dialog">
 							<div class="modal-content">
@@ -276,11 +281,11 @@ class Create {
 						</div>
 					</form>
 				</div>',
-				esc_html__('New Product Layout', 'wpte-product-layout' ),
-				esc_html__('Name', 'wpte-product-layout' ),
-				esc_html__('Close', 'wpte-product-layout' ),
-				esc_html__('Save', 'wpte-product-layout' )
-			);
+            esc_html__( 'New Product Layout', 'wpte-product-layout' ),
+            esc_html__( 'Name', 'wpte-product-layout' ),
+            esc_html__( 'Close', 'wpte-product-layout' ),
+            esc_html__( 'Save', 'wpte-product-layout' )
+        );
 	}
 }
 

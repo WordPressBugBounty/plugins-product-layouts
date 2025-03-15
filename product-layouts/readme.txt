@@ -3,9 +3,9 @@
 Contributors: wpkin, richardmallick
 Tags: Product showcase, Product layouts, Product Table, Product gallery, Product List.
 Requires at least: 6.2
-Tested up to: 6.7.1
+Tested up to: 6.7.2
 Requires PHP: 7.4
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -129,12 +129,17 @@ Yes you can Export Json file from Shortcode list and Import from Import page.
 
 == Changelog ==
 
+= 1.3.2 =
+* **Update**: Compatible with WordPress 6.7.2
+* **Fix**: Fixed script loading issue in backend
+* **Fix**: Compatible with PHPCS and WPCS
+
 = 1.3.1 =
 * **Fix**: Fixed Price issue for Variable product.
 * **Fix**: Fixed min() empty fatal error.
 
 = 1.3.0 =
-* **Update**: Compatible with WordPress 6.7.
+* **Update**: Compatible with WordPress 6.7
 * **Fix**: Fixed data table sorting issue.
 
 = 1.2.10 =

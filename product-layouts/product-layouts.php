@@ -3,7 +3,7 @@
  * Plugin Name:       Product Layouts for Woocommerce
  * Plugin URI:        https://wpkin.com
  * Description:       This is woocommerce product layout plugin. you can design product using this plugin for your woocommerce store.
- * Version:           1.3.1
+ * Version:           1.3.2
  * Author:            WPKIN
  * Author URI:        https://wpkin.com
  * Text Domain:       wpte-product-layout
@@ -78,7 +78,7 @@ if ( function_exists( 'wpl_fs' ) ) {
 			/**
 			 * Plugin Version
 			 */
-			const VERSION = '1.3.1';
+			const VERSION = '1.3.2';
 
 			/**
 			 * Php Version
@@ -105,6 +105,7 @@ if ( function_exists( 'wpl_fs' ) ) {
 				register_deactivation_hook( __FILE__, [ $this, 'deactivate' ] );
 				add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
 				add_action( 'init', [ $this, 'i18n' ] );
+				add_action( 'admin_print_footer_scripts', 'wpte_offer_popup' );
 				// add_action( 'admin_init', [$this, 'activation_redirect'] );.
 				add_filter( 'plugin_action_links_' . plugin_basename( WPTE_WPL_FILE ), [ __CLASS__, 'wpte_wpl_action_links' ] );
 			}
@@ -119,7 +120,6 @@ if ( function_exists( 'wpl_fs' ) ) {
 				static $instance = false;
 
 				if ( ! $instance ) {
-
 					$instance = new self();
 				}
 
@@ -191,6 +191,8 @@ if ( function_exists( 'wpl_fs' ) ) {
 			 */
 			public function init_plugin() {
 
+				wpkin_frontend_script_to_admin();
+
 				new WPTE_PRODUCT_LAYOUT\Includes\Assets();
 
 				if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
@@ -211,7 +213,6 @@ if ( function_exists( 'wpl_fs' ) ) {
 			public function activation_redirect() {
 
 				if ( get_option( 'WPTE_wpl_activation_redirect', false ) ) {
-
 					delete_option( 'WPTE_wpl_activation_redirect' );
 
 					wp_safe_redirect( admin_url( 'admin.php?page=product-layouts-getting-started' ) );

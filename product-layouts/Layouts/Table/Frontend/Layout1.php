@@ -98,12 +98,13 @@ class Layout1 extends Public_Render {
 					<?php if ( $showImage ) : ?>
 						<td>
 							<?php
-							printf('<%1$s %2$s %3$s %4$s class="wpte-product-table-layout-image">%5$s</%1$s>',
-							esc_html( $hyperlink ),
-							wp_kses( $img_href, true ),
-							wp_kses( $new_window, true ),
-							wp_kses( $nofollow, true ),
-							wp_kses_post( $product_image )
+							printf(
+                                '<%1$s %2$s %3$s %4$s class="wpte-product-table-layout-image">%5$s</%1$s>',
+                                esc_html( $hyperlink ),
+                                wp_kses( $img_href, true ),
+                                wp_kses( $new_window, true ),
+                                wp_kses( $nofollow, true ),
+                                wp_kses_post( $product_image )
 							);
 							?>
 						</td>
@@ -139,30 +140,32 @@ class Layout1 extends Public_Render {
 								<?php
 								if ( 'simple' === $product->get_type() ) {
 									$quantity_input = woocommerce_quantity_input( [ 'input_name' => get_the_ID() ], $product, false );
-									echo wp_kses( $quantity_input, [
-										'div'   => [
-											'class' => [],
-										],
-										'label' => [
-											'class' => [],
-											'for'   => [],
-										],
-										'input' => [
-											'type'         => [],
-											'id'           => [],
-											'class'        => [],
-											'name'         => [],
-											'value'        => [],
-											'title'        => [],
-											'size'         => [],
-											'min'          => [],
-											'max'          => [],
-											'step'         => [],
-											'placeholder'  => [],
-											'inputmode'    => [],
-											'autocomplete' => [],
-										],
-									] );
+									echo wp_kses(
+                                        $quantity_input, [
+											'div'   => [
+												'class' => [],
+											],
+											'label' => [
+												'class' => [],
+												'for'   => [],
+											],
+											'input' => [
+												'type'         => [],
+												'id'           => [],
+												'class'        => [],
+												'name'         => [],
+												'value'        => [],
+												'title'        => [],
+												'size'         => [],
+												'min'          => [],
+												'max'          => [],
+												'step'         => [],
+												'placeholder' => [],
+												'inputmode' => [],
+												'autocomplete' => [],
+											],
+										]
+                                    );
 								} else {
 									echo '<input type="number" class="input-text qty text" disabled value="1" >';
 								}
@@ -204,12 +207,13 @@ class Layout1 extends Public_Render {
 					<td>
 						<?php if ( $showImage ) : ?>
 							<?php
-							printf('<%1$s %2$s %3$s %4$s class="wpte-product-table-layout-image">%5$s</%1$s>',
-							esc_html( $hyperlink ),
-							wp_kses( $img_href, true ),
-							wp_kses( $new_window, true ),
-							wp_kses( $nofollow, true ),
-							wp_kses_post( $product_image )
+							printf(
+                                '<%1$s %2$s %3$s %4$s class="wpte-product-table-layout-image">%5$s</%1$s>',
+                                esc_html( $hyperlink ),
+                                wp_kses( $img_href, true ),
+                                wp_kses( $new_window, true ),
+                                wp_kses( $nofollow, true ),
+                                wp_kses_post( $product_image )
 							);
 							?>
 						<?php endif; ?>

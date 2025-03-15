@@ -35,16 +35,16 @@ trait Helper {
 	public function forms_condition( $arg = [] ) {
 
 		if ( array_key_exists( 'condition', $arg ) ) :
-			$i = $arg['condition'] !== '' ? count($arg['condition']) : 0;
+			$i = $arg['condition'] !== '' ? count( $arg['condition'] ) : 0;
 			$data = '';
 			$s    = 1;
 
-			$form_condition = array_key_exists('form_condition', $arg) ? $arg['form_condition'] : '';
-			$notcondition   = array_key_exists('notcondition', $arg) ? $arg['notcondition'] : false;
+			$form_condition = array_key_exists( 'form_condition', $arg ) ? $arg['form_condition'] : '';
+			$notcondition   = array_key_exists( 'notcondition', $arg ) ? $arg['notcondition'] : false;
 
 			foreach ( $arg['condition'] !== '' ? $arg['condition'] : [] as $key => $value ) {
-				if ( is_array($value) ) :
-					$c = count($value);
+				if ( is_array( $value ) ) :
+					$c = count( $value );
 					$crow = 1;
 					if ( $c > 1 && $i > 1 ) :
 						$data .= '(';
@@ -53,7 +53,7 @@ trait Helper {
 						$data .= $form_condition . $key . ' === \'' . $item . '\'';
 						if ( $crow < $c ) :
 							$data .= ' || ';
-							$crow++;
+							++$crow;
 						endif;
 					}
 					if ( $c > 1 && $i > 1 ) :
@@ -72,14 +72,13 @@ trait Helper {
 				endif;
 				if ( $s < $i ) :
 					$data .= ' && ';
-					$s++;
+					++$s;
 				endif;
 			}
 
 			if ( ! empty( $data ) ) :
 				return 'data-condition="' . esc_attr( $data ) . '"';
 			endif;
-
 		endif;
 	}
 
@@ -95,10 +94,10 @@ trait Helper {
 		echo '<div class="wpte-layout-content-tabs" id="wpte-start-tabs-';
 		if ( array_key_exists( 'condition', $arg ) ) :
 			foreach ( $arg['condition'] as $value ) {
-				echo esc_html($value);
+				echo esc_html( $value );
 			}
 		endif;
-		printf( '"%s>', esc_html($padding) );
+		printf( '"%s>', esc_html( $padding ) );
 	}
 
 	/**
@@ -124,7 +123,7 @@ trait Helper {
 		];
 		$arg       = array_merge( $defualt, $arg );
 		$showing   = ( $arg['showing'] ) ? '' : 'wpte-ac-admin-section-d-none';
-		$condition = $this->forms_condition($arg);
+		$condition = $this->forms_condition( $arg );
 
 		$is_pro      = '';
 		$is_po_class = '';
@@ -138,7 +137,8 @@ trait Helper {
 			}
 		}
 
-		printf( '<div class="wpte-ac-admin-section-area %1$s" %3$s>
+		printf(
+            '<div class="wpte-ac-admin-section-area %1$s" %3$s>
 			<div class="wpte-ac-admin-section-head %5$s">
 			<span class="dashicons dashicons-arrow-right"></span>
 			%2$s 
@@ -177,8 +177,8 @@ trait Helper {
 				'hover'  => 'Hover',
 			],
 		];
-		$arg       = array_merge($defualt, $arg);
-		$condition = $this->forms_condition($arg);
+		$arg       = array_merge( $defualt, $arg );
+		$condition = $this->forms_condition( $arg );
 		?>
 
 		<div class="wpte-product-control-type-tabs" <?php echo wp_kses( (string) $condition, wpte_plugins_allowed_condition() ); ?> >
@@ -190,7 +190,7 @@ trait Helper {
 						?>
 						<div class="wpte-product-type-control-tab-child">
 							<div class="wpte-product-control-content">
-								<?php echo esc_html($value); ?>
+								<?php echo esc_html( $value ); ?>
 							</div>
 						</div>
 						<?php
@@ -238,8 +238,8 @@ trait Helper {
 	 * @since 1.1.2
 	 */
 	public function start_controls_accordions( $id, array $arg = [] ) {
-		$condition = $this->forms_condition($arg);
-		printf('<div class="wpte-product-control-type-accordions" %s>', wp_kses( (string) $condition, wpte_plugins_allowed_condition() ) );
+		$condition = $this->forms_condition( $arg );
+		printf( '<div class="wpte-product-control-type-accordions" %s>', wp_kses( (string) $condition, wpte_plugins_allowed_condition() ) );
 	}
 
 	/**
@@ -263,7 +263,7 @@ trait Helper {
 			'title'  => __( 'Sort', 'wpte-product-layout' ),
 			'is_pro' => '',
 		];
-		$arg     = array_merge($defualt, $arg);
+		$arg     = array_merge( $defualt, $arg );
 
 		$is_pro      = '';
 		$is_po_class = '';
@@ -310,10 +310,10 @@ trait Helper {
 		$css       = array_key_exists( 'css', $arg ) && isset( $arg['css'] ) ? $arg['css'] : '';
 		$separator = ( array_key_exists( 'separator', $arg ) ? ( $arg['separator'] === false ? 'wpte-product-form-control-separator-before' : '' ) : '' );
 
-		echo '  <div class="wpte-product-form-control wpte-product-control-type-popover ' . esc_attr($separator) . '" style="' . esc_attr( $css ) . '" ' . wp_kses( (string) $condition, wpte_plugins_allowed_condition() ) . '>
+		echo '  <div class="wpte-product-form-control wpte-product-control-type-popover ' . esc_attr( $separator ) . '" style="' . esc_attr( $css ) . '" ' . wp_kses( (string) $condition, wpte_plugins_allowed_condition() ) . '>
 					<div class="wpte-product-form-control-content wpte-product-form-control-content-popover">
 						<div class="wpte-product-form-control-field-popover">
-							<label class="wpte-product-form-control-title-popover">' . esc_html($arg['label']) . '</label>  
+							<label class="wpte-product-form-control-title-popover">' . esc_html( $arg['label'] ) . '</label>  
 							<div class="wpte-product-popover-set">
 								<span class="dashicons popover-set"></span>
 							</div>
@@ -411,7 +411,6 @@ trait Helper {
 												<span class="dashicons dashicons-smartphone"></span>
 											</a>
 										</div>';
-
 		endif;
 
 		/*
@@ -436,10 +435,10 @@ trait Helper {
 		];
 
 		$arg       = array_merge( $defualt, $arg );
-		$condition = $this->forms_condition($arg);
+		$condition = $this->forms_condition( $arg );
 
-		$beforeSeparator = array_key_exists('separator', $arg) && $arg['separator'] === 'before' ? 'wpte_product_layout_before_separator' : '';
-		$css             = array_key_exists('css', $arg) && isset($arg['css']) ? $arg['css'] : '';
+		$beforeSeparator = array_key_exists( 'separator', $arg ) && $arg['separator'] === 'before' ? 'wpte_product_layout_before_separator' : '';
+		$css             = array_key_exists( 'css', $arg ) && isset( $arg['css'] ) ? $arg['css'] : '';
 
 		printf(
 			'
@@ -462,11 +461,11 @@ trait Helper {
 		$func = $arg['type'] . '_admin_control';
 		$this->$func( $id, $data, $arg );
 
-		printf( array_key_exists( 'description', $arg ) ? '<div class="wpte-product-form-control-description">' . esc_html($arg['description']) . '</div>' : '' );
+		printf( array_key_exists( 'description', $arg ) ? '<div class="wpte-product-form-control-description">' . esc_html( $arg['description'] ) . '</div>' : '' );
 		printf( '</div></div> ' );
 
 		if ( array_key_exists( 'separator', $arg ) && $arg['separator'] === 'after' ) {
-			printf("<div class='wpte_product_layout_after_separator' " . wp_kses( (string) $condition, wpte_plugins_allowed_condition() ) . '></div>' );
+			printf( "<div class='wpte_product_layout_after_separator' " . wp_kses( (string) $condition, wpte_plugins_allowed_condition() ) . '></div>' );
 		}
 	}
 
@@ -492,7 +491,7 @@ trait Helper {
 			print_r( $this->$func( $id, $data, $arg ) );
 		} else {
 			$func = $arg['type'] . '_cart_control';
-			$this->$func($data, $arg);
+			$this->$func( $data, $arg );
 		}
 	}
 
@@ -505,15 +504,15 @@ trait Helper {
 	 * @since 1.0.0
 	 */
 	public function heading_extra_control( $id, $data = [], $arg = [] ) {
-		$label           = isset($arg['label']) ? $arg['label'] : '';
-		$description     = isset($arg['description']) ? $arg['description'] : '';
-		$css             = isset($arg['css']) ? $arg['css'] : 'padding-top:10px; padding-bottom:10px';
-		$beforeSeparator = array_key_exists('separator', $arg) && $arg['separator'] === 'before' ? 'wpte_product_layout_before_separator' : '';
-		$condition       = $this->forms_condition($arg);
+		$label           = isset( $arg['label'] ) ? $arg['label'] : '';
+		$description     = isset( $arg['description'] ) ? $arg['description'] : '';
+		$css             = isset( $arg['css'] ) ? $arg['css'] : 'padding-top:10px; padding-bottom:10px';
+		$beforeSeparator = array_key_exists( 'separator', $arg ) && $arg['separator'] === 'before' ? 'wpte_product_layout_before_separator' : '';
+		$condition       = $this->forms_condition( $arg );
 		?>
-			<div class="wpte-product-layout-heading <?php echo esc_attr($beforeSeparator); ?>" style="<?php echo esc_attr( $css ); ?>" <?php echo wp_kses( (string) $condition, wpte_plugins_allowed_condition() ); ?> >
-				<strong><?php echo esc_html($label); ?></strong>
-				<p><?php echo esc_html($description); ?></p>
+			<div class="wpte-product-layout-heading <?php echo esc_attr( $beforeSeparator ); ?>" style="<?php echo esc_attr( $css ); ?>" <?php echo wp_kses( (string) $condition, wpte_plugins_allowed_condition() ); ?> >
+				<strong><?php echo esc_html( $label ); ?></strong>
+				<p><?php echo esc_html( $description ); ?></p>
 			</div>
 		<?php
 	}
@@ -527,22 +526,24 @@ trait Helper {
 	 */
 	public function multiple_selector_handler( $data = [], $val = [] ) {
 
-		$val = preg_replace_callback( '/\{\{\K(.*?)(?=}})/', function ( $match ) use ( $data ) {
-			$ER = explode( '.', $match[0] );
-			if ( strpos( $match[0], 'SIZE' ) !== false ) :
-				$size     = array_key_exists( $ER[0] . '-size', $data ) ? $data[ $ER[0] . '-size' ] : '';
-				$match[0] = str_replace( '.SIZE', $size, $match[0] );
+		$val = preg_replace_callback(
+            '/\{\{\K(.*?)(?=}})/', function ( $match ) use ( $data ) {
+				$ER = explode( '.', $match[0] );
+				if ( strpos( $match[0], 'SIZE' ) !== false ) :
+					$size     = array_key_exists( $ER[0] . '-size', $data ) ? $data[ $ER[0] . '-size' ] : '';
+					$match[0] = str_replace( '.SIZE', $size, $match[0] );
 			endif;
-			if ( strpos( $match[0], 'UNIT' ) !== false ) :
-				$size     = array_key_exists( $ER[0] . '-choices', $data ) ? $data[ $ER[0] . '-choices' ] : '';
-				$match[0] = str_replace( '.UNIT', $size, $match[0] );
+				if ( strpos( $match[0], 'UNIT' ) !== false ) :
+					$size     = array_key_exists( $ER[0] . '-choices', $data ) ? $data[ $ER[0] . '-choices' ] : '';
+					$match[0] = str_replace( '.UNIT', $size, $match[0] );
 			endif;
-			if ( strpos( $match[0], 'VALUE' ) !== false ) :
-				$size     = array_key_exists( $ER[0], $data ) ? $data[ $ER[0] ] : '';
-				$match[0] = str_replace( '.VALUE', $size, $match[0] );
+				if ( strpos( $match[0], 'VALUE' ) !== false ) :
+					$size     = array_key_exists( $ER[0], $data ) ? $data[ $ER[0] ] : '';
+					$match[0] = str_replace( '.VALUE', $size, $match[0] );
 			endif;
-			return str_replace( $ER[0], '', $match[0] );
-		}, $val );
+				return str_replace( $ER[0], '', $match[0] );
+			}, $val
+        );
 		return str_replace( '{{', '', str_replace( '}}', '', $val ) );
 	}
 
@@ -555,7 +556,7 @@ trait Helper {
 	 * @since 1.1.2
 	 */
 	public function hidden_extra_control( $id, $data = [], $arg = [] ) {
-		$value = isset($arg['value']) ? $arg['value'] : '';
+		$value = isset( $arg['value'] ) ? $arg['value'] : '';
 		?>
 			<div class="wpte-product-layout-hidden">
 				<input type="hidden" name="<?php echo esc_attr( $id ) . '_po'; ?>" value="<?php echo esc_attr( $value ); ?>" >
@@ -573,7 +574,7 @@ trait Helper {
 	 */
 	public function separator_extra_control( $id, $data = [], $arg = [] ) {
 
-		$css = isset($arg['css']) ? $arg['css'] : 'margin-top:10px; margin-bottom:10px';
+		$css = isset( $arg['css'] ) ? $arg['css'] : 'margin-top:10px; margin-bottom:10px';
 		?>
 			<div class="wpte-product-layout-separator" style="<?php echo esc_attr( $css ); ?>"></div>
 		<?php
@@ -590,18 +591,18 @@ trait Helper {
 	public function parent_categories_admin_control( $id, $data = [], $arg = [] ) {
 
 		$saved_cat = isset( $data[ $id ] ) ? $data[ $id ] : [];
-		$Categories = get_terms( 
-			[ 
+		$Categories = get_terms(
+			[
 				'taxonomy' => 'product_cat',
-				'parent' => 0
-			] 
+				'parent' => 0,
+			]
 		);
 		?>
-		<select class="wpte-product-category-list" name="<?php echo esc_attr($id); ?>[]" id="wpte-product-<?php echo esc_attr($id); ?>" multiple="multiple">
+		<select class="wpte-product-category-list" name="<?php echo esc_attr( $id ); ?>[]" id="wpte-product-<?php echo esc_attr( $id ); ?>" multiple="multiple">
 			<?php
 			foreach ( $Categories as $category ) {
 				$selected = in_array( $category->term_id, $saved_cat ) ? 'selected' : '';
-				printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $category->term_id ), esc_attr($selected), esc_html( ucfirst( $category->name ) ) );
+				printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $category->term_id ), esc_attr( $selected ), esc_html( ucfirst( $category->name ) ) );
 			}
 			?>
 		</select>
@@ -621,11 +622,11 @@ trait Helper {
 		$saved_cat = isset( $data[ $id ] ) ? $data[ $id ] : [];
 		$Categories = get_terms( [ 'taxonomy' => 'product_cat' ] );
 		?>
-		<select class="wpte-product-category-list" name="<?php echo esc_attr($id); ?>[]" id="wpte-product-<?php echo esc_attr($id); ?>" multiple="multiple">
+		<select class="wpte-product-category-list" name="<?php echo esc_attr( $id ); ?>[]" id="wpte-product-<?php echo esc_attr( $id ); ?>" multiple="multiple">
 			<?php
 			foreach ( $Categories as $category ) {
 				$selected = in_array( $category->term_id, $saved_cat ) ? 'selected' : '';
-				printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $category->term_id ), esc_attr($selected), esc_html( ucfirst( $category->name ) ) );
+				printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $category->term_id ), esc_attr( $selected ), esc_html( ucfirst( $category->name ) ) );
 			}
 			?>
 		</select>
@@ -653,16 +654,18 @@ trait Helper {
 		);
 
 		?>
-		<select class="wpte-product-category-list" name="<?php echo esc_attr($id); ?>[]" id="wpte-product-<?php echo esc_attr($id); ?>" multiple="multiple">
+		<select class="wpte-product-category-list" name="<?php echo esc_attr( $id ); ?>[]" id="wpte-product-<?php echo esc_attr( $id ); ?>" multiple="multiple">
 			<?php
 			foreach ( $Categories as $category ) {
-				$subcategories = get_terms([
-					'taxonomy' => 'product_cat',
-					'parent'   => $category->term_id,
-				]);
+				$subcategories = get_terms(
+                    [
+						'taxonomy' => 'product_cat',
+						'parent'   => $category->term_id,
+					]
+                );
 				foreach ( $subcategories as $subcategory ) {
 					$selected = in_array( $subcategory->term_id, $saved_cat ) ? 'selected' : '';
-					printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $subcategory->term_id ), esc_attr($selected), esc_html( ucfirst( $subcategory->name ) ) );
+					printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $subcategory->term_id ), esc_attr( $selected ), esc_html( ucfirst( $subcategory->name ) ) );
 				}
 			}
 			?>
@@ -683,11 +686,11 @@ trait Helper {
 		$saved_cat = isset( $data[ $id ] ) ? $data[ $id ] : [];
 		$Categories = get_terms( [ 'taxonomy' => 'product_type' ] );
 		?>
-		<select class="wpte-product-category-list" name="<?php echo esc_attr($id); ?>[]" id="wpte-product-<?php echo esc_attr($id); ?>" multiple="multiple">
+		<select class="wpte-product-category-list" name="<?php echo esc_attr( $id ); ?>[]" id="wpte-product-<?php echo esc_attr( $id ); ?>" multiple="multiple">
 			<?php
 			foreach ( $Categories as $category ) {
 				$selected = in_array( $category->term_id, $saved_cat ) ? 'selected' : '';
-				printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $category->term_id ), esc_attr($selected), esc_html( ucfirst( $category->name ) ) );
+				printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $category->term_id ), esc_attr( $selected ), esc_html( ucfirst( $category->name ) ) );
 			}
 			?>
 		</select>
@@ -719,7 +722,6 @@ trait Helper {
 
 						if ( strpos( $file, '{{' ) !== false ) :
 							$file = $this->multiple_selector_handler( $styleData, $file );
-
 						endif;
 						if ( ! empty( $size ) ) :
 							$this->CSSDATA[ $arg['responsive'] ][ $class ][ $file ] = $file;
@@ -740,8 +742,8 @@ trait Helper {
 											<label class="wpte-product-form-units-choices-label" for="%1$s-choices-%2$s">%3$s</label>',
 						esc_attr( $id ),
 						esc_attr( $rand ),
-						esc_html($key),
-						esc_attr($checked),
+						esc_html( $key ),
+						esc_attr( $checked ),
 						esc_attr( $val['min'] ),
 						esc_attr( $val['max'] ),
 						esc_attr( $val['step'] )
@@ -792,13 +794,13 @@ trait Helper {
 		$products = new \WP_Query( $args );
 		$saved_cat = isset( $data[ $id ] ) ? $data[ $id ] : [];
 		?>
-		<select class="wpte-product-category-list" name="<?php echo esc_attr($id); ?>[]" id="wpte-product-<?php echo esc_attr($id); ?>" multiple="multiple">
+		<select class="wpte-product-category-list" name="<?php echo esc_attr( $id ); ?>[]" id="wpte-product-<?php echo esc_attr( $id ); ?>" multiple="multiple">
 			<?php
 			if ( $products->have_posts() ) {
 				while ( $products->have_posts() ) {
 					$products->the_post();
 					$selected = in_array( get_the_ID(), $saved_cat ) ? 'selected' : '';
-					printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( get_the_ID() ), esc_attr($selected), esc_html( ucfirst( get_the_title() ) ) );
+					printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( get_the_ID() ), esc_attr( $selected ), esc_html( ucfirst( get_the_title() ) ) );
 				}
 				wp_reset_postdata();
 			}
@@ -815,7 +817,7 @@ trait Helper {
 	 * @since 1.0.0
 	 */
 	public function cart_cart_control( $data = [], $arg = [] ) {
-		$operator = array_key_exists('operator', $arg) ? $arg['operator'] : '';
+		$operator = array_key_exists( 'operator', $arg ) ? $arg['operator'] : '';
 
 		$this->add_extra_control(
 			'wpte_product_layout_cart_icon_heading',
@@ -842,12 +844,11 @@ trait Helper {
 		);
 
 		if ( $operator === 'icon' || $operator === 'icontext' ) {
-
 			$this->add_control(
 				'wpte-product-cart-icon',
 				$data,
 				[
-					'label'       => __('Cart Icon', 'wpte-product-layout'),
+					'label'       => __( 'Cart Icon', 'wpte-product-layout' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-cart-2',
 					'condition'   => [
@@ -861,7 +862,7 @@ trait Helper {
 				'wpte-product-added-cart-icon',
 				$data,
 				[
-					'label'       => __('Added Cart Icon', 'wpte-product-layout'),
+					'label'       => __( 'Added Cart Icon', 'wpte-product-layout' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-cart-3',
 					'condition'   => [
@@ -875,7 +876,7 @@ trait Helper {
 				'wpte-product-grouped-icon',
 				$data,
 				[
-					'label'       => __('Grouped Icon', 'wpte-product-layout'),
+					'label'       => __( 'Grouped Icon', 'wpte-product-layout' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-setting-5',
 					'condition'   => [
@@ -889,7 +890,7 @@ trait Helper {
 				'wpte-product-external-icon',
 				$data,
 				[
-					'label'       => __('External Icon', 'wpte-product-layout'),
+					'label'       => __( 'External Icon', 'wpte-product-layout' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-external',
 					'condition'   => [
@@ -903,7 +904,7 @@ trait Helper {
 				'wpte-product-variable-icon',
 				$data,
 				[
-					'label'       => __('Variable Icon', 'wpte-product-layout'),
+					'label'       => __( 'Variable Icon', 'wpte-product-layout' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-ok-5',
 					'condition'   => [
@@ -949,9 +950,9 @@ trait Helper {
 				'wpte-product-cart-tooltip',
 				$data,
 				[
-					'label'       => __('Cart Tooltip', 'wpte-product-layout'),
+					'label'       => __( 'Cart Tooltip', 'wpte-product-layout' ),
 					'type'        => Controls::TOOLTIP,
-					'default'     => __('Add to Cart', 'wpte-product-layout'),
+					'default'     => __( 'Add to Cart', 'wpte-product-layout' ),
 					'condition'   => [
 						'wpte_product_layout_cart_icon_switcher' => 'yes',
 						'wpte_product_layout_cart_icon_tooltip_switcher' => 'yes',
@@ -964,7 +965,7 @@ trait Helper {
 				'wpte-product-grouped-tooltip',
 				$data,
 				[
-					'label'       => __('Grouped Tooltip', 'wpte-product-layout'),
+					'label'       => __( 'Grouped Tooltip', 'wpte-product-layout' ),
 					'type'        => Controls::TOOLTIP,
 					'default'     => 'Grouped',
 					'condition'   => [
@@ -979,7 +980,7 @@ trait Helper {
 				'wpte-product-external-tooltip',
 				$data,
 				[
-					'label'       => __('External Tooltip', 'wpte-product-layout'),
+					'label'       => __( 'External Tooltip', 'wpte-product-layout' ),
 					'type'        => Controls::TOOLTIP,
 					'default'     => 'External',
 					'condition'   => [
@@ -994,7 +995,7 @@ trait Helper {
 				'wpte-product-variable-tooltip',
 				$data,
 				[
-					'label'       => __('Variable Tooltip', 'wpte-product-layout'),
+					'label'       => __( 'Variable Tooltip', 'wpte-product-layout' ),
 					'type'        => Controls::TOOLTIP,
 					'default'     => 'Variable',
 					'condition'   => [
@@ -1008,14 +1009,13 @@ trait Helper {
 		}
 
 		if ( $operator === 'text' || $operator === 'icontext' ) {
-
 			$this->add_control(
 				'wpte-product-cart-text',
 				$data,
 				[
-					'label'       => __('Cart Text', 'wpte-product-layout'),
+					'label'       => __( 'Cart Text', 'wpte-product-layout' ),
 					'type'        => Controls::TEXT,
-					'default'     => __('Add to Cart', 'wpte-product-layout'),
+					'default'     => __( 'Add to Cart', 'wpte-product-layout' ),
 					'condition'   => [
 						'wpte_product_layout_cart_icon_switcher' => 'yes',
 					],
@@ -1027,7 +1027,7 @@ trait Helper {
 				'wpte-product-cart-view',
 				$data,
 				[
-					'label'       => __('View Cart', 'wpte-product-layout'),
+					'label'       => __( 'View Cart', 'wpte-product-layout' ),
 					'type'        => Controls::TEXT,
 					'default'     => 'View Cart',
 					'condition'   => [
@@ -1041,7 +1041,7 @@ trait Helper {
 				'wpte-product-grouped-text',
 				$data,
 				[
-					'label'       => __('Grouped Text', 'wpte-product-layout'),
+					'label'       => __( 'Grouped Text', 'wpte-product-layout' ),
 					'type'        => Controls::TEXT,
 					'default'     => 'Grouped',
 					'condition'   => [
@@ -1055,7 +1055,7 @@ trait Helper {
 				'wpte-product-external-text',
 				$data,
 				[
-					'label'       => __('External Text', 'wpte-product-layout'),
+					'label'       => __( 'External Text', 'wpte-product-layout' ),
 					'type'        => Controls::TEXT,
 					'default'     => 'External',
 					'condition'   => [
@@ -1069,7 +1069,7 @@ trait Helper {
 				'wpte-product-variable-text',
 				$data,
 				[
-					'label'       => __('Variable Text', 'wpte-product-layout'),
+					'label'       => __( 'Variable Text', 'wpte-product-layout' ),
 					'type'        => Controls::TEXT,
 					'default'     => 'Variable',
 					'condition'   => [
@@ -1185,13 +1185,13 @@ trait Helper {
 					printf(
 						'<input id="%1$s-choices-%2$s" type="radio" name="%1$s-choices"  value="%3$s" %4$s  min="%5$s" max="%6$s" step="%7$s">
 							<label class="wpte-product-form-units-choices-label" for="%1$s-choices-%2$s">%3$s</label>',
-						esc_attr($id),
-						esc_attr($rand),
-						esc_html($key),
-						esc_attr($checked),
-						esc_attr($val['min']),
-						esc_attr($val['max']),
-						esc_attr($val['step'])
+						esc_attr( $id ),
+						esc_attr( $rand ),
+						esc_html( $key ),
+						esc_attr( $checked ),
+						esc_attr( $val['min'] ),
+						esc_attr( $val['max'] ),
+						esc_attr( $val['step'] )
 					);
 				}
 				echo '</div>';
@@ -1276,15 +1276,16 @@ trait Helper {
 		$retunvalue = array_key_exists( 'selector', $arg ) ? htmlspecialchars( wp_json_encode( $retun ) ) : '';
 		$multiple   = ( array_key_exists( 'multiple', $arg ) && $arg['multiple'] ) == true ? true : false;
 
-		printf('<div class="wpte-product-form-control-input-select-wrapper" id="wpte-%1$s">
+		printf(
+            '<div class="wpte-product-form-control-input-select-wrapper" id="wpte-%1$s">
 		<select id="%1$s" class="wpte-product-select-input %2$s" %3$s name="%1$s%4$s" loader="%5$s"  responsive="%6$s" retundata="%7$s">',
-		esc_attr($id),
-		esc_attr(( $multiple ? 'js-example-basic-multiple' : '' )),
-		esc_attr(( $multiple ? 'multiple' : '' )),
-		( $multiple ? '[]' : '' ),
-		esc_attr( $loader ),
-		esc_attr( $arg['responsive'] ),
-		esc_attr( $retunvalue )
+            esc_attr( $id ),
+            esc_attr( ( $multiple ? 'js-example-basic-multiple' : '' ) ),
+            esc_attr( ( $multiple ? 'multiple' : '' ) ),
+            ( $multiple ? '[]' : '' ),
+            esc_attr( $loader ),
+            esc_attr( $arg['responsive'] ),
+            esc_attr( $retunvalue )
 		);
 		foreach ( $arg['options'] as $key => $val ) {
 			if ( is_array( $val ) ) :
@@ -1295,13 +1296,14 @@ trait Helper {
 				endif;
 			elseif ( is_array( $value ) ) :
 					$new = array_flip( $value );
-					printf('<option value="%1$s" %2$s>%3$s</option>',
-					esc_attr($key),
-					( array_key_exists( $key, $new ) ? 'selected' : '' ),
-					esc_html($val)
+					printf(
+                        '<option value="%1$s" %2$s>%3$s</option>',
+                        esc_attr( $key ),
+                        ( array_key_exists( $key, $new ) ? 'selected' : '' ),
+                        esc_html( $val )
 					);
 				else :
-					echo ' <option value="' . esc_attr($key) . '" ' . ( $value == $key ? 'selected' : '' ) . '>' . esc_html( $val ) . '</option>';
+					echo ' <option value="' . esc_attr( $key ) . '" ' . ( $value == $key ? 'selected' : '' ) . '>' . esc_html( $val ) . '</option>';
 			endif;
 		}
 		echo '</select>
@@ -1344,18 +1346,19 @@ trait Helper {
 			'step' => 1,
 		];
 		$arg     = array_merge( $defualt, $arg );
-		printf( '<div class="wpte-product-form-control-wrapper">
+		printf(
+            '<div class="wpte-product-form-control-wrapper">
 				<div class="wpte-product-form-control-input-wrapper">
 				<input class="wpte-product-input-type-number" id="%1$s" name="%1$s" type="number" loader="%8$s" min="%2$s" max="%3$s" step="%4$s" value="%5$s"  responsive="%6$s" retundata="%7$s">
 				</div></div>',
-			esc_attr($id),
-			esc_attr($arg['min']),
-			esc_attr($arg['max']),
-			esc_attr($arg['step']),
-			esc_attr($value),
-			esc_attr($arg['responsive']),
-			esc_attr($retunvalue),
-			esc_attr($loader)
+			esc_attr( $id ),
+			esc_attr( $arg['min'] ),
+			esc_attr( $arg['max'] ),
+			esc_attr( $arg['step'] ),
+			esc_attr( $value ),
+			esc_attr( $arg['responsive'] ),
+			esc_attr( $retunvalue ),
+			esc_attr( $loader )
 		);
 	}
 
@@ -1387,17 +1390,18 @@ trait Helper {
 		$type   = array_key_exists( 'oparetor', $arg ) ? 'data-format="rgb" data-opacity="true"' : '';
 		$custom = array_key_exists( 'custom', $arg ) ? $arg['custom'] : '';
 
-		printf( '<div class="wpte-product-form-control-wrapper">
+		printf(
+            '<div class="wpte-product-form-control-wrapper">
 				<label class="wpte-product-color-control">
 					<input %1$s type="text"  class="wpte-product-minicolor" id="%2$s" name="%2$s" value="%3$s" responsive="%4$s" retundata="%5$s" custom="%6$s">
 				</label>
 			 </div>',
 			wp_kses( (string) $type, wpte_plugins_allowedtags() ),
-			esc_attr($id),
-			esc_attr($value),
-			esc_attr($arg['responsive']),
-			esc_attr($retunvalue),
-			esc_attr($custom)
+			esc_attr( $id ),
+			esc_attr( $value ),
+			esc_attr( $arg['responsive'] ),
+			esc_attr( $retunvalue ),
+			esc_attr( $custom )
 		);
 	}
 
@@ -1416,12 +1420,9 @@ trait Helper {
 		$retunvalue = array_key_exists( 'selector', $arg ) ? htmlspecialchars( wp_json_encode( $arg['selector'] ) ) : '';
 
 		if ( array_key_exists( 'selector-data', $arg ) && $arg['selector-data'] === true ) {
-
 			if ( array_key_exists( 'selector', $arg ) ) :
-
 				foreach ( $arg['selector'] as $key => $val ) {
 					if ( $arg['render'] === true ) :
-
 						$key = ( strpos( $key, '{{KEY}}' ) ? str_replace( '{{KEY}}', explode( 'saarsa', $id )[1], $key ) : $key );
 						$class = str_replace( '{{WRAPPER}}', $this->CSSWRAPPER, $key );
 						$file = str_replace( '{{VALUE}}', $value, $val );
@@ -1435,7 +1436,7 @@ trait Helper {
 		$background = ( array_key_exists( 'gradient', $arg ) ? $arg['gradient'] : '' );
 		echo '<div class="wpte-product-form-control-wrapper">
 					<label class="wpte-product-color-control">
-						<input type="text" background="' . esc_attr($background) . '"  class="wpte-product-gradient-color" id="' . esc_attr($id) . '" name="' . esc_attr($id) . '" value="' . esc_attr($value) . '" responsive="' . esc_attr($arg['responsive']) . '" retundata=\'' . esc_attr($retunvalue) . '\'>
+						<input type="text" background="' . esc_attr( $background ) . '"  class="wpte-product-gradient-color" id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '" value="' . esc_attr( $value ) . '" responsive="' . esc_attr( $arg['responsive'] ) . '" retundata=\'' . esc_attr( $retunvalue ) . '\'>
 					</label>
 				</div>';
 	}
@@ -1479,9 +1480,9 @@ trait Helper {
 		echo '<div class="wpte-product-form-control-wrapper">
 				<div class="wpte-product-form-choices" responsive="' . esc_attr( $arg['responsive'] ) . '" retundata=\'' . esc_attr( $retunvalue ) . '\'>';
 		foreach ( $arg['options'] as $key => $val ) {
-			echo '<input id="' . esc_attr($id) . '-' . esc_attr($key) . '" type="radio" name="' . esc_attr($id) . '" value="' . esc_attr($key) . '" ' . ( $value === $key ? 'checked  ckdflt="true"' : '' ) . '>
-					<label class="wpte-product-form-choices-label" for="' . esc_attr($id) . '-' . esc_attr($key) . '" tooltip="' . esc_attr($val['title']) . '">
-						' . ( ( $operator === 'text' ) ? esc_html($val['title']) : '<i class="' . esc_attr($val['icon']) . '" aria-hidden="true"></i>' ) . '
+			echo '<input id="' . esc_attr( $id ) . '-' . esc_attr( $key ) . '" type="radio" name="' . esc_attr( $id ) . '" value="' . esc_attr( $key ) . '" ' . ( $value === $key ? 'checked  ckdflt="true"' : '' ) . '>
+					<label class="wpte-product-form-choices-label" for="' . esc_attr( $id ) . '-' . esc_attr( $key ) . '" tooltip="' . esc_attr( $val['title'] ) . '">
+						' . ( ( $operator === 'text' ) ? esc_html( $val['title'] ) : '<i class="' . esc_attr( $val['icon'] ) . '" aria-hidden="true"></i>' ) . '
 					</label>';
 		}
 		echo '</div>
@@ -1498,14 +1499,15 @@ trait Helper {
 	 */
 	public function icon_admin_control( $id, $data = [], $arg = [] ) {
 		$value = array_key_exists( $id, $data ) ? $data[ $id ] : $arg['default'];
-		printf('<div class="wpte-product-form-control-input-wrapper">
+		printf(
+            '<div class="wpte-product-form-control-input-wrapper">
 					<div class="wpte-product-admin-icon-selector">
 						<input type="text" class="%1$s" id="%1$s" name="%1$s" value="%2$s">
 						<span class="input-group-addon"></span>
 					</div>
 				</div>',
-				esc_attr($id),
-				esc_attr($value)
+            esc_attr( $id ),
+            esc_attr( $value )
 		);
 	}
 
@@ -1520,13 +1522,14 @@ trait Helper {
 	public function text_admin_control( $id, $data = [], $arg = [] ) {
 		$value = array_key_exists( $id, $data ) ? $data[ $id ] : $arg['default'];
 
-		printf('<div class="wpte-product-form-control-input-wrapper">
+		printf(
+            '<div class="wpte-product-form-control-input-wrapper">
 					<div class="wpte-product-admin-text">
 						<input type="text" class="%1$s" id="%1$s" name="%1$s" value="%2$s">
 					</div>
 				</div>',
-				esc_attr($id),
-				esc_attr($value)
+            esc_attr( $id ),
+            esc_attr( $value )
 		);
 	}
 
@@ -1542,13 +1545,14 @@ trait Helper {
 
 		$value = array_key_exists( $id, $data ) ? $data[ $id ] : $arg['default'];
 
-		printf('<div class="wpte-product-form-control-input-wrapper">
+		printf(
+            '<div class="wpte-product-form-control-input-wrapper">
 					<div class="wpte-product-admin-text">
 						<input type="text" class="%1$s" id="%1$s" name="%1$s" value="%2$s">
 					</div>
 				</div>',
-				esc_attr($id),
-				esc_attr($value)
+            esc_attr( $id ),
+            esc_attr( $value )
 		);
 	}
 
@@ -1564,13 +1568,14 @@ trait Helper {
 
 		$value = array_key_exists( 'notice', $arg ) ? $arg['notice'] : '';
 
-		printf('<div class="wpte-product-form-control-input-wrapper">
+		printf(
+            '<div class="wpte-product-form-control-input-wrapper">
 					<div class="wpte-product-notice" id="%1$s">
 						<p>%2$s</p>
 					</div>
 				</div>',
-				esc_attr($id),
-				wp_kses( (string) $value, wpte_plugins_allowedtags() )
+            esc_attr( $id ),
+            wp_kses( (string) $value, wpte_plugins_allowedtags() )
 		);
 	}
 
@@ -1685,7 +1690,7 @@ trait Helper {
 	 */
 	public function wishlist_admin_group_control( $id, $styleData = [], $arg = [] ) {
 
-		$operator = array_key_exists('operator', $arg) ? $arg['operator'] : '';
+		$operator = array_key_exists( 'operator', $arg ) ? $arg['operator'] : '';
 
 		$this->add_control(
 			'wpte_product_layout_wishlist_icon_switcher',
@@ -1703,12 +1708,11 @@ trait Helper {
 		);
 
 		if ( $operator === 'icon' || $operator === 'icontext' ) {
-
 			$this->add_control(
 				'wpte-product-wishlist-icon',
 				$this->style,
 				[
-					'label'       => __('Wishlist Icon', 'wpte-product-layout'),
+					'label'       => __( 'Wishlist Icon', 'wpte-product-layout' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-wishlist-3',
 					'css'         => 'padding-bottom:10px',
@@ -1724,7 +1728,7 @@ trait Helper {
 				'wpte-product-wishlist-added-icon',
 				$this->style,
 				[
-					'label'       => __('Added Icon', 'wpte-product-layout'),
+					'label'       => __( 'Added Icon', 'wpte-product-layout' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-wishlist-11',
 					'condition'   => [
@@ -1779,9 +1783,9 @@ trait Helper {
 				'wpte-product-wishlist-text',
 				$this->style,
 				[
-					'label'       => __('Wishlist Text', 'wpte-product-layout'),
+					'label'       => __( 'Wishlist Text', 'wpte-product-layout' ),
 					'type'        => Controls::TEXT,
-					'default'     => __('Wishlist', 'wpte-product-layout'),
+					'default'     => __( 'Wishlist', 'wpte-product-layout' ),
 					'condition'   => [
 						'wpte_product_layout_wishlist_icon_switcher' => 'yes',
 					],
@@ -1792,9 +1796,9 @@ trait Helper {
 				'wpte-product-wishlist-added-text',
 				$this->style,
 				[
-					'label'       => __('Added Text', 'wpte-product-layout'),
+					'label'       => __( 'Added Text', 'wpte-product-layout' ),
 					'type'        => Controls::TEXT,
-					'default'     => __('Added', 'wpte-product-layout'),
+					'default'     => __( 'Added', 'wpte-product-layout' ),
 					'css'         => 'padding-bottom:10px',
 					'condition'   => [
 						'wpte_product_layout_wishlist_icon_switcher' => 'yes',
@@ -1817,7 +1821,7 @@ trait Helper {
 	 */
 	public function compare_admin_group_control( $id, $styleData = [], $arg = [] ) {
 
-		$operator = array_key_exists('operator', $arg) ? $arg['operator'] : '';
+		$operator = array_key_exists( 'operator', $arg ) ? $arg['operator'] : '';
 
 		$this->add_control(
 			'wpte_product_layout_compare_icon_switcher',
@@ -1835,7 +1839,6 @@ trait Helper {
 		);
 
 		if ( $operator === 'icon' || $operator === 'icontext' ) {
-
 			$this->add_control(
 				'wpte-product-compare-icon',
 				$this->style,
@@ -1946,7 +1949,7 @@ trait Helper {
 	 */
 	public function quickview_admin_group_control( $id, $styleData = [], $arg = [] ) {
 
-		$operator = array_key_exists('operator', $arg) ? $arg['operator'] : '';
+		$operator = array_key_exists( 'operator', $arg ) ? $arg['operator'] : '';
 
 		$this->add_control(
 			'wpte_product_layout_quickview_icon_switcher',
@@ -1964,7 +1967,6 @@ trait Helper {
 		);
 
 		if ( $operator === 'icon' || $operator === 'icontext' ) {
-
 			$this->add_control(
 				'wpte-product-quickview-icon',
 				$this->style,
@@ -2058,7 +2060,7 @@ trait Helper {
 			if ( array_key_exists( 'selector', $arg ) && $value != '' ) :
 				foreach ( $arg['selector'] as $key => $val ) {
 					if ( $arg['render'] == true ) :
-						$key = ( strpos( $key, '{{KEY}}' ) ? str_replace('{{KEY}}', explode( 'saarsa', $id )[1], $key ) : $key );
+						$key = ( strpos( $key, '{{KEY}}' ) ? str_replace( '{{KEY}}', explode( 'saarsa', $id )[1], $key ) : $key );
 						$class = str_replace( '{{WRAPPER}}', $this->WRAPPER, $key );
 						$file = str_replace( '{{VALUE}}', str_replace( '+', ' ', $value ), $val );
 						if ( ! empty( $value ) ) :
@@ -2068,15 +2070,16 @@ trait Helper {
 				}
 			endif;
 		}
-		$retunvalue = array_key_exists('selector', $arg) ? htmlspecialchars( wp_json_encode( $arg['selector'] ) ) : '';
+		$retunvalue = array_key_exists( 'selector', $arg ) ? htmlspecialchars( wp_json_encode( $arg['selector'] ) ) : '';
 
-		printf('<div class="wpte-product-form-control-input-wrapper">
+		printf(
+            '<div class="wpte-product-form-control-input-wrapper">
 		<input type="text"  class="wpte-product-font-family" id="%1$s" name="%1$s" value="%2$s" responsive="%3$s" retundata="%4$s">
 		</div>',
-		esc_attr($id),
-		esc_attr($value),
-		esc_attr($arg['responsive']),
-		esc_attr($retunvalue)
+            esc_attr( $id ),
+            esc_attr( $value ),
+            esc_attr( $arg['responsive'] ),
+            esc_attr( $retunvalue )
 		);
 	}
 
@@ -2118,196 +2121,196 @@ trait Helper {
 			$selector      = $arg['selector'];
 		endif;
 
-		$css = array_key_exists( 'css', $arg ) && isset($arg['css']) ? $arg['css'] : '';
+		$css = array_key_exists( 'css', $arg ) && isset( $arg['css'] ) ? $arg['css'] : '';
 		$this->start_popover_control(
-				$id,
-				[
-					'label'          => __( 'Typography', 'wpte-product-layout'),
-					$notcond         => $notcondition,
-					$cond            => $condition,
-					'form_condition' => ( array_key_exists( 'form_condition', $arg ) ? $arg['form_condition'] : '' ),
-					'description'    => $arg['description'],
-					'css'            => $css,
-					'separator'      => $separator,
-				]
+            $id,
+            [
+				'label'          => __( 'Typography', 'wpte-product-layout' ),
+				$notcond         => $notcondition,
+				$cond            => $condition,
+				'form_condition' => ( array_key_exists( 'form_condition', $arg ) ? $arg['form_condition'] : '' ),
+				'description'    => $arg['description'],
+				'css'            => $css,
+				'separator'      => $separator,
+			]
 		);
 
 		$this->add_control(
-				$id . '-font',
-				$data,
-				[
-					'label'        => __( 'Font Family', 'wpte-product-layout' ),
-					'type'         => Controls::FONT,
-					$selectorvalue => 'font-family:{{VALUE}};',
-					$selector_key  => $selector,
-				]
+            $id . '-font',
+            $data,
+            [
+				'label'        => __( 'Font Family', 'wpte-product-layout' ),
+				'type'         => Controls::FONT,
+				$selectorvalue => 'font-family:{{VALUE}};',
+				$selector_key  => $selector,
+			]
 		);
 		$this->add_responsive_control(
-				$id . '-size',
-				$data,
-				[
-					'label'   => __( 'Size', 'wpte-product-layout' ),
-					'type'    => Controls::SLIDER,
-					'default' => [
-						'unit' => 'px',
-						'size' => '',
+            $id . '-size',
+            $data,
+            [
+				'label'   => __( 'Size', 'wpte-product-layout' ),
+				'type'    => Controls::SLIDER,
+				'default' => [
+					'unit' => 'px',
+					'size' => '',
+				],
+				'range'   => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+						'step' => 1,
 					],
-					'range'   => [
-						'px' => [
-							'min' => 0,
-							'max' => 100,
-							'step' => 1,
-						],
-						'em' => [
-							'min' => 0,
-							'max' => 10,
-							'step' => 0.1,
-						],
-						'rem' => [
-							'min' => 0,
-							'max' => 10,
-							'step' => 0.1,
-						],
-						'vm' => [
-							'min' => 0,
-							'max' => 10,
-							'step' => 0.1,
-						],
+					'em' => [
+						'min' => 0,
+						'max' => 10,
+						'step' => 0.1,
 					],
-					$selectorvalue => 'font-size: {{SIZE}}{{UNIT}};',
-					$selector_key => $selector,
-				]
+					'rem' => [
+						'min' => 0,
+						'max' => 10,
+						'step' => 0.1,
+					],
+					'vm' => [
+						'min' => 0,
+						'max' => 10,
+						'step' => 0.1,
+					],
+				],
+				$selectorvalue => 'font-size: {{SIZE}}{{UNIT}};',
+				$selector_key => $selector,
+			]
 		);
 		$this->add_control(
-				$id . '-weight',
-				$data,
-				[
-					'label'        => __( 'Weight', 'wpte-product-layout' ),
-					'type'         => Controls::SELECT,
-					$selectorvalue => 'font-weight: {{VALUE}};',
-					$selector_key  => $selector,
-					'options'      => [
-						'100'    => __( '100', 'wpte-product-layout' ),
-						'200'    => __( '200', 'wpte-product-layout' ),
-						'300'    => __( '300', 'wpte-product-layout' ),
-						'400'    => __( '400', 'wpte-product-layout' ),
-						'500'    => __( '500', 'wpte-product-layout' ),
-						'600'    => __( '600', 'wpte-product-layout' ),
-						'700'    => __( '700', 'wpte-product-layout' ),
-						'800'    => __( '800', 'wpte-product-layout' ),
-						'900'    => __( '900', 'wpte-product-layout' ),
-						''       => __( 'Default', 'wpte-product-layout' ),
-						'normal' => __( 'Normal', 'wpte-product-layout' ),
-						'bold'   => __( 'Bold', 'wpte-product-layout' ),
-					],
-				]
+            $id . '-weight',
+            $data,
+            [
+				'label'        => __( 'Weight', 'wpte-product-layout' ),
+				'type'         => Controls::SELECT,
+				$selectorvalue => 'font-weight: {{VALUE}};',
+				$selector_key  => $selector,
+				'options'      => [
+					'100'    => __( '100', 'wpte-product-layout' ),
+					'200'    => __( '200', 'wpte-product-layout' ),
+					'300'    => __( '300', 'wpte-product-layout' ),
+					'400'    => __( '400', 'wpte-product-layout' ),
+					'500'    => __( '500', 'wpte-product-layout' ),
+					'600'    => __( '600', 'wpte-product-layout' ),
+					'700'    => __( '700', 'wpte-product-layout' ),
+					'800'    => __( '800', 'wpte-product-layout' ),
+					'900'    => __( '900', 'wpte-product-layout' ),
+					''       => __( 'Default', 'wpte-product-layout' ),
+					'normal' => __( 'Normal', 'wpte-product-layout' ),
+					'bold'   => __( 'Bold', 'wpte-product-layout' ),
+				],
+			]
 		);
 		$this->add_control(
-				$id . '-transform',
-				$data,
-				[
-					'label'        => __( 'Transform', 'wpte-product-layout' ),
-					'type'         => Controls::SELECT,
-					'default'      => '',
-					'options'      => [
-						''           => __( 'Default', 'wpte-product-layout' ),
-						'uppercase'  => __( 'Uppercase', 'wpte-product-layout' ),
-						'lowercase'  => __( 'Lowercase', 'wpte-product-layout' ),
-						'capitalize' => __( 'Capitalize', 'wpte-product-layout' ),
-						'none'       => __( 'Normal', 'wpte-product-layout' ),
-					],
-					$selectorvalue => 'text-transform: {{VALUE}};',
-					$selector_key  => $selector,
-				]
+            $id . '-transform',
+            $data,
+            [
+				'label'        => __( 'Transform', 'wpte-product-layout' ),
+				'type'         => Controls::SELECT,
+				'default'      => '',
+				'options'      => [
+					''           => __( 'Default', 'wpte-product-layout' ),
+					'uppercase'  => __( 'Uppercase', 'wpte-product-layout' ),
+					'lowercase'  => __( 'Lowercase', 'wpte-product-layout' ),
+					'capitalize' => __( 'Capitalize', 'wpte-product-layout' ),
+					'none'       => __( 'Normal', 'wpte-product-layout' ),
+				],
+				$selectorvalue => 'text-transform: {{VALUE}};',
+				$selector_key  => $selector,
+			]
 		);
 		$this->add_control(
-				$id . '-style',
-				$data,
-				[
-					'label'        => __( 'Style', 'wpte-product-layout' ),
-					'type'         => Controls::SELECT,
-					'default'      => '',
-					'options'      => [
-						''        => __('Default', 'wpte-product-layout'),
-						'normal'  => __('normal', 'wpte-product-layout'),
-						'italic'  => __('Italic', 'wpte-product-layout'),
-						'oblique' => __('Oblique', 'wpte-product-layout'),
-					],
-					$selectorvalue => 'font-style: {{VALUE}};',
-					$selector_key  => $selector,
-				]
+            $id . '-style',
+            $data,
+            [
+				'label'        => __( 'Style', 'wpte-product-layout' ),
+				'type'         => Controls::SELECT,
+				'default'      => '',
+				'options'      => [
+					''        => __( 'Default', 'wpte-product-layout' ),
+					'normal'  => __( 'normal', 'wpte-product-layout' ),
+					'italic'  => __( 'Italic', 'wpte-product-layout' ),
+					'oblique' => __( 'Oblique', 'wpte-product-layout' ),
+				],
+				$selectorvalue => 'font-style: {{VALUE}};',
+				$selector_key  => $selector,
+			]
 		);
 		$this->add_control(
-				$id . '-decoration',
-				$data,
-				[
-					'label'        => __( 'Decoration', 'wpte-product-layout' ),
-					'type'         => Controls::SELECT,
-					'default'      => '',
-					'options'      => [
-						'' => __( 'Default', 'wpte-product-layout' ),
-						'underline'    => __( 'Underline', 'wpte-product-layout' ),
-						'overline'     => __( 'Overline', 'wpte-product-layout' ),
-						'line-through' => __( 'Line Through', 'wpte-product-layout' ),
-						'none'         => __( 'None', 'wpte-product-layout' ),
-					],
-					$selectorvalue => 'text-decoration: {{VALUE}};',
-					$selector_key  => $selector,
-				]
+            $id . '-decoration',
+            $data,
+            [
+				'label'        => __( 'Decoration', 'wpte-product-layout' ),
+				'type'         => Controls::SELECT,
+				'default'      => '',
+				'options'      => [
+					'' => __( 'Default', 'wpte-product-layout' ),
+					'underline'    => __( 'Underline', 'wpte-product-layout' ),
+					'overline'     => __( 'Overline', 'wpte-product-layout' ),
+					'line-through' => __( 'Line Through', 'wpte-product-layout' ),
+					'none'         => __( 'None', 'wpte-product-layout' ),
+				],
+				$selectorvalue => 'text-decoration: {{VALUE}};',
+				$selector_key  => $selector,
+			]
 		);
 
 		$this->add_responsive_control(
-				$id . '-l-height',
-				$data,
-				[
-					'label'   => __( 'Line Height', 'wpte-product-layout' ),
-					'type'    => Controls::SLIDER,
-					'default' => [
-						'unit' => 'px',
-						'size' => '',
+            $id . '-l-height',
+            $data,
+            [
+				'label'   => __( 'Line Height', 'wpte-product-layout' ),
+				'type'    => Controls::SLIDER,
+				'default' => [
+					'unit' => 'px',
+					'size' => '',
+				],
+				'range'   => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+						'step' => 1,
 					],
-					'range'   => [
-						'px' => [
-							'min' => 0,
-							'max' => 100,
-							'step' => 1,
-						],
-						'em' => [
-							'min' => 0,
-							'max' => 10,
-							'step' => 0.1,
-						],
+					'em' => [
+						'min' => 0,
+						'max' => 10,
+						'step' => 0.1,
 					],
-					$selectorvalue => 'line-height: {{SIZE}}{{UNIT}};',
-					$selector_key  => $selector,
-				]
+				],
+				$selectorvalue => 'line-height: {{SIZE}}{{UNIT}};',
+				$selector_key  => $selector,
+			]
 		);
 
 		$this->add_responsive_control(
-				$id . '-l-spacing',
-				$data,
-				[
-					'label'   => __( 'Letter Spacing', 'wpte-product-layout' ),
-					'type'    => Controls::SLIDER,
-					'default' => [
-						'unit' => 'px',
-						'size' => '',
+            $id . '-l-spacing',
+            $data,
+            [
+				'label'   => __( 'Letter Spacing', 'wpte-product-layout' ),
+				'type'    => Controls::SLIDER,
+				'default' => [
+					'unit' => 'px',
+					'size' => '',
+				],
+				'range'   => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+						'step' => 0.1,
 					],
-					'range'   => [
-						'px' => [
-							'min' => 0,
-							'max' => 100,
-							'step' => 0.1,
-						],
-						'em'  => [
-							'min' => 0,
-							'max' => 10,
-							'step' => 0.01,
-						],
+					'em'  => [
+						'min' => 0,
+						'max' => 10,
+						'step' => 0.01,
 					],
-					$selectorvalue => 'letter-spacing: {{SIZE}}{{UNIT}};',
-					$selector_key  => $selector,
-				]
+				],
+				$selectorvalue => 'letter-spacing: {{SIZE}}{{UNIT}};',
+				$selector_key  => $selector,
+			]
 		);
 		$this->end_popover_control();
 	}
@@ -2368,18 +2371,17 @@ trait Helper {
 				$class = str_replace( '{{WRAPPER}}', $this->CSSWRAPPER, $key );
 				$this->CSSDATA['laptop'][ $class ][ $boxshadow ] = $boxshadow;
 			}
-
 		endif;
-		$css = array_key_exists('css', $arg) && isset($arg['css']) ? $arg['css'] : '';
+		$css = array_key_exists( 'css', $arg ) && isset( $arg['css'] ) ? $arg['css'] : '';
 		$this->start_popover_control(
-				$id,
-				[
-					'label'          => __( 'Box Shadow', 'wpte-product-layout' ),
-					$cond            => $condition,
-					'form_condition' => ( array_key_exists( 'form_condition', $arg ) ? $arg['form_condition'] : '' ),
-					'css'            => $css,
-					'description'    => $arg['description'],
-				]
+            $id,
+            [
+				'label'          => __( 'Box Shadow', 'wpte-product-layout' ),
+				$cond            => $condition,
+				'form_condition' => ( array_key_exists( 'form_condition', $arg ) ? $arg['form_condition'] : '' ),
+				'css'            => $css,
+				'description'    => $arg['description'],
+			]
 		);
 		$this->add_control(
 			$id . '-shadow',
@@ -2565,83 +2567,83 @@ trait Helper {
 		endif;
 		$css = array_key_exists( 'css', $arg ) && isset( $arg['css'] ) ? $arg['css'] : '';
 		$this->start_popover_control(
-				$id,
-				[
-					'label'          => __( 'Border', 'wpte-product-layout' ),
-					$cond            => $condition,
-					'form_condition' => ( array_key_exists( 'form_condition', $arg ) ? $arg['form_condition'] : '' ),
-					'separator'      => $separator,
-					'css'            => $css,
-					'description'    => $arg['description'],
-				]
+            $id,
+            [
+				'label'          => __( 'Border', 'wpte-product-layout' ),
+				$cond            => $condition,
+				'form_condition' => ( array_key_exists( 'form_condition', $arg ) ? $arg['form_condition'] : '' ),
+				'separator'      => $separator,
+				'css'            => $css,
+				'description'    => $arg['description'],
+			]
 		);
 		$this->add_control(
-				$id . '-type',
-				$data,
-				[
-					'label'        => __( 'Type', 'wpte-product-layout' ),
-					'type'         => Controls::SELECT,
-					'default'      => '',
-					'options'      => [
-						''       => __('None', 'wpte-product-layout' ),
-						'solid'  => __( 'Solid', 'wpte-product-layout' ),
-						'dotted' => __( 'Dotted', 'wpte-product-layout' ),
-						'dashed' => __( 'Dashed', 'wpte-product-layout' ),
-						'double' => __( 'Double', 'wpte-product-layout' ),
-						'groove' => __( 'Groove', 'wpte-product-layout' ),
-						'ridge'  => __( 'Ridge', 'wpte-product-layout' ),
-						'inset'  => __( 'Inset', 'wpte-product-layout' ),
-						'outset' => __( 'Outset', 'wpte-product-layout' ),
-						'hidden' => __( 'Hidden', 'wpte-product-layout' ),
-					],
-					$selectorvalue => 'border-style: {{VALUE}};',
-					$selector_key  => $selector,
-				]
+            $id . '-type',
+            $data,
+            [
+				'label'        => __( 'Type', 'wpte-product-layout' ),
+				'type'         => Controls::SELECT,
+				'default'      => '',
+				'options'      => [
+					''       => __( 'None', 'wpte-product-layout' ),
+					'solid'  => __( 'Solid', 'wpte-product-layout' ),
+					'dotted' => __( 'Dotted', 'wpte-product-layout' ),
+					'dashed' => __( 'Dashed', 'wpte-product-layout' ),
+					'double' => __( 'Double', 'wpte-product-layout' ),
+					'groove' => __( 'Groove', 'wpte-product-layout' ),
+					'ridge'  => __( 'Ridge', 'wpte-product-layout' ),
+					'inset'  => __( 'Inset', 'wpte-product-layout' ),
+					'outset' => __( 'Outset', 'wpte-product-layout' ),
+					'hidden' => __( 'Hidden', 'wpte-product-layout' ),
+				],
+				$selectorvalue => 'border-style: {{VALUE}};',
+				$selector_key  => $selector,
+			]
 		);
 		$this->add_responsive_control(
-				$id . '-width',
-				$data,
-				[
-					'label'        => __( 'Width', 'wpte-product-layout' ),
-					'type'         => Controls::DIMENSIONS,
-					$render        => false,
-					'default'      => [
-						'unit' => 'px',
-						'size' => '',
+            $id . '-width',
+            $data,
+            [
+				'label'        => __( 'Width', 'wpte-product-layout' ),
+				'type'         => Controls::DIMENSIONS,
+				$render        => false,
+				'default'      => [
+					'unit' => 'px',
+					'size' => '',
+				],
+				'range'        => [
+					'px' => [
+						'min'  => -100,
+						'max'  => 100,
+						'step' => 1,
 					],
-					'range'        => [
-						'px' => [
-							'min'  => -100,
-							'max'  => 100,
-							'step' => 1,
-						],
-						'em' => [
-							'min'  => 0,
-							'max'  => 10,
-							'step' => 0.01,
-						],
+					'em' => [
+						'min'  => 0,
+						'max'  => 10,
+						'step' => 0.01,
 					],
-					'condition'    => [
-						$id . '-type' => 'EMPTY',
-					],
-					$selectorvalue => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					$selector_key  => $selector,
-				]
+				],
+				'condition'    => [
+					$id . '-type' => 'EMPTY',
+				],
+				$selectorvalue => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				$selector_key  => $selector,
+			]
 		);
 		$this->add_control(
-				$id . '-color',
-				$data,
-				[
-					'label'        => __( 'Color', 'wpte-product-layout' ),
-					'type'         => Controls::COLOR,
-					$render        => false,
-					'default'      => '',
-					$selectorvalue => 'border-color: {{VALUE}};',
-					$selector_key  => $selector,
-					'condition'    => [
-						$id . '-type' => 'EMPTY',
-					],
-				]
+            $id . '-color',
+            $data,
+            [
+				'label'        => __( 'Color', 'wpte-product-layout' ),
+				'type'         => Controls::COLOR,
+				$render        => false,
+				'default'      => '',
+				$selectorvalue => 'border-color: {{VALUE}};',
+				$selector_key  => $selector,
+				'condition'    => [
+					$id . '-type' => 'EMPTY',
+				],
+			]
 		);
 		$this->end_popover_control();
 	}

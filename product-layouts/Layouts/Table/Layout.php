@@ -842,7 +842,7 @@ class Layout extends AdminRender {
 
 		$this->add_control(
 			'wpte-product-table-regular-color-price', $this->style, [
-				'label'             => __( 'Regular Price Color', 'wpte-product-layout'  ),
+				'label'             => __( 'Regular Price Color', 'wpte-product-layout' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -856,7 +856,7 @@ class Layout extends AdminRender {
 
 		$this->add_control(
 			'wpte-product-table-sale-color-price', $this->style, [
-				'label'             => __( 'Sale Price Color', 'wpte-product-layout'  ),
+				'label'             => __( 'Sale Price Color', 'wpte-product-layout' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [

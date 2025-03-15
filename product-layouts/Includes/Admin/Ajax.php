@@ -51,35 +51,41 @@ class Ajax {
 			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
 		}
 
-		$name        = isset($_POST['name']) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
-		$style_name  = isset($_POST['style_name']) ? sanitize_text_field( wp_unslash( $_POST['style_name'] ) ) : '';
-		$rawdata     = isset($_POST['rawdata']) ? stripslashes( sanitize_text_field( wp_unslash( $_POST['rawdata'] ) )) : '';
-		$stylesheet  = isset($_POST['stylesheet']) ? sanitize_text_field( wp_unslash( $_POST['stylesheet'] ) ) : '';
+		$name        = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
+		$style_name  = isset( $_POST['style_name'] ) ? sanitize_text_field( wp_unslash( $_POST['style_name'] ) ) : '';
+		$rawdata     = isset( $_POST['rawdata'] ) ? stripslashes( sanitize_text_field( wp_unslash( $_POST['rawdata'] ) ) ) : '';
+		$stylesheet  = isset( $_POST['stylesheet'] ) ? sanitize_text_field( wp_unslash( $_POST['stylesheet'] ) ) : '';
 		$font_family = sanitize_text_field( '' );
 
-		$insert_id = wpte_layout_insert( [
-			'name'        => $name,
-			'style_name'  => $style_name,
-			'rawdata'     => $rawdata,
-			'stylesheet'  => $stylesheet,
-			'font_family' => $font_family,
-		] );
+		$insert_id = wpte_layout_insert(
+            [
+				'name'        => $name,
+				'style_name'  => $style_name,
+				'rawdata'     => $rawdata,
+				'stylesheet'  => $stylesheet,
+				'font_family' => $font_family,
+			]
+        );
 
 		$names       = [];
-		$is_match    = preg_match_all('/(wpte-product-layout-wrapper-)[0-9]+/', $stylesheet, $names);
+		$is_match    = preg_match_all( '/(wpte-product-layout-wrapper-)[0-9]+/', $stylesheet, $names );
 		$replaceData = "wpte-product-layout-wrapper-$insert_id";
 		$get_match   = $names[0][0];
-		$finalData   = preg_replace( "/$get_match/i", $replaceData, $stylesheet);
-		wpte_layout_update_style($insert_id, $finalData);
+		$finalData   = preg_replace( "/$get_match/i", $replaceData, $stylesheet );
+		wpte_layout_update_style( $insert_id, $finalData );
 
-		wp_send_json_success( [
-			'url' => $this->url_conveter( [ $style_name, $insert_id ] ),
-		] );
+		wp_send_json_success(
+            [
+				'url' => $this->url_conveter( [ $style_name, $insert_id ] ),
+			]
+        );
 
 		if ( is_wp_error( $insert_id ) ) {
-			wp_send_json_error( [
-				'message' => __( 'Data Insert Failed Please retry again!', 'wpte-product-layout' ),
-			] );
+			wp_send_json_error(
+                [
+					'message' => __( 'Data Insert Failed Please retry again!', 'wpte-product-layout' ),
+				]
+            );
 		}
 	}
 
@@ -99,7 +105,7 @@ class Ajax {
 			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
 		}
 
-		$id = isset($_POST['id']) ? intval($_POST['id']) : '';
+		$id = isset( $_POST['id'] ) ? intval( $_POST['id'] ) : '';
 		wpte_delete_layout( $id );
 		exit;
 	}
@@ -120,17 +126,17 @@ class Ajax {
 			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
 		}
 
-		$id       = isset($_POST['wpteid']) ? intval( $_POST['wpteid'] ) : '';
+		$id       = isset( $_POST['wpteid'] ) ? intval( $_POST['wpteid'] ) : '';
 		$rawdatas = ! empty( $_POST['rawdata'] ) && is_array( $_POST['rawdata'] ) ? filter_input( INPUT_POST, 'rawdata', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
 		$rawdata  = [];
 		foreach ( $rawdatas as $rawdata_val ) {
-			if ( strpos( $rawdata_val['name'], "[]" ) !== false ) {
+			if ( strpos( $rawdata_val['name'], '[]' ) !== false ) {
 				$name = str_replace( '[]', '', $rawdata_val['name'] );
-				$rawdata[$name][] = $rawdata_val['value'];
+				$rawdata[ $name ][] = $rawdata_val['value'];
 			} else {
 				$name = $rawdata_val['name'];
-				$rawdata[$name] = $rawdata_val['value'];
-			}	
+				$rawdata[ $name ] = $rawdata_val['value'];
+			}
 		}
 		$rawdata  = $rawdata ? wp_json_encode( $rawdata ) : '';
 		$settings = json_decode( $rawdata, true );
@@ -165,13 +171,13 @@ class Ajax {
 		$rawdatas  = ! empty( $_POST['rawdata'] ) && is_array( $_POST['rawdata'] ) ? filter_input( INPUT_POST, 'rawdata', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
 		$rawdata   = [];
 		foreach ( $rawdatas as $rawdata_val ) {
-			if ( strpos( $rawdata_val['name'], "[]" ) !== false ) {
+			if ( strpos( $rawdata_val['name'], '[]' ) !== false ) {
 				$name = str_replace( '[]', '', $rawdata_val['name'] );
-				$rawdata[$name][] = $rawdata_val['value'];
+				$rawdata[ $name ][] = $rawdata_val['value'];
 			} else {
 				$name = $rawdata_val['name'];
-				$rawdata[$name] = $rawdata_val['value'];
-			}	
+				$rawdata[ $name ] = $rawdata_val['value'];
+			}
 		}
 		$rawdata   = $rawdata ? wp_json_encode( $rawdata ) : '';
 		$settings  = json_decode( $rawdata, true );
@@ -179,9 +185,9 @@ class Ajax {
 		$db_data   = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . 'wpte_product_layout_style WHERE id = %d ', $id ), ARRAY_A );
 		$StyleName = explode( '-', ucfirst( $db_data['style_name'] ) );
 
-		$cls     = '\WPTE_PRODUCT_LAYOUT\Layouts\\' . $StyleName[0] . '\Frontend\Layout' . $StyleName[1];
+		$cls = '\WPTE_PRODUCT_LAYOUT\Layouts\\' . $StyleName[0] . '\Frontend\Layout' . $StyleName[1];
 
-		if ( class_exists($cls) ) {
+		if ( class_exists( $cls ) ) {
 			$clas = new $cls( [], $user );
 		}
 
@@ -195,7 +201,7 @@ class Ajax {
 				echo '</div>';
 			}
 			if ( 'load_more' === $pagination_load_more ) {
-				printf( '<div class="wpte-product-load-more">');
+				printf( '<div class="wpte-product-load-more">' );
 				$clas->wpte_products_load_more_render( $settings, $id );
 				echo '</div>';
 			}
@@ -235,7 +241,7 @@ class Ajax {
 	public function safe_path( $path ) {
 
 		$path = str_replace( [ '//', '\\\\' ], [ '/', '\\' ], $path );
-		return str_replace( [ '/', '\\' ], DIRECTORY_SEPARATOR, $path);
+		return str_replace( [ '/', '\\' ], DIRECTORY_SEPARATOR, $path );
 	}
 
 	/**
@@ -257,16 +263,16 @@ class Ajax {
 		}
 
 		$filename = ! empty( $_FILES['file']['name'] ) ? sanitize_file_name( wp_unslash( $_FILES['file']['name'] ) ) : '';
-		$folder   = $this->safe_path(WPTE_WPL_PATH . 'assets/export/');
+		$folder   = $this->safe_path( WPTE_WPL_PATH . 'assets/export/' );
 		if ( ! is_dir( $folder ) ) :
-			mkdir($folder, 0777);
+			mkdir( $folder, 0777 );
 		endif;
 		if ( is_file( $folder . $filename ) ) :
-			unlink($folder . $filename); // delete file.
+			unlink( $folder . $filename ); // delete file.
 		endif;
 		$uploaded_file_path = isset( $_FILES['file']['tmp_name'] ) ? filter_var( $_FILES['file']['tmp_name'], FILTER_SANITIZE_SPECIAL_CHARS ) : '';
 		$files              = isset( $_FILES['file']['tmp_name'] ) ? $uploaded_file_path : '';
-		move_uploaded_file( $files, $folder . $filename);
+		move_uploaded_file( $files, $folder . $filename );
 
 		$this->wpte_file_extract( $folder, $filename );
 	}
@@ -281,54 +287,60 @@ class Ajax {
 	public function wpte_file_extract( $folder, $filename ) {
 
 		if ( is_file( $folder . $filename ) ) {
-
 			$FileData = file_get_contents( $folder . $filename );
 			$params   = json_decode( $FileData, true );
 
-			$name        = isset($params['style']['name']) ? sanitize_text_field( $params['style']['name'] ) : '';
-			$style_name  = isset($params['style']['style_name']) ? sanitize_text_field( $params['style']['style_name'] ) : '';
-			$rawdata     = isset( $params['style']['rawdata'] ) ? stripslashes(sanitize_text_field( $params['style']['rawdata'] )) : '';
+			$name        = isset( $params['style']['name'] ) ? sanitize_text_field( $params['style']['name'] ) : '';
+			$style_name  = isset( $params['style']['style_name'] ) ? sanitize_text_field( $params['style']['style_name'] ) : '';
+			$rawdata     = isset( $params['style']['rawdata'] ) ? stripslashes( sanitize_text_field( $params['style']['rawdata'] ) ) : '';
 			$stylesheet  = isset( $params['style']['stylesheet'] ) ? sanitize_text_field( $params['style']['stylesheet'] ) : '';
 			$font_family = isset( $params['style']['font_family'] ) ? sanitize_text_field( $params['style']['font_family'] ) : '';
 
 			if ( ! $style_name && ! $rawdata && ! $stylesheet ) {
-
 				if ( is_file( $folder . $filename ) ) :
-					unlink($folder . $filename); // delete file.
+					unlink( $folder . $filename ); // delete file.
 				endif;
-				wp_send_json_success( [
-					'failed' => __('Invalid JSON File! Please import a exported valid JSON file.', 'wpte-product-layout'),
-				] );
+				wp_send_json_success(
+                    [
+						'failed' => __( 'Invalid JSON File! Please import a exported valid JSON file.', 'wpte-product-layout' ),
+					]
+                );
 				return;
 			}
 
-			$insert_id = wpte_layout_insert( [
-				'name'        => $name,
-				'style_name'  => $style_name,
-				'rawdata'     => $rawdata,
-				'stylesheet'  => $stylesheet,
-				'font_family' => $font_family,
-			] );
+			$insert_id = wpte_layout_insert(
+                [
+					'name'        => $name,
+					'style_name'  => $style_name,
+					'rawdata'     => $rawdata,
+					'stylesheet'  => $stylesheet,
+					'font_family' => $font_family,
+				]
+            );
 
 			$names       = [];
-			$is_match    = preg_match_all( '/(wpte-product-layout-wrapper-)[0-9]+/', $stylesheet, $names);
+			$is_match    = preg_match_all( '/(wpte-product-layout-wrapper-)[0-9]+/', $stylesheet, $names );
 			$replaceData = "wpte-product-layout-wrapper-$insert_id";
 			$get_match   = $names[0][0];
-			$finalData   = preg_replace( "/$get_match/i", $replaceData, $stylesheet);
-			wpte_layout_update_style($insert_id, $finalData);
+			$finalData   = preg_replace( "/$get_match/i", $replaceData, $stylesheet );
+			wpte_layout_update_style( $insert_id, $finalData );
 
 			if ( is_file( $folder . $filename ) ) :
-				unlink($folder . $filename); // delete file.
+				unlink( $folder . $filename ); // delete file.
 			endif;
 
-			wp_send_json_success( [
-				'url' => $this->url_conveter( [ $style_name, $insert_id ] ),
-			] );
+			wp_send_json_success(
+                [
+					'url' => $this->url_conveter( [ $style_name, $insert_id ] ),
+				]
+            );
 
 			if ( is_wp_error( $insert_id ) ) {
-				wp_send_json_error( [
-					'message' => __( 'Data Insert Failed Please retry again!', 'wpte-product-layout' ),
-				] );
+				wp_send_json_error(
+                    [
+						'message' => __( 'Data Insert Failed Please retry again!', 'wpte-product-layout' ),
+					]
+                );
 			}
 		}
 	}
@@ -349,12 +361,12 @@ class Ajax {
 			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
 		}
 
-		$id         = isset($_POST['id']) ? intval($_POST['id']) : '';
+		$id         = isset( $_POST['id'] ) ? intval( $_POST['id'] ) : '';
 		$db_data    = wpte_get_layout( $id );
 		$db_dataArr = json_decode( wp_json_encode( $db_data ), true );
 		$arrgg      = [ 'style' => $db_dataArr ];
 		$JsonData   = wp_json_encode( $arrgg );
-		print_r($JsonData);
+		print_r( $JsonData );
 		exit;
 	}
 
@@ -379,13 +391,15 @@ class Ajax {
 		$data = [];
 
 		foreach ( $items as $item ) {
-			$data[$item['name']] = $item['value'];
+			$data[ $item['name'] ] = $item['value'];
 		}
 
 		update_option( 'wpte_pl_settings', $data );
 
-		wp_send_json_success( [
-			'message' => esc_html__( 'Settings Saved', 'wpte-product-layout' ),
-		] );
+		wp_send_json_success(
+            [
+				'message' => esc_html__( 'Settings Saved', 'wpte-product-layout' ),
+			]
+        );
 	}
 }

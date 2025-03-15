@@ -28,21 +28,25 @@ class Shortcode {
 	public function loader() {
 		wp_enqueue_script( 'wpte-wpl-admin-js' );
 
-		wp_localize_script( 'wpte-wpl-admin-js', 'wpteAdmin', [
-			'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
-			'wpte_nonce' => wp_create_nonce( 'wpte-delete-nonce' ),
-			'error'      => esc_html__( 'Something Went Wrong!', 'wpte-product-layout' ),
-			'message'    => esc_html__( 'Are you sure?', 'wpte-product-layout' ),
-		] );
+		wp_localize_script(
+            'wpte-wpl-admin-js', 'wpteAdmin', [
+				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
+				'wpte_nonce' => wp_create_nonce( 'wpte-delete-nonce' ),
+				'error'      => esc_html__( 'Something Went Wrong!', 'wpte-product-layout' ),
+				'message'    => esc_html__( 'Are you sure?', 'wpte-product-layout' ),
+			]
+        );
 		wp_enqueue_script( 'wpte-wpl-bootstrap-js' );
 
 		wp_enqueue_script( 'wpte-wpl-create-js' );
 
-		wp_localize_script( 'wpte-wpl-create-js', 'wpteLayout', [
-			'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
-			'wpte_nonce' => wp_create_nonce( 'wpte-new-create-nonce' ),
-			'error'      => esc_html__( 'Something Went Wrong!', 'wpte-product-layout' ),
-		] );
+		wp_localize_script(
+            'wpte-wpl-create-js', 'wpteLayout', [
+				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
+				'wpte_nonce' => wp_create_nonce( 'wpte-new-create-nonce' ),
+				'error'      => esc_html__( 'Something Went Wrong!', 'wpte-product-layout' ),
+			]
+        );
 	}
 
 	/**
@@ -64,8 +68,8 @@ class Shortcode {
 				<div class="wpte-wpl-row">
 					<div class="wrap">
 						<h1 class="wp-heading-inline"><?php echo esc_html__( 'Shortcode', 'wpte-product-layout' ); ?></h1>
-						<a href="<?php echo esc_url(admin_url( 'admin.php?page=product-layouts' )); ?>" class="page-title-action"><?php echo esc_html__( 'Add New', 'wpte-product-layout' ); ?></a>
-						<a href="<?php echo esc_url(admin_url( 'admin.php?page=product-layouts-shortcode&action=import' )); ?>" class="page-title-action"><?php echo esc_html__( 'Import', 'wpte-product-layout' ); ?></a>
+						<a href="<?php echo esc_url( admin_url( 'admin.php?page=product-layouts' ) ); ?>" class="page-title-action"><?php echo esc_html__( 'Add New', 'wpte-product-layout' ); ?></a>
+						<a href="<?php echo esc_url( admin_url( 'admin.php?page=product-layouts-shortcode&action=import' ) ); ?>" class="page-title-action"><?php echo esc_html__( 'Import', 'wpte-product-layout' ); ?></a>
 					</div>
 					<div class="wpte-wpl-list-data-table">
 						<form method="GET">
@@ -91,7 +95,8 @@ class Shortcode {
 	 * @return void
 	 */
 	public function layout_clone() {
-		printf( '<div class="modal fade" id="wpte-product-layout-create-modal">
+		printf(
+            '<div class="modal fade" id="wpte-product-layout-create-modal">
 					<form method="post" id="wpte-wpl-create-modal-form">
 						<div class="modal-dialog">
 							<div class="modal-content">

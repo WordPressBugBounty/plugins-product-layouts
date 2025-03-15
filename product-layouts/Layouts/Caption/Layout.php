@@ -388,7 +388,7 @@ class Layout extends AdminRender {
 			$this->style,
 			[
 				'type'        => Controls::CART,
-				'default'     => __('Cart Icons', 'wpte-product-layout'),
+				'default'     => __( 'Cart Icons', 'wpte-product-layout' ),
 				'operator'    => 'icontext', // icon, text, icontext.
 				'condition'   => [
 					'wpte_caption_products_show_icons' => 'yes',
@@ -417,7 +417,6 @@ class Layout extends AdminRender {
 			]
 		);
 		if ( ! class_exists( 'TInvWL_Admin_Base' ) ) {
-
 			$plugin    = 'ti-woocommerce-wishlist';
 			$file_path = 'ti-woocommerce-wishlist/ti-woocommerce-wishlist.php';
 			$notice    = 'Wish List';
@@ -428,20 +427,18 @@ class Layout extends AdminRender {
 				[
 					'label'       => '',
 					'type'        => Controls::NOTICE,
-					'notice'      => admin_notice_missing_plugin($plugin, $file_path, $notice),
+					'notice'      => admin_notice_missing_plugin( $plugin, $file_path, $notice ),
 					'css'         => 'padding-bottom:10px',
 					'description' => '',
 				]
 			);
-
 		} else {
-
 			$this->add_group_control(
 				'wpte-product-caption-wishlist-icon',
 				$this->style,
 				[
 					'type'        => Controls::WISHLIST,
-					'default'     => __('Wishlist', 'wpte-product-layout'),
+					'default'     => __( 'Wishlist', 'wpte-product-layout' ),
 					'operator'    => 'icon', // icon, text, icontext.
 					'condition'   => [
 						'wpte_general_products_show_icons' => 'yes',
@@ -1348,8 +1345,8 @@ class Layout extends AdminRender {
 			'wpte_product_layout_caption_button_start_tabs',
 			[
 				'options' => [
-					'normal' => esc_html__('Normal ', 'wpte-product-layout'),
-					'hover'  => esc_html__('Hover ', 'wpte-product-layout'),
+					'normal' => esc_html__( 'Normal ', 'wpte-product-layout' ),
+					'hover'  => esc_html__( 'Hover ', 'wpte-product-layout' ),
 				],
 			]
 		);

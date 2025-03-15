@@ -31,7 +31,7 @@ class Layout1 extends Public_Render {
 	 */
 	public function layout_render( $settings, $user ) {
 
-		$column  = 'wpte-product-card ' . $this->column_render('wpte_product_layout_col', $settings);
+		$column  = 'wpte-product-card ' . $this->column_render( 'wpte_product_layout_col', $settings );
 		$args    = $this->wpte_get_woo_products( $settings ) ?? [];
 		$is_icon = isset( $settings['wpte_product_layout_cart_icon_switcher'] ) ? $settings['wpte_product_layout_cart_icon_switcher'] : '';
 
@@ -45,16 +45,16 @@ class Layout1 extends Public_Render {
 		$nofollow   = 'a' === $hyperlink && 'yes' === $_nofollow ? 'rel="nofollow"' : '';
 
 		// Wish List.
-		$is_wishlist_icon = isset($settings['wpte_product_layout_wishlist_icon_switcher']) ? $settings['wpte_product_layout_wishlist_icon_switcher'] : '';
+		$is_wishlist_icon = isset( $settings['wpte_product_layout_wishlist_icon_switcher'] ) ? $settings['wpte_product_layout_wishlist_icon_switcher'] : '';
 
 		// Quick View.
-		$is_quickview_icon = isset($settings['wpte_product_layout_quickview_icon_switcher']) ? $settings['wpte_product_layout_quickview_icon_switcher'] : '';
+		$is_quickview_icon = isset( $settings['wpte_product_layout_quickview_icon_switcher'] ) ? $settings['wpte_product_layout_quickview_icon_switcher'] : '';
 
 		// Cart.
-		$is_cart_icon = isset($settings['wpte_product_layout_cart_icon_switcher']) ? $settings['wpte_product_layout_cart_icon_switcher'] : '';
+		$is_cart_icon = isset( $settings['wpte_product_layout_cart_icon_switcher'] ) ? $settings['wpte_product_layout_cart_icon_switcher'] : '';
 
 		// Compare.
-		$show_compare = isset($settings['wpte_product_layout_compare_icon_switcher']) ? $settings['wpte_product_layout_compare_icon_switcher'] : '';
+		$show_compare = isset( $settings['wpte_product_layout_compare_icon_switcher'] ) ? $settings['wpte_product_layout_compare_icon_switcher'] : '';
 
 		// Show and Hide.
 		$showCat      = isset( $settings['wpte_call_to_action_products_show_cat'] ) ? $settings['wpte_call_to_action_products_show_cat'] : '';
@@ -91,7 +91,7 @@ class Layout1 extends Public_Render {
 				$product_cats          = wp_get_post_terms( get_the_ID(), 'product_cat', $catArgs );
 				$product_cats_counter  = count( $product_cats );
 				$img_href              = 'a' === $hyperlink ? 'href="' . esc_url( $product->get_permalink() ) . '"' : '';
-				$product_image         = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail') ? wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "$image_size" ) : '';
+				$product_image         = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) ? wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "$image_size" ) : '';
 				$product_gallery_image = isset( $product->get_gallery_image_ids()[0] ) ? wp_kses_post( wp_get_attachment_image_url( $product->get_gallery_image_ids()[0], "$image_size" ) ) : '';
 				$hoverImage            = $product_gallery_image ? 'wpte-call-to-action-layout-product-hover-image' : '';
 				$hoverGimage           = $product_gallery_image ? 'wpte-call-to-action-layout-product-hover-g-image' : '';
@@ -105,18 +105,19 @@ class Layout1 extends Public_Render {
 							$this->wpte_product_badge_label();
 						}
 						if ( $showImage ) :
-							printf('<%1$s %2$s %3$s %4$s class="wpte-call-to-action-layout-product-img">
+							printf(
+                                '<%1$s %2$s %3$s %4$s class="wpte-call-to-action-layout-product-img">
 								<div class="wpte-call-to-action-layout-product-thumb %5$s" style="background-image:url(%6$s)"></div>
 								<div class="wpte-call-to-action-layout-product-gallery-thumb %7$s" style="background-image:url(%8$s)"></div>
 							</%1$s>',
-							esc_html( $hyperlink ),
-							wp_kses( $img_href, true ),
-							wp_kses( $new_window, true ),
-							wp_kses( $nofollow, true ),
-							esc_attr($hoverImage),
-							wp_kses_post( $product_image[0] ),
-							esc_attr( $hoverGimage ),
-							wp_kses_post( $product_gallery_image )
+                                esc_html( $hyperlink ),
+                                wp_kses( $img_href, true ),
+                                wp_kses( $new_window, true ),
+                                wp_kses( $nofollow, true ),
+                                esc_attr( $hoverImage ),
+                                wp_kses_post( $product_image[0] ),
+                                esc_attr( $hoverGimage ),
+                                wp_kses_post( $product_gallery_image )
 							);
 						endif;
 						if ( $showIcons ) :
@@ -156,7 +157,7 @@ class Layout1 extends Public_Render {
 									$_cat_link = get_term_link( $product_cats[ $i ]->term_id, 'product_cat' );
 									$cat_link  = esc_url( $_cat_link );
 									$cat_name  = esc_html( $product_cats[ $i ]->name );
-									echo "<a href='" . esc_url($cat_link) . "'>" . esc_html($cat_name) . '</a>';
+									echo "<a href='" . esc_url( $cat_link ) . "'>" . esc_html( $cat_name ) . '</a>';
 								}
 								?>
 							</div>
@@ -166,7 +167,7 @@ class Layout1 extends Public_Render {
 								?>
 							<div class="wpte-call-to-action-layout-title-area">
 								<<?php echo esc_html( $title_tag ); ?> class="wpte-call-to-action-layout-product-title">
-									<?php printf('<a href="%1$s">%2$s</a>', esc_url($product->get_permalink()), wp_kses_post($product->get_title())); ?>
+									<?php printf( '<a href="%1$s">%2$s</a>', esc_url( $product->get_permalink() ), wp_kses_post( $product->get_title() ) ); ?>
 								</<?php echo esc_html( $title_tag ); ?>>
 							</div>
 								<?php
@@ -174,7 +175,7 @@ class Layout1 extends Public_Render {
 							if ( $showRating ) :
 								?>
 							<div class="wpte-call-to-action-layout-rating-area">
-								<?php echo wp_kses_post( (string) product_rating_render( $product )); ?>
+								<?php echo wp_kses_post( (string) product_rating_render( $product ) ); ?>
 							</div>
 								<?php
 								endif;

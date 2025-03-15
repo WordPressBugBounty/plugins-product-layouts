@@ -30,7 +30,7 @@ class Layout5 extends Layout {
 			'wpte_product_layout_general_style_5_icon_width',
 			$this->style,
 			[
-				'label'        => __( 'Width', 'product-layouts-premium'  ),
+				'label'        => __( 'Width', 'wpte-product-layout' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -66,7 +66,7 @@ class Layout5 extends Layout {
 			'wpte_product_layout_general_style_5_icon_height',
 			$this->style,
 			[
-				'label'        => __( 'Height', 'product-layouts-premium'  ),
+				'label'        => __( 'Height', 'wpte-product-layout' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -101,7 +101,7 @@ class Layout5 extends Layout {
 			'wpte_product_layout_general_style_5_icon_hover_height',
 			$this->style,
 			[
-				'label'        => __( 'Hover Height', 'product-layouts-premium'  ),
+				'label'        => __( 'Hover Height', 'wpte-product-layout' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -136,8 +136,8 @@ class Layout5 extends Layout {
 			'wpte_product_layout_general_style_5_start_tabs',
 			[
 				'options' => [
-					'normal' => esc_html__('Normal ', 'product-layouts-premium' ),
-					'hover'  => esc_html__('Hover ', 'product-layouts-premium' ),
+					'normal' => esc_html__( 'Normal ', 'wpte-product-layout' ),
+					'hover'  => esc_html__( 'Hover ', 'wpte-product-layout' ),
 				],
 			]
 		);
@@ -145,7 +145,7 @@ class Layout5 extends Layout {
 			$this->add_control(
 				'wpte_product_layout_general_style_5_icon_bg',
 				$this->style, [
-					'label'             => __( 'Background', 'product-layouts-premium'  ),
+					'label'             => __( 'Background', 'wpte-product-layout' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '#ffffff',
 					'selector'          => [
@@ -157,7 +157,7 @@ class Layout5 extends Layout {
 			);
 			$this->add_control(
 				'wpte_product_layout_general_style_5_icon_color', $this->style, [
-					'label'             => __( 'Color', 'product-layouts-premium'  ),
+					'label'             => __( 'Color', 'wpte-product-layout' ),
 					'type'              => Controls::COLOR,
 					'default'           => '#ffffff',
 					'selector'          => [
@@ -176,7 +176,7 @@ class Layout5 extends Layout {
 			$this->add_control(
 				'wpte_product_layout_general_style_5_icon_bg_hover',
 				$this->style, [
-					'label'             => __( 'Background', 'product-layouts-premium'  ),
+					'label'             => __( 'Background', 'wpte-product-layout' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '#ff6f61',
 					'selector'          => [
@@ -188,7 +188,7 @@ class Layout5 extends Layout {
 			);
 			$this->add_control(
 				'wpte_product_layout_general_style_5_icon_hover_color', $this->style, [
-					'label'             => __( 'Color', 'product-layouts-premium'  ),
+					'label'             => __( 'Color', 'wpte-product-layout' ),
 					'type'              => Controls::COLOR,
 					'default'           => '#ffffff',
 					'selector'          => [
@@ -209,7 +209,7 @@ class Layout5 extends Layout {
 			'wpte_product_layout_general_style_5_icon_size',
 			$this->style,
 			[
-				'label'        => __( 'Icon Size', 'product-layouts-premium'  ),
+				'label'        => __( 'Icon Size', 'wpte-product-layout' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'separator'    => 'before',
@@ -247,7 +247,7 @@ class Layout5 extends Layout {
 			'wpte_product_layout_general_style_5_icon_gap',
 			$this->style,
 			[
-				'label'        => __( 'Icon Gap', 'product-layouts-premium'  ),
+				'label'        => __( 'Icon Gap', 'wpte-product-layout' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -304,7 +304,7 @@ class Layout5 extends Layout {
 			'wpte_product_layout_general_style_5_icon_border_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'product-layouts-premium'  ),
+				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -339,7 +339,7 @@ class Layout5 extends Layout {
 			'wpte_product_layout_general_style_5_icon_margin',
 			$this->style,
 			[
-				'label'             => __( 'Margin', 'product-layouts-premium'  ),
+				'label'             => __( 'Margin', 'wpte-product-layout' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -419,7 +419,7 @@ class Layout5 extends Layout {
 			$this->style,
 			[
 				'type'        => Controls::CART,
-				'default'     => __('Cart Icons', 'product-layouts-premium' ),
+				'default'     => __( 'Cart Icons', 'wpte-product-layout' ),
 				'operator'    => 'icon', // icon, text, icontext.
 				'condition'   => [
 					'wpte_general_products_show_icons' => 'yes',
@@ -441,7 +441,6 @@ class Layout5 extends Layout {
 			]
 		);
 		if ( ! class_exists( 'TInvWL_Admin_Base' ) ) {
-
 			$plugin    = 'ti-woocommerce-wishlist';
 			$file_path = 'ti-woocommerce-wishlist/ti-woocommerce-wishlist.php';
 			$notice    = 'Wish List';
@@ -452,20 +451,18 @@ class Layout5 extends Layout {
 				[
 					'label'       => '',
 					'type'        => Controls::NOTICE,
-					'notice'      => admin_notice_missing_plugin($plugin, $file_path, $notice),
+					'notice'      => admin_notice_missing_plugin( $plugin, $file_path, $notice ),
 					'css'         => 'padding-bottom:10px',
 					'description' => '',
 				]
 			);
-
 		} else {
-
 			$this->add_group_control(
 				'wpte-product-general-style-5-wishlist-icon',
 				$this->style,
 				[
 					'type'        => Controls::WISHLIST,
-					'default'     => __('Wishlist', 'product-layouts-premium' ),
+					'default'     => __( 'Wishlist', 'wpte-product-layout' ),
 					'operator'    => 'icon', // icon, text, icontext.
 					'condition'   => [
 						'wpte_general_products_show_icons' => 'yes',
@@ -473,7 +470,6 @@ class Layout5 extends Layout {
 					'description' => '',
 				]
 			);
-
 		}
 		$this->end_controls_section();
 
@@ -493,7 +489,7 @@ class Layout5 extends Layout {
 			$this->style,
 			[
 				'type'        => Controls::QUICKVIEW,
-				'default'     => __( 'Quick View', 'product-layouts-premium' ),
+				'default'     => __( 'Quick View', 'wpte-product-layout' ),
 				'operator'    => 'icon', // icon, text, icontext.
 				'condition'   => [
 					'wpte_general_products_show_icons' => 'yes',
@@ -520,7 +516,7 @@ class Layout5 extends Layout {
 			$this->style,
 			[
 				'type'        => Controls::COMPARE,
-				'default'     => __('Compare', 'product-layouts-premium' ),
+				'default'     => __( 'Compare', 'wpte-product-layout' ),
 				'operator'    => 'icon', // icon, text, icontext.
 				'condition'   => [
 					'wpte_general_products_show_icons' => 'yes',

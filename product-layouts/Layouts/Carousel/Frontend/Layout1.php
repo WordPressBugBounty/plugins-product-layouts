@@ -19,8 +19,8 @@ class Layout1 extends Public_Render {
 	 * @return void
 	 */
 	public function public_js() {
-		wp_enqueue_style( 'wpte-swiperjs-slider-style', WPTE_WPL_ASSETS . 'lib/swiperjs/swiper-bundle.min.css', null, filemtime( WPTE_WPL_PATH . "assets/lib/swiperjs/swiper-bundle.min.css" ), false );
-		wp_enqueue_script( 'wpte-swiperjs-slider', WPTE_WPL_ASSETS . 'lib/swiperjs/swiper-bundle.min.js', [ 'jquery' ], filemtime( WPTE_WPL_PATH . "assets/lib/swiperjs/swiper-bundle.min.js" ), true );
+		wp_enqueue_style( 'wpte-swiperjs-slider-style', WPTE_WPL_ASSETS . 'lib/swiperjs/swiper-bundle.min.css', null, filemtime( WPTE_WPL_PATH . 'assets/lib/swiperjs/swiper-bundle.min.css' ), false );
+		wp_enqueue_script( 'wpte-swiperjs-slider', WPTE_WPL_ASSETS . 'lib/swiperjs/swiper-bundle.min.js', [ 'jquery' ], filemtime( WPTE_WPL_PATH . 'assets/lib/swiperjs/swiper-bundle.min.js' ), true );
 		$this->jshandle = 'wpte-product-layout-swiperjs';
 	}
 
@@ -54,7 +54,7 @@ class Layout1 extends Public_Render {
 		$lap = isset( $settings['wpte_carousel_slider_per_view-lap-size'] ) && '' !== $settings['wpte_carousel_slider_per_view-lap-size'] ? $settings['wpte_carousel_slider_per_view-lap-size'] : 4;
 		$tab = isset( $settings['wpte_carousel_slider_per_view-tab-size'] ) && '' !== $settings['wpte_carousel_slider_per_view-tab-size'] ? $settings['wpte_carousel_slider_per_view-tab-size'] : 2;
 		$mob = isset( $settings['wpte_carousel_slider_per_view-mob-size'] ) && '' !== $settings['wpte_carousel_slider_per_view-mob-size'] ? $settings['wpte_carousel_slider_per_view-mob-size'] : 1;
-		
+
 		$space_between_lap = isset( $settings['wpte_carousel_slider_space_between-lap-size'] ) && '' !== $settings['wpte_carousel_slider_space_between-lap-size'] ? $settings['wpte_carousel_slider_space_between-lap-size'] : 20;
 		$space_between_tab = isset( $settings['wpte_carousel_slider_space_between-tab-size'] ) && '' !== $settings['wpte_carousel_slider_space_between-tab-size'] ? $settings['wpte_carousel_slider_space_between-tab-size'] : 20;
 		$space_between_mob = isset( $settings['wpte_carousel_slider_space_between-mob-size'] ) && '' !== $settings['wpte_carousel_slider_space_between-mob-size'] ? $settings['wpte_carousel_slider_space_between-mob-size'] : 10;

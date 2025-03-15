@@ -59,7 +59,7 @@ class Ajax {
 			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
 		}
 
-		$product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : '';
+		$product_id = isset( $_POST['product_id'] ) ? intval( $_POST['product_id'] ) : '';
 
 		global $post, $product;
 
@@ -73,7 +73,7 @@ class Ajax {
 				<div class="wpte-product-popup-bg">
 					<div id="wpte-quick-view-box" <?php post_class( 'product wpte-product-popup-box' ); ?>>
 						<span class="wpte-product-popup-close">×</span>
-						<?php new \WPTE_PRODUCT_LAYOUT\Templates\QuickView($product_id); ?>
+						<?php new \WPTE_PRODUCT_LAYOUT\Templates\QuickView( $product_id ); ?>
 					</div>
 				</div>
 			</div>
@@ -81,9 +81,11 @@ class Ajax {
 		<?php
 		$data = ob_get_clean();
 		wp_reset_postdata();
-		wp_send_json_success( [
-			'data' => $data,
-		] );
+		wp_send_json_success(
+            [
+				'data' => $data,
+			]
+        );
 	}
 
 	/**
@@ -108,7 +110,6 @@ class Ajax {
 		}
 
 		if ( isset( $_POST['product_data'] ) ) {
-
 			$product_data = filter_input( INPUT_POST, 'product_data', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY );
 
 			foreach ( $product_data as $item ) {
@@ -129,9 +130,11 @@ class Ajax {
 		// wc_clear_notices();.
 		$notices = wc_kses_notice( ob_get_clean() );
 
-		wp_send_json_success([
-			'notices' => $notices,
-		]);
+		wp_send_json_success(
+            [
+				'notices' => $notices,
+			]
+        );
 	}
 
 	/**
@@ -145,17 +148,14 @@ class Ajax {
 		$_ids = filter_input( INPUT_COOKIE, 'wpte_product_compare_id', FILTER_SANITIZE_STRING );
 		$ids  = isset( $_COOKIE['wpte_product_compare_id'] ) ? json_decode( $_ids ) : [];
 
-		if ( ! in_array($product_id, $ids) ) {
-
+		if ( ! in_array( $product_id, $ids ) ) {
 			$this->products_list[] = absint( $product_id );
 			if ( $ids ) {
-				$arg = array_merge($ids, $this->products_list);
-
+				$arg = array_merge( $ids, $this->products_list );
 			} else {
 				$arg = $this->products_list;
 			}
 			setcookie( 'wpte_product_compare_id', wp_json_encode( $arg ), 0, COOKIEPATH, COOKIE_DOMAIN, false, false );
-
 		}
 	}
 
@@ -169,30 +169,33 @@ class Ajax {
 		$nonce = isset( $_REQUEST['_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 
 		if ( ! wp_verify_nonce( $nonce, 'wpte-global-nonce' ) ) {
-			wp_send_json_success( [
-				'nonceerror' => __( 'Nonce Varification Failed!', 'wpte-product-layout' ),
-			] );
+			wp_send_json_success(
+                [
+					'nonceerror' => __( 'Nonce Varification Failed!', 'wpte-product-layout' ),
+				]
+            );
 			return false;
 		}
 
 		$product_id = isset( $_POST['product_id'] ) ? intval( $_POST['product_id'] ) : 0;
 
 		if ( ! $product_id ) {
-			wp_send_json_success( [
-				'iderror' => __( 'Product id not found!', 'wpte-product-layout' ),
-			] );
+			wp_send_json_success(
+                [
+					'iderror' => __( 'Product id not found!', 'wpte-product-layout' ),
+				]
+            );
 		}
 
 		$this->add_product_to_compare( $product_id );
 
 		if ( isset( $_COOKIE['wpte_product_compare_id'] ) ) {
-
 			$_ids        = filter_input( INPUT_COOKIE, 'wpte_product_compare_id', FILTER_SANITIZE_STRING );
 			$product_ids = isset( $_COOKIE['wpte_product_compare_id'] ) ? json_decode( $_ids ) : [];
 
-			if ( ! in_array($product_id, $product_ids) ) {
+			if ( ! in_array( $product_id, $product_ids ) ) {
 				if ( $product_ids ) {
-					$new_list = array_merge($product_ids, $this->products_list);
+					$new_list = array_merge( $product_ids, $this->products_list );
 				} else {
 					$new_list = [ $product_id ];
 				}
@@ -213,7 +216,7 @@ class Ajax {
 						<span class="wpte-product-popup-close">×</span>
 						<?php
 						if ( $new_list ) {
-							new \WPTE_PRODUCT_LAYOUT\Templates\Compare($new_list);
+							new \WPTE_PRODUCT_LAYOUT\Templates\Compare( $new_list );
 						}
 						?>
 					</div>
@@ -225,13 +228,17 @@ class Ajax {
 
 		$data = ob_get_clean();
 		if ( $data ) {
-			wp_send_json_success( [
-				'data' => $data,
-			] );
+			wp_send_json_success(
+                [
+					'data' => $data,
+				]
+            );
 		} else {
-			wp_send_json_success( [
-				'error' => __( 'Something went wrong!', 'wpte-product-layout' ),
-			] );
+			wp_send_json_success(
+                [
+					'error' => __( 'Something went wrong!', 'wpte-product-layout' ),
+				]
+            );
 		}
 	}
 
@@ -246,16 +253,14 @@ class Ajax {
 		$_ids = filter_input( INPUT_COOKIE, 'wpte_product_compare_id', FILTER_SANITIZE_STRING );
 		$ids  = isset( $_COOKIE['wpte_product_compare_id'] ) ? json_decode( $_ids ) : [];
 
-		if ( in_array($product_id, $ids) ) {
-
-			$key = array_search($product_id, $ids);
+		if ( in_array( $product_id, $ids ) ) {
+			$key = array_search( $product_id, $ids );
 			if ( false !== $key ) {
 				unset( $ids[ $key ] );
 			}
 
-			$arr = array_values($ids);
+			$arr = array_values( $ids );
 			setcookie( 'wpte_product_compare_id', wp_json_encode( $arr ), 0, COOKIEPATH, COOKIE_DOMAIN, false, false );
-
 		}
 	}
 
@@ -273,7 +278,7 @@ class Ajax {
 			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
 		}
 
-		$product_id = isset($_POST['product_id']) ? intval(  $_POST['product_id'] ) : 0;
+		$product_id = isset( $_POST['product_id'] ) ? intval( $_POST['product_id'] ) : 0;
 
 		$this->remove_product_to_compare( $product_id );
 		exit;
@@ -296,8 +301,8 @@ class Ajax {
 		global $wpdb;
 		$ids            = isset( $_POST['id'] ) ? filter_input( INPUT_POST, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
 		$layoutid       = isset( $_POST['layoutid'] ) ? intval( $_POST['layoutid'] ) : '';
-		$data           = ! empty($_POST['data']) ? filter_input( INPUT_POST, 'data', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
-		$wpte_attribute = ! empty($_POST['wpte_attribute']) ? filter_input( INPUT_POST, 'wpte_attribute', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
+		$data           = ! empty( $_POST['data'] ) ? filter_input( INPUT_POST, 'data', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
+		$wpte_attribute = ! empty( $_POST['wpte_attribute'] ) ? filter_input( INPUT_POST, 'wpte_attribute', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
 
 		$user      = 'admin';
 		$dbData    = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . 'wpte_product_layout_style WHERE id = %d ', $layoutid ), ARRAY_A );
@@ -322,7 +327,6 @@ class Ajax {
 				$per_page = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_show_per_page_$id" ];
 			}
 			if ( isset( $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ] ) {
-
 				$category = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ];
 			}
 			if ( isset( $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ] ) {
@@ -332,7 +336,7 @@ class Ajax {
 				$min_max_price = $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_price_' . $id ];
 			}
 			if ( isset( $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_attribute_' . $id ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_attribute_' . $id ] ) {
-				$attributes[$wpte_attribute[$id]] = $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_attribute_' . $id ];
+				$attributes[ $wpte_attribute[ $id ] ] = $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_attribute_' . $id ];
 			}
 		}
 
@@ -376,10 +380,12 @@ class Ajax {
 			}
 		}
 
-		wp_send_json_success([
-			'data'       => $data,
-			'pagination' => $pagination,
-		]);
+		wp_send_json_success(
+            [
+				'data'       => $data,
+				'pagination' => $pagination,
+			]
+        );
 	}
 
 	/**
@@ -397,8 +403,8 @@ class Ajax {
 		}
 
 		global $wpdb;
-		$catid    = isset($_POST['catid']) ? intval($_POST['catid']) : '';
-		$layoutid = isset($_POST['layoutid']) ? intval($_POST['layoutid']) : '';
+		$catid    = isset( $_POST['catid'] ) ? intval( $_POST['catid'] ) : '';
+		$layoutid = isset( $_POST['layoutid'] ) ? intval( $_POST['layoutid'] ) : '';
 
 		$user      = 'admin';
 		$dbData    = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . 'wpte_product_layout_style WHERE id = %d ', $layoutid ), ARRAY_A );
@@ -415,9 +421,11 @@ class Ajax {
 		$clas->layout_render( $settings, $user );
 		$data = ob_get_clean();
 
-		wp_send_json_success([
-			'data' => $data,
-		]);
+		wp_send_json_success(
+            [
+				'data' => $data,
+			]
+        );
 	}
 
 	/**
@@ -436,9 +444,9 @@ class Ajax {
 
 		global $wpdb;
 		$ids      = isset( $_POST['id'] ) ? filter_input( INPUT_POST, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
-		$page_id  = isset($_POST['page_id']) ? intval($_POST['page_id']) : '';
-		$layoutid = isset($_POST['layoutid']) ? intval($_POST['layoutid']) : '';
-		$data     = ! empty($_POST['data']) ? filter_input( INPUT_POST, 'data', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
+		$page_id  = isset( $_POST['page_id'] ) ? intval( $_POST['page_id'] ) : '';
+		$layoutid = isset( $_POST['layoutid'] ) ? intval( $_POST['layoutid'] ) : '';
+		$data     = ! empty( $_POST['data'] ) ? filter_input( INPUT_POST, 'data', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
 
 		$user      = 'admin';
 		$dbData    = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . 'wpte_product_layout_style WHERE id = %d ', $layoutid ), ARRAY_A );
@@ -462,7 +470,6 @@ class Ajax {
 				$per_page = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_show_per_page_$id" ];
 			}
 			if ( isset( $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ] ) {
-
 				$category = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ];
 			}
 			if ( isset( $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ] ) {
@@ -502,10 +509,12 @@ class Ajax {
 			$clas->wpte_products_pagination_render( $settings, $page_id, $layoutid );
 			$pagination = ob_get_clean();
 		}
-		wp_send_json_success([
-			'data'       => $data,
-			'pagination' => $pagination,
-		]);
+		wp_send_json_success(
+            [
+				'data'       => $data,
+				'pagination' => $pagination,
+			]
+        );
 	}
 
 	/**
@@ -524,10 +533,10 @@ class Ajax {
 
 		global $wpdb;
 		$ids          = isset( $_POST['id'] ) ? filter_input( INPUT_POST, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
-		$add_page     = isset($_POST['add_page']) ? intval($_POST['add_page']) : '';
-		$layoutid     = isset($_POST['layoutid']) ? intval($_POST['layoutid']) : '';
-		$current_page = isset($_POST['current_page']) ? intval($_POST['current_page']) : '';
-		$data         = ! empty($_POST['data']) ? filter_input( INPUT_POST, 'data', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
+		$add_page     = isset( $_POST['add_page'] ) ? intval( $_POST['add_page'] ) : '';
+		$layoutid     = isset( $_POST['layoutid'] ) ? intval( $_POST['layoutid'] ) : '';
+		$current_page = isset( $_POST['current_page'] ) ? intval( $_POST['current_page'] ) : '';
+		$data         = ! empty( $_POST['data'] ) ? filter_input( INPUT_POST, 'data', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
 
 		$user      = 'admin';
 		$dbData    = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . 'wpte_product_layout_style WHERE id = %d ', $layoutid ), ARRAY_A );
@@ -551,7 +560,6 @@ class Ajax {
 				$per_page = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_show_per_page_$id" ];
 			}
 			if ( isset( $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ] ) {
-
 				$category = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ];
 			}
 			if ( isset( $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ] ) {
@@ -589,9 +597,11 @@ class Ajax {
 		$clas->wpte_products_load_more_render( $settings, $layoutid );
 		$load_more = ob_get_clean();
 
-		wp_send_json_success([
-			'data'      => $data,
-			'load_more' => $load_more,
-		]);
+		wp_send_json_success(
+            [
+				'data'      => $data,
+				'load_more' => $load_more,
+			]
+        );
 	}
 }

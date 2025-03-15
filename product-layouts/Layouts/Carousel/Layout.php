@@ -65,7 +65,7 @@ class Layout extends AdminRender {
 			'wpte_carousel_slider_per_view',
 			$this->style,
 			[
-				'label'       => esc_html__('Slider Per View', 'wpte-product-layout'),
+				'label'       => esc_html__( 'Slider Per View', 'wpte-product-layout' ),
 				'type'        => Controls::SLIDER,
 				'default'     => [
 					'unit' => 'px',
@@ -86,7 +86,7 @@ class Layout extends AdminRender {
 			'wpte_carousel_slider_space_between',
 			$this->style,
 			[
-				'label'       => esc_html__('Space Between', 'wpte-product-layout'),
+				'label'       => esc_html__( 'Space Between', 'wpte-product-layout' ),
 				'type'        => Controls::SLIDER,
 				'default'     => [
 					'unit' => 'px',
@@ -107,7 +107,7 @@ class Layout extends AdminRender {
 			'wpte_carousel_slide_to_scroll',
 			$this->style,
 			[
-				'label'       => esc_html__('Slides to Scroll', 'wpte-product-layout'),
+				'label'       => esc_html__( 'Slides to Scroll', 'wpte-product-layout' ),
 				'type'        => Controls::SLIDER,
 				'default'     => [
 					'unit' => 'px',
@@ -139,115 +139,115 @@ class Layout extends AdminRender {
 			]
 		);
 		$this->add_control(
-				'carousel_autoplay_speed',
-				$this->style,
-				[
-					'label'       => esc_html__( 'Autoplay Speed', 'wpte-product-layout' ),
-					'type'        => Controls::NUMBER,
-					'default'     => 2000,
-					'min'         => 0,
-					'max'         => 10000,
-					'condition'   => [
-						'carousel_autoplay' => 'yes',
-					],
-					'description' => 'Set Autoplay Speed, Set with millisecond.',
-				]
+            'carousel_autoplay_speed',
+            $this->style,
+            [
+				'label'       => esc_html__( 'Autoplay Speed', 'wpte-product-layout' ),
+				'type'        => Controls::NUMBER,
+				'default'     => 2000,
+				'min'         => 0,
+				'max'         => 10000,
+				'condition'   => [
+					'carousel_autoplay' => 'yes',
+				],
+				'description' => 'Set Autoplay Speed, Set with millisecond.',
+			]
 		);
 		$this->add_control(
-				'carousel_speed',
-				$this->style,
-				[
-					'label'       => esc_html__( 'Animation Speed', 'wpte-product-layout' ),
-					'type'        => Controls::NUMBER,
-					'default'     => 500,
-					'min'         => 0,
-					'max'         => 10000,
-					'description' => 'Set Animation Speed, Set with millisecond.',
-				]
+            'carousel_speed',
+            $this->style,
+            [
+				'label'       => esc_html__( 'Animation Speed', 'wpte-product-layout' ),
+				'type'        => Controls::NUMBER,
+				'default'     => 500,
+				'min'         => 0,
+				'max'         => 10000,
+				'description' => 'Set Animation Speed, Set with millisecond.',
+			]
 		);
 		$this->add_control(
-				'carousel_pause_on_hover',
-				$this->style,
-				[
-					'label'        => esc_html__( 'Pause on Hover', 'wpte-product-layout' ),
-					'type'         => Controls::SWITCHER,
-					'loader'       => true,
-					'default'      => 'yes',
-					'yes'          => esc_html__( 'Yes', 'wpte-product-layout' ),
-					'no'           => esc_html__( 'No', 'wpte-product-layout' ),
-					'return_value' => 'yes',
-					'description'  => 'Do you want Pause on Hover.',
-				]
+            'carousel_pause_on_hover',
+            $this->style,
+            [
+				'label'        => esc_html__( 'Pause on Hover', 'wpte-product-layout' ),
+				'type'         => Controls::SWITCHER,
+				'loader'       => true,
+				'default'      => 'yes',
+				'yes'          => esc_html__( 'Yes', 'wpte-product-layout' ),
+				'no'           => esc_html__( 'No', 'wpte-product-layout' ),
+				'return_value' => 'yes',
+				'description'  => 'Do you want Pause on Hover.',
+			]
 		);
 		$this->add_control(
-				'carousel_infinite',
-				$this->style,
-				[
-					'label'        => esc_html__( 'Infinite Loop', 'wpte-product-layout' ),
-					'type'         => Controls::SWITCHER,
-					'loader'       => true,
-					'default'      => 'yes',
-					'yes'          => esc_html__( 'Yes', 'wpte-product-layout' ),
-					'no'           => esc_html__( 'No', 'wpte-product-layout' ),
-					'return_value' => 'yes',
-					'description'  => 'Do you want Infinite Loop.',
-				]
+            'carousel_infinite',
+            $this->style,
+            [
+				'label'        => esc_html__( 'Infinite Loop', 'wpte-product-layout' ),
+				'type'         => Controls::SWITCHER,
+				'loader'       => true,
+				'default'      => 'yes',
+				'yes'          => esc_html__( 'Yes', 'wpte-product-layout' ),
+				'no'           => esc_html__( 'No', 'wpte-product-layout' ),
+				'return_value' => 'yes',
+				'description'  => 'Do you want Infinite Loop.',
+			]
 		);
 		$this->add_control(
-				'carousel_adaptive_height',
-				$this->style,
-				[
-					'label'        => esc_html__( 'Adaptive Height', 'wpte-product-layout' ),
-					'type'         => Controls::SWITCHER,
-					'loader'       => true,
-					'default'      => 'yes',
-					'yes'          => esc_html__( 'Yes', 'wpte-product-layout' ),
-					'no'           => esc_html__( 'No', 'wpte-product-layout' ),
-					'return_value' => 'yes',
-					'description'  => 'Do you want auto height.',
-				]
+            'carousel_adaptive_height',
+            $this->style,
+            [
+				'label'        => esc_html__( 'Adaptive Height', 'wpte-product-layout' ),
+				'type'         => Controls::SWITCHER,
+				'loader'       => true,
+				'default'      => 'yes',
+				'yes'          => esc_html__( 'Yes', 'wpte-product-layout' ),
+				'no'           => esc_html__( 'No', 'wpte-product-layout' ),
+				'return_value' => 'yes',
+				'description'  => 'Do you want auto height.',
+			]
 		);
 		$this->add_control(
-				'carousel_center_mode',
-				$this->style,
-				[
-					'label'        => esc_html__( 'Center Mode', 'wpte-product-layout' ),
-					'type'         => Controls::SWITCHER,
-					'loader'       => true,
-					'default'      => 'no',
-					'yes'          => esc_html__( 'Yes', 'wpte-product-layout' ),
-					'no'           => esc_html__( 'No', 'wpte-product-layout' ),
-					'return_value' => 'yes',
-					'description'  => 'Do you want center mode Options?',
-				]
+            'carousel_center_mode',
+            $this->style,
+            [
+				'label'        => esc_html__( 'Center Mode', 'wpte-product-layout' ),
+				'type'         => Controls::SWITCHER,
+				'loader'       => true,
+				'default'      => 'no',
+				'yes'          => esc_html__( 'Yes', 'wpte-product-layout' ),
+				'no'           => esc_html__( 'No', 'wpte-product-layout' ),
+				'return_value' => 'yes',
+				'description'  => 'Do you want center mode Options?',
+			]
 		);
 		$this->add_control(
-				'carousel_show_arrows',
-				$this->style,
-				[
-					'label'        => esc_html__( 'Arrows', 'wpte-product-layout' ),
-					'type'         => Controls::SWITCHER,
-					'loader'       => true,
-					'default'      => 'yes',
-					'yes'          => esc_html__( 'Yes', 'wpte-product-layout' ),
-					'no'           => esc_html__( 'No', 'wpte-product-layout' ),
-					'return_value' => 'yes',
-					'description'  => 'Do you want Arrows for navigation.',
-				]
+            'carousel_show_arrows',
+            $this->style,
+            [
+				'label'        => esc_html__( 'Arrows', 'wpte-product-layout' ),
+				'type'         => Controls::SWITCHER,
+				'loader'       => true,
+				'default'      => 'yes',
+				'yes'          => esc_html__( 'Yes', 'wpte-product-layout' ),
+				'no'           => esc_html__( 'No', 'wpte-product-layout' ),
+				'return_value' => 'yes',
+				'description'  => 'Do you want Arrows for navigation.',
+			]
 		);
 		$this->add_control(
-				'carousel_show_dots',
-				$this->style,
-				[
-					'label'        => esc_html__( 'Dots', 'wpte-product-layout' ),
-					'type'         => Controls::SWITCHER,
-					'loader'       => true,
-					'default'      => 'no',
-					'yes'          => esc_html__( 'Yes', 'wpte-product-layout' ),
-					'no'           => esc_html__( 'No', 'wpte-product-layout' ),
-					'return_value' => 'yes',
-					'description'  => 'Do you want Dots for pagination.',
-				]
+            'carousel_show_dots',
+            $this->style,
+            [
+				'label'        => esc_html__( 'Dots', 'wpte-product-layout' ),
+				'type'         => Controls::SWITCHER,
+				'loader'       => true,
+				'default'      => 'no',
+				'yes'          => esc_html__( 'Yes', 'wpte-product-layout' ),
+				'no'           => esc_html__( 'No', 'wpte-product-layout' ),
+				'return_value' => 'yes',
+				'description'  => 'Do you want Dots for pagination.',
+			]
 		);
 
 		$this->end_controls_section();
@@ -273,7 +273,7 @@ class Layout extends AdminRender {
 			'wpte_carousel_arrow_icon_size',
 			$this->style,
 			[
-				'label'       => esc_html__('Icon Size', 'wpte-product-layout'),
+				'label'       => esc_html__( 'Icon Size', 'wpte-product-layout' ),
 				'type'        => Controls::SLIDER,
 				'default'     => [
 					'unit' => 'px',
@@ -307,8 +307,8 @@ class Layout extends AdminRender {
 			'wpte_product_layout_arrows_tabs',
 			[
 				'options' => [
-					'normal' => esc_html__('Left Arrow', 'wpte-product-layout'),
-					'hover'  => esc_html__('Right Arrow', 'wpte-product-layout'),
+					'normal' => esc_html__( 'Left Arrow', 'wpte-product-layout' ),
+					'hover'  => esc_html__( 'Right Arrow', 'wpte-product-layout' ),
 				],
 			]
 		);
@@ -319,7 +319,7 @@ class Layout extends AdminRender {
 					'wpte_carousel_left_arrow',
 					$this->style,
 					[
-						'label'       => __('Left Arrow', 'wpte-product-layout'),
+						'label'       => __( 'Left Arrow', 'wpte-product-layout' ),
 						'type'        => Controls::ICON,
 						'default'     => 'wpte-icon icon-arrow-10',
 						'description' => '',
@@ -330,7 +330,7 @@ class Layout extends AdminRender {
 					'wpte_left_arrow_icon_position_x',
 					$this->style,
 					[
-						'label'       => esc_html__('Position X', 'wpte-product-layout'),
+						'label'       => esc_html__( 'Position X', 'wpte-product-layout' ),
 						'type'        => Controls::SLIDER,
 						'default'     => [
 							'unit' => 'px',
@@ -365,7 +365,7 @@ class Layout extends AdminRender {
 					'wpte_left_arrow_icon_position_y',
 					$this->style,
 					[
-						'label'       => esc_html__('Position Y', 'wpte-product-layout'),
+						'label'       => esc_html__( 'Position Y', 'wpte-product-layout' ),
 						'type'        => Controls::SLIDER,
 						'default'     => [
 							'unit' => '%',
@@ -403,7 +403,7 @@ class Layout extends AdminRender {
 					'wpte_carousel_right_arrow',
 					$this->style,
 					[
-						'label'       => __('Right Arrow', 'wpte-product-layout'),
+						'label'       => __( 'Right Arrow', 'wpte-product-layout' ),
 						'type'        => Controls::ICON,
 						'default'     => 'wpte-icon icon-arrow-11',
 						'description' => '',
@@ -414,7 +414,7 @@ class Layout extends AdminRender {
 					'wpte_right_arrow_icon_position_x',
 					$this->style,
 					[
-						'label'       => esc_html__('Position X', 'wpte-product-layout'),
+						'label'       => esc_html__( 'Position X', 'wpte-product-layout' ),
 						'type'        => Controls::SLIDER,
 						'default'     => [
 							'unit' => 'px',
@@ -449,7 +449,7 @@ class Layout extends AdminRender {
 					'wpte_right_arrow_icon_position_y',
 					$this->style,
 					[
-						'label'       => esc_html__('Position Y', 'wpte-product-layout'),
+						'label'       => esc_html__( 'Position Y', 'wpte-product-layout' ),
 						'type'        => Controls::SLIDER,
 						'default'     => [
 							'unit' => '%',
@@ -487,8 +487,8 @@ class Layout extends AdminRender {
 			'wpte_carousel_arrows_style',
 			[
 				'options' => [
-					'normal' => esc_html__('Normal', 'wpte-product-layout'),
-					'hover'  => esc_html__('Hover', 'wpte-product-layout'),
+					'normal' => esc_html__( 'Normal', 'wpte-product-layout' ),
+					'hover'  => esc_html__( 'Hover', 'wpte-product-layout' ),
 				],
 			]
 		);
@@ -686,7 +686,7 @@ class Layout extends AdminRender {
 			'wpte_carousel_dots_width',
 			$this->style,
 			[
-				'label'       => esc_html__('Width', 'wpte-product-layout'),
+				'label'       => esc_html__( 'Width', 'wpte-product-layout' ),
 				'type'        => Controls::SLIDER,
 				'default'     => [
 					'unit' => 'px',
@@ -716,7 +716,7 @@ class Layout extends AdminRender {
 			'wpte_carousel_dots_height',
 			$this->style,
 			[
-				'label'       => esc_html__('Height', 'wpte-product-layout'),
+				'label'       => esc_html__( 'Height', 'wpte-product-layout' ),
 				'type'        => Controls::SLIDER,
 				'default'     => [
 					'unit' => 'px',
@@ -746,7 +746,7 @@ class Layout extends AdminRender {
 			'wpte_carousel_dots_x_position',
 			$this->style,
 			[
-				'label'       => esc_html__('Position X', 'wpte-product-layout'),
+				'label'       => esc_html__( 'Position X', 'wpte-product-layout' ),
 				'type'        => Controls::SLIDER,
 				'default'     => [
 					'unit' => 'px',
@@ -781,7 +781,7 @@ class Layout extends AdminRender {
 			'wpte_carousel_dots_y_position',
 			$this->style,
 			[
-				'label'       => esc_html__('Position Y', 'wpte-product-layout'),
+				'label'       => esc_html__( 'Position Y', 'wpte-product-layout' ),
 				'type'        => Controls::SLIDER,
 				'default'     => [
 					'unit' => 'px',
@@ -816,7 +816,7 @@ class Layout extends AdminRender {
 			'wpte_carousel_dots_spacing',
 			$this->style,
 			[
-				'label'       => esc_html__('Spacing', 'wpte-product-layout'),
+				'label'       => esc_html__( 'Spacing', 'wpte-product-layout' ),
 				'type'        => Controls::SLIDER,
 				'default'     => [
 					'unit' => 'px',
@@ -851,9 +851,9 @@ class Layout extends AdminRender {
 			'wpte_carousel_dot_style',
 			[
 				'options' => [
-					'normal' => esc_html__('Normal', 'wpte-product-layout'),
-					'hover'  => esc_html__('Hover', 'wpte-product-layout'),
-					'active' => esc_html__('Active', 'wpte-product-layout'),
+					'normal' => esc_html__( 'Normal', 'wpte-product-layout' ),
+					'hover'  => esc_html__( 'Hover', 'wpte-product-layout' ),
+					'active' => esc_html__( 'Active', 'wpte-product-layout' ),
 				],
 			]
 		);
@@ -985,5 +985,4 @@ class Layout extends AdminRender {
 
 		$this->end_controls_section();
 	}
-
 }

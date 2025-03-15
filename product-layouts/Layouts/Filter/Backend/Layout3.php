@@ -24,7 +24,7 @@ class Layout3 extends Layout {
 			]
 		);
 
-		$this->wpte_filter_for_shortcode_list('cat');
+		$this->wpte_filter_for_shortcode_list( 'cat' );
 		$this->wpte_cateogry_query();
 		$this->wpte_product_filter_title();
 

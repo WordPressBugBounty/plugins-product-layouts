@@ -103,7 +103,8 @@ class Layout1 extends Public_Render {
 							$this->wpte_product_badge_label();
 						}
 						if ( $showImage ) :
-							printf( '<%1$s %2$s %3$s %4$s class="wpte-general-layout-product-img">
+							printf(
+                                '<%1$s %2$s %3$s %4$s class="wpte-general-layout-product-img">
 								<div class="wpte-general-layout-product-thumb %7$s">
 									%5$s
 								</div>
@@ -111,14 +112,14 @@ class Layout1 extends Public_Render {
 									%6$s
 								</div>
 							</%1$s>',
-							esc_html( $hyperlink ),
-							wp_kses( $img_href, true ),
-							wp_kses( $new_window, true ),
-							wp_kses( $nofollow, true ),
-							wp_kses_post( $product_image ),
-							wp_kses_post( $product_gallery_image ),
-							esc_attr( $hoverImage ),
-							esc_attr( $hover_g_image )
+                                esc_html( $hyperlink ),
+                                wp_kses( $img_href, true ),
+                                wp_kses( $new_window, true ),
+                                wp_kses( $nofollow, true ),
+                                wp_kses_post( $product_image ),
+                                wp_kses_post( $product_gallery_image ),
+                                esc_attr( $hoverImage ),
+                                esc_attr( $hover_g_image )
 							);
 						endif;
 						if ( $showIcons ) :

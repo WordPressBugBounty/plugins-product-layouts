@@ -22,7 +22,7 @@ class QuickView {
 		add_action( 'wpte_woo_single_product_excerpt', 'woocommerce_template_single_excerpt', 20 );
 		add_action( 'wpte_woo_single_product_cart', 'woocommerce_template_single_add_to_cart', 25 );
 		add_action( 'wpte_woo_single_product_meta', 'woocommerce_template_single_meta', 30 );
-		$this->wpte_product_quick_view_template($product_id);
+		$this->wpte_product_quick_view_template( $product_id );
 	}
 
 	/**
@@ -51,14 +51,14 @@ class QuickView {
 			<div class="wpte-quick-view-content-area">
 				<?php if ( $in_stock || get_post_meta( $product_id, '_stock_status', true ) === 'instock' ) { ?>
 					<div class="wpte-quick-view-stock">
-						<?php echo wp_kses_post($in_stock) . esc_html__('In Stock', 'wpte-product-layout' ); ?>
+						<?php echo wp_kses_post( $in_stock ) . esc_html__( 'In Stock', 'wpte-product-layout' ); ?>
 					</div>
 					<?php
 				}
-				if ( get_post_meta($product_id, '_stock_status', true) === 'outofstock' ) {
+				if ( get_post_meta( $product_id, '_stock_status', true ) === 'outofstock' ) {
 					?>
 					<div class="wpte-quick-view-stock out-stock">
-						<?php echo esc_html__('Out of stock', 'wpte-product-layout'); ?>
+						<?php echo esc_html__( 'Out of stock', 'wpte-product-layout' ); ?>
 					</div>
 				<?php } ?>
 				<div class="wpte-quick-view-category">
@@ -69,7 +69,7 @@ class QuickView {
 				</div>
 
 				<div class="wpte-quick-view-title">
-					<a href="<?php echo esc_url($product_url); ?>">
+					<a href="<?php echo esc_url( $product_url ); ?>">
 						<?php do_action( 'wpte_woo_single_product_title' ); ?>
 					</a>
 				</div>
@@ -77,16 +77,16 @@ class QuickView {
 					<?php do_action( 'wpte_woo_single_product_excerpt' ); ?>
 				</div>
 				<div class="wpte-quick-view-rating">
-					<?php echo wp_kses_post(product_rating_render( $product )); ?>
+					<?php echo wp_kses_post( product_rating_render( $product ) ); ?>
 					<?php
 						$review = $product->get_rating_count() ? $product->get_rating_count() : 0;
-						printf('<a href="%s/#reviews">%s</a>', esc_url($product_url), '( ' . intval( $review ) . ' ' . esc_html__( 'review', 'wpte-product-layout' ) . ')');
+						printf( '<a href="%s/#reviews">%s</a>', esc_url( $product_url ), '( ' . intval( $review ) . ' ' . esc_html__( 'review', 'wpte-product-layout' ) . ')' );
 					?>
 				</div>
 				<div class="wpte-quick-view-price">
 					<?php do_action( 'wpte_woo_single_product_price' ); ?>
 				</div>
-				<div class="wpte_quick_view_product_simple_addtocart_container wpte_quick_view_product_addtocart_button_container <?php echo esc_attr($hide_quick_view_qty); ?>">
+				<div class="wpte_quick_view_product_simple_addtocart_container wpte_quick_view_product_addtocart_button_container <?php echo esc_attr( $hide_quick_view_qty ); ?>">
 					<?php do_action( 'wpte_woo_single_product_cart' ); ?>
 				</div>
 				<div class="wpte-quick-view-meta-content">

@@ -4,7 +4,7 @@ namespace WPTE_PRODUCT_LAYOUT\Layouts\General\Frontend;
 
 use WPTE_PRODUCT_LAYOUT\Includes\Helper\Public_Render;
 
-if ( ! defined('ABSPATH') ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -33,7 +33,7 @@ class Layout8 extends Public_Render {
 
 		$column  = 'wpte-product-card ' . $this->column_render( 'wpte_product_layout_col', $settings );
 		$args    = $this->wpte_get_woo_products( $settings ) ?? [];
-		$is_icon = isset($settings['wpte_product_layout_cart_icon_switcher'] ) ? $settings['wpte_product_layout_cart_icon_switcher'] : '';
+		$is_icon = isset( $settings['wpte_product_layout_cart_icon_switcher'] ) ? $settings['wpte_product_layout_cart_icon_switcher'] : '';
 
 		$title_tag   = isset( $settings['wpte_product_layout_general_title_tag'] ) ? $settings['wpte_product_layout_general_title_tag'] : 'h2';
 		$_hyperlink  = isset( $settings['wpte-product-general-image-hyperlink'] ) ? $settings['wpte-product-general-image-hyperlink'] : 'div';
@@ -45,10 +45,10 @@ class Layout8 extends Public_Render {
 		$nofollow   = 'a' === $hyperlink && 'yes' === $_nofollow ? 'rel="nofollow"' : '';
 
 		// Wish List.
-		$is_wishlist_icon = isset($settings['wpte_product_layout_wishlist_icon_switcher']) ? $settings['wpte_product_layout_wishlist_icon_switcher'] : '';
+		$is_wishlist_icon = isset( $settings['wpte_product_layout_wishlist_icon_switcher'] ) ? $settings['wpte_product_layout_wishlist_icon_switcher'] : '';
 
 		// Quick View.
-		$is_quickview_icon = isset($settings['wpte_product_layout_quickview_icon_switcher']) ? $settings['wpte_product_layout_quickview_icon_switcher'] : '';
+		$is_quickview_icon = isset( $settings['wpte_product_layout_quickview_icon_switcher'] ) ? $settings['wpte_product_layout_quickview_icon_switcher'] : '';
 
 		$showCat    = isset( $settings['wpte_general_products_show_cat'] ) ? $settings['wpte_general_products_show_cat'] : '';
 		$showTitle  = isset( $settings['wpte_general_products_show_title'] ) ? $settings['wpte_general_products_show_title'] : '';
@@ -72,7 +72,7 @@ class Layout8 extends Public_Render {
 				$query->the_post();
 				$product = wc_get_product( get_the_ID() );
 				if ( ! $product ) {
-					echo esc_html__( 'Product not found!', 'product-layouts-premium' );
+					echo esc_html__( 'Product not found!', 'wpte-product-layout' );
 					return;
 				}
 
@@ -81,7 +81,7 @@ class Layout8 extends Public_Render {
 				];
 
 				$product_cats         = wp_get_post_terms( get_the_ID(), 'product_cat', $catArgs );
-				$product_cats_counter = count($product_cats);
+				$product_cats_counter = count( $product_cats );
 				$img_href             = 'a' === $hyperlink ? 'href="' . esc_url( $product->get_permalink() ) . '"' : '';
 				$product_image        = $product->get_image( "$image_size", [ 'loading' => 'eager' ] ) ? wp_kses_post( $product->get_image( "$image_size", [ 'loading' => 'eager' ] ) ) : '';
 				?>
@@ -97,12 +97,14 @@ class Layout8 extends Public_Render {
 						<div class="wpte-general-layout-product-img">
 							<div class="wpte-general-layout-product-thumb">
 								<?php
-								printf('<%1$s %2$s %3$s %4$s>%5$s</%1$s>',
-								esc_html( $hyperlink ),
-								wp_kses( $img_href, true ),
-								wp_kses( $new_window, true ),
-								wp_kses( $nofollow, true ),
-								wp_kses_post( $product_image ) );
+								printf(
+                                    '<%1$s %2$s %3$s %4$s>%5$s</%1$s>',
+                                    esc_html( $hyperlink ),
+                                    wp_kses( $img_href, true ),
+                                    wp_kses( $new_window, true ),
+                                    wp_kses( $nofollow, true ),
+                                    wp_kses_post( $product_image )
+                                );
 
 								if ( $is_quickview_icon ) :
 									?>
@@ -115,15 +117,15 @@ class Layout8 extends Public_Render {
 								<?php endif; ?>
 							</div>
 						</div>
-						<?php endif;?>
+						<?php endif; ?>
 					</div>
 					<?php if ( $showCat ) : ?>
 					<div class="wpte-general-layout-category-area">
 						<?php
 						for ( $i = 0; $i < $product_cats_counter; $i++ ) {
 							$_cat_link = get_term_link( $product_cats[ $i ]->term_id, 'product_cat' );
-							$cat_link  = esc_url($_cat_link);
-							$cat_name  = esc_html($product_cats[ $i ]->name );
+							$cat_link  = esc_url( $_cat_link );
+							$cat_name  = esc_html( $product_cats[ $i ]->name );
 							echo "<a href='" . esc_url( $cat_link ) . "'>" . esc_html( $cat_name ) . '</a>';
 						}
 						?>
@@ -134,7 +136,7 @@ class Layout8 extends Public_Render {
 						?>
 					<div class="wpte-general-layout-title-area">
 						<<?php echo esc_html( $title_tag ); ?> class="wpte-general-layout-product-title">
-							<?php printf('<a href="%1$s">%2$s</a>', esc_url($product->get_permalink()), wp_kses_post($product->get_title())); ?>
+							<?php printf( '<a href="%1$s">%2$s</a>', esc_url( $product->get_permalink() ), wp_kses_post( $product->get_title() ) ); ?>
 						</<?php echo esc_html( $title_tag ); ?>>
 					</div>
 						<?php
@@ -150,7 +152,7 @@ class Layout8 extends Public_Render {
 					if ( $showRating ) :
 						?>
 					<div class="wpte-general-layout-rating-area">
-						<?php echo wp_kses_post( (string) product_rating_render( $product )); ?>
+						<?php echo wp_kses_post( (string) product_rating_render( $product ) ); ?>
 					</div>
 					<?php endif; ?>
 					<?php if ( $showIcons ) : ?>
@@ -162,7 +164,8 @@ class Layout8 extends Public_Render {
 									?>
 								</div>
 								<?php
-							endif;?>
+							endif;
+                            ?>
 						</div>
 					<?php endif; ?>
 				</div>

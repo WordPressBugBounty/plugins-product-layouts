@@ -19,7 +19,7 @@ final class ProductLayout {
 	public function __construct() {
 
 		$this->render_elements();
-		add_action('admin_footer', [ $this, 'wpte_offer_popup' ] );
+		add_action( 'admin_footer', [ $this, 'wpte_offer_popup' ] );
 	}
 
 	/**
@@ -38,7 +38,7 @@ final class ProductLayout {
 	 */
 	public function render_elements() {
 		wp_enqueue_script( 'wpte-wpl-admin-js' );
-		apply_filters('wpte_product_layout_admin_menu', true);
+		apply_filters( 'wpte_product_layout_admin_menu', true );
 		$this->elements_render();
 	}
 
@@ -52,8 +52,8 @@ final class ProductLayout {
 		$popular = wpte_version_control() ? 'Popular' : 'Premium';
 		$Updated = wpte_version_control() ? 'Updated' : 'Premium';
 		$New     = wpte_version_control() ? 'New' : 'Premium';
-		$New_N   = wpte_version_control() ? __( 'New', 'wpte-product-layout') : __( 'Premium', 'wpte-product-layout');
-		$Normal  = wpte_version_control() ? '' : __( 'Premium', 'wpte-product-layout');
+		$New_N   = wpte_version_control() ? __( 'New', 'wpte-product-layout' ) : __( 'Premium', 'wpte-product-layout' );
+		$Normal  = wpte_version_control() ? '' : __( 'Premium', 'wpte-product-layout' );
 		$is_pro  = wpte_version_control() ? '' : 'wpte-po-element';
 		return [
 
@@ -200,7 +200,6 @@ final class ProductLayout {
 				<div class="wpte-wpl-row">
 					<?php
 					foreach ( $Elements as $key => $elements ) {
-
 						$pre            = 'Extension';
 						$elementshtml   = '';
 						$elementsnumber = 0;
@@ -218,11 +217,11 @@ final class ProductLayout {
 							$doc     = $value['doc'] ? $value['doc'] : '';
 							$demo    = $value['demo'] ? $value['demo'] : '';
 							$icons   = $doc ? '<div class="wpte-wpl-element-icons">
-													<a href="' . esc_url($video) . '" target="_blank"><span class="wpte-home-icon-tooltip">Tutorial</span><span class="dashicons dashicons-youtube"></span></a>
-													<a href="' . esc_url($doc) . '" target="_blank"><span class="wpte-home-icon-tooltip">Doc</span><span class="dashicons dashicons-media-document"></span></a>
-													<a href="' . esc_url($demo) . '" target="_blank"><span class="wpte-home-icon-tooltip">Demo</span><span class="dashicons dashicons-desktop"></span></a>
+													<a href="' . esc_url( $video ) . '" target="_blank"><span class="wpte-home-icon-tooltip">Tutorial</span><span class="dashicons dashicons-youtube"></span></a>
+													<a href="' . esc_url( $doc ) . '" target="_blank"><span class="wpte-home-icon-tooltip">Doc</span><span class="dashicons dashicons-media-document"></span></a>
+													<a href="' . esc_url( $demo ) . '" target="_blank"><span class="wpte-home-icon-tooltip">Demo</span><span class="dashicons dashicons-desktop"></span></a>
 												</div>' : '';
-							$elementsnumber++;
+							++$elementsnumber;
 							$elementshtml .= ' <div class="wpte-wpl-element-import" id="' . $value['name'] . '" wpte-wpl-search="' . $value['name'] . '">
 													' . $icons . '
 													<a class="addons-pre-check ' . $value['is_pro'] . '" href="' . admin_url( $wpllink ) . '" wpte-type="' . $pre . '">

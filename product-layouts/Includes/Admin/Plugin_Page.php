@@ -39,30 +39,25 @@ class Plugin_Page {
 		$styleid = ( ! empty( $_GET['styleid'] ) ? sanitize_text_field( (int) wp_unslash( $_GET['styleid'] ) ) : '' );
 
 		if ( ! empty( $layouts ) && ! empty( $styleid ) ) :
+			$style = $wpdb->get_row( $wpdb->prepare( 'SELECT style_name FROM ' . $wpdb->prefix . 'wpte_product_layout_style WHERE id = %d ', $styleid ), ARRAY_A );
 
-			$style = $wpdb->get_row($wpdb->prepare('SELECT style_name FROM ' . $wpdb->prefix . 'wpte_product_layout_style WHERE id = %d ', $styleid), ARRAY_A);
-
-			$name = explode('-', $style['style_name']);
+			$name = explode( '-', $style['style_name'] );
 
 			if ( $layouts !== ucfirst( $name[0] ) ) :
-
-				$url = admin_url("admin.php?page=product-layouts&layouts=$name[0]&styleid=$styleid");
-				echo esc_url($url);
-				echo '<script type="text/javascript"> document.location.href="' . esc_url($url) . '"; </script>';
+				$url = admin_url( "admin.php?page=product-layouts&layouts=$name[0]&styleid=$styleid" );
+				echo esc_url( $url );
+				echo '<script type="text/javascript"> document.location.href="' . esc_url( $url ) . '"; </script>';
 				exit;
-
 			endif;
 			$cls = '\WPTE_PRODUCT_LAYOUT\Layouts\\' . $layouts . '\Backend\\Layout' . $name[1];
 			if ( class_exists( $cls ) ) :
 				new $cls();
 			endif;
 		elseif ( ! empty( $layouts ) ) :
-
 			$cls = '\WPTE_PRODUCT_LAYOUT\Layouts\\' . $layouts . '\\' . $layouts . '';
 			if ( class_exists( $cls ) ) :
 				new $cls();
 			endif;
-
 		else :
 			new Pages\ProductLayout();
 		endif;
