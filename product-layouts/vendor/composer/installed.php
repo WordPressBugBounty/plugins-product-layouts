@@ -3,7 +3,7 @@
         'name' => 'wpkin/product-layouts',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '88d16b503511591f106cb3b4e6d70292f15abc7b',
+        'reference' => 'e8957f68d8aa2490fc61648a7cc29c9ab535ede1',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'wpkin/product-layouts' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '88d16b503511591f106cb3b4e6d70292f15abc7b',
+            'reference' => 'e8957f68d8aa2490fc61648a7cc29c9ab535ede1',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
