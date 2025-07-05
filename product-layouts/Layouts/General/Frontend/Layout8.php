@@ -50,14 +50,16 @@ class Layout8 extends Public_Render {
 		// Quick View.
 		$is_quickview_icon = isset( $settings['wpte_product_layout_quickview_icon_switcher'] ) ? $settings['wpte_product_layout_quickview_icon_switcher'] : '';
 
-		$showCat    = isset( $settings['wpte_general_products_show_cat'] ) ? $settings['wpte_general_products_show_cat'] : '';
-		$showTitle  = isset( $settings['wpte_general_products_show_title'] ) ? $settings['wpte_general_products_show_title'] : '';
-		$showRating = isset( $settings['wpte_general_products_show_rating'] ) ? $settings['wpte_general_products_show_rating'] : '';
-		$showImage  = isset( $settings['wpte_general_products_show_image'] ) ? $settings['wpte_general_products_show_image'] : '';
-		$showPrice  = isset( $settings['wpte_general_products_show_price'] ) ? $settings['wpte_general_products_show_price'] : '';
-		$showIcons  = isset( $settings['wpte_general_products_show_icons'] ) ? $settings['wpte_general_products_show_icons'] : '';
-		$showBadge  = isset( $settings['wpte_general_products_show_badge'] ) ? $settings['wpte_general_products_show_badge'] : '';
-		$image_size = isset( $settings['wpte_product_layout_general_style_8_image_size'] ) ? $settings['wpte_product_layout_general_style_8_image_size'] : '';
+		$showCat          = isset( $settings['wpte_general_products_show_cat'] ) ? $settings['wpte_general_products_show_cat'] : '';
+		$showTitle        = isset( $settings['wpte_general_products_show_title'] ) ? $settings['wpte_general_products_show_title'] : '';
+		$show_description = isset( $settings['wpte_general_products_show_desc'] ) ? $settings['wpte_general_products_show_desc'] : '';
+		$product_excerpt  = isset( $settings['wpte_product_layout_general_style_excerpt'] ) ? $settings['wpte_product_layout_general_style_excerpt'] : 10;
+		$showRating       = isset( $settings['wpte_general_products_show_rating'] ) ? $settings['wpte_general_products_show_rating'] : '';
+		$showImage        = isset( $settings['wpte_general_products_show_image'] ) ? $settings['wpte_general_products_show_image'] : '';
+		$showPrice        = isset( $settings['wpte_general_products_show_price'] ) ? $settings['wpte_general_products_show_price'] : '';
+		$showIcons        = isset( $settings['wpte_general_products_show_icons'] ) ? $settings['wpte_general_products_show_icons'] : '';
+		$showBadge        = isset( $settings['wpte_general_products_show_badge'] ) ? $settings['wpte_general_products_show_badge'] : '';
+		$image_size       = isset( $settings['wpte_product_layout_general_style_8_image_size'] ) ? $settings['wpte_product_layout_general_style_8_image_size'] : '';
 
 		$query = new \WP_Query( $args );
 
@@ -141,6 +143,19 @@ class Layout8 extends Public_Render {
 					</div>
 						<?php
 					endif;
+					if ( $show_description ) : ?>
+						<div class="wpte-general-layout-description-area">
+							<?php
+							$product_excerpts = '';
+							if ( $product->get_short_description() ) {
+								$product_excerpts = wpte_single_product_summary( $product->get_short_description(), $product_excerpt );
+							} else {
+								$product_excerpts = wpte_single_product_summary( $product->get_description(), $product_excerpt );
+							}
+							echo wp_kses( $product_excerpts, wpte_plugins_allowedtags() );
+							?>
+						</div>
+					<?php endif;
 					if ( $showPrice ) :
 						?>
 					<div class="wpte-general-layout-price-area">

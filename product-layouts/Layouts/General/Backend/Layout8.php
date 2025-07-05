@@ -613,6 +613,7 @@ class Layout8 extends Layout {
 		$this->wpte_layout_8_button_style();
 		$this->wpte_category_style();
 		$this->wpte_title_style();
+		$this->wpte_general_style_description();
 		$this->wpte_rating_style();
 		$this->wpte_price_style();
 

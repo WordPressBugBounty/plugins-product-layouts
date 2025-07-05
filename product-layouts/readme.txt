@@ -5,7 +5,7 @@ Tags: Product showcase, Product layouts, Product Table, Product gallery, Product
 Requires at least: 6.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -128,6 +128,10 @@ Yes you can Export Json file from Shortcode list and Import from Import page.
 
 
 == Changelog ==
+
+= 1.3.4 =
+* **New**: Added short description feature for General layouts.
+* **Update**: Add Caption layouts Product Excerpt length.
 
 = 1.3.3 =
 * **Update**: Compatible with WordPress 6.8

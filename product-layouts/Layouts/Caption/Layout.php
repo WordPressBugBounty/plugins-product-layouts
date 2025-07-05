@@ -1002,6 +1002,18 @@ class Layout extends AdminRender {
 			]
 		);
 
+		$this->add_control(
+			'wpte_product_layout_caption_excerpt',
+			$this->style,
+			[
+				'label'     => __( 'Product Excerpt', 'wpte-product-layout' ),
+				'type'      => Controls::NUMBER,
+				'loader'    => true,
+				'default'   => '5',
+				'min'       => 0,
+			]
+		);
+
 		$this->add_group_control(
 			'wpte_product_layout_caption_style_desc_typho',
 			$this->style,

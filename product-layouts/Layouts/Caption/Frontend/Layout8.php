@@ -46,7 +46,7 @@ class Layout8 extends Public_Render {
 		$show_price       = isset( $settings['wpte_caption_products_show_price'] ) ? $settings['wpte_caption_products_show_price'] : '';
 		$show_button      = isset( $settings['wpte_caption_products_show_button'] ) ? $settings['wpte_caption_products_show_button'] : '';
 		$image_size       = isset( $settings['wpte_product_layout_caption_style_image_size'] ) ? $settings['wpte_product_layout_caption_style_image_size'] : '';
-		$product_excerpt  = isset( $settings['wpte_product_layout_table_style_excerpt'] ) ? $settings['wpte_product_layout_table_style_excerpt'] : 5;
+		$product_excerpt  = isset( $settings['wpte_product_layout_caption_excerpt'] ) ? $settings['wpte_product_layout_caption_excerpt'] : 5;
 		$dive_effect      = isset( $settings['wpte_product_layout_caption_style_8_effect'] ) ? $settings['wpte_product_layout_caption_style_8_effect'] : '';
 
 		$query = new \WP_Query( $args );

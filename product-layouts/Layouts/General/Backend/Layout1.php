@@ -179,6 +179,7 @@ class Layout1 extends Layout {
 		$this->wpte_tooltip_style();
 		$this->wpte_category_style_without_much_options();
 		$this->wpte_title_style();
+		$this->wpte_general_style_description();
 		$this->wpte_rating_style();
 		$this->wpte_price_style();
 

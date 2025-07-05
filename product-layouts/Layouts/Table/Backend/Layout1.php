@@ -130,34 +130,6 @@ class Layout1 extends Layout {
 		$this->wpte_intial_controls();
 		// ================================================
 
-		$this->start_controls_section(
-			'wpte-product-table-style-1-product-description',
-			[
-				'label'     => 'Product Description',
-				'showing'   => true,
-				'condition' => [
-					'wpte_table_products_show_description' => 'yes',
-				],
-			]
-		);
-
-		$this->add_control(
-			'wpte_product_layout_table_style_1_excerpt',
-			$this->style,
-			[
-				'label'     => __( 'Product Excerpt', 'wpte-product-layout' ),
-				'type'      => Controls::NUMBER,
-				'loader'    => true,
-				'default'   => '10',
-				'min'       => 0,
-				'condition' => [
-					'wpte_table_products_show_description' => 'yes',
-				],
-			]
-		);
-
-		$this->end_controls_section();
-
 		// =============CART SETTINGS=====================
 		$this->start_controls_section(
 			'wpte-product-table-style-1-icons',

@@ -215,6 +215,19 @@ class Layout extends AdminRender {
 		);
 
 		$this->add_control(
+			'wpte_general_products_show_desc',
+			$this->style,
+			[
+				'label'        => __( 'Show Description', 'wpte-product-layout' ),
+				'type'         => Controls::SWITCHER,
+				'default'      => 'no',
+				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
+				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'return_value' => 'yes',
+			]
+		);
+
+		$this->add_control(
 			'wpte_general_products_show_rating',
 			$this->style,
 			[
@@ -2340,6 +2353,97 @@ class Layout extends AdminRender {
 				],
 				'selector'          => [
 					'{{WRAPPER}} .wpte-general-layout-product-title' => 'padding:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'simpledescription' => '',
+				'description'       => '',
+			]
+		);
+
+		$this->end_controls_section();
+	}
+
+	/**
+	 * Method wpte_general_style_description.
+	 */
+	public function wpte_general_style_description() {
+
+		$this->start_controls_section(
+			'wpte_product_layout_general_style_desc',
+			[
+				'label'     => 'Description Styles',
+				'showing'   => true,
+				'condition' => [ 'wpte_general_products_show_desc' => 'yes' ],
+			]
+		);
+
+		$this->add_control(
+			'wpte_product_layout_general_style_excerpt',
+			$this->style,
+			[
+				'label'     => __( 'Product Excerpt', 'wpte-product-layout' ),
+				'type'      => Controls::NUMBER,
+				'loader'    => true,
+				'default'   => '10',
+				'min'       => 0,
+			]
+		);
+
+		$this->add_group_control(
+			'wpte_product_layout_general_style_desc_typho',
+			$this->style,
+			[
+				'type'        => Controls::TYPOGRAPHY,
+				'selector'    => [
+					'{{WRAPPER}} .wpte-general-layout-description-area' => '',
+				],
+				'description' => '',
+			]
+		);
+
+		$this->add_control(
+			'wpte_product_layout_general_style_desc_color',
+			$this->style,
+			[
+				'label'             => __( 'Color', 'wpte-product-layout' ),
+				'type'              => Controls::COLOR,
+				'default'           => '',
+				'selector'          => [
+					'{{WRAPPER}} .wpte-general-layout-description-area' => 'color: {{VALUE}};',
+				],
+				'simpledescription' => '',
+				'description'       => '',
+			]
+		);
+
+		$this->add_responsive_control(
+			'wpte_product_layout_general_style_desc_margin',
+			$this->style,
+			[
+				'label'             => __( 'Margin', 'wpte-product-layout' ),
+				'type'              => Controls::DIMENSIONS,
+				'default'           => [
+					'unit' => 'px',
+					'size' => '',
+				],
+				'range'             => [
+					'px' => [
+						'min'  => 0,
+						'max'  => 500,
+						'step' => 1,
+					],
+					'%'  => [
+						'min'  => 0,
+						'max'  => 100,
+						'step' => 1,
+					],
+					'em' => [
+						'min'  => 0,
+						'max'  => 100,
+						'step' => .1,
+					],
+				],
+				'selector'          => [
+					'{{WRAPPER}} .wpte-general-layout-description-area' => 'padding:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'simpledescription' => '',
 				'description'       => '',
