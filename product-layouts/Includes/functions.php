@@ -22,6 +22,7 @@ function wpte_layout_insert( $args = [] ) {
 
 	$data = wp_parse_args( $args, $default );
 
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 	$inserted = $wpdb->insert(
 		"{$wpdb->prefix}wpte_product_layout_style",
 		$data,
@@ -35,7 +36,7 @@ function wpte_layout_insert( $args = [] ) {
 	);
 
 	if ( ! $inserted ) {
-		return new \WP_Error( 'failed-to-insert', __( 'Failed to insert data', 'wpte-product-layout' ) );
+		return new \WP_Error( 'failed-to-insert', __( 'Failed to insert data', 'product-layouts' ) );
 	}
 
 	return $wpdb->insert_id;
@@ -255,6 +256,7 @@ function wpte_version_control() {
 function wpkin_frontend_script_to_admin() {
 
 	if ( is_admin() ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if ( ! isset( $_GET['layouts'] ) || ! file_exists( ABSPATH . 'wp-content/plugins/woocommerce/includes/class-wc-frontend-scripts.php' ) ) {
             return;
         } else {
@@ -294,8 +296,8 @@ function admin_notice_missing_plugin( $plugin_class, $path, $notice ) {
 		}
 		$activation_url = wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $file_path ), 'activate-plugin_' . $file_path );
 
-		$message  = wp_sprintf( '<p><strong>%s</strong>%s</p>', esc_html( $notice ), esc_html__( ' not working because you need to activate the ' ) . esc_html( $notice ) . esc_html__( ' plugin.', 'wpte-product-layout' ) );
-		$message .= wp_sprintf( '<p><a href="%s" class="button-primary">%s</a></p>', $activation_url, esc_html__( 'Activate ' ) . esc_html( $notice ) . esc_html__( ' Now', 'wpte-product-layout' ) );
+		$message  = wp_sprintf( '<p><strong>%s</strong>%s</p>', esc_html( $notice ), esc_html__( ' not working because you need to activate the ', 'product-layouts' ) . esc_html( $notice ) . esc_html__( ' plugin.', 'product-layouts' ) );
+		$message .= wp_sprintf( '<p><a href="%s" class="button-primary">%s</a></p>', $activation_url, esc_html__( 'Activate ', 'product-layouts' ) . esc_html( $notice ) . esc_html__( ' Now', 'product-layouts' ) );
 	} else {
 		if ( ! current_user_can( 'install_plugins' ) ) {
 			return;
@@ -310,8 +312,8 @@ function admin_notice_missing_plugin( $plugin_class, $path, $notice ) {
 			),
 			'install-plugin_' . $plugin
 		);
-		$message     = wp_sprintf( '<p><strong>%s</strong>%s</p>', esc_html( $notice ), __( ' not working because you need to install the ' ) . esc_html( $notice ) . esc_html__( ' plugin', 'wpte-product-layout' ) );
-		$message    .= wp_sprintf( '<p><a href="%s" class="button-primary">%s</a></p>', $install_url, esc_html__( 'Install ' ) . esc_html( $notice ) . esc_html__( ' Now', 'wpte-product-layout' ) );
+		$message     = wp_sprintf( '<p><strong>%s</strong>%s</p>', esc_html( $notice ), __( ' not working because you need to install the ', 'product-layouts' ) . esc_html( $notice ) . esc_html__( ' plugin', 'product-layouts' ) );
+		$message    .= wp_sprintf( '<p><a href="%s" class="button-primary">%s</a></p>', $install_url, esc_html__( 'Install ', 'product-layouts' ) . esc_html( $notice ) . esc_html__( ' Now', 'product-layouts' ) );
 	}
 
 	printf( '<div class="error"><p>%s</p></div>', wp_kses( $message, wpte_plugins_allowedtags() ) );
@@ -656,64 +658,64 @@ function name_converter( $data ) {
 	$data = ucwords( $data );
 	switch ( $data ) {
 		case 'General Layouts':
-			$_data = __( 'General Layouts', 'wpte-product-layout' );
+			$_data = __( 'General Layouts', 'product-layouts' );
 			break;
 		case 'Call To Action Layouts':
-			$_data = __( 'Call To Action Layouts', 'wpte-product-layout' );
+			$_data = __( 'Call To Action Layouts', 'product-layouts' );
 			break;
 		case 'Product Table Layouts':
-			$_data = __( 'Product Table Layouts', 'wpte-product-layout' );
+			$_data = __( 'Product Table Layouts', 'product-layouts' );
 			break;
 		case 'Product List Layouts':
-			$_data = __( 'Product List Layouts', 'wpte-product-layout' );
+			$_data = __( 'Product List Layouts', 'product-layouts' );
 			break;
 		case 'Caption Layouts':
-			$_data = __( 'Caption Layouts', 'wpte-product-layout' );
+			$_data = __( 'Caption Layouts', 'product-layouts' );
 			break;
 		case 'Flipbox Layouts':
-			$_data = __( 'Flipbox Layouts', 'wpte-product-layout' );
+			$_data = __( 'Flipbox Layouts', 'product-layouts' );
 			break;
 		case 'Filter & Sorting':
-			$_data = __( 'Filter & Sorting', 'wpte-product-layout' );
+			$_data = __( 'Filter & Sorting', 'product-layouts' );
 			break;
 		case 'Product Tabs':
-			$_data = __( 'Product Tabs', 'wpte-product-layout' );
+			$_data = __( 'Product Tabs', 'product-layouts' );
 			break;
 		case 'Carousel':
-			$_data = __( 'Carousel', 'wpte-product-layout' );
+			$_data = __( 'Carousel', 'product-layouts' );
 			break;
 		case 'Accordion':
-			$_data = __( 'Accordion', 'wpte-product-layout' );
+			$_data = __( 'Accordion', 'product-layouts' );
 			break;
 		case 'Product Layout':
-			$_data = __( 'Product Layouts', 'wpte-product-layout' );
+			$_data = __( 'Product Layouts', 'product-layouts' );
 			break;
 		case 'Shortcode List':
-			$_data = __( 'Shortcode List', 'wpte-product-layout' );
+			$_data = __( 'Shortcode List', 'product-layouts' );
 			break;
 		case 'General':
-			$_data = __( 'General', 'wpte-product-layout' );
+			$_data = __( 'General', 'product-layouts' );
 			break;
 		case 'Call To Action':
-			$_data = __( 'Call To Action', 'wpte-product-layout' );
+			$_data = __( 'Call To Action', 'product-layouts' );
 			break;
 		case 'Table':
-			$_data = __( 'Product Table', 'wpte-product-layout' );
+			$_data = __( 'Product Table', 'product-layouts' );
 			break;
 		case 'Product List':
-			$_data = __( 'Product List', 'wpte-product-layout' );
+			$_data = __( 'Product List', 'product-layouts' );
 			break;
 		case 'Caption':
-			$_data = __( 'Caption', 'wpte-product-layout' );
+			$_data = __( 'Caption', 'product-layouts' );
 			break;
 		case 'Flipbox':
-			$_data = __( 'Flipbox', 'wpte-product-layout' );
+			$_data = __( 'Flipbox', 'product-layouts' );
 			break;
 		case 'Tabs':
-			$_data = __( 'Product Tabs', 'wpte-product-layout' );
+			$_data = __( 'Product Tabs', 'product-layouts' );
 			break;
 		case 'Filter':
-			$_data = __( 'Filter & Sorting', 'wpte-product-layout' );
+			$_data = __( 'Filter & Sorting', 'product-layouts' );
 			break;
 	}
 	return $_data;
@@ -726,7 +728,7 @@ function name_converter( $data ) {
  */
 function wpte_offer_popup() {
 	global $pagenow;
-
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	if ( is_admin() && $pagenow === 'admin.php' && isset( $_GET['page'] ) && $_GET['page'] === 'product-layouts' ) {
 		echo '<div id="wpte-offer-modal"></div>';
 	}
@@ -755,7 +757,7 @@ function wpte_product_title_tags() {
  */
 function wpte_get_upgrade_popup_data() {
     // Get the current date
-    $current_date = date( 'Y-m-d' );
+    $current_date = gmdate( 'Y-m-d' );
 
     // Define the Halloween period
     $halloween_start = '2024-10-25';

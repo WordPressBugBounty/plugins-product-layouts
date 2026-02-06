@@ -57,8 +57,9 @@ class Create {
 	public function __construct() {
 		global $wpdb;
 		$this->wpdb         = $wpdb;
-		$this->parent_table = $this->wpdb->prefix . 'wpte_product_layout_style';
+		$this->parent_table = $wpdb->prefix . 'wpte_product_layout_style';
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$this->layouts = ( ! empty( $_GET['layouts'] ) ? sanitize_text_field( wp_unslash( $_GET['layouts'] ) ) : '' );
 		$this->wpltype = $this->layouts . '-layout';
 		$this->assets_loader();
@@ -120,7 +121,7 @@ class Create {
             'wpte-wpl-create-js', 'wpteLayout', [
 				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 				'wpte_nonce' => wp_create_nonce( 'wpte-new-create-nonce' ),
-				'error'      => __( 'Something Went Wrong!', 'wpte-product-layout' ),
+				'error'      => __( 'Something Went Wrong!', 'product-layouts' ),
 			]
         );
 		wp_enqueue_script( 'wpte-global-js' );
@@ -128,7 +129,7 @@ class Create {
             'wpte-global-js', 'wpteGlobal', [
 				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 				'wpte_nonce' => wp_create_nonce( 'wpte-global-nonce' ),
-				'error'      => __( 'Something Went Wrong!', 'wpte-product-layout' ),
+				'error'      => __( 'Something Went Wrong!', 'product-layouts' ),
 			]
         );
 	}
@@ -170,7 +171,7 @@ class Create {
 		<div class="wpte-wpl-wrapper">
 			<div class="wpte-wpl-create-layouts text-center p-5">
 				<?php
-					printf( '<h1>%s</h1> <p>%s</p>', '' . esc_html( name_converter( (string) $this->layouts ) ) . esc_html__( ' Layouts › Create New', 'wpte-product-layout' ), esc_html__( 'Select Product layouts, Input your Product Layout name and create new Product layouts.', 'wpte-product-layout' ) );
+					printf( '<h1>%s</h1> <p>%s</p>', '' . esc_html( name_converter( (string) $this->layouts ) ) . esc_html__( ' Layouts › Create New', 'product-layouts' ), esc_html__( 'Select Product layouts, Input your Product Layout name and create new Product layouts.', 'product-layouts' ) );
 				?>
 
 			</div>
@@ -225,13 +226,13 @@ class Create {
 									if ( ! wpte_version_control() && ( $value['status'] === 'premium' || 'p' === $p ) ) {
 										?>
 										<div class="text-right">
-											<button type="button" class="btn btn-danger wpte-product-layout-premium wpte-po-element" ><?php echo esc_html__( 'Premium', 'wpte-product-layout' ); ?></button>
+											<button type="button" class="btn btn-danger wpte-product-layout-premium wpte-po-element" ><?php echo esc_html__( 'Premium', 'product-layouts' ); ?></button>
 										</div>
 										<?php
 									} else {
 										?>
 										<div class="text-right">
-											<button type="button" class="btn btn-success wpte-product-layout-template-create" layouts-data="wptestyle<?php echo esc_attr( $id ); ?>data"><?php echo esc_html__( 'Create Style', 'wpte-product-layout' ); ?></button>
+											<button type="button" class="btn btn-success wpte-product-layout-template-create" layouts-data="wptestyle<?php echo esc_attr( $id ); ?>data"><?php echo esc_html__( 'Create Style', 'product-layouts' ); ?></button>
 										</div>
 										<?php
 									}
@@ -281,10 +282,10 @@ class Create {
 						</div>
 					</form>
 				</div>',
-            esc_html__( 'New Product Layout', 'wpte-product-layout' ),
-            esc_html__( 'Name', 'wpte-product-layout' ),
-            esc_html__( 'Close', 'wpte-product-layout' ),
-            esc_html__( 'Save', 'wpte-product-layout' )
+            esc_html__( 'New Product Layout', 'product-layouts' ),
+            esc_html__( 'Name', 'product-layouts' ),
+            esc_html__( 'Close', 'product-layouts' ),
+            esc_html__( 'Save', 'product-layouts' )
         );
 	}
 }

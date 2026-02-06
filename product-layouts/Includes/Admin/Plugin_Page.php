@@ -34,8 +34,10 @@ class Plugin_Page {
 		$this->wpdb         = $wpdb;
 		$this->parent_table = $wpdb->prefix . 'wpte_product_layout_style';
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$layouts = ( ! empty( $_GET['layouts'] ) ? sanitize_text_field( wp_unslash( $_GET['layouts'] ) ) : '' );
 		$layouts = ucfirst( $layouts );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$styleid = ( ! empty( $_GET['styleid'] ) ? sanitize_text_field( (int) wp_unslash( $_GET['styleid'] ) ) : '' );
 
 		if ( ! empty( $layouts ) && ! empty( $styleid ) ) :

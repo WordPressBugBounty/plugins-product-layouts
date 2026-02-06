@@ -32,8 +32,8 @@ class Shortcode {
             'wpte-wpl-admin-js', 'wpteAdmin', [
 				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 				'wpte_nonce' => wp_create_nonce( 'wpte-delete-nonce' ),
-				'error'      => esc_html__( 'Something Went Wrong!', 'wpte-product-layout' ),
-				'message'    => esc_html__( 'Are you sure?', 'wpte-product-layout' ),
+				'error'      => esc_html__( 'Something Went Wrong!', 'product-layouts' ),
+				'message'    => esc_html__( 'Are you sure?', 'product-layouts' ),
 			]
         );
 		wp_enqueue_script( 'wpte-wpl-bootstrap-js' );
@@ -44,7 +44,7 @@ class Shortcode {
             'wpte-wpl-create-js', 'wpteLayout', [
 				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 				'wpte_nonce' => wp_create_nonce( 'wpte-new-create-nonce' ),
-				'error'      => esc_html__( 'Something Went Wrong!', 'wpte-product-layout' ),
+				'error'      => esc_html__( 'Something Went Wrong!', 'product-layouts' ),
 			]
         );
 	}
@@ -61,15 +61,15 @@ class Shortcode {
 			<div class="wpte-wpl-wrapper">
 				<div class="wpte-wpl-create-layouts text-center p-5">
 						<?php
-							printf( '<h1>%s</h1><p>%s</p>', esc_html__( 'Product Layouts › Shortcodes', 'wpte-product-layout' ), esc_html__( 'Collect WC Product Layout Shortcode, Edit, Delete, Clone or Export it..', 'wpte-product-layout' ) );
+							printf( '<h1>%s</h1><p>%s</p>', esc_html__( 'Product Layouts › Shortcodes', 'product-layouts' ), esc_html__( 'Collect WC Product Layout Shortcode, Edit, Delete, Clone or Export it..', 'product-layouts' ) );
 						?>
 					</div>
 				</div>
 				<div class="wpte-wpl-row">
 					<div class="wrap">
-						<h1 class="wp-heading-inline"><?php echo esc_html__( 'Shortcode', 'wpte-product-layout' ); ?></h1>
-						<a href="<?php echo esc_url( admin_url( 'admin.php?page=product-layouts' ) ); ?>" class="page-title-action"><?php echo esc_html__( 'Add New', 'wpte-product-layout' ); ?></a>
-						<a href="<?php echo esc_url( admin_url( 'admin.php?page=product-layouts-shortcode&action=import' ) ); ?>" class="page-title-action"><?php echo esc_html__( 'Import', 'wpte-product-layout' ); ?></a>
+						<h1 class="wp-heading-inline"><?php echo esc_html__( 'Shortcode', 'product-layouts' ); ?></h1>
+						<a href="<?php echo esc_url( admin_url( 'admin.php?page=product-layouts' ) ); ?>" class="page-title-action"><?php echo esc_html__( 'Add New', 'product-layouts' ); ?></a>
+						<a href="<?php echo esc_url( admin_url( 'admin.php?page=product-layouts-shortcode&action=import' ) ); ?>" class="page-title-action"><?php echo esc_html__( 'Import', 'product-layouts' ); ?></a>
 					</div>
 					<div class="wpte-wpl-list-data-table">
 						<form method="GET">
@@ -78,6 +78,7 @@ class Shortcode {
 								$table->prepare_items();
 								$table->search_box( 'search', 'search_id' );
 								$table->display();
+								// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 								$page = isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '';
 							?>
 							<input type="hidden" name="page" value="<?php echo esc_attr( $page ); ?>">
@@ -123,10 +124,10 @@ class Shortcode {
 						</div>
 					</form>
 				</div>',
-			esc_html__( 'Clone Layout', 'wpte-product-layout' ),
-			esc_html__( 'Name', 'wpte-product-layout' ),
-			esc_html__( 'Close', 'wpte-product-layout' ),
-			esc_html__( 'Save', 'wpte-product-layout' )
+			esc_html__( 'Clone Layout', 'product-layouts' ),
+			esc_html__( 'Name', 'product-layouts' ),
+			esc_html__( 'Close', 'product-layouts' ),
+			esc_html__( 'Save', 'product-layouts' )
 		);
 	}
 }

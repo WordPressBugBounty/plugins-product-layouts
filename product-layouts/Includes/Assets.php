@@ -50,7 +50,8 @@ class Assets {
 	public function admin_enqueue_css() {
 
 		$current_screen = get_current_screen()->id;
-		$current_page   = isset( $_GET['page'] ) && $_GET['page'] ? $_GET['page'] : '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
 
 		if (
 			'toplevel_page_product-layouts' === $current_screen ||
@@ -64,6 +65,7 @@ class Assets {
 			wp_enqueue_style( 'wpte-wpl-top-menu', WPTE_WPL_ASSETS . 'backend/css/top-menu.css', null, filemtime( WPTE_WPL_PATH . 'assets/backend/css/top-menu.css' ) );
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( 'toplevel_page_product-layouts' === $current_screen && isset( $_GET['layouts'] ) && isset( $_GET['styleid'] ) ) {
 			wp_enqueue_style( 'wpte-wpl-select2-css', WPTE_WPL_ASSETS . 'lib/select2/select2.min.css', null, filemtime( WPTE_WPL_PATH . 'assets/lib/select2/select2.min.css' ) );
 			wp_enqueue_style( 'wpte-gradient-color-style', WPTE_WPL_ASSETS . 'lib/jquerygcolor/jquery.coloring-pick.min.css', null, filemtime( WPTE_WPL_PATH . 'assets/lib/jquerygcolor/jquery.coloring-pick.min.css' ) );
@@ -75,10 +77,12 @@ class Assets {
 			wp_enqueue_style( 'wpte-single-layout-editor', WPTE_WPL_ASSETS . 'backend/css/wpte-single-layout-editor.css', null, filemtime( WPTE_WPL_PATH . 'assets/backend/css/wpte-single-layout-editor.css' ) );
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( 'toplevel_page_product-layouts' === $current_screen && ! isset( $_GET['layouts'] ) && ! isset( $_GET['styleid'] ) ) {
 			wp_enqueue_style( 'wpte-wpl-product-layout', WPTE_WPL_ASSETS . 'backend/css/product-layout.css', null, filemtime( WPTE_WPL_PATH . 'assets/backend/css/product-layout.css' ) );
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( 'product-layouts-getting-started' === $current_page || 'product-layouts-shortcode' === $current_page || ( 'toplevel_page_product-layouts' === $current_screen && isset( $_GET['layouts'] ) && ! isset( $_GET['styleid'] ) ) ) {
 			wp_enqueue_style( 'wpte-wpl-bootstrap-css', WPTE_WPL_ASSETS . 'lib/bootstrap/bootstrap.min.css', null, filemtime( WPTE_WPL_PATH . 'assets/lib/bootstrap/bootstrap.min.css' ) );
 		}
@@ -275,7 +279,7 @@ class Assets {
 			[
 				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 				'wpte_nonce' => wp_create_nonce( 'wpte-global-nonce' ),
-				'error'      => __( 'Something Went Wrong!', 'wpte-product-layout' ),
+				'error'      => __( 'Something Went Wrong!', 'product-layouts' ),
 			]
 		);
 	}

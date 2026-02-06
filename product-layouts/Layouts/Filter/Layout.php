@@ -29,7 +29,7 @@ class Layout extends AdminRender {
 		);
 		$this->add_control(
 			'wpte_filter_for_shortcode', $this->style, [
-				'label'       => __( 'Filter for', 'wpte-product-layout' ),
+				'label'       => __( 'Filter for', 'product-layouts' ),
 				'type'        => Controls::SELECT,
 				'loader'      => true,
 				// 'multiple' => true,
@@ -41,15 +41,15 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_filters_preset',
 			$this->style, [
-				'label'       => esc_html__( 'Preset', 'wpte-product-layout' ),
+				'label'       => esc_html__( 'Preset', 'product-layouts' ),
 				'type'        => Controls::SELECT,
 				'loader'      => true,
 				'default'     => 'normal',
 				'css'         => 'margin-bottom: 20px',
 				'description' => 'Change the filter style.',
 				'options'     => [
-					'normal'   => esc_html__( 'Normal', 'wpte-product-layout' ),
-					'dropdown' => esc_html__( 'DropDown', 'wpte-product-layout' ),
+					'normal'   => esc_html__( 'Normal', 'product-layouts' ),
+					'dropdown' => esc_html__( 'DropDown', 'product-layouts' ),
 				],
 			]
 		);
@@ -59,11 +59,11 @@ class Layout extends AdminRender {
 				'wpte_product_filter_post_count_switcher',
 				$this->style,
 				[
-					'label'        => __( 'Show Post Count', 'wpte-product-layout' ),
+					'label'        => __( 'Show Post Count', 'product-layouts' ),
 					'type'         => Controls::SWITCHER,
 					'default'      => 'yes',
-					'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-					'label_off'    => __( 'No', 'wpte-product-layout' ),
+					'label_on'     => __( 'Yes', 'product-layouts' ),
+					'label_off'    => __( 'No', 'product-layouts' ),
 					'return_value' => 'yes',
 					'description'  => 'Display the number of posts.',
 				]
@@ -80,7 +80,7 @@ class Layout extends AdminRender {
 		$this->start_controls_section(
 			'wpte_f_category_query',
 			[
-				'label'   => __( 'Category Query', 'wpte-product-layout' ),
+				'label'   => __( 'Category Query', 'product-layouts' ),
 				'showing' => true,
 			]
 		);
@@ -89,11 +89,11 @@ class Layout extends AdminRender {
 			'wpte_product_f_custom_category',
 			$this->style,
 			[
-				'label'        => __( 'Show Custom Categories', 'wpte-product-layout' ),
+				'label'        => __( 'Show Custom Categories', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'yes',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 				'description'  => '',
 			]
@@ -103,7 +103,7 @@ class Layout extends AdminRender {
 			'wpte_f_category_list',
 			$this->style,
 			[
-				'label' => __( 'Categories', 'wpte-product-layout' ),
+				'label' => __( 'Categories', 'product-layouts' ),
 				'type'  => Controls::PARENTCATEGORIES,
 				'condition'   => [
 					'wpte_product_f_custom_category' => 'yes',
@@ -115,11 +115,11 @@ class Layout extends AdminRender {
 			'wpte_f_custom_subcategory',
 			$this->style,
 			[
-				'label'        => __( 'Show Custom Subcategories', 'wpte-product-layout' ),
+				'label'        => __( 'Show Custom Subcategories', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'yes',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 				'description'  => '',
 			]
@@ -129,7 +129,7 @@ class Layout extends AdminRender {
 			'wpte_f_sub_category_list',
 			$this->style,
 			[
-				'label' => __( 'Sub Categories', 'wpte-product-layout' ),
+				'label' => __( 'Sub Categories', 'product-layouts' ),
 				'type'  => Controls::SUBCATEGORIES,
 				'condition'   => [
 					'wpte_f_custom_subcategory' => 'yes',
@@ -155,7 +155,7 @@ class Layout extends AdminRender {
 
 		$this->add_control(
 			'wpte_filter_for_shortcode', $this->style, [
-				'label'       => __( 'Filter for', 'wpte-product-layout' ),
+				'label'       => __( 'Filter for', 'product-layouts' ),
 				'type'        => Controls::SELECT,
 				'loader'      => true,
 				// 'multiple' => true,
@@ -167,7 +167,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_filters_attribute',
 			$this->style, [
-				'label'       => esc_html__( 'Attributes', 'wpte-product-layout' ),
+				'label'       => esc_html__( 'Attributes', 'product-layouts' ),
 				'type'        => Controls::SELECT,
 				'loader'      => true,
 				'default'     => 'color',
@@ -179,29 +179,29 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_filters_attribute_style',
 			$this->style, [
-				'label'       => esc_html__( 'Style', 'wpte-product-layout' ),
+				'label'       => esc_html__( 'Style', 'product-layouts' ),
 				'type'        => Controls::SELECT,
 				'loader'      => true,
 				'default'     => 'style_1',
 				'description' => 'Change color box style.',
 				'options'     => [
-					'style_1' => esc_html__( 'Style 1', 'wpte-product-layout' ),
-					'style_2' => esc_html__( 'Style 2', 'wpte-product-layout' ),
+					'style_1' => esc_html__( 'Style 1', 'product-layouts' ),
+					'style_2' => esc_html__( 'Style 2', 'product-layouts' ),
 				],
 			]
 		);
 		$this->add_control(
 			'wpte_filters_preset',
 			$this->style, [
-				'label'       => esc_html__( 'Preset', 'wpte-product-layout' ),
+				'label'       => esc_html__( 'Preset', 'product-layouts' ),
 				'type'        => Controls::SELECT,
 				'loader'      => true,
 				'default'     => 'normal',
 				'css'         => 'margin-bottom: 20px',
 				'description' => 'Change the filter style.',
 				'options'     => [
-					'normal'   => esc_html__( 'Normal', 'wpte-product-layout' ),
-					'dropdown' => esc_html__( 'DropDown', 'wpte-product-layout' ),
+					'normal'   => esc_html__( 'Normal', 'product-layouts' ),
+					'dropdown' => esc_html__( 'DropDown', 'product-layouts' ),
 				],
 			]
 		);
@@ -210,11 +210,11 @@ class Layout extends AdminRender {
 			'wpte_filters_attribute_text',
 			$this->style,
 			[
-				'label'        => __( 'Show Text', 'wpte-product-layout' ),
+				'label'        => __( 'Show Text', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'no',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 				'description'  => 'Display the text content.',
 			]
@@ -224,11 +224,11 @@ class Layout extends AdminRender {
 			'wpte_product_filter_post_count_switcher',
 			$this->style,
 			[
-				'label'        => __( 'Show Post Count', 'wpte-product-layout' ),
+				'label'        => __( 'Show Post Count', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'yes',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 				'description'  => 'Display the number of posts.',
 			]
@@ -238,11 +238,11 @@ class Layout extends AdminRender {
 			'wpte_f_hide_empty',
 			$this->style,
 			[
-				'label'        => __( 'Hide Empty', 'wpte-product-layout' ),
+				'label'        => __( 'Hide Empty', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'yes',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 				'description'  => 'Hide attribute if no post available',
 			]
@@ -267,11 +267,11 @@ class Layout extends AdminRender {
 			'wpte_filters_title_show',
 			$this->style,
 			[
-				'label'        => __( 'Show Title', 'wpte-product-layout' ),
+				'label'        => __( 'Show Title', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'no',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -280,11 +280,11 @@ class Layout extends AdminRender {
 			'wpte_filters_custom_title',
 			$this->style,
 			[
-				'label'        => __( 'Custom Title?', 'wpte-product-layout' ),
+				'label'        => __( 'Custom Title?', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'no',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 				'condition'    => [ 'wpte_filters_title_show' => 'yes' ],
 			]
@@ -294,7 +294,7 @@ class Layout extends AdminRender {
 			'wpte_filters_custom_title_text',
 			$this->style,
 			[
-				'label'       => esc_html__( 'Title Text', 'wpte-product-layout' ),
+				'label'       => esc_html__( 'Title Text', 'product-layouts' ),
 				'type'        => Controls::TEXT,
 				'default'     => '',
 				'description' => '',
@@ -313,7 +313,7 @@ class Layout extends AdminRender {
 		$this->start_controls_section(
 			'wpte_product_filter_box_wapper',
 			[
-				'label'     => esc_html__( 'Box Style', 'wpte-product-layout' ),
+				'label'     => esc_html__( 'Box Style', 'product-layouts' ),
 				'showing'   => true,
 				'condition' => [ 'wpte_filters_preset' => 'dropdown' ],
 			]
@@ -332,7 +332,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_box_bg',
 			$this->style, [
-				'label'             => esc_html__( 'Background', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Background', 'product-layouts' ),
 				'type'              => Controls::GRADIENT,
 				'default'           => '',
 				'selector'          => [
@@ -345,7 +345,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_box_color',
 			$this->style, [
-				'label'             => __( 'Color', 'wpte-product-layout' ),
+				'label'             => __( 'Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -360,7 +360,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_box_border_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => __( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -417,7 +417,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_box_padding',
 			$this->style,
 			[
-				'label'             => __( 'Padding', 'wpte-product-layout' ),
+				'label'             => __( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -458,7 +458,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_box_margin',
 			$this->style,
 			[
-				'label'             => __( 'Margin', 'wpte-product-layout' ),
+				'label'             => __( 'Margin', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -506,7 +506,7 @@ class Layout extends AdminRender {
 		$this->start_controls_section(
 			'wpte_product_filter_dropdown',
 			[
-				'label'     => esc_html__( 'DropDown', 'wpte-product-layout' ),
+				'label'     => esc_html__( 'DropDown', 'product-layouts' ),
 				'showing'   => true,
 				'condition' => [ 'wpte_filters_preset' => 'dropdown' ],
 			]
@@ -516,17 +516,17 @@ class Layout extends AdminRender {
 			'wpte_product_filter_dropdown_align',
 			$this->style,
 			[
-				'label'       => __( 'Position', 'wpte-product-layout' ),
+				'label'       => __( 'Position', 'product-layouts' ),
 				'type'        => Controls::CHOOSE,
 				'operator'    => Controls::OPERATOR_ICON,
 				'default'     => '',
 				'options'     => [
 					'right' => [
-						'title' => __( 'Left', 'wpte-product-layout' ),
+						'title' => __( 'Left', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignleft',
 					],
 					'left'  => [
-						'title' => __( 'Right', 'wpte-product-layout' ),
+						'title' => __( 'Right', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignright',
 					],
 				],
@@ -540,7 +540,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_dropdown_bg',
 			$this->style, [
-				'label'             => esc_html__( 'Background', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Background', 'product-layouts' ),
 				'type'              => Controls::GRADIENT,
 				'default'           => '',
 				'selector'          => [
@@ -555,7 +555,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_dropdown_min_width',
 			$this->style,
 			[
-				'label'        => __( 'Min Width', 'wpte-product-layout' ),
+				'label'        => __( 'Min Width', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -590,7 +590,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_dropdown_min_height',
 			$this->style,
 			[
-				'label'        => __( 'Max Height', 'wpte-product-layout' ),
+				'label'        => __( 'Max Height', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -625,7 +625,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_dropdown_border_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => __( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -682,7 +682,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_dropdown_padding',
 			$this->style,
 			[
-				'label'             => __( 'Padding', 'wpte-product-layout' ),
+				'label'             => __( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -724,7 +724,7 @@ class Layout extends AdminRender {
 		$this->start_controls_section(
 			'wpte_product_filter_title_style',
 			[
-				'label'     => esc_html__( 'Title', 'wpte-product-layout' ),
+				'label'     => esc_html__( 'Title', 'product-layouts' ),
 				'showing'   => true,
 				'condition' => [ 'wpte_filters_preset' => 'normal' ],
 			]
@@ -744,7 +744,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_title_color',
 			$this->style, [
-				'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -759,7 +759,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_title_margin',
 			$this->style,
 			[
-				'label'             => __( 'Margin', 'wpte-product-layout' ),
+				'label'             => __( 'Margin', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -801,7 +801,7 @@ class Layout extends AdminRender {
 		$this->start_controls_section(
 			'wpte_product_filter_checkbox',
 			[
-				'label'   => esc_html__( 'Checkbox', 'wpte-product-layout' ),
+				'label'   => esc_html__( 'Checkbox', 'product-layouts' ),
 				'showing' => true,
 			]
 		);
@@ -820,7 +820,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_size',
 			$this->style,
 			[
-				'label'        => __( 'Box Size', 'wpte-product-layout' ),
+				'label'        => __( 'Box Size', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -855,7 +855,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_checkbox_bg',
 			$this->style, [
-				'label'             => esc_html__( 'Background Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Background Color', 'product-layouts' ),
 				'type'              => Controls::GRADIENT,
 				'default'           => '',
 				'selector'          => [
@@ -869,7 +869,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_checkbox_color',
 			$this->style, [
-				'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -896,7 +896,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_border_radius',
 			$this->style,
 			[
-				'label'             => esc_html__( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -931,7 +931,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_position',
 			$this->style,
 			[
-				'label'             => __( 'Checkbox position', 'wpte-product-layout' ),
+				'label'             => __( 'Checkbox position', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -961,7 +961,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_inner_circle_position',
 			$this->style,
 			[
-				'label'             => __( 'Checkbox Inner position', 'wpte-product-layout' ),
+				'label'             => __( 'Checkbox Inner position', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1013,7 +1013,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_checkbox_text_color',
 			$this->style, [
-				'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -1040,7 +1040,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_spacing_item',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Spacing ( Item to Item )', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Spacing ( Item to Item )', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1075,7 +1075,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_text_spacing',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Spacing ( Checkbox to text )', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Spacing ( Checkbox to text )', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1117,7 +1117,7 @@ class Layout extends AdminRender {
 		$this->start_controls_section(
 			'wpte_product_filter_checkbox',
 			[
-				'label'   => esc_html__( 'Checkbox and Icon', 'wpte-product-layout' ),
+				'label'   => esc_html__( 'Checkbox and Icon', 'product-layouts' ),
 				'showing' => true,
 			]
 		);
@@ -1126,7 +1126,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_size',
 			$this->style,
 			[
-				'label'        => __( 'Box Size', 'wpte-product-layout' ),
+				'label'        => __( 'Box Size', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1161,7 +1161,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_checkbox_bg',
 			$this->style, [
-				'label'             => esc_html__( 'Background Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Background Color', 'product-layouts' ),
 				'type'              => Controls::GRADIENT,
 				'default'           => '',
 				'selector'          => [
@@ -1175,7 +1175,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_checkbox_color',
 			$this->style, [
-				'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -1202,7 +1202,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_border_radius',
 			$this->style,
 			[
-				'label'             => esc_html__( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1237,7 +1237,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_position',
 			$this->style,
 			[
-				'label'             => __( 'Checkbox position', 'wpte-product-layout' ),
+				'label'             => __( 'Checkbox position', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1267,7 +1267,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_inner_circle_position',
 			$this->style,
 			[
-				'label'             => __( 'Checkbox Inner position', 'wpte-product-layout' ),
+				'label'             => __( 'Checkbox Inner position', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1307,7 +1307,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_rating_icon_color',
 			$this->style, [
-				'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -1322,7 +1322,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_rating_icon_size',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Icon Size', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Icon Size', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1368,7 +1368,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_spacing_item',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Spacing ( Item to Item )', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Spacing ( Item to Item )', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1403,7 +1403,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_icon_spacing',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Spacing ( Checkbox to Icon )', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Spacing ( Checkbox to Icon )', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1439,7 +1439,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_rating_icon_spacing',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Spacing ( Icon to Icon )', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Spacing ( Icon to Icon )', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1481,7 +1481,7 @@ class Layout extends AdminRender {
 		$this->start_controls_section(
 			'wpte_product_filter_radio',
 			[
-				'label'   => esc_html__( 'Radio', 'wpte-product-layout' ),
+				'label'   => esc_html__( 'Radio', 'product-layouts' ),
 				'showing' => true,
 			]
 		);
@@ -1500,7 +1500,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_radio_size',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Size', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Size', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1535,7 +1535,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_radio_bg',
 			$this->style, [
-				'label'             => esc_html__( 'Background Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Background Color', 'product-layouts' ),
 				'type'              => Controls::GRADIENT,
 				'default'           => '',
 				'selector'          => [
@@ -1549,7 +1549,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_radio_color',
 			$this->style, [
-				'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -1575,7 +1575,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_radio_circle_position',
 			$this->style,
 			[
-				'label'             => __( 'Circle position', 'wpte-product-layout' ),
+				'label'             => __( 'Circle position', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1605,7 +1605,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_radio_inner_circle_position',
 			$this->style,
 			[
-				'label'             => __( 'Inner circle position', 'wpte-product-layout' ),
+				'label'             => __( 'Inner circle position', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1657,7 +1657,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_radio_text_color',
 			$this->style, [
-				'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -1684,7 +1684,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_radio_spacing_item',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Spacing ( Item to Item )', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Spacing ( Item to Item )', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1719,7 +1719,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_radio_text_spacing',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Spacing ( Circle to text )', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Spacing ( Circle to text )', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1762,7 +1762,7 @@ class Layout extends AdminRender {
 		$this->start_controls_section(
 			'wpte_product_filter_post_count',
 			[
-				'label'   => esc_html__( 'Post Count', 'wpte-product-layout' ),
+				'label'   => esc_html__( 'Post Count', 'product-layouts' ),
 				'showing' => true,
 				'condition'   => [ 'wpte_product_filter_post_count_switcher' => 'yes' ],
 			]
@@ -1783,7 +1783,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_post_count_bg',
 			$this->style, [
-				'label'             => esc_html__( 'Background Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Background Color', 'product-layouts' ),
 				'type'              => Controls::GRADIENT,
 				'default'           => '',
 				'selector'          => [
@@ -1798,7 +1798,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_post_count_color',
 			$this->style, [
-				'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -1814,7 +1814,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_post_count_spacing',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Spacing', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Spacing', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1850,7 +1850,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_post_count_border_radius',
 			$this->style,
 			[
-				'label'             => esc_html__( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1886,7 +1886,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_post_count_border_padding',
 			$this->style,
 			[
-				'label'             => esc_html__( 'Padding', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1932,8 +1932,8 @@ class Layout extends AdminRender {
 			'wpte-general-section-tabs',
 			[
 				'options' => [
-					'general' => __( 'Content', 'wpte-product-layout' ),
-					'style'   => __( 'Style', 'wpte-product-layout' ),
+					'general' => __( 'Content', 'product-layouts' ),
+					'style'   => __( 'Style', 'product-layouts' ),
 				],
 			]
 		);
@@ -1949,7 +1949,7 @@ class Layout extends AdminRender {
 		$this->start_controls_section(
 			'wpte_product_filter_checkbox',
 			[
-				'label'     => esc_html__( 'Checkbox', 'wpte-product-layout' ),
+				'label'     => esc_html__( 'Checkbox', 'product-layouts' ),
 				'showing'   => true,
 			]
 		);
@@ -1967,7 +1967,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_checkbox_bg',
 			$this->style, [
-				'label'             => esc_html__( 'Background Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Background Color', 'product-layouts' ),
 				'type'              => Controls::GRADIENT,
 				'default'           => '',
 				'selector'          => [
@@ -1983,7 +1983,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_checkbox_color',
 			$this->style, [
-				'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -2010,7 +2010,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_border_radius',
 			$this->style,
 			[
-				'label'             => esc_html__( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -2045,7 +2045,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_size',
 			$this->style,
 			[
-				'label'        => __( 'Box Size', 'wpte-product-layout' ),
+				'label'        => __( 'Box Size', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -2079,7 +2079,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_icon_size',
 			$this->style,
 			[
-				'label'        => __( 'Icon Size', 'wpte-product-layout' ),
+				'label'        => __( 'Icon Size', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -2114,7 +2114,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_position',
 			$this->style,
 			[
-				'label'             => __( 'Checkbox position', 'wpte-product-layout' ),
+				'label'             => __( 'Checkbox position', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -2144,7 +2144,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_inner_circle_position',
 			$this->style,
 			[
-				'label'             => __( 'Checkbox Inner position', 'wpte-product-layout' ),
+				'label'             => __( 'Checkbox Inner position', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -2198,7 +2198,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_filter_checkbox_text_color',
 			$this->style, [
-				'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -2226,7 +2226,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_spacing_vertical',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Spacing ( Vertical )', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Spacing ( Vertical )', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -2261,7 +2261,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_spacing_horizontal',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Spacing ( Horizontal )', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Spacing ( Horizontal )', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -2299,7 +2299,7 @@ class Layout extends AdminRender {
 			'wpte_product_filter_checkbox_text_spacing',
 			$this->style,
 			[
-				'label'             => __( 'Spacing', 'wpte-product-layout' ),
+				'label'             => __( 'Spacing', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',

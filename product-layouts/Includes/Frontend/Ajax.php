@@ -56,7 +56,7 @@ class Ajax {
 		$nonce = isset( $_REQUEST['_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 
 		if ( ! wp_verify_nonce( $nonce, 'wpte-global-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
 		$product_id = isset( $_POST['product_id'] ) ? intval( $_POST['product_id'] ) : '';
@@ -96,7 +96,7 @@ class Ajax {
 		$nonce = isset( $_REQUEST['_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 
 		if ( ! wp_verify_nonce( $nonce, 'wpte-global-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
 		$cart_items = isset( $_POST['cart_item_data'] ) ? filter_input( INPUT_POST, 'cart_item_data', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
@@ -171,7 +171,7 @@ class Ajax {
 		if ( ! wp_verify_nonce( $nonce, 'wpte-global-nonce' ) ) {
 			wp_send_json_success(
                 [
-					'nonceerror' => __( 'Nonce Varification Failed!', 'wpte-product-layout' ),
+					'nonceerror' => __( 'Nonce Varification Failed!', 'product-layouts' ),
 				]
             );
 			return false;
@@ -182,7 +182,7 @@ class Ajax {
 		if ( ! $product_id ) {
 			wp_send_json_success(
                 [
-					'iderror' => __( 'Product id not found!', 'wpte-product-layout' ),
+					'iderror' => __( 'Product id not found!', 'product-layouts' ),
 				]
             );
 		}
@@ -236,7 +236,7 @@ class Ajax {
 		} else {
 			wp_send_json_success(
                 [
-					'error' => __( 'Something went wrong!', 'wpte-product-layout' ),
+					'error' => __( 'Something went wrong!', 'product-layouts' ),
 				]
             );
 		}
@@ -275,7 +275,7 @@ class Ajax {
 		$nonce = isset( $_REQUEST['_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 
 		if ( ! wp_verify_nonce( $nonce, 'wpte-global-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
 		$product_id = isset( $_POST['product_id'] ) ? intval( $_POST['product_id'] ) : 0;
@@ -295,7 +295,7 @@ class Ajax {
 		$nonce = isset( $_REQUEST['_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 
 		if ( ! wp_verify_nonce( $nonce, 'wpte-global-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
 		global $wpdb;
@@ -399,7 +399,7 @@ class Ajax {
 		$nonce = isset( $_REQUEST['_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 
 		if ( ! wp_verify_nonce( $nonce, 'wpte-global-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
 		global $wpdb;
@@ -439,7 +439,7 @@ class Ajax {
 		$nonce = isset( $_REQUEST['_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 
 		if ( ! wp_verify_nonce( $nonce, 'wpte-global-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
 		global $wpdb;
@@ -528,7 +528,7 @@ class Ajax {
 		$nonce = isset( $_REQUEST['_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 
 		if ( ! wp_verify_nonce( $nonce, 'wpte-global-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
 		global $wpdb;

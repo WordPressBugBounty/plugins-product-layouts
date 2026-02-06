@@ -29,8 +29,8 @@ class Support {
 			<div class="wpte-wpl-row">
 				<div class="wpte-wpl-wrapper">
 					<div class="wpte-wpl-create-layouts text-center p-5">
-						<h1><?php echo esc_html__( 'Welcome to Product Layouts for WooCommerce', 'wpte-product-layout' ); ?></h1>
-						<p><?php echo esc_html__( 'Thank you for installiing Product Layouts for WooCommerce. Let\'s start decorating your shop!', 'wpte-product-layout' ); ?></p>
+						<h1><?php echo esc_html__( 'Welcome to Product Layouts for WooCommerce', 'product-layouts' ); ?></h1>
+						<p><?php echo esc_html__( 'Thank you for installiing Product Layouts for WooCommerce. Let\'s start decorating your shop!', 'product-layouts' ); ?></p>
 					</div>
 					<div class="wpte-feature-section">
 						<div class="wpte-about-container">
@@ -48,9 +48,9 @@ class Support {
 											<span class="dashicons dashicons-format-aside"></span>
 										</div>
 										<div class="wpte-pl-support-content">
-											<h4><?php echo esc_html__( 'Documentation', 'wpte-product-layout' ); ?></h4>
-											<p><?php echo esc_html__( 'Get started by spending some time with the documentation to get familiar with Product Layouts for Woocommerce. Build awesome Product layouts for you or your clients with ease.', 'wpte-product-layout' ); ?></p>
-											<a href="https://wpkin.com/docs-category/product-layouts/" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Documentation', 'wpte-product-layout' ); ?></a>
+											<h4><?php echo esc_html__( 'Documentation', 'product-layouts' ); ?></h4>
+											<p><?php echo esc_html__( 'Get started by spending some time with the documentation to get familiar with Product Layouts for Woocommerce. Build awesome Product layouts for you or your clients with ease.', 'product-layouts' ); ?></p>
+											<a href="https://wpkin.com/docs-category/product-layouts/" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Documentation', 'product-layouts' ); ?></a>
 										</div>
 									</div>
 								</div>
@@ -62,9 +62,9 @@ class Support {
 											<span class="dashicons dashicons-thumbs-up"></span>
 										</div>
 										<div class="wpte-pl-support-content">
-											<h4><?php echo esc_html__( 'Contribute to Product Layouts', 'wpte-product-layout' ); ?></h4>
-											<p><?php echo esc_html__( 'You can contribute to make Product Layouts better reporting bugs & creating issues. Our Development team always try to make more powerfull Plugins day by day with solved Issues.', 'wpte-product-layout' ); ?></p>
-											<a href="https://wordpress.org/support/plugin/product-layouts/" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Report a bug', 'wpte-product-layout' ); ?></a>
+											<h4><?php echo esc_html__( 'Contribute to Product Layouts', 'product-layouts' ); ?></h4>
+											<p><?php echo esc_html__( 'You can contribute to make Product Layouts better reporting bugs & creating issues. Our Development team always try to make more powerfull Plugins day by day with solved Issues.', 'product-layouts' ); ?></p>
+											<a href="https://wordpress.org/support/plugin/product-layouts/" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Report a bug', 'product-layouts' ); ?></a>
 										</div>
 									</div>
 								</div>
@@ -76,9 +76,9 @@ class Support {
 											<span class="dashicons dashicons-video-alt2"></span>
 										</div>
 										<div class="wpte-pl-support-content">
-											<h4><?php echo esc_html__( 'Video Tutorials', 'wpte-product-layout' ); ?></h4>
-											<p><?php echo esc_html__( 'Unable to use Product Layouts for Woocommerce? Don\'t worry you can check your web tutorials to make easier to use.', 'wpte-product-layout' ); ?></p>
-											<a href="https://www.youtube.com/playlist?list=PLnr-_fYXIk0UrNZ3-xEKeLVtZPFJadOIX" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Video Tutorials', 'wpte-product-layout' ); ?></a>
+											<h4><?php echo esc_html__( 'Video Tutorials', 'product-layouts' ); ?></h4>
+											<p><?php echo esc_html__( 'Unable to use Product Layouts for Woocommerce? Don\'t worry you can check your web tutorials to make easier to use.', 'product-layouts' ); ?></p>
+											<a href="https://www.youtube.com/playlist?list=PLnr-_fYXIk0UrNZ3-xEKeLVtZPFJadOIX" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Video Tutorials', 'product-layouts' ); ?></a>
 										</div>
 									</div>
 								</div>
@@ -90,9 +90,9 @@ class Support {
 											<span class="dashicons dashicons-phone"></span>
 										</div>
 										<div class="wpte-pl-support-content">
-											<h4><?php echo esc_html__( 'Support', 'wpte-product-layout' ); ?></h4>
-											<p><?php echo esc_html__( 'Do you need our support? don\'t worry, Our exprienced developer will help you.', 'wpte-product-layout' ); ?></p>
-											<a href="https://wordpress.org/support/plugin/product-layouts/" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Get Support', 'wpte-product-layout' ); ?></a>
+											<h4><?php echo esc_html__( 'Support', 'product-layouts' ); ?></h4>
+											<p><?php echo esc_html__( 'Do you need our support? don\'t worry, Our exprienced developer will help you.', 'product-layouts' ); ?></p>
+											<a href="https://wordpress.org/support/plugin/product-layouts/" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Get Support', 'product-layouts' ); ?></a>
 										</div>
 									</div>
 								</div>

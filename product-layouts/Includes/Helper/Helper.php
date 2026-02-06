@@ -14,10 +14,10 @@ trait Helper {
 	 * @return void
 	 */
 	public function wpte_settings_tabs_header( $id, $arg = [] ) {
-
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$product_layouts_page = isset( $_GET['layouts'] ) && 'filter' !== $_GET['layouts'] ? true : false;
 		if ( $product_layouts_page ) {
-			$arg['options']['advanced'] = __( 'Advanced', 'wpte-product-layout' );
+			$arg['options']['advanced'] = __( 'Advanced', 'product-layouts' );
 		}
 		echo '<ul class="wpte-start-tabs-header">   ';
 		foreach ( $arg['options'] as $key => $value ) {
@@ -132,7 +132,7 @@ trait Helper {
 				$is_pro      = '';
 				$is_po_class = '';
 			} else {
-				$is_pro      = __( 'Pro', 'wpte-product-layout' );
+				$is_pro      = __( 'Pro', 'product-layouts' );
 				$is_po_class = 'wpte-po-element';
 			}
 		}
@@ -260,7 +260,7 @@ trait Helper {
 	 */
 	public function start_controls_accordion( $id, array $arg = [] ) {
 		$defualt = [
-			'title'  => __( 'Sort', 'wpte-product-layout' ),
+			'title'  => __( 'Sort', 'product-layouts' ),
 			'is_pro' => '',
 		];
 		$arg     = array_merge( $defualt, $arg );
@@ -272,7 +272,7 @@ trait Helper {
 				$is_pro      = '';
 				$is_po_class = '';
 			} else {
-				$is_pro      = __( 'Pro', 'wpte-product-layout' );
+				$is_pro      = __( 'Pro', 'product-layouts' );
 				$is_po_class = 'wpte-po-element';
 			}
 		}
@@ -387,7 +387,7 @@ trait Helper {
 				$is_pro      = '';
 				$is_po_class = '';
 			} else {
-				$is_pro      = __( 'Pro', 'wpte-product-layout' );
+				$is_pro      = __( 'Pro', 'product-layouts' );
 				$is_po_class = 'wpte-po-element';
 			}
 		}
@@ -426,8 +426,8 @@ trait Helper {
 			'type'          => 'text',
 			'label'         => 'Input Text',
 			'default'       => '',
-			'label_on'      => __( 'Yes', 'wpte-product-layout' ),
-			'label_off'     => __( 'No', 'wpte-product-layout' ),
+			'label_on'      => __( 'Yes', 'product-layouts' ),
+			'label_off'     => __( 'No', 'product-layouts' ),
 			'placeholder'   => '',
 			'selector-data' => true,
 			'render'        => true,
@@ -488,6 +488,7 @@ trait Helper {
 		if ( $arg['type'] !== 'cart' ) {
 			$arg  = array_merge( $defualt, $arg );
 			$func = $arg['type'] . '_admin_group_control';
+			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 			print_r( $this->$func( $id, $data, $arg ) );
 		} else {
 			$func = $arg['type'] . '_cart_control';
@@ -833,11 +834,11 @@ trait Helper {
 			'wpte_product_layout_cart_icon_switcher',
 			$this->style,
 			[
-				'label'        => __( 'Show Cart', 'wpte-product-layout' ),
+				'label'        => __( 'Show Cart', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'no',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 				'description'  => '',
 			]
@@ -848,7 +849,7 @@ trait Helper {
 				'wpte-product-cart-icon',
 				$data,
 				[
-					'label'       => __( 'Cart Icon', 'wpte-product-layout' ),
+					'label'       => __( 'Cart Icon', 'product-layouts' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-cart-2',
 					'condition'   => [
@@ -862,7 +863,7 @@ trait Helper {
 				'wpte-product-added-cart-icon',
 				$data,
 				[
-					'label'       => __( 'Added Cart Icon', 'wpte-product-layout' ),
+					'label'       => __( 'Added Cart Icon', 'product-layouts' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-cart-3',
 					'condition'   => [
@@ -876,7 +877,7 @@ trait Helper {
 				'wpte-product-grouped-icon',
 				$data,
 				[
-					'label'       => __( 'Grouped Icon', 'wpte-product-layout' ),
+					'label'       => __( 'Grouped Icon', 'product-layouts' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-setting-5',
 					'condition'   => [
@@ -890,7 +891,7 @@ trait Helper {
 				'wpte-product-external-icon',
 				$data,
 				[
-					'label'       => __( 'External Icon', 'wpte-product-layout' ),
+					'label'       => __( 'External Icon', 'product-layouts' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-external',
 					'condition'   => [
@@ -904,7 +905,7 @@ trait Helper {
 				'wpte-product-variable-icon',
 				$data,
 				[
-					'label'       => __( 'Variable Icon', 'wpte-product-layout' ),
+					'label'       => __( 'Variable Icon', 'product-layouts' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-ok-5',
 					'condition'   => [
@@ -933,11 +934,11 @@ trait Helper {
 				'wpte_product_layout_cart_icon_tooltip_switcher',
 				$this->style,
 				[
-					'label'        => __( 'Show Tooltip', 'wpte-product-layout' ),
+					'label'        => __( 'Show Tooltip', 'product-layouts' ),
 					'type'         => Controls::SWITCHER,
 					'default'      => 'yes',
-					'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-					'label_off'    => __( 'No', 'wpte-product-layout' ),
+					'label_on'     => __( 'Yes', 'product-layouts' ),
+					'label_off'    => __( 'No', 'product-layouts' ),
 					'return_value' => 'yes',
 					'condition'    => [
 						'wpte_product_layout_cart_icon_switcher' => 'yes',
@@ -950,9 +951,9 @@ trait Helper {
 				'wpte-product-cart-tooltip',
 				$data,
 				[
-					'label'       => __( 'Cart Tooltip', 'wpte-product-layout' ),
+					'label'       => __( 'Cart Tooltip', 'product-layouts' ),
 					'type'        => Controls::TOOLTIP,
-					'default'     => __( 'Add to Cart', 'wpte-product-layout' ),
+					'default'     => __( 'Add to Cart', 'product-layouts' ),
 					'condition'   => [
 						'wpte_product_layout_cart_icon_switcher' => 'yes',
 						'wpte_product_layout_cart_icon_tooltip_switcher' => 'yes',
@@ -965,7 +966,7 @@ trait Helper {
 				'wpte-product-grouped-tooltip',
 				$data,
 				[
-					'label'       => __( 'Grouped Tooltip', 'wpte-product-layout' ),
+					'label'       => __( 'Grouped Tooltip', 'product-layouts' ),
 					'type'        => Controls::TOOLTIP,
 					'default'     => 'Grouped',
 					'condition'   => [
@@ -980,7 +981,7 @@ trait Helper {
 				'wpte-product-external-tooltip',
 				$data,
 				[
-					'label'       => __( 'External Tooltip', 'wpte-product-layout' ),
+					'label'       => __( 'External Tooltip', 'product-layouts' ),
 					'type'        => Controls::TOOLTIP,
 					'default'     => 'External',
 					'condition'   => [
@@ -995,7 +996,7 @@ trait Helper {
 				'wpte-product-variable-tooltip',
 				$data,
 				[
-					'label'       => __( 'Variable Tooltip', 'wpte-product-layout' ),
+					'label'       => __( 'Variable Tooltip', 'product-layouts' ),
 					'type'        => Controls::TOOLTIP,
 					'default'     => 'Variable',
 					'condition'   => [
@@ -1013,9 +1014,9 @@ trait Helper {
 				'wpte-product-cart-text',
 				$data,
 				[
-					'label'       => __( 'Cart Text', 'wpte-product-layout' ),
+					'label'       => __( 'Cart Text', 'product-layouts' ),
 					'type'        => Controls::TEXT,
-					'default'     => __( 'Add to Cart', 'wpte-product-layout' ),
+					'default'     => __( 'Add to Cart', 'product-layouts' ),
 					'condition'   => [
 						'wpte_product_layout_cart_icon_switcher' => 'yes',
 					],
@@ -1027,7 +1028,7 @@ trait Helper {
 				'wpte-product-cart-view',
 				$data,
 				[
-					'label'       => __( 'View Cart', 'wpte-product-layout' ),
+					'label'       => __( 'View Cart', 'product-layouts' ),
 					'type'        => Controls::TEXT,
 					'default'     => 'View Cart',
 					'condition'   => [
@@ -1041,7 +1042,7 @@ trait Helper {
 				'wpte-product-grouped-text',
 				$data,
 				[
-					'label'       => __( 'Grouped Text', 'wpte-product-layout' ),
+					'label'       => __( 'Grouped Text', 'product-layouts' ),
 					'type'        => Controls::TEXT,
 					'default'     => 'Grouped',
 					'condition'   => [
@@ -1055,7 +1056,7 @@ trait Helper {
 				'wpte-product-external-text',
 				$data,
 				[
-					'label'       => __( 'External Text', 'wpte-product-layout' ),
+					'label'       => __( 'External Text', 'product-layouts' ),
 					'type'        => Controls::TEXT,
 					'default'     => 'External',
 					'condition'   => [
@@ -1069,7 +1070,7 @@ trait Helper {
 				'wpte-product-variable-text',
 				$data,
 				[
-					'label'       => __( 'Variable Text', 'wpte-product-layout' ),
+					'label'       => __( 'Variable Text', 'product-layouts' ),
 					'type'        => Controls::TEXT,
 					'default'     => 'Variable',
 					'condition'   => [
@@ -1603,21 +1604,21 @@ trait Helper {
 			$id . '-lap',
 			$data,
 			[
-				'label'          => __( 'Column Size', 'wpte-product-layout' ),
+				'label'          => __( 'Column Size', 'product-layouts' ),
 				'type'           => Controls::SELECT,
 				'responsive'     => 'laptop',
 				'description'    => $arg['description'],
 				'default'        => 'wpte-pd-col-lg-12',
 				'options'        => [
-					'wpte-col-lap-1'  => __( 'Col 1', 'wpte-product-layout' ),
-					'wpte-col-lap-2'  => __( 'Col 2', 'wpte-product-layout' ),
-					'wpte-col-lap-3'  => __( 'Col 3', 'wpte-product-layout' ),
-					'wpte-col-lap-4'  => __( 'Col 4', 'wpte-product-layout' ),
-					'wpte-col-lap-5'  => __( 'Col 5', 'wpte-product-layout' ),
-					'wpte-col-lap-6'  => __( 'Col 6', 'wpte-product-layout' ),
-					'wpte-col-lap-7'  => __( 'Col 7', 'wpte-product-layout' ),
-					'wpte-col-lap-8'  => __( 'Col 8', 'wpte-product-layout' ),
-					'wpte-col-lap-12' => __( 'Col 12', 'wpte-product-layout' ),
+					'wpte-col-lap-1'  => __( 'Col 1', 'product-layouts' ),
+					'wpte-col-lap-2'  => __( 'Col 2', 'product-layouts' ),
+					'wpte-col-lap-3'  => __( 'Col 3', 'product-layouts' ),
+					'wpte-col-lap-4'  => __( 'Col 4', 'product-layouts' ),
+					'wpte-col-lap-5'  => __( 'Col 5', 'product-layouts' ),
+					'wpte-col-lap-6'  => __( 'Col 6', 'product-layouts' ),
+					'wpte-col-lap-7'  => __( 'Col 7', 'product-layouts' ),
+					'wpte-col-lap-8'  => __( 'Col 8', 'product-layouts' ),
+					'wpte-col-lap-12' => __( 'Col 12', 'product-layouts' ),
 				],
 				$select          => $selector,
 				'form_condition' => ( array_key_exists( 'form_condition', $arg ) ? $arg['form_condition'] : '' ),
@@ -1628,22 +1629,22 @@ trait Helper {
 			$id . '-tab',
 			$data,
 			[
-				'label'          => __( 'Column Size', 'wpte-product-layout' ),
+				'label'          => __( 'Column Size', 'product-layouts' ),
 				'type'           => Controls::SELECT,
 				'responsive'     => 'tab',
 				'default'        => 'wpte-pd-col-md-12',
 				'description'    => $arg['description'],
 				'options'        => [
-					''                => __( 'Default', 'wpte-product-layout' ),
-					'wpte-col-tab-1'  => __( 'Col 1', 'wpte-product-layout' ),
-					'wpte-col-tab-2'  => __( 'Col 2', 'wpte-product-layout' ),
-					'wpte-col-tab-3'  => __( 'Col 3', 'wpte-product-layout' ),
-					'wpte-col-tab-4'  => __( 'Col 4', 'wpte-product-layout' ),
-					'wpte-col-tab-5'  => __( 'Col 5', 'wpte-product-layout' ),
-					'wpte-col-tab-6'  => __( 'Col 6', 'wpte-product-layout' ),
-					'wpte-col-tab-7'  => __( 'Col 7', 'wpte-product-layout' ),
-					'wpte-col-tab-8'  => __( 'Col 8', 'wpte-product-layout' ),
-					'wpte-col-tab-12' => __( 'Col 12', 'wpte-product-layout' ),
+					''                => __( 'Default', 'product-layouts' ),
+					'wpte-col-tab-1'  => __( 'Col 1', 'product-layouts' ),
+					'wpte-col-tab-2'  => __( 'Col 2', 'product-layouts' ),
+					'wpte-col-tab-3'  => __( 'Col 3', 'product-layouts' ),
+					'wpte-col-tab-4'  => __( 'Col 4', 'product-layouts' ),
+					'wpte-col-tab-5'  => __( 'Col 5', 'product-layouts' ),
+					'wpte-col-tab-6'  => __( 'Col 6', 'product-layouts' ),
+					'wpte-col-tab-7'  => __( 'Col 7', 'product-layouts' ),
+					'wpte-col-tab-8'  => __( 'Col 8', 'product-layouts' ),
+					'wpte-col-tab-12' => __( 'Col 12', 'product-layouts' ),
 				],
 				$select          => $selector,
 				'form_condition' => ( array_key_exists( 'form_condition', $arg ) ? $arg['form_condition'] : '' ),
@@ -1654,22 +1655,22 @@ trait Helper {
 			$id . '-mob',
 			$data,
 			[
-				'label'          => __( 'Column Size', 'wpte-product-layout' ),
+				'label'          => __( 'Column Size', 'product-layouts' ),
 				'type'           => Controls::SELECT,
 				'default'        => 'wpte-pd-col-lg-12',
 				'responsive'     => 'mobile',
 				'description'    => $arg['description'],
 				'options'        => [
-					''                => __( 'Default', 'wpte-product-layout' ),
-					'wpte-col-mob-1'  => __( 'Col 1', 'wpte-product-layout' ),
-					'wpte-col-mob-2'  => __( 'Col 2', 'wpte-product-layout' ),
-					'wpte-col-mob-3'  => __( 'Col 3', 'wpte-product-layout' ),
-					'wpte-col-mob-4'  => __( 'Col 4', 'wpte-product-layout' ),
-					'wpte-col-mob-5'  => __( 'Col 5', 'wpte-product-layout' ),
-					'wpte-col-mob-6'  => __( 'Col 6', 'wpte-product-layout' ),
-					'wpte-col-mob-7'  => __( 'Col 7', 'wpte-product-layout' ),
-					'wpte-col-mob-8'  => __( 'Col 8', 'wpte-product-layout' ),
-					'wpte-col-mob-12' => __( 'Col 12', 'wpte-product-layout' ),
+					''                => __( 'Default', 'product-layouts' ),
+					'wpte-col-mob-1'  => __( 'Col 1', 'product-layouts' ),
+					'wpte-col-mob-2'  => __( 'Col 2', 'product-layouts' ),
+					'wpte-col-mob-3'  => __( 'Col 3', 'product-layouts' ),
+					'wpte-col-mob-4'  => __( 'Col 4', 'product-layouts' ),
+					'wpte-col-mob-5'  => __( 'Col 5', 'product-layouts' ),
+					'wpte-col-mob-6'  => __( 'Col 6', 'product-layouts' ),
+					'wpte-col-mob-7'  => __( 'Col 7', 'product-layouts' ),
+					'wpte-col-mob-8'  => __( 'Col 8', 'product-layouts' ),
+					'wpte-col-mob-12' => __( 'Col 12', 'product-layouts' ),
 				],
 				$select          => $selector,
 				'form_condition' => ( array_key_exists( 'form_condition', $arg ) ? $arg['form_condition'] : '' ),
@@ -1696,11 +1697,11 @@ trait Helper {
 			'wpte_product_layout_wishlist_icon_switcher',
 			$this->style,
 			[
-				'label'        => __( 'Show Wishlist', 'wpte-product-layout' ),
+				'label'        => __( 'Show Wishlist', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'yes',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'css'          => 'padding-top:10px',
 				'return_value' => 'yes',
 				'description'  => '',
@@ -1712,7 +1713,7 @@ trait Helper {
 				'wpte-product-wishlist-icon',
 				$this->style,
 				[
-					'label'       => __( 'Wishlist Icon', 'wpte-product-layout' ),
+					'label'       => __( 'Wishlist Icon', 'product-layouts' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-wishlist-3',
 					'css'         => 'padding-bottom:10px',
@@ -1728,7 +1729,7 @@ trait Helper {
 				'wpte-product-wishlist-added-icon',
 				$this->style,
 				[
-					'label'       => __( 'Added Icon', 'wpte-product-layout' ),
+					'label'       => __( 'Added Icon', 'product-layouts' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-wishlist-11',
 					'condition'   => [
@@ -1745,11 +1746,11 @@ trait Helper {
 				'wpte_product_layout_wishlist_icon_tooltip_switcher',
 				$this->style,
 				[
-					'label'        => __( 'Show Tooltip', 'wpte-product-layout' ),
+					'label'        => __( 'Show Tooltip', 'product-layouts' ),
 					'type'         => Controls::SWITCHER,
 					'default'      => 'yes',
-					'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-					'label_off'    => __( 'No', 'wpte-product-layout' ),
+					'label_on'     => __( 'Yes', 'product-layouts' ),
+					'label_off'    => __( 'No', 'product-layouts' ),
 					'css'          => 'padding-top:10px',
 					'return_value' => 'yes',
 					'condition'    => [
@@ -1764,9 +1765,9 @@ trait Helper {
 				'wpte-product-wishlist-tooltip',
 				$this->style,
 				[
-					'label'       => __( 'Tooltip Text', 'wpte-product-layout' ),
+					'label'       => __( 'Tooltip Text', 'product-layouts' ),
 					'type'        => Controls::TOOLTIP,
-					'default'     => __( 'Wishlist', 'wpte-product-layout' ),
+					'default'     => __( 'Wishlist', 'product-layouts' ),
 					'css'         => 'padding-bottom:10px',
 					'condition'   => [
 						'wpte_product_layout_wishlist_icon_switcher' => 'yes',
@@ -1783,9 +1784,9 @@ trait Helper {
 				'wpte-product-wishlist-text',
 				$this->style,
 				[
-					'label'       => __( 'Wishlist Text', 'wpte-product-layout' ),
+					'label'       => __( 'Wishlist Text', 'product-layouts' ),
 					'type'        => Controls::TEXT,
-					'default'     => __( 'Wishlist', 'wpte-product-layout' ),
+					'default'     => __( 'Wishlist', 'product-layouts' ),
 					'condition'   => [
 						'wpte_product_layout_wishlist_icon_switcher' => 'yes',
 					],
@@ -1796,9 +1797,9 @@ trait Helper {
 				'wpte-product-wishlist-added-text',
 				$this->style,
 				[
-					'label'       => __( 'Added Text', 'wpte-product-layout' ),
+					'label'       => __( 'Added Text', 'product-layouts' ),
 					'type'        => Controls::TEXT,
-					'default'     => __( 'Added', 'wpte-product-layout' ),
+					'default'     => __( 'Added', 'product-layouts' ),
 					'css'         => 'padding-bottom:10px',
 					'condition'   => [
 						'wpte_product_layout_wishlist_icon_switcher' => 'yes',
@@ -1827,11 +1828,11 @@ trait Helper {
 			'wpte_product_layout_compare_icon_switcher',
 			$this->style,
 			[
-				'label'        => __( 'Show Compare', 'wpte-product-layout' ),
+				'label'        => __( 'Show Compare', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'yes',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'css'          => 'padding-top:10px',
 				'return_value' => 'yes',
 				'description'  => '',
@@ -1843,7 +1844,7 @@ trait Helper {
 				'wpte-product-compare-icon',
 				$this->style,
 				[
-					'label'       => __( 'Compare Icon', 'wpte-product-layout' ),
+					'label'       => __( 'Compare Icon', 'product-layouts' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-compare-1',
 					'css'         => 'padding-bottom:10px',
@@ -1859,7 +1860,7 @@ trait Helper {
 				'wpte-product-compare-added-icon',
 				$this->style,
 				[
-					'label'       => __( 'Added Icon', 'wpte-product-layout' ),
+					'label'       => __( 'Added Icon', 'product-layouts' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-compare-6',
 					'condition'   => [
@@ -1875,11 +1876,11 @@ trait Helper {
 				'wpte_product_layout_compare_icon_tooltip_switcher',
 				$this->style,
 				[
-					'label'        => __( 'Show Tooltip', 'wpte-product-layout' ),
+					'label'        => __( 'Show Tooltip', 'product-layouts' ),
 					'type'         => Controls::SWITCHER,
 					'default'      => 'yes',
-					'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-					'label_off'    => __( 'No', 'wpte-product-layout' ),
+					'label_on'     => __( 'Yes', 'product-layouts' ),
+					'label_off'    => __( 'No', 'product-layouts' ),
 					'css'          => 'padding-top:10px',
 					'return_value' => 'yes',
 					'condition' => [
@@ -1894,9 +1895,9 @@ trait Helper {
 				'wpte-product-compare-tooltip',
 				$this->style,
 				[
-					'label'       => __( 'Tooltip Text', 'wpte-product-layout' ),
+					'label'       => __( 'Tooltip Text', 'product-layouts' ),
 					'type'        => Controls::TOOLTIP,
-					'default'     => __( 'Compare', 'wpte-product-layout' ),
+					'default'     => __( 'Compare', 'product-layouts' ),
 					'css'         => 'padding-bottom:10px',
 					'condition'   => [
 						'wpte_product_layout_compare_icon_switcher' => 'yes',
@@ -1911,9 +1912,9 @@ trait Helper {
 				'wpte-product-compare-text',
 				$this->style,
 				[
-					'label'       => __( 'Compare Text', 'wpte-product-layout' ),
+					'label'       => __( 'Compare Text', 'product-layouts' ),
 					'type'        => Controls::TEXT,
-					'default'     => __( 'Compare', 'wpte-product-layout' ),
+					'default'     => __( 'Compare', 'product-layouts' ),
 					'condition'   => [
 						'wpte_product_layout_compare_icon_switcher' => 'yes',
 					],
@@ -1924,9 +1925,9 @@ trait Helper {
 				'wpte-product-compare-added-text',
 				$this->style,
 				[
-					'label'       => __( 'Added Text', 'wpte-product-layout' ),
+					'label'       => __( 'Added Text', 'product-layouts' ),
 					'type'        => Controls::TEXT,
-					'default'     => __( 'Added', 'wpte-product-layout' ),
+					'default'     => __( 'Added', 'product-layouts' ),
 					'css'         => 'padding-bottom:10px',
 					'condition'   => [
 						'wpte_product_layout_compare_icon_switcher' => 'yes',
@@ -1955,11 +1956,11 @@ trait Helper {
 			'wpte_product_layout_quickview_icon_switcher',
 			$this->style,
 			[
-				'label'        => __( 'Show Quickview', 'wpte-product-layout' ),
+				'label'        => __( 'Show Quickview', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'yes',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'css'          => 'padding-top:10px',
 				'return_value' => 'yes',
 				'description'  => '',
@@ -1971,7 +1972,7 @@ trait Helper {
 				'wpte-product-quickview-icon',
 				$this->style,
 				[
-					'label'       => __( 'Quickview Icon', 'wpte-product-layout' ),
+					'label'       => __( 'Quickview Icon', 'product-layouts' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-quickview',
 					'css'         => 'padding-bottom:10px',
@@ -1988,11 +1989,11 @@ trait Helper {
 				'wpte_product_layout_quickview_icon_tooltip_switcher',
 				$this->style,
 				[
-					'label'        => __( 'Show Tooltip', 'wpte-product-layout' ),
+					'label'        => __( 'Show Tooltip', 'product-layouts' ),
 					'type'         => Controls::SWITCHER,
 					'default'      => 'yes',
-					'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-					'label_off'    => __( 'No', 'wpte-product-layout' ),
+					'label_on'     => __( 'Yes', 'product-layouts' ),
+					'label_off'    => __( 'No', 'product-layouts' ),
 					'css'          => 'padding-top:10px',
 					'return_value' => 'yes',
 					'condition' => [
@@ -2007,9 +2008,9 @@ trait Helper {
 				'wpte-product-quickview-tooltip',
 				$this->style,
 				[
-					'label'       => __( 'Tooltip Text', 'wpte-product-layout' ),
+					'label'       => __( 'Tooltip Text', 'product-layouts' ),
 					'type'        => Controls::TOOLTIP,
-					'default'     => __( 'Quick view', 'wpte-product-layout' ),
+					'default'     => __( 'Quick view', 'product-layouts' ),
 					'css'         => 'padding-bottom:10px',
 					'condition'   => [
 						'wpte_product_layout_quickview_icon_switcher' => 'yes',
@@ -2026,9 +2027,9 @@ trait Helper {
 				'wpte-product-quickview-text',
 				$this->style,
 				[
-					'label'       => __( 'Quickview Text', 'wpte-product-layout' ),
+					'label'       => __( 'Quickview Text', 'product-layouts' ),
 					'type'        => Controls::TEXT,
-					'default'     => __( 'Quick view', 'wpte-product-layout' ),
+					'default'     => __( 'Quick view', 'product-layouts' ),
 					'condition'   => [
 						'wpte_product_layout_quickview_icon_switcher' => 'yes',
 					],
@@ -2125,7 +2126,7 @@ trait Helper {
 		$this->start_popover_control(
             $id,
             [
-				'label'          => __( 'Typography', 'wpte-product-layout' ),
+				'label'          => __( 'Typography', 'product-layouts' ),
 				$notcond         => $notcondition,
 				$cond            => $condition,
 				'form_condition' => ( array_key_exists( 'form_condition', $arg ) ? $arg['form_condition'] : '' ),
@@ -2139,7 +2140,7 @@ trait Helper {
             $id . '-font',
             $data,
             [
-				'label'        => __( 'Font Family', 'wpte-product-layout' ),
+				'label'        => __( 'Font Family', 'product-layouts' ),
 				'type'         => Controls::FONT,
 				$selectorvalue => 'font-family:{{VALUE}};',
 				$selector_key  => $selector,
@@ -2149,7 +2150,7 @@ trait Helper {
             $id . '-size',
             $data,
             [
-				'label'   => __( 'Size', 'wpte-product-layout' ),
+				'label'   => __( 'Size', 'product-layouts' ),
 				'type'    => Controls::SLIDER,
 				'default' => [
 					'unit' => 'px',
@@ -2185,23 +2186,23 @@ trait Helper {
             $id . '-weight',
             $data,
             [
-				'label'        => __( 'Weight', 'wpte-product-layout' ),
+				'label'        => __( 'Weight', 'product-layouts' ),
 				'type'         => Controls::SELECT,
 				$selectorvalue => 'font-weight: {{VALUE}};',
 				$selector_key  => $selector,
 				'options'      => [
-					'100'    => __( '100', 'wpte-product-layout' ),
-					'200'    => __( '200', 'wpte-product-layout' ),
-					'300'    => __( '300', 'wpte-product-layout' ),
-					'400'    => __( '400', 'wpte-product-layout' ),
-					'500'    => __( '500', 'wpte-product-layout' ),
-					'600'    => __( '600', 'wpte-product-layout' ),
-					'700'    => __( '700', 'wpte-product-layout' ),
-					'800'    => __( '800', 'wpte-product-layout' ),
-					'900'    => __( '900', 'wpte-product-layout' ),
-					''       => __( 'Default', 'wpte-product-layout' ),
-					'normal' => __( 'Normal', 'wpte-product-layout' ),
-					'bold'   => __( 'Bold', 'wpte-product-layout' ),
+					'100'    => __( '100', 'product-layouts' ),
+					'200'    => __( '200', 'product-layouts' ),
+					'300'    => __( '300', 'product-layouts' ),
+					'400'    => __( '400', 'product-layouts' ),
+					'500'    => __( '500', 'product-layouts' ),
+					'600'    => __( '600', 'product-layouts' ),
+					'700'    => __( '700', 'product-layouts' ),
+					'800'    => __( '800', 'product-layouts' ),
+					'900'    => __( '900', 'product-layouts' ),
+					''       => __( 'Default', 'product-layouts' ),
+					'normal' => __( 'Normal', 'product-layouts' ),
+					'bold'   => __( 'Bold', 'product-layouts' ),
 				],
 			]
 		);
@@ -2209,15 +2210,15 @@ trait Helper {
             $id . '-transform',
             $data,
             [
-				'label'        => __( 'Transform', 'wpte-product-layout' ),
+				'label'        => __( 'Transform', 'product-layouts' ),
 				'type'         => Controls::SELECT,
 				'default'      => '',
 				'options'      => [
-					''           => __( 'Default', 'wpte-product-layout' ),
-					'uppercase'  => __( 'Uppercase', 'wpte-product-layout' ),
-					'lowercase'  => __( 'Lowercase', 'wpte-product-layout' ),
-					'capitalize' => __( 'Capitalize', 'wpte-product-layout' ),
-					'none'       => __( 'Normal', 'wpte-product-layout' ),
+					''           => __( 'Default', 'product-layouts' ),
+					'uppercase'  => __( 'Uppercase', 'product-layouts' ),
+					'lowercase'  => __( 'Lowercase', 'product-layouts' ),
+					'capitalize' => __( 'Capitalize', 'product-layouts' ),
+					'none'       => __( 'Normal', 'product-layouts' ),
 				],
 				$selectorvalue => 'text-transform: {{VALUE}};',
 				$selector_key  => $selector,
@@ -2227,14 +2228,14 @@ trait Helper {
             $id . '-style',
             $data,
             [
-				'label'        => __( 'Style', 'wpte-product-layout' ),
+				'label'        => __( 'Style', 'product-layouts' ),
 				'type'         => Controls::SELECT,
 				'default'      => '',
 				'options'      => [
-					''        => __( 'Default', 'wpte-product-layout' ),
-					'normal'  => __( 'normal', 'wpte-product-layout' ),
-					'italic'  => __( 'Italic', 'wpte-product-layout' ),
-					'oblique' => __( 'Oblique', 'wpte-product-layout' ),
+					''        => __( 'Default', 'product-layouts' ),
+					'normal'  => __( 'normal', 'product-layouts' ),
+					'italic'  => __( 'Italic', 'product-layouts' ),
+					'oblique' => __( 'Oblique', 'product-layouts' ),
 				],
 				$selectorvalue => 'font-style: {{VALUE}};',
 				$selector_key  => $selector,
@@ -2244,15 +2245,15 @@ trait Helper {
             $id . '-decoration',
             $data,
             [
-				'label'        => __( 'Decoration', 'wpte-product-layout' ),
+				'label'        => __( 'Decoration', 'product-layouts' ),
 				'type'         => Controls::SELECT,
 				'default'      => '',
 				'options'      => [
-					'' => __( 'Default', 'wpte-product-layout' ),
-					'underline'    => __( 'Underline', 'wpte-product-layout' ),
-					'overline'     => __( 'Overline', 'wpte-product-layout' ),
-					'line-through' => __( 'Line Through', 'wpte-product-layout' ),
-					'none'         => __( 'None', 'wpte-product-layout' ),
+					'' => __( 'Default', 'product-layouts' ),
+					'underline'    => __( 'Underline', 'product-layouts' ),
+					'overline'     => __( 'Overline', 'product-layouts' ),
+					'line-through' => __( 'Line Through', 'product-layouts' ),
+					'none'         => __( 'None', 'product-layouts' ),
 				],
 				$selectorvalue => 'text-decoration: {{VALUE}};',
 				$selector_key  => $selector,
@@ -2263,7 +2264,7 @@ trait Helper {
             $id . '-l-height',
             $data,
             [
-				'label'   => __( 'Line Height', 'wpte-product-layout' ),
+				'label'   => __( 'Line Height', 'product-layouts' ),
 				'type'    => Controls::SLIDER,
 				'default' => [
 					'unit' => 'px',
@@ -2290,7 +2291,7 @@ trait Helper {
             $id . '-l-spacing',
             $data,
             [
-				'label'   => __( 'Letter Spacing', 'wpte-product-layout' ),
+				'label'   => __( 'Letter Spacing', 'product-layouts' ),
 				'type'    => Controls::SLIDER,
 				'default' => [
 					'unit' => 'px',
@@ -2376,7 +2377,7 @@ trait Helper {
 		$this->start_popover_control(
             $id,
             [
-				'label'          => __( 'Box Shadow', 'wpte-product-layout' ),
+				'label'          => __( 'Box Shadow', 'product-layouts' ),
 				$cond            => $condition,
 				'form_condition' => ( array_key_exists( 'form_condition', $arg ) ? $arg['form_condition'] : '' ),
 				'css'            => $css,
@@ -2387,11 +2388,11 @@ trait Helper {
 			$id . '-shadow',
 			$data,
 			[
-				'label'        => __( 'Shadow', 'wpte-product-layout' ),
+				'label'        => __( 'Shadow', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => '',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'None', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'None', 'product-layouts' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -2399,16 +2400,16 @@ trait Helper {
 			$id . '-type',
 			$data,
 			[
-				'label'     => __( 'Type', 'wpte-product-layout' ),
+				'label'     => __( 'Type', 'product-layouts' ),
 				'type'      => Controls::CHOOSE,
 				'default'   => '',
 				'options'   => [
 					''      => [
-						'title' => __( 'Outline', 'wpte-product-layout' ),
+						'title' => __( 'Outline', 'product-layouts' ),
 						'icon'  => 'fa fa-align-left',
 					],
 					'inset' => [
-						'title' => __( 'Inset', 'wpte-product-layout' ),
+						'title' => __( 'Inset', 'product-layouts' ),
 						'icon'  => 'fa fa-align-center',
 					],
 				],
@@ -2420,7 +2421,7 @@ trait Helper {
 			$id . '-horizontal',
 			$data,
 			[
-				'label'        => __( 'Horizontal', 'wpte-product-layout' ),
+				'label'        => __( 'Horizontal', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'default'      => [
 					'unit' => 'px',
@@ -2444,7 +2445,7 @@ trait Helper {
 			$id . '-vertical',
 			$data,
 			[
-				'label'        => __( 'Vertical', 'wpte-product-layout' ),
+				'label'        => __( 'Vertical', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'default'      => [
 					'unit' => 'px',
@@ -2468,7 +2469,7 @@ trait Helper {
 			$id . '-blur',
 			$data,
 			[
-				'label'        => __( 'Blur', 'wpte-product-layout' ),
+				'label'        => __( 'Blur', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'default'      => [
 					'unit' => 'px',
@@ -2492,7 +2493,7 @@ trait Helper {
 			$id . '-spread',
 			$data,
 			[
-				'label'        => __( 'Spread', 'wpte-product-layout' ),
+				'label'        => __( 'Spread', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'default'      => [
 					'unit' => 'px',
@@ -2516,7 +2517,7 @@ trait Helper {
 			$id . '-color',
 			$data,
 			[
-				'label'        => __( 'Color', 'wpte-product-layout' ),
+				'label'        => __( 'Color', 'product-layouts' ),
 				'separator'    => 'before',
 				'type'         => Controls::COLOR,
 				'oparetor'     => 'RGB',
@@ -2569,7 +2570,7 @@ trait Helper {
 		$this->start_popover_control(
             $id,
             [
-				'label'          => __( 'Border', 'wpte-product-layout' ),
+				'label'          => __( 'Border', 'product-layouts' ),
 				$cond            => $condition,
 				'form_condition' => ( array_key_exists( 'form_condition', $arg ) ? $arg['form_condition'] : '' ),
 				'separator'      => $separator,
@@ -2581,20 +2582,20 @@ trait Helper {
             $id . '-type',
             $data,
             [
-				'label'        => __( 'Type', 'wpte-product-layout' ),
+				'label'        => __( 'Type', 'product-layouts' ),
 				'type'         => Controls::SELECT,
 				'default'      => '',
 				'options'      => [
-					''       => __( 'None', 'wpte-product-layout' ),
-					'solid'  => __( 'Solid', 'wpte-product-layout' ),
-					'dotted' => __( 'Dotted', 'wpte-product-layout' ),
-					'dashed' => __( 'Dashed', 'wpte-product-layout' ),
-					'double' => __( 'Double', 'wpte-product-layout' ),
-					'groove' => __( 'Groove', 'wpte-product-layout' ),
-					'ridge'  => __( 'Ridge', 'wpte-product-layout' ),
-					'inset'  => __( 'Inset', 'wpte-product-layout' ),
-					'outset' => __( 'Outset', 'wpte-product-layout' ),
-					'hidden' => __( 'Hidden', 'wpte-product-layout' ),
+					''       => __( 'None', 'product-layouts' ),
+					'solid'  => __( 'Solid', 'product-layouts' ),
+					'dotted' => __( 'Dotted', 'product-layouts' ),
+					'dashed' => __( 'Dashed', 'product-layouts' ),
+					'double' => __( 'Double', 'product-layouts' ),
+					'groove' => __( 'Groove', 'product-layouts' ),
+					'ridge'  => __( 'Ridge', 'product-layouts' ),
+					'inset'  => __( 'Inset', 'product-layouts' ),
+					'outset' => __( 'Outset', 'product-layouts' ),
+					'hidden' => __( 'Hidden', 'product-layouts' ),
 				],
 				$selectorvalue => 'border-style: {{VALUE}};',
 				$selector_key  => $selector,
@@ -2604,7 +2605,7 @@ trait Helper {
             $id . '-width',
             $data,
             [
-				'label'        => __( 'Width', 'wpte-product-layout' ),
+				'label'        => __( 'Width', 'product-layouts' ),
 				'type'         => Controls::DIMENSIONS,
 				$render        => false,
 				'default'      => [
@@ -2634,7 +2635,7 @@ trait Helper {
             $id . '-color',
             $data,
             [
-				'label'        => __( 'Color', 'wpte-product-layout' ),
+				'label'        => __( 'Color', 'product-layouts' ),
 				'type'         => Controls::COLOR,
 				$render        => false,
 				'default'      => '',

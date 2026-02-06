@@ -37,12 +37,12 @@ class Menu {
 	 */
 	public function regiter_admin_menu() {
 		$user = 'manage_options';
-		add_menu_page( __( 'Product Layouts', 'wpte-product-layout' ), __( 'Product Layouts', 'wpte-product-layout' ), $user, 'product-layouts', [ $this, 'plugin_page' ], WPTE_WPL_URL . '/Image/product-layouts-icon.svg', 56 );
-		add_submenu_page( 'product-layouts', __( 'Product Layouts', 'wpte-product-layout' ), __( 'Product Layouts', 'wpte-product-layout' ), $user, 'product-layouts', [ $this, 'plugin_page' ] );
-		add_submenu_page( 'product-layouts', __( 'Shortcode List', 'wpte-product-layout' ), __( 'Shortcode List', 'wpte-product-layout' ), $user, 'product-layouts-shortcode', [ $this, 'product_shortcode' ] );
-		add_submenu_page( 'product-layouts', __( 'Settings', 'wpte-product-layout' ), __( 'Settings', 'wpte-product-layout' ), $user, 'product-layouts-settings', [ $this, 'product_settings' ] );
-		add_submenu_page( 'product-layouts', __( 'Getting Started', 'wpte-product-layout' ), __( 'Getting Started', 'wpte-product-layout' ), $user, 'product-layouts-getting-started', [ $this, 'wpte_product_layout_getting_started' ] );
-		add_submenu_page( 'product-layouts', __( 'Status', 'wpte-product-layout' ), __( 'Status', 'wpte-product-layout' ), $user, 'product-layouts-status', [ $this, 'wpte_product_layout_status' ] );
+		add_menu_page( __( 'Product Layouts', 'product-layouts' ), __( 'Product Layouts', 'product-layouts' ), $user, 'product-layouts', [ $this, 'plugin_page' ], WPTE_WPL_URL . '/Image/product-layouts-icon.svg', 56 );
+		add_submenu_page( 'product-layouts', __( 'Product Layouts', 'product-layouts' ), __( 'Product Layouts', 'product-layouts' ), $user, 'product-layouts', [ $this, 'plugin_page' ] );
+		add_submenu_page( 'product-layouts', __( 'Shortcode List', 'product-layouts' ), __( 'Shortcode List', 'product-layouts' ), $user, 'product-layouts-shortcode', [ $this, 'product_shortcode' ] );
+		add_submenu_page( 'product-layouts', __( 'Settings', 'product-layouts' ), __( 'Settings', 'product-layouts' ), $user, 'product-layouts-settings', [ $this, 'product_settings' ] );
+		add_submenu_page( 'product-layouts', __( 'Getting Started', 'product-layouts' ), __( 'Getting Started', 'product-layouts' ), $user, 'product-layouts-getting-started', [ $this, 'wpte_product_layout_getting_started' ] );
+		add_submenu_page( 'product-layouts', __( 'Status', 'product-layouts' ), __( 'Status', 'product-layouts' ), $user, 'product-layouts-status', [ $this, 'wpte_product_layout_status' ] );
 	}
 
 	/**
@@ -62,7 +62,9 @@ class Menu {
 	 */
 	public function product_shortcode() {
 		apply_filters( 'wpte_product_layout_admin_menu', true );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$importPage = isset( $_REQUEST['page'] ) && ! empty( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$action     = isset( $_REQUEST['action'] ) && ! empty( $_REQUEST['action'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ) : '';
 		if ( $importPage === 'product-layouts-shortcode' && $action === 'import' ) {
 			new Pages\Layout_list\Import();
@@ -85,7 +87,7 @@ class Menu {
             'wpte-wpl-settings-js', 'wpteSettings', [
 				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 				'wpte_nonce' => wp_create_nonce( 'wpte-settings-nonce' ),
-				'error'      => __( 'Something Went Wrong!', 'wpte-product-layout' ),
+				'error'      => __( 'Something Went Wrong!', 'product-layouts' ),
 			]
         );
 		new Pages\Settings();

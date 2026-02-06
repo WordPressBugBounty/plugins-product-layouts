@@ -52,8 +52,8 @@ final class ProductLayout {
 		$popular = wpte_version_control() ? 'Popular' : 'Premium';
 		$Updated = wpte_version_control() ? 'Updated' : 'Premium';
 		$New     = wpte_version_control() ? 'New' : 'Premium';
-		$New_N   = wpte_version_control() ? __( 'New', 'wpte-product-layout' ) : __( 'Premium', 'wpte-product-layout' );
-		$Normal  = wpte_version_control() ? '' : __( 'Premium', 'wpte-product-layout' );
+		$New_N   = wpte_version_control() ? __( 'New', 'product-layouts' ) : __( 'Premium', 'product-layouts' );
+		$Normal  = wpte_version_control() ? '' : __( 'Premium', 'product-layouts' );
 		$is_pro  = wpte_version_control() ? '' : 'wpte-po-element';
 		return [
 
@@ -61,7 +61,7 @@ final class ProductLayout {
 				'general'        => [
 					'name'     => 'general-layouts',
 					'status'   => 'Popular', // Popular, Updated, Premium, New, Coming...
-					'status_n' => __( 'Popular', 'wpte-product-layout' ),
+					'status_n' => __( 'Popular', 'product-layouts' ),
 					'icon'     => WPTE_WPL_URL . '/Image/general.svg',
 					'src'      => '',
 					'video'    => 'https://youtu.be/sU2Woih2-DU',
@@ -97,7 +97,7 @@ final class ProductLayout {
 				'product_list'   => [
 					'name'     => 'product-list-layouts',
 					'status'   => 'New',
-					'status_n' => __( 'New', 'wpte-product-layout' ),
+					'status_n' => __( 'New', 'product-layouts' ),
 					'icon'     => WPTE_WPL_URL . '/Image/list.svg',
 					'src'      => '',
 					'video'    => 'https://youtu.be/ctu4Nfz_bUg',
@@ -109,7 +109,7 @@ final class ProductLayout {
 				'caption'        => [
 					'name'     => 'caption-layouts',
 					'status'   => 'Updated',
-					'status_n' => __( 'Updated', 'wpte-product-layout' ),
+					'status_n' => __( 'Updated', 'product-layouts' ),
 					'icon'     => WPTE_WPL_URL . '/Image/caption.svg',
 					'src'      => '',
 					'video'    => 'https://youtu.be/C_hUfw6l_Y4',
@@ -121,7 +121,7 @@ final class ProductLayout {
 				'flipbox'        => [
 					'name'     => 'flipbox-layouts',
 					'status'   => 'New',
-					'status_n' => __( 'New', 'wpte-product-layout' ),
+					'status_n' => __( 'New', 'product-layouts' ),
 					'icon'     => WPTE_WPL_URL . '/Image/flip-box.svg',
 					'src'      => '',
 					'video'    => 'https://youtu.be/x0RZRpX4M98',
@@ -172,7 +172,7 @@ final class ProductLayout {
 				'accordion' => [
 					'name'     => 'accordion',
 					'status'   => 'Coming...',
-					'status_n' => __( 'Coming...', 'wpte-product-layout' ),
+					'status_n' => __( 'Coming...', 'product-layouts' ),
 					'icon'     => WPTE_WPL_URL . '/Image/accordion.svg',
 					'src'      => '',
 					'video'    => '',

@@ -1,23 +1,31 @@
-=== Product Layouts for Woocommerce ( Product Gallery, Product Showcase, Layout Design, Category Tabs, Product Slider, Product Grid, Product Table ) ===
+=== Product Layouts for WooCommerce ===
 
 Contributors: wpkin, richardmallick
-Tags: Product showcase, Product layouts, Product Table, Product gallery, Product List.
+Tags: product showcase, product list, product table, product gallery, product grid
 Requires at least: 6.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
-Create Impressive, Lightweight, Responsive WooCommerce Product Layouts. Compatible with popular themes & page builders.
+Create impressive, lightweight, responsive WooCommerce product layouts. Compatible with popular themes & page builders.
 
 == Description ==
 
-Use Product Layouts for Woocommerce Plugin to Show your product with awesome style to increase your online business.
+Use **Product Layouts for WooCommerce** to display your products with stunning styles and layouts — no coding required.
+Perfect for showcasing your store items beautifully and increasing sales.
 
-[youtube https://www.youtube.com/watch?v=rYcP_MGE2X4]
+**Key Features:**
 
-👁️ [View Demo](https://product-layouts.com/demo/) | 🚀  [Get the Premium Version](https://product-layouts.com/pricing/) | 👩🏼‍💻 [Get Support](https://wordpress.org/support/plugin/product-layouts#new-post)
+* Create product grids, tables, sliders, and galleries easily.
+* Fully responsive and works with all major themes and page builders.
+* Use simple shortcodes anywhere — pages, posts, or widgets.
+* Import demo layouts or create your own with live preview.
+
+[youtube [https://www.youtube.com/watch?v=rYcP_MGE2X4](https://www.youtube.com/watch?v=rYcP_MGE2X4)]
+
+👁️ [View Demo](https://product-layouts.com/demo/) | 🚀 [Get the Premium Version](https://product-layouts.com/pricing/) | 👩🏼‍💻 [Get Support](https://wordpress.org/support/plugin/product-layouts#new-post)
 
 == Free Version ==
 👉 General Layouts (3) [View Demo](https://product-layouts.com/demo/general-layouts/)
@@ -33,101 +41,100 @@ Use Product Layouts for Woocommerce Plugin to Show your product with awesome sty
 👉 Caption Layouts (6) [View Demo](https://product-layouts.com/demo/caption-layouts/)
 👉 Product Tabs [View Demo](https://product-layouts.com/demo/category-tabs/)
 👉 Product Carousel Slider [View Demo](https://product-layouts.com/demo/product-carousel/)
-👉 Product Filter ( Sort by, Show per page, Category, Price Range, Rating ). [View Demo](https://product-layouts.com/demo/filter-sorting/)
-👉 Accordion ( Up Coming )
-👉 Product Pagination. ( with preset )
-👉 Load More Button.
-👉 Category Page Design.
+👉 Product Filter (Sort by, Show per page, Category, Price Range, Rating). [View Demo](https://product-layouts.com/demo/filter-sorting/)
+👉 Accordion (Upcoming)
+👉 Product Pagination (with preset)
+👉 Load More Button
+👉 Category Page Design
 
-==Features==
-1. **Custom Settings** – You can change layout style (Product Filter, Color, Banckground Color, Border, Boxshadow, etc) using custom setting.
-1. **Font Settings** – You can set font typography ( Font, Font-size, Font-shadow, Line-height, letter spacing, etc) as your own choice.
-1. **Style Settings** – You can style layout (Color, Banckground Color, Border, Boxshadow, etc) using style setting.
-1. **Live Preview** – With our plugin we always develop Live Preview interface, so that users will find more comfortable and interest editing with our plugin. Product Layouts for Woocommerce ( Product Gallery, Product Showcase, Layout Design, Product Slider, Product Grid, Product Table )  also designed with a live preview interface. You can see your customization at the live page you editing the product. It will bring a great advantage for the editors.
-1. **Clone Layout** – With this plugin you can use the Clone option to copy the styles of the product as you need just by one click.
-1. **Export and Import** – You can Export Json file from Shortcode list and Import from Import page.
-1. **Shortcode** – You can show your product usign shortcode.
-1. **Product Filter Settings** – You can easily filter products and display. You can filter by Product Categories, Product Type, Filter by, Order By and Order. 
-1. **Icon Settings** – You can use icons from Icon Library ( Icon Picker ) for Add to cart, Wishlist, Quick View, Compare Table button.
-1. **Borders and Shadows** – You can set boder and Boxshadow to every where. Product Layouts for Woocommerce ( Product Gallery, Product Showcase, Layout Design, Product Slider, Product Grid, Product Table ) allows this.
-1. **Color Pickers** – You can set text and background color using color picker. ( Color, Gradient color, Linier Gradient )
-1. **Import Layouts from Demo** - You can Export layouts from 👁️ [Demo](https://product-layouts.com/demo/) website and Import to Product Layouts for Woocommerce plugin.
-1. **Multi Language Supported** - The plugin supports multiple languages, allowing you to easily translate it using the Loco Translate WordPress plugin. Provide a localized experience for your audience and expand your reach globally.
+== Features ==
 
+1. **Custom Settings** – You can change layout style (Product Filter, Color, Background Color, Border, Box shadow, etc.) using custom settings.
+2. **Font Settings** – You can set font typography (Font, Font-size, Font-shadow, Line-height, letter spacing, etc.) as your own choice.
+3. **Style Settings** – You can style layout (Color, Background Color, Border, Box shadow, etc.) using style settings.
+4. **Live Preview** – Our plugin includes a Live Preview interface so users can see changes instantly. Product Layouts for WooCommerce (Product Gallery, Product Showcase, Layout Design, Product Slider, Product Grid, Product Table) is designed for real-time editing convenience.
+5. **Clone Layout** – Use the Clone option to copy layout styles with one click.
+6. **Export and Import** – Export JSON file from Shortcode list and import from Import page.
+7. **Shortcode** – Display your product using shortcode.
+8. **Product Filter Settings** – Easily filter products by Category, Type, Order By, etc.
+9. **Icon Settings** – Use icons from Icon Library (Icon Picker) for Add to Cart, Wishlist, Quick View, Compare Table buttons.
+10. **Borders and Shadows** – Apply border and box shadows everywhere.
+11. **Color Pickers** – Choose colors using color picker (Color, Gradient, Linear Gradient).
+12. **Import Layouts from Demo** – Export layouts from the demo and import directly into your plugin.
+13. **Multi Language Supported** – Translate easily with Loco Translate and reach a global audience.
 
-👁️ [View Demo](https://product-layouts.com/demo/) | 🚀  [Get the Premium Version](https://product-layouts.com/pricing/) | 👩🏼‍💻 [Get Support](https://wordpress.org/support/plugin/product-layouts#new-post)
+👁️ [View Demo](https://product-layouts.com/demo/) | 🚀 [Get the Premium Version](https://product-layouts.com/pricing/) | 👩🏼‍💻 [Get Support](https://wordpress.org/support/plugin/product-layouts#new-post)
 
-==Responsive & Beautiful==
+== Responsive & Beautiful ==
 
-**Product Layouts for Woocommerce ( Product Gallery, Product Showcase, Layout Design, Product Slider, Product Grid, Product Table ) ** is a very responsive product layouts plugin what is really important for the website page rank, especially for the e-commerce. Product Layouts for Woocommerce ( Product Gallery, Product Showcase, Layout Design, Product Slider, Product Grid, Product Table ) work on mobile devices as stable part of your website interface. This plugin’s also fully responsive and mobile devices friendly. Product Layouts for Woocommerce makes displaying your product a beautiful experience, by using amazing style effects and animation ranging from slicing and sliding to fading and folding. There simply is no better way to showcase your amazing work than to make the presentation of it looks just as beautiful as it were never before! With our plugin you can use Google fonts, change the size of the font, color, opacity, background, aligning and much more. Creating all this you will have the original pretty content on it.
+**Product Layouts for WooCommerce (Product Gallery, Product Showcase, Layout Design, Product Slider, Product Grid, Product Table)** is fully responsive and optimized for performance — an important factor for SEO and eCommerce success.
+It works smoothly across devices and displays your products beautifully with animations like sliding, fading, and folding. Customize typography, colors, alignment, and background to create professional product presentations.
 
-👁️ [View Demo](https://product-layouts.com/demo/) | 🚀  [Get the Premium Version](https://product-layouts.com/pricing/) | 👩🏼‍💻 [Get Support](https://wordpress.org/support/plugin/product-layouts#new-post)
+👁️ [View Demo](https://product-layouts.com/demo/) | 🚀 [Get the Premium Version](https://product-layouts.com/pricing/) | 👩🏼‍💻 [Get Support](https://wordpress.org/support/plugin/product-layouts#new-post)
 
 == Installation ==
 
-We’ve made it very simple and very easy to use. The installation process of this plugin is very easy. Those who are not even a regular user or even haven’t any prior experience can easily install our product on their WP dashboard. Nevertheless, for your convenience, we left an installation instruction over here: 
+We’ve made it very simple and easy to use. The installation process of this plugin is straightforward.
 
-> =Option 1=
-> + Download the plugin product-layouts.zip from WordPress Plugin Directory.
-> + Unzip the zip file and extract the plugin folder named <strong>product-layouts.zip
-> + Left that plugin folder into your wp-content/plugins folder.
-> + Go and refresh your Wordpress administration panels and from the menu bar click on Plugins.
-> + Now you may see your plug-in listed under inactive plug-in tab.
-> + Click active to turn your wordpress plugin on.
+> = Option 1 =
+>
+> * Download the plugin product-layouts.zip from WordPress Plugin Directory.
+> * Unzip and extract the plugin folder named **product-layouts.zip**.
+> * Place the folder into your wp-content/plugins directory.
+> * Go to WordPress admin → Plugins → Installed Plugins.
+> * Click **Activate** to enable the plugin.
 
-> =Option 2=
-> + Like the first option you have to download the zip file from download location.
-> + Unzip the zip file and extract the Product Layouts for Woocommerce plugin folder.
-> + Double click on the installable folder in order to get product-layouts.zip.
-> + Go to wordpress admin panel and press Add New from the Menu bar under plugins tab.
-> + Select upload link and drug the availableProduct Layouts for Woocommerce Plugin file and click install now.
-> + After successfully installed finally click on ‘activate’ to turn on.
+> = Option 2 =
+>
+> * Download the plugin zip file.
+> * Go to WordPress admin → Plugins → Add New → Upload Plugin.
+> * Upload the **product-layouts.zip** file.
+> * Click **Install Now**, then **Activate**.
 
-Let us know if you need any help, just open a thread into Support Forum. Don’t be hesitated to inform us about any Bugs or Conflict.
+If you need any help, please open a thread in the [Support Forum](https://wordpress.org/support/plugin/product-layouts/). Don’t hesitate to inform us about any bugs or conflicts.
 
 == Frequently Asked Questions ==
 
-WordPress Product Layouts for Woocommerce- Layouts with Shortcode
+= How can I get support if my Product Layouts plugin is not working? =
 
-= How can I get support if my  Product Layouts plugin is not working? =
+If you have problems with our plugin or something isn’t working, follow these steps first:
 
-If you have problems with our plugins or something is not working as it should, first follow this preliminary steps:
+* Test with a WordPress default theme.
+* Deactivate other plugins to rule out conflicts.
+* Make sure all versions (plugin, theme, WordPress, WooCommerce) are updated.
 
-* Test the plugin with a WordPress default theme, to be sure that the error is not caused by the theme you are currently using.
-* Deactivate all plugins you are using and check if the problem is still occurring.
-* Ensure that you plugin version, your theme version and your WordPress and WooCommerce version (if required) are updated and that the problem you are experiencing has not already been solved in a later plugin update.
+If the issue remains, submit a ticket in the forum with your WordPress and WooCommerce versions and a clear description of the issue.
 
-If none of the previous listed actions helps you solve the problem, then, submit a ticket in the forum and describe your problem accurately, specify WordPress and WooCommerce versions you are using and any other information that might help us solve your problem as quickly as possible. Thanks! 
+= Is Product Layouts for WooCommerce responsive? =
+Yes, it automatically adjusts images and layouts for mobile and tablet devices.
 
+= How to use Product Layouts for WooCommerce in a post or page? =
+Use shortcode: `[wpte_product_layout id="1"]` in your post or page.
 
-= Is the Product Layouts for Woocommerce - Responsive? =
+= Does Product Layouts for WooCommerce support Page Builders? =
+Yes, you can use shortcodes in Elementor, Divi, Beaver Builder, and others. Extensions are coming soon.
 
-Yes, reacts and displays resizing images and layouts for mobile devices and tablets.
+= Can I clone any layout style? =
+Yes — choose your layout from the Shortcode List and click **Clone**.
 
-= How to enable the Product Layouts for Woocommerce to in a post or page? =
+= Can I export and import layout styles? =
+Yes — export JSON from Shortcode List and import it from the Import page.
 
-[wpte_product_layout id="1"] as demo for post. You can also add into page as shortcode for page.
+== Screenshots ==
 
-=Is Product Layouts for Woocommerce Support Page Builder? =
-
-Yes, On Page Builder you can use shortcode for page builder. We will also add extension for page builders.
-
-= Do i Make Clone of any Style? =
-
-Its too easy chose your style from Shortcode List and click at Clone.
-
-= Do i Export and Import style? =
-
-Yes you can Export Json file from Shortcode list and Import from Import page.
-
-== ScreenShots ==
-
-1. Dashboard Setting page
+1. Dashboard Settings Page
 2. How to use per product
-3. A Demo of a layout
-
+3. A demo layout
 
 == Changelog ==
+
+= 1.3.5 =
+* **New:** Fixed the plugin title and description issue.  
+* **Update:** Improved plugin user experience (UX).
+
+= 1.3.4 =
+* **New**: Added short description feature for General layouts.
+* **Update**: Add Caption layouts Product Excerpt length.
 
 = 1.3.4 =
 * **New**: Added short description feature for General layouts.

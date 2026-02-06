@@ -32,7 +32,7 @@ class Compare {
 			?>
 		<!-- DIRTY Responsive pricing table HTML -->
 		<div class="wpte-compare-table-title">
-			<h1><?php echo esc_html__( 'Compare Products', 'wpte-product-layout' ); ?></h1>
+			<h1><?php echo esc_html__( 'Compare Products', 'product-layouts' ); ?></h1>
 		</div>
 		<article>
 			<table>
@@ -79,7 +79,7 @@ class Compare {
 						?>
 					</tr>
 					<tr>
-						<th><?php echo esc_html__( 'Description', 'wpte-product-layout' ); ?></th>
+						<th><?php echo esc_html__( 'Description', 'product-layouts' ); ?></th>
 						<?php
 						if ( $query->have_posts() ) {
 							while ( $query->have_posts() ) {
@@ -94,7 +94,7 @@ class Compare {
 						?>
 					</tr>
 					<tr>
-						<th><?php echo esc_html__( 'Availability', 'wpte-product-layout' ); ?></th>
+						<th><?php echo esc_html__( 'Availability', 'product-layouts' ); ?></th>
 						<?php
 						if ( $query->have_posts() ) {
 							while ( $query->have_posts() ) {
@@ -117,7 +117,7 @@ class Compare {
 						?>
 					</tr>
 					<tr>
-						<th><?php echo esc_html__( 'Weight', 'wpte-product-layout' ); ?></th>
+						<th><?php echo esc_html__( 'Weight', 'product-layouts' ); ?></th>
 						<?php
 						if ( $query->have_posts() ) {
 							while ( $query->have_posts() ) {
@@ -133,7 +133,7 @@ class Compare {
 						?>
 					</tr>
 					<tr>
-						<th><?php echo esc_html__( 'Dimensions', 'wpte-product-layout' ); ?></th>
+						<th><?php echo esc_html__( 'Dimensions', 'product-layouts' ); ?></th>
 						<?php
 						if ( $query->have_posts() ) {
 							while ( $query->have_posts() ) {
@@ -149,7 +149,7 @@ class Compare {
 						?>
 					</tr>
 					<tr>
-						<th><?php echo esc_html__( 'Color', 'wpte-product-layout' ); ?></th>
+						<th><?php echo esc_html__( 'Color', 'product-layouts' ); ?></th>
 						<?php
 						if ( $query->have_posts() ) {
 							while ( $query->have_posts() ) {
@@ -165,7 +165,7 @@ class Compare {
 						?>
 					</tr>
 					<tr>
-						<th><?php echo esc_html__( 'Size', 'wpte-product-layout' ); ?></th>
+						<th><?php echo esc_html__( 'Size', 'product-layouts' ); ?></th>
 						<?php
 						if ( $query->have_posts() ) {
 							while ( $query->have_posts() ) {
@@ -181,7 +181,7 @@ class Compare {
 						?>
 					</tr>
 					<tr>
-						<th><?php echo esc_html__( 'Sku', 'wpte-product-layout' ); ?></th>
+						<th><?php echo esc_html__( 'Sku', 'product-layouts' ); ?></th>
 						<?php
 						if ( $query->have_posts() ) {
 							while ( $query->have_posts() ) {
@@ -196,7 +196,7 @@ class Compare {
 						?>
 					</tr>
 					<tr>
-						<th class="price"><?php echo esc_html__( 'Price', 'wpte-product-layout' ); ?></th>
+						<th class="price"><?php echo esc_html__( 'Price', 'product-layouts' ); ?></th>
 						<?php
 						if ( $query->have_posts() ) {
 							while ( $query->have_posts() ) {

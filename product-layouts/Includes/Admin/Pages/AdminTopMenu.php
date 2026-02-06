@@ -55,8 +55,9 @@ trait AdminTopMenu {
 						</div>
 						<nav class="wpte-wpl-admin-top-nav">
 							<ul class="wpte-wpl-admin-menu">';
-
+								// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 								$GETPage = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
+								// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 								$layouts = ( ! empty( $_GET['layouts'] ) ? sanitize_text_field( wp_unslash( $_GET['layouts'] ) ) : '' );
 
 		if ( count( $response ) == 1 ) :

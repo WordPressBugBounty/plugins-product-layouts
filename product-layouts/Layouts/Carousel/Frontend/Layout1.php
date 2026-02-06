@@ -95,14 +95,14 @@ class Layout1 extends Public_Render {
 			}
 		}
 		if ( $_arrows ) {
-			$arrow_class = '$(".' . $this->WRAPPER . ' .wpte-product-layout-wrapper-' . $shortcode_id . ' .wpte-product-row").append(\'<div class="wpte_carousel_arrows wpte_carousel_prev">' . $prev . '</div><div class="wpte_carousel_arrows wpte_carousel_next">' . $next . '</div>\');';
+			$arrow_class = '$(".' . $this->WRAPPER . ' .wpte-product-layout-wrapper-' . $shortcode_id . ' .wpte-product-row").append(\'<div class="wpte_carousel_arrows wpte_carousel_prev wpte_carousel_prev-' . $shortcode_id . '">' . $prev . '</div><div class="wpte_carousel_arrows wpte_carousel_next wpte_carousel_next-' . $shortcode_id . '">' . $next . '</div>\');';
 			$arrows = 'navigation: {
-				nextEl: ".wpte_carousel_next",
-				prevEl: ".wpte_carousel_prev",
+				nextEl: ".wpte_carousel_next-' . $shortcode_id . '",
+				prevEl: ".wpte_carousel_prev-' . $shortcode_id . '",
 			  },';
 		}
 		if ( $_dots ) {
-			$dot_class = '$(".' . $this->WRAPPER . ' .wpte-product-layout-wrapper-' . $shortcode_id . ' .wpte-product-row").append(\'<div class="wpte-swiper-pagination wpte-swiper-pagination-' . $shortcode_id . '"></div>\');';
+			$dot_class = '$(".' . $this->WRAPPER . ' .wpte-product-layout-wrapper-' . $shortcode_id . ' .wpte-product-row").append(\'<div class="wpte-swiper-pagination  wpte-swiper-pagination-' . $shortcode_id . '"></div>\');';
 			$dots = 'pagination: {
 				el: ".wpte-swiper-pagination-' . $shortcode_id . '",
 				clickable: true,
@@ -110,52 +110,53 @@ class Layout1 extends Public_Render {
 		}
 
 		$jquery = ';(function ($) {
-			$(".' . $this->WRAPPER . ' .wpte-product-column").addClass("swiper-wrapper");
-			$(".' . $this->WRAPPER . ' .wpte-product-layout-wrapper-' . $shortcode_id . ' .wpte-swiper-slide").addClass("swiper-slide");
-			$(".' . $this->WRAPPER . ' .wpte-product-layout-wrapper-' . $shortcode_id . ' .wpte-product-load").addClass("swiper wpte-product-carousel-layout-' . $shortcode_id . '");
-			' . $arrow_class . '
-			' . $dot_class . '
-			$(".' . $this->WRAPPER . ' .wpte-product-layout-wrapper-' . $shortcode_id . ' .wpte-product-row .wpte-product-column").css({
-				"grid-column-gap":"0px", 
-				"grid-row-gap":"0px"
-			});
-			$(".' . $this->WRAPPER . ' .wpte-product-layout-wrapper-' . $shortcode_id . ' .wpte-swiper-slide").css({
-				"display":"grid"
-			});
+			$(document).ready(function(){
+				$(".' . $this->WRAPPER . ' .wpte-product-column").addClass("swiper-wrapper");
+				$(".' . $this->WRAPPER . ' .wpte-product-layout-wrapper-' . $shortcode_id . ' .wpte-swiper-slide").addClass("swiper-slide");
+				$(".' . $this->WRAPPER . ' .wpte-product-layout-wrapper-' . $shortcode_id . ' .wpte-product-load").addClass("swiper wpte-product-carousel-layout-' . $shortcode_id . '");
+				' . $arrow_class . '
+				' . $dot_class . '
+				$(".' . $this->WRAPPER . ' .wpte-product-layout-wrapper-' . $shortcode_id . ' .wpte-product-row .wpte-product-column").css({
+					"grid-column-gap":"0px", 
+					"grid-row-gap":"0px"
+				});
+				$(".' . $this->WRAPPER . ' .wpte-product-layout-wrapper-' . $shortcode_id . ' .wpte-swiper-slide").css({
+					"display":"grid"
+				});
 
-			var swiper = new Swiper(".wpte-product-carousel-layout-' . $shortcode_id . '", {
-				centeredSlides: ' . $center_mode . ',
-				slidesPerView: ' . $lap . ',
-				slidesPerGroup: ' . $lap_item . ',
-				spaceBetween: ' . $space_between_lap . ',
-				' . $autoplay . '
-				loop: ' . $infinite . ',
-				speed: ' . $speed . ',
-				autoHeight: ' . $adaptiveheight . ',
-				' . $arrows . '
-				' . $dots . '
-				breakpoints: {
-					// when window width is >= 320px
-					320: {
-					slidesPerView: ' . $mob . ',
-					slidesPerGroup: ' . $mob_item . ',
-					spaceBetween: ' . $space_between_mob . '
-					},
-					480: {
-					slidesPerView: ' . $tab . ',
-					slidesPerGroup: ' . $tab_item . ',
-					spaceBetween: ' . $space_between_tab . '
-					},
-					768: {
+				var swiper = new Swiper(".wpte-product-carousel-layout-' . $shortcode_id . '", {
+					centeredSlides: ' . $center_mode . ',
 					slidesPerView: ' . $lap . ',
 					slidesPerGroup: ' . $lap_item . ',
-					spaceBetween: ' . $space_between_lap . '
+					spaceBetween: ' . $space_between_lap . ',
+					' . $autoplay . '
+					loop: ' . $infinite . ',
+					speed: ' . $speed . ',
+					autoHeight: ' . $adaptiveheight . ',
+					' . $arrows . '
+					' . $dots . '
+					breakpoints: {
+						// when window width is >= 320px
+						320: {
+						slidesPerView: ' . $mob . ',
+						slidesPerGroup: ' . $mob_item . ',
+						spaceBetween: ' . $space_between_mob . '
+						},
+						480: {
+						slidesPerView: ' . $tab . ',
+						slidesPerGroup: ' . $tab_item . ',
+						spaceBetween: ' . $space_between_tab . '
+						},
+						768: {
+						slidesPerView: ' . $lap . ',
+						slidesPerGroup: ' . $lap_item . ',
+						spaceBetween: ' . $space_between_lap . '
+						},
 					},
-				},
+				});
+				' . $pause_on_hover . '
+				' . $paly_on_hover_leave . '
 			});
-			' . $pause_on_hover . '
-			' . $paly_on_hover_leave . '
-
 		})(jQuery);';
 
 		wp_register_script( 'wpte-product-layout-swiperjs', null, null, WPTE_WPL_VERSION, true );

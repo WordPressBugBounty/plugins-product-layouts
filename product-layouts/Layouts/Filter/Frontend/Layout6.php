@@ -71,9 +71,14 @@ class Layout6 extends Public_Render {
 									<span>
 										<?php
 										if ( $custom_title ) {
-											echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
+											echo wp_kses( 
+												$this->text_render(
+													'wpte_filters_custom_title_text',
+													$custom_title_text
+												), wpte_plugins_allowedtags() 
+											);
 										} else {
-											echo esc_html__( ucfirst( "$attribute" ), 'wpte-product-layout' );
+											echo esc_html(ucfirst( $attribute ));
 										}
 										?>
 									</span>
@@ -87,9 +92,14 @@ class Layout6 extends Public_Render {
 								<span>
 									<?php
 									if ( $custom_title ) {
-										echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
+										echo wp_kses( 
+											$this->text_render(
+												'wpte_filters_custom_title_text',
+												$custom_title_text
+											), wpte_plugins_allowedtags() 
+										);
 									} else {
-										echo esc_html__( ucfirst( "$attribute" ), 'wpte-product-layout' );
+										echo esc_html(ucfirst( $attribute ));
 									}
 									?>
 								</span>
@@ -122,10 +132,10 @@ class Layout6 extends Public_Render {
 											?>
 											<label class="wpte-filter-option wpte-default-option">
 												<input type="checkbox" class="wpte-filter-attribute" name="wpte_product_filter_attribute_<?php echo esc_attr( $this->wpteid ); ?>[]" layoutid="<?php echo esc_attr( $filter_for ); ?>" wpte_attribute="<?php echo esc_attr( 'pa_' . $attribute ); ?>" value="<?php echo esc_attr( $attribute_term->slug ); ?>" >
-												<span class="check-label wpte-check-color-attr-<?php echo $index; ?>">
+												<span class="check-label wpte-check-color-attr-<?php echo esc_html( $index ); ?>">
 												<?php
 												if ( $is_text ) {
-													echo esc_html__( "$attribute_term->name", 'wpte-product-layout' );
+													echo esc_html( $attribute_term->name );
 												}
 												if ( 'yes' === $switcher ) {
                                                     ?>
@@ -145,7 +155,7 @@ class Layout6 extends Public_Render {
 											<span class="check-label">
 											<?php
 											if ( $is_text ) {
-												echo esc_html__( "$attribute_term->name", 'wpte-product-layout' );
+												echo esc_html( $attribute_term->name );
 											}
 											if ( 'yes' === $switcher ) {
                                                 ?>

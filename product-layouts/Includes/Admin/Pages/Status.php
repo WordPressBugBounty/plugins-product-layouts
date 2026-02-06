@@ -38,16 +38,16 @@ class Status {
 
 		<div class="wpte-system-status-wrapper">
 			<div class="wpte-status-content">
-				<h2> <i class="wpte-icon icon-setting"></i><?php echo esc_html__( ' System Status', 'wpte-product-layout' ); ?></h2>
+				<h2> <i class="wpte-icon icon-setting"></i><?php echo esc_html__( ' System Status', 'product-layouts' ); ?></h2>
 				<hr>
 				<table style="margin-top: 30px;" class="wpte-status-area">
 					<tbody class="wpte-status-table-body">
 						<tr>
-							<td class="text-left"><?php echo esc_html__( 'Site Url', 'wpte-product-layout' ); ?></td>
+							<td class="text-left"><?php echo esc_html__( 'Site Url', 'product-layouts' ); ?></td>
 							<td class="text-left green"><?php echo esc_url( get_site_url() ); ?></td>
 						</tr>
 						<tr>
-							<td class="text-left"><?php echo esc_html__( 'Define WP_CACHE', 'wpte-product-layout' ); ?></td>
+							<td class="text-left"><?php echo esc_html__( 'Define WP_CACHE', 'product-layouts' ); ?></td>
 							<td class="text-left green"><?php echo wp_kses( $wp_cache, true ); ?></td>
 						</tr>
 					</tbody>
@@ -56,15 +56,15 @@ class Status {
 				<table style="margin-top: 50px; margin-bottom: 50px;" class="wpte-status-area">
 					<tbody class="wpte-status-table-body">
 						<tr>
-							<td class="text-left"><?php echo esc_html__( 'WordPress Version', 'wpte-product-layout' ); ?></td>
+							<td class="text-left"><?php echo esc_html__( 'WordPress Version', 'product-layouts' ); ?></td>
 							<?php echo wp_kses( $wpVersion, true ); ?>
 						</tr>
 						<tr>
-							<td class="text-left"><?php echo esc_html__( 'PHP Version', 'wpte-product-layout' ); ?></td>
+							<td class="text-left"><?php echo esc_html__( 'PHP Version', 'product-layouts' ); ?></td>
 							<?php echo wp_kses( $phpVerseion, true ); ?>
 						</tr>
 						<tr>
-							<td class="text-left"><?php echo esc_html__( 'WooCommerce Version', 'wpte-product-layout' ); ?></td>
+							<td class="text-left"><?php echo esc_html__( 'WooCommerce Version', 'product-layouts' ); ?></td>
 							<?php echo wp_kses( $WcVerseion, true ); ?>
 						</tr>
 						<tr>
@@ -72,11 +72,11 @@ class Status {
 							<?php echo wp_kses( $max_input_vars_limit, true ); ?>
 						</tr>
 						<tr>
-							<td class="text-left"><?php echo esc_html__( 'Available Memory', 'wpte-product-layout' ); ?></td>
+							<td class="text-left"><?php echo esc_html__( 'Available Memory', 'product-layouts' ); ?></td>
 							<td class="text-left green"><?php echo esc_html( WP_MAX_MEMORY_LIMIT ); ?></td>
 						</tr>
 						<tr>
-							<td class="text-left"><?php echo esc_html__( 'Memory Limit', 'wpte-product-layout' ); ?></td>
+							<td class="text-left"><?php echo esc_html__( 'Memory Limit', 'product-layouts' ); ?></td>
 							<td class="text-left green"><?php echo esc_html( WP_MEMORY_LIMIT ); ?></td>
 						</tr>
 					</tbody>

@@ -60,7 +60,7 @@ class Layout5 extends Layout {
 		$this->add_control(
 			'wpte_product_layout_caption_style_5_effect',
 			$this->style, [
-				'label'   => __( 'Effects Direction', 'wpte-product-layout' ),
+				'label'   => __( 'Effects Direction', 'product-layouts' ),
 				'type'    => Controls::SELECT,
 				'loader'  => true,
 				// 'multiple' => true,
@@ -120,7 +120,7 @@ class Layout5 extends Layout {
 		$this->add_control(
 			'wpte_product_caption_style_body_bg',
 			$this->style, [
-				'label'             => __( 'Background', 'wpte-product-layout' ),
+				'label'             => __( 'Background', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'oparetor'          => true,
 				'default'           => '',
@@ -167,7 +167,7 @@ class Layout5 extends Layout {
 			'wpte_product_caption_style_body_border_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => __( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',

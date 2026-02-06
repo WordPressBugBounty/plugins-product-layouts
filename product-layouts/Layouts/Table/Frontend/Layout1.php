@@ -61,24 +61,24 @@ class Layout1 extends Public_Render {
 		<table class="wpte-product-table-layout-table wpte-product-table-layout-table-style-1">
 			<thead class="wpte-product-table-for-lg">
 				<?php if ( $showImage ) : ?>
-					<th><?php echo esc_html__( 'Image', 'wpte-product-layout' ); ?></th>
+					<th><?php echo esc_html__( 'Image', 'product-layouts' ); ?></th>
 				<?php endif; if ( $showTitle ) : ?>
-					<th><?php echo esc_html__( 'Name', 'wpte-product-layout' ); ?></th>
+					<th><?php echo esc_html__( 'Name', 'product-layouts' ); ?></th>
 				<?php endif; if ( $showDescription ) : ?>
-					<th><?php echo esc_html__( 'Description', 'wpte-product-layout' ); ?></th>
+					<th><?php echo esc_html__( 'Description', 'product-layouts' ); ?></th>
 				<?php endif; if ( $showPrice ) : ?>
-					<th><?php echo esc_html__( 'Price', 'wpte-product-layout' ); ?></th>
+					<th><?php echo esc_html__( 'Price', 'product-layouts' ); ?></th>
 				<?php endif; if ( $showQuantity ) : ?>
-					<th><?php echo esc_html__( 'Quantity', 'wpte-product-layout' ); ?></th>
+					<th><?php echo esc_html__( 'Quantity', 'product-layouts' ); ?></th>
 				<?php endif; if ( $showButton ) : ?>
-					<th><?php echo esc_html__( 'Add to cart', 'wpte-product-layout' ); ?></th>
+					<th><?php echo esc_html__( 'Add to cart', 'product-layouts' ); ?></th>
 				<?php endif; ?>
 			</thead>
 			<thead class="wpte-product-table-for-sm">
 				<?php if ( $showImage ) : ?>
-					<th><?php echo esc_html__( 'Image', 'wpte-product-layout' ); ?></th>
+					<th><?php echo esc_html__( 'Image', 'product-layouts' ); ?></th>
 				<?php endif; ?>
-					<th><?php echo esc_html__( 'Details', 'wpte-product-layout' ); ?></th>
+					<th><?php echo esc_html__( 'Details', 'product-layouts' ); ?></th>
 
 			</thead>
 			<tbody  class="wpte-product-table-for-lg">
@@ -87,7 +87,7 @@ class Layout1 extends Public_Render {
 				$query->the_post();
 				$product = wc_get_product( get_the_ID() );
 				if ( ! $product ) {
-					echo esc_html__( 'Product not found', 'wpte-product-layout' );
+					echo esc_html__( 'Product not found', 'product-layouts' );
 					return;
 				}
 				$img_href      = 'a' === $hyperlink ? 'href="' . esc_url( $product->get_permalink() ) . '"' : '';
@@ -195,7 +195,7 @@ class Layout1 extends Public_Render {
 				$query->the_post();
 				$product = wc_get_product( get_the_ID() );
 				if ( ! $product ) {
-					echo esc_html__( 'Product not found!', 'wpte-product-layout' );
+					echo esc_html__( 'Product not found!', 'product-layouts' );
 					return;
 				}
 				$img_href      = 'a' === $hyperlink ? 'href="' . esc_url( $product->get_permalink() ) . '"' : '';

@@ -22,11 +22,11 @@ class Layout extends AdminRender {
 	 */
 	protected function wpte_get_product_filterby_options() {
 		return [
-			'recent-products'       => esc_html__( 'Recent Products', 'wpte-product-layout' ),
-			'featured-products'     => esc_html__( 'Featured Products', 'wpte-product-layout' ),
-			'best-selling-products' => esc_html__( 'Best Selling Products', 'wpte-product-layout' ),
-			'sale-products'         => esc_html__( 'Sale Products', 'wpte-product-layout' ),
-			'top-products'          => esc_html__( 'Top Rated Products', 'wpte-product-layout' ),
+			'recent-products'       => esc_html__( 'Recent Products', 'product-layouts' ),
+			'featured-products'     => esc_html__( 'Featured Products', 'product-layouts' ),
+			'best-selling-products' => esc_html__( 'Best Selling Products', 'product-layouts' ),
+			'sale-products'         => esc_html__( 'Sale Products', 'product-layouts' ),
+			'top-products'          => esc_html__( 'Top Rated Products', 'product-layouts' ),
 		];
 	}
 
@@ -35,16 +35,16 @@ class Layout extends AdminRender {
 	 */
 	protected function wpte_get_product_orderby_options() {
 		return [
-			'ID'             => __( 'Product ID', 'wpte-product-layout' ),
-			'title'          => __( 'Product Title', 'wpte-product-layout' ),
-			'_price'         => __( 'Price', 'wpte-product-layout' ),
-			'_sku'           => __( 'SKU', 'wpte-product-layout' ),
-			'date'           => __( 'Date', 'wpte-product-layout' ),
-			'modified'       => __( 'Last Modified Date', 'wpte-product-layout' ),
-			'parent'         => __( 'Parent Id', 'wpte-product-layout' ),
-			'rand'           => __( 'Random', 'wpte-product-layout' ),
-			'menu_order'     => __( 'Menu Order', 'wpte-product-layout' ),
-			'alphabetically' => __( 'Alphabetically', 'wpte-product-layout' ),
+			'ID'             => __( 'Product ID', 'product-layouts' ),
+			'title'          => __( 'Product Title', 'product-layouts' ),
+			'_price'         => __( 'Price', 'product-layouts' ),
+			'_sku'           => __( 'SKU', 'product-layouts' ),
+			'date'           => __( 'Date', 'product-layouts' ),
+			'modified'       => __( 'Last Modified Date', 'product-layouts' ),
+			'parent'         => __( 'Parent Id', 'product-layouts' ),
+			'rand'           => __( 'Random', 'product-layouts' ),
+			'menu_order'     => __( 'Menu Order', 'product-layouts' ),
+			'alphabetically' => __( 'Alphabetically', 'product-layouts' ),
 		];
 	}
 
@@ -76,7 +76,7 @@ class Layout extends AdminRender {
 				'wpte_product_layout_col_gap',
 				$this->style,
 				[
-					'label'        => __( 'Column Gap', 'wpte-product-layout' ),
+					'label'        => __( 'Column Gap', 'product-layouts' ),
 					'type'         => Controls::SLIDER,
 					'simpleenable' => false,
 					'default'      => [
@@ -111,7 +111,7 @@ class Layout extends AdminRender {
 				'wpte_product_layout_row_gap',
 				$this->style,
 				[
-					'label'        => __( 'Row Gap', 'wpte-product-layout' ),
+					'label'        => __( 'Row Gap', 'product-layouts' ),
 					'type'         => Controls::SLIDER,
 					'simpleenable' => false,
 					'default'      => [
@@ -157,11 +157,11 @@ class Layout extends AdminRender {
 				'wpte_call_to_action_products_show_badge',
 				$this->style,
 				[
-					'label'        => __( 'Show Badge', 'wpte-product-layout' ),
+					'label'        => __( 'Show Badge', 'product-layouts' ),
 					'type'         => Controls::SWITCHER,
 					'default'      => 'no',
-					'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-					'label_off'    => __( 'No', 'wpte-product-layout' ),
+					'label_on'     => __( 'Yes', 'product-layouts' ),
+					'label_off'    => __( 'No', 'product-layouts' ),
 					'return_value' => 'yes',
 				]
 			);
@@ -170,11 +170,11 @@ class Layout extends AdminRender {
 				'wpte_call_to_action_products_show_cat',
 				$this->style,
 				[
-					'label'        => __( 'Show Category', 'wpte-product-layout' ),
+					'label'        => __( 'Show Category', 'product-layouts' ),
 					'type'         => Controls::SWITCHER,
 					'default'      => 'no',
-					'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-					'label_off'    => __( 'No', 'wpte-product-layout' ),
+					'label_on'     => __( 'Yes', 'product-layouts' ),
+					'label_off'    => __( 'No', 'product-layouts' ),
 					'return_value' => 'yes',
 				]
 			);
@@ -183,11 +183,11 @@ class Layout extends AdminRender {
 				'wpte_call_to_action_products_show_title',
 				$this->style,
 				[
-					'label'        => __( 'Show Title', 'wpte-product-layout' ),
+					'label'        => __( 'Show Title', 'product-layouts' ),
 					'type'         => Controls::SWITCHER,
 					'default'      => 'no',
-					'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-					'label_off'    => __( 'No', 'wpte-product-layout' ),
+					'label_on'     => __( 'Yes', 'product-layouts' ),
+					'label_off'    => __( 'No', 'product-layouts' ),
 					'return_value' => 'yes',
 				]
 			);
@@ -196,11 +196,11 @@ class Layout extends AdminRender {
 				'wpte_call_to_action_products_show_rating',
 				$this->style,
 				[
-					'label'        => __( 'Show Rating', 'wpte-product-layout' ),
+					'label'        => __( 'Show Rating', 'product-layouts' ),
 					'type'         => Controls::SWITCHER,
 					'default'      => 'no',
-					'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-					'label_off'    => __( 'No', 'wpte-product-layout' ),
+					'label_on'     => __( 'Yes', 'product-layouts' ),
+					'label_off'    => __( 'No', 'product-layouts' ),
 					'return_value' => 'yes',
 				]
 			);
@@ -209,11 +209,11 @@ class Layout extends AdminRender {
 				'wpte_call_to_action_products_show_image',
 				$this->style,
 				[
-					'label'        => __( 'Show Image', 'wpte-product-layout' ),
+					'label'        => __( 'Show Image', 'product-layouts' ),
 					'type'         => Controls::SWITCHER,
 					'default'      => 'no',
-					'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-					'label_off'    => __( 'No', 'wpte-product-layout' ),
+					'label_on'     => __( 'Yes', 'product-layouts' ),
+					'label_off'    => __( 'No', 'product-layouts' ),
 					'return_value' => 'yes',
 				]
 			);
@@ -222,11 +222,11 @@ class Layout extends AdminRender {
 				'wpte_call_to_action_products_show_price',
 				$this->style,
 				[
-					'label'        => __( 'Show Price', 'wpte-product-layout' ),
+					'label'        => __( 'Show Price', 'product-layouts' ),
 					'type'         => Controls::SWITCHER,
 					'default'      => 'no',
-					'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-					'label_off'    => __( 'No', 'wpte-product-layout' ),
+					'label_on'     => __( 'Yes', 'product-layouts' ),
+					'label_off'    => __( 'No', 'product-layouts' ),
 					'return_value' => 'yes',
 				]
 			);
@@ -235,11 +235,11 @@ class Layout extends AdminRender {
 				'wpte_general_products_show_icons',
 				$this->style,
 				[
-					'label'        => __( 'Show icons', 'wpte-product-layout' ),
+					'label'        => __( 'Show icons', 'product-layouts' ),
 					'type'         => Controls::SWITCHER,
 					'default'      => 'no',
-					'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-					'label_off'    => __( 'No', 'wpte-product-layout' ),
+					'label_on'     => __( 'Yes', 'product-layouts' ),
+					'label_off'    => __( 'No', 'product-layouts' ),
 					'css'          => 'padding-bottom:10px',
 					'return_value' => 'yes',
 				]
@@ -259,11 +259,11 @@ class Layout extends AdminRender {
 				'wpte_product_layout_product_stock_status',
 				$this->style,
 				[
-					'label'        => __( 'Hide out of stock products', 'wpte-product-layout' ),
+					'label'        => __( 'Hide out of stock products', 'product-layouts' ),
 					'type'         => Controls::SWITCHER,
 					'default'      => 'no',
-					'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-					'label_off'    => __( 'No', 'wpte-product-layout' ),
+					'label_on'     => __( 'Yes', 'product-layouts' ),
+					'label_off'    => __( 'No', 'product-layouts' ),
 					'return_value' => 'yes',
 				]
 			);
@@ -306,7 +306,7 @@ class Layout extends AdminRender {
 
 			$this->add_control(
 				'wpte_product_layout_product_filter', $this->style, [
-					'label'   => __( 'Filter By', 'wpte-product-layout' ),
+					'label'   => __( 'Filter By', 'product-layouts' ),
 					'type'    => Controls::SELECT,
 					'loader'  => true,
 					'default' => 'recent-products',
@@ -316,7 +316,7 @@ class Layout extends AdminRender {
 
 			$this->add_control(
 				'wpte_product_layout_product_order_by', $this->style, [
-					'label'   => __( 'Order By', 'wpte-product-layout' ),
+					'label'   => __( 'Order By', 'product-layouts' ),
 					'type'    => Controls::SELECT,
 					'loader'  => true,
 					'default' => 'date',
@@ -326,7 +326,7 @@ class Layout extends AdminRender {
 
 			$this->add_control(
 				'wpte_product_layout_product_order', $this->style, [
-					'label'   => __( 'Order', 'wpte-product-layout' ),
+					'label'   => __( 'Order', 'product-layouts' ),
 					'type'    => Controls::SELECT,
 					'loader'  => true,
 					'options' => [
@@ -341,7 +341,7 @@ class Layout extends AdminRender {
 				'wpte_product_layout_product_number',
 				$this->style,
 				[
-					'label'   => __( 'Product Per Page', 'wpte-product-layout' ),
+					'label'   => __( 'Product Per Page', 'product-layouts' ),
 					'type'    => Controls::NUMBER,
 					'loader'  => true,
 					'default' => '10',
@@ -363,8 +363,8 @@ class Layout extends AdminRender {
 			'wpte-call-to-action-section-tabs',
 			[
 				'options' => [
-					'general' => __( 'Content', 'wpte-product-layout' ),
-					'style'   => __( 'Style', 'wpte-product-layout' ),
+					'general' => __( 'Content', 'product-layouts' ),
+					'style'   => __( 'Style', 'product-layouts' ),
 				],
 			]
 		);
@@ -390,8 +390,8 @@ class Layout extends AdminRender {
 			'wpte_product_call_to_action_body_start_tabs',
 			[
 				'options' => [
-					'normal' => esc_html__( 'Normal ', 'wpte-product-layout' ),
-					'hover'  => esc_html__( 'Hover ', 'wpte-product-layout' ),
+					'normal' => esc_html__( 'Normal ', 'product-layouts' ),
+					'hover'  => esc_html__( 'Hover ', 'product-layouts' ),
 				],
 			]
 		);
@@ -400,7 +400,7 @@ class Layout extends AdminRender {
 				$this->add_control(
 					'wpte_product_call_to_action_body_bg',
 					$this->style, [
-						'label'             => __( 'Background', 'wpte-product-layout' ),
+						'label'             => __( 'Background', 'product-layouts' ),
 						'type'              => Controls::GRADIENT,
 						'default'           => '',
 						'selector'          => [
@@ -436,7 +436,7 @@ class Layout extends AdminRender {
 				$this->add_control(
 					'wpte_product_call_to_action_body_bg_hover',
 					$this->style, [
-						'label'             => __( 'Background', 'wpte-product-layout' ),
+						'label'             => __( 'Background', 'product-layouts' ),
 						'type'              => Controls::GRADIENT,
 						'default'           => '',
 						'selector'          => [
@@ -473,7 +473,7 @@ class Layout extends AdminRender {
 			'wpte_product_call_to_action_body_border_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => __( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -510,7 +510,7 @@ class Layout extends AdminRender {
 			'wpte_product_call_to_action_body_padding',
 			$this->style,
 			[
-				'label'             => __( 'Padding', 'wpte-product-layout' ),
+				'label'             => __( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -563,21 +563,21 @@ class Layout extends AdminRender {
 			'wpte_product_call_to_action_body_content_text_align',
 			$this->style,
 			[
-				'label'       => __( 'Text Align', 'wpte-product-layout' ),
+				'label'       => __( 'Text Align', 'product-layouts' ),
 				'type'        => Controls::CHOOSE,
 				'operator'    => Controls::OPERATOR_ICON,
 				'default'     => '',
 				'options'     => [
 					'left'   => [
-						'title' => __( 'Left', 'wpte-product-layout' ),
+						'title' => __( 'Left', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignleft',
 					],
 					'center' => [
-						'title' => __( 'Center', 'wpte-product-layout' ),
+						'title' => __( 'Center', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-aligncenter',
 					],
 					'right'  => [
-						'title' => __( 'Right', 'wpte-product-layout' ),
+						'title' => __( 'Right', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignright',
 					],
 				],
@@ -591,7 +591,7 @@ class Layout extends AdminRender {
 		$this->add_control(
 			'wpte_product_call_to_action_body_content_bg',
 			$this->style, [
-				'label'             => __( 'Background', 'wpte-product-layout' ),
+				'label'             => __( 'Background', 'product-layouts' ),
 				'type'              => Controls::GRADIENT,
 				'default'           => '',
 				'selector'          => [
@@ -627,7 +627,7 @@ class Layout extends AdminRender {
 			'wpte_product_call_to_action_body_content_border_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => __( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -664,7 +664,7 @@ class Layout extends AdminRender {
 			'wpte_product_call_to_action_body_content_padding',
 			$this->style,
 			[
-				'label'             => __( 'Padding', 'wpte-product-layout' ),
+				'label'             => __( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -698,7 +698,7 @@ class Layout extends AdminRender {
 			'wpte_product_call_to_action_body_content_margin',
 			$this->style,
 			[
-				'label'             => __( 'Margin', 'wpte-product-layout' ),
+				'label'             => __( 'Margin', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -751,9 +751,9 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_badge_start_tabs',
 			[
 				'options' => [
-					'onsale'   => esc_html__( 'Onsale ', 'wpte-product-layout' ),
-					'hot'      => esc_html__( 'Hot ', 'wpte-product-layout' ),
-					'outstock' => esc_html__( 'Out Stock', 'wpte-product-layout' ),
+					'onsale'   => esc_html__( 'Onsale ', 'product-layouts' ),
+					'hot'      => esc_html__( 'Hot ', 'product-layouts' ),
+					'outstock' => esc_html__( 'Out Stock', 'product-layouts' ),
 				],
 			]
 		);
@@ -761,7 +761,7 @@ class Layout extends AdminRender {
 			$this->add_control(
 				'wpte_product_layout_call_to_action_badge_onsale_bg',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -773,7 +773,7 @@ class Layout extends AdminRender {
 			);
 			$this->add_control(
 				'wpte_product_layout_call_to_action_badge_onsale_color', $this->style, [
-					'label'             => __( 'Color', 'wpte-product-layout' ),
+					'label'             => __( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '',
 					'selector'          => [
@@ -790,7 +790,7 @@ class Layout extends AdminRender {
 			$this->add_control(
 				'wpte_product_layout_call_to_action_badge_hot_bg',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -802,7 +802,7 @@ class Layout extends AdminRender {
 			);
 			$this->add_control(
 				'wpte_product_layout_call_to_action_badge_hot_color', $this->style, [
-					'label'             => __( 'Color', 'wpte-product-layout' ),
+					'label'             => __( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '',
 					'selector'          => [
@@ -819,7 +819,7 @@ class Layout extends AdminRender {
 			$this->add_control(
 				'wpte_product_layout_call_to_action_badge_out_stock_bg',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -831,7 +831,7 @@ class Layout extends AdminRender {
 			);
 			$this->add_control(
 				'wpte_product_layout_call_to_action_badge_out_stock_color', $this->style, [
-					'label'             => __( 'Color', 'wpte-product-layout' ),
+					'label'             => __( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '',
 					'selector'          => [
@@ -850,7 +850,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_badge_min_width',
 			$this->style,
 			[
-				'label'        => __( 'Min Width', 'wpte-product-layout' ),
+				'label'        => __( 'Min Width', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'separator'    => 'before',
@@ -885,7 +885,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_badge_min_height',
 			$this->style,
 			[
-				'label'        => __( 'Min Height', 'wpte-product-layout' ),
+				'label'        => __( 'Min Height', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -929,21 +929,21 @@ class Layout extends AdminRender {
 			'wpte_product_call_to_action_body_badge_align',
 			$this->style,
 			[
-				'label'       => __( 'Position', 'wpte-product-layout' ),
+				'label'       => __( 'Position', 'product-layouts' ),
 				'type'        => Controls::CHOOSE,
 				'operator'    => Controls::OPERATOR_ICON,
 				'default'     => '',
 				'options'     => [
 					'start'  => [
-						'title' => __( 'Left', 'wpte-product-layout' ),
+						'title' => __( 'Left', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignleft',
 					],
 					'center' => [
-						'title' => __( 'Center', 'wpte-product-layout' ),
+						'title' => __( 'Center', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-aligncenter',
 					],
 					'end'    => [
-						'title' => __( 'Right', 'wpte-product-layout' ),
+						'title' => __( 'Right', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignright',
 					],
 				],
@@ -979,7 +979,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_badge_border_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => __( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1014,7 +1014,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_badge_space',
 			$this->style,
 			[
-				'label'        => __( 'Badge Space', 'wpte-product-layout' ),
+				'label'        => __( 'Badge Space', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1048,7 +1048,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_badge_padding',
 			$this->style,
 			[
-				'label'             => __( 'Padding', 'wpte-product-layout' ),
+				'label'             => __( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1082,7 +1082,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_badge_margin',
 			$this->style,
 			[
-				'label'             => __( 'Margin', 'wpte-product-layout' ),
+				'label'             => __( 'Margin', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1138,11 +1138,11 @@ class Layout extends AdminRender {
 			'wpte-product-call-to-action-image-hyperlink',
 			$this->style,
 			[
-				'label'        => __( 'Hyperlink', 'wpte-product-layout' ),
+				'label'        => __( 'Hyperlink', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'no',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -1150,11 +1150,11 @@ class Layout extends AdminRender {
 			'wpte-product-call-to-action-image-open-new-window',
 			$this->style,
 			[
-				'label'        => __( 'Open in new window', 'wpte-product-layout' ),
+				'label'        => __( 'Open in new window', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'no',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 				'condition'    => [ 'wpte-product-call-to-action-image-hyperlink' => 'yes' ],
 			]
@@ -1163,11 +1163,11 @@ class Layout extends AdminRender {
 			'wpte-product-call-to-action-image-nofollow',
 			$this->style,
 			[
-				'label'        => __( 'Add nofollow', 'wpte-product-layout' ),
+				'label'        => __( 'Add nofollow', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'no',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 				'condition'    => [ 'wpte-product-call-to-action-image-hyperlink' => 'yes' ],
 			]
@@ -1175,7 +1175,7 @@ class Layout extends AdminRender {
 
 		$this->add_control(
 			'wpte_product_layout_call_to_action_image_size', $this->style, [
-				'label'   => __( 'Image Size', 'wpte-product-layout' ),
+				'label'   => __( 'Image Size', 'product-layouts' ),
 				'type'    => Controls::SELECT,
 				'loader'  => true,
 				// 'multiple' => true,.
@@ -1188,7 +1188,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_image_max_width',
 			$this->style,
 			[
-				'label'        => __( 'Max Width', 'wpte-product-layout' ),
+				'label'        => __( 'Max Width', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1224,7 +1224,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_image_min_height',
 			$this->style,
 			[
-				'label'        => __( 'Min Height', 'wpte-product-layout' ),
+				'label'        => __( 'Min Height', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1285,7 +1285,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_image_border_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => __( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1324,7 +1324,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_image_padding',
 			$this->style,
 			[
-				'label'             => __( 'Padding', 'wpte-product-layout' ),
+				'label'             => __( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1378,21 +1378,21 @@ class Layout extends AdminRender {
 			'wpte_product_call_to_action_icon_align',
 			$this->style,
 			[
-				'label'       => __( 'Align', 'wpte-product-layout' ),
+				'label'       => __( 'Align', 'product-layouts' ),
 				'type'        => Controls::CHOOSE,
 				'operator'    => Controls::OPERATOR_ICON,
 				'default'     => '',
 				'options'     => [
 					'start'  => [
-						'title' => __( 'Start', 'wpte-product-layout' ),
+						'title' => __( 'Start', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignleft',
 					],
 					'center' => [
-						'title' => __( 'Center', 'wpte-product-layout' ),
+						'title' => __( 'Center', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-aligncenter',
 					],
 					'end'    => [
-						'title' => __( 'End', 'wpte-product-layout' ),
+						'title' => __( 'End', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignright',
 					],
 				],
@@ -1411,7 +1411,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_icon_min_width',
 			$this->style,
 			[
-				'label'        => __( 'Min Width', 'wpte-product-layout' ),
+				'label'        => __( 'Min Width', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1447,7 +1447,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_icon_min_height',
 			$this->style,
 			[
-				'label'        => __( 'Min Height', 'wpte-product-layout' ),
+				'label'        => __( 'Min Height', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1483,8 +1483,8 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_start_tabs',
 			[
 				'options' => [
-					'normal' => esc_html__( 'Normal ', 'wpte-product-layout' ),
-					'hover'  => esc_html__( 'Hover ', 'wpte-product-layout' ),
+					'normal' => esc_html__( 'Normal ', 'product-layouts' ),
+					'hover'  => esc_html__( 'Hover ', 'product-layouts' ),
 				],
 			]
 		);
@@ -1492,7 +1492,7 @@ class Layout extends AdminRender {
 			$this->add_control(
 				'wpte_product_layout_call_to_action_icon_bg',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -1505,7 +1505,7 @@ class Layout extends AdminRender {
 			);
 			$this->add_control(
 				'wpte_product_layout_call_to_action_icon_color', $this->style, [
-					'label'             => __( 'Color', 'wpte-product-layout' ),
+					'label'             => __( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '',
 					'selector'          => [
@@ -1523,7 +1523,7 @@ class Layout extends AdminRender {
 			$this->add_control(
 				'wpte_product_layout_call_to_action_icon_bg_hover',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -1536,7 +1536,7 @@ class Layout extends AdminRender {
 			);
 			$this->add_control(
 				'wpte_product_layout_call_to_action_icon_hover_color', $this->style, [
-					'label'             => __( 'Color', 'wpte-product-layout' ),
+					'label'             => __( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '',
 					'selector'          => [
@@ -1556,7 +1556,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_icon_size',
 			$this->style,
 			[
-				'label'        => __( 'Icon Size', 'wpte-product-layout' ),
+				'label'        => __( 'Icon Size', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'separator'    => 'before',
@@ -1593,7 +1593,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_icon_gap',
 			$this->style,
 			[
-				'label'        => __( 'Icon Gap', 'wpte-product-layout' ),
+				'label'        => __( 'Icon Gap', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -1652,7 +1652,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_icon_border_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => __( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1688,7 +1688,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_icon_margin',
 			$this->style,
 			[
-				'label'             => __( 'Margin', 'wpte-product-layout' ),
+				'label'             => __( 'Margin', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1749,7 +1749,7 @@ class Layout extends AdminRender {
 
 		$this->add_control(
 			'wpte_product_layout_call_to_action_tooltip_color', $this->style, [
-				'label'             => __( 'Color', 'wpte-product-layout' ),
+				'label'             => __( 'Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -1762,7 +1762,7 @@ class Layout extends AdminRender {
 
 		$this->add_control(
 			'wpte_product_layout_call_to_action_tooltip_indigator_color', $this->style, [
-				'label'             => __( 'Indigator Color', 'wpte-product-layout' ),
+				'label'             => __( 'Indigator Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -1777,7 +1777,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_tooltip_bg',
 			$this->style,
 			[
-				'label'             => __( 'Background', 'wpte-product-layout' ),
+				'label'             => __( 'Background', 'product-layouts' ),
 				'type'              => Controls::GRADIENT,
 				'default'           => '',
 				'selector'          => [
@@ -1814,7 +1814,7 @@ class Layout extends AdminRender {
 			'wpte_product_call_to_action_tooltip_border_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => __( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1849,7 +1849,7 @@ class Layout extends AdminRender {
 			'wpte_product_call_to_action_tooltip_padding',
 			$this->style,
 			[
-				'label'             => __( 'Padding', 'wpte-product-layout' ),
+				'label'             => __( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1914,8 +1914,8 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_category_start_tabs',
 			[
 				'options' => [
-					'normal' => esc_html__( 'Normal ', 'wpte-product-layout' ),
-					'hover'  => esc_html__( 'Hover ', 'wpte-product-layout' ),
+					'normal' => esc_html__( 'Normal ', 'product-layouts' ),
+					'hover'  => esc_html__( 'Hover ', 'product-layouts' ),
 				],
 			]
 		);
@@ -1924,7 +1924,7 @@ class Layout extends AdminRender {
 
 			$this->add_control(
 				'wpte_product_layout_call_to_action_category_color', $this->style, [
-					'label'             => __( 'Color', 'wpte-product-layout' ),
+					'label'             => __( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '',
 					'selector'          => [
@@ -1937,7 +1937,7 @@ class Layout extends AdminRender {
 
 			$this->add_control(
 				'wpte_product_layout_call_to_action_category_bg', $this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -1954,7 +1954,7 @@ class Layout extends AdminRender {
 
 			$this->add_control(
 				'wpte_product_layout_call_to_action_category_hover_color', $this->style, [
-					'label'             => __( 'Hover Color', 'wpte-product-layout' ),
+					'label'             => __( 'Hover Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '',
 					'selector'          => [
@@ -1967,7 +1967,7 @@ class Layout extends AdminRender {
 
 			$this->add_control(
 				'wpte_product_layout_call_to_action_category_bg_hover', $this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -1997,7 +1997,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_category_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => __( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -2033,7 +2033,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_category_padding',
 			$this->style,
 			[
-				'label'             => __( 'Padding', 'wpte-product-layout' ),
+				'label'             => __( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -2068,7 +2068,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_category_margin',
 			$this->style,
 			[
-				'label'             => __( 'Margin', 'wpte-product-layout' ),
+				'label'             => __( 'Margin', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -2119,7 +2119,7 @@ class Layout extends AdminRender {
 
 		$this->add_control(
 			'wpte_product_layout_call_to_action_title_tag', $this->style, [
-				'label'   => __( 'Title Tag', 'wpte-product-layout' ),
+				'label'   => __( 'Title Tag', 'product-layouts' ),
 				'type'    => Controls::SELECT,
 				'loader'  => true,
 				'default' => 'h2',
@@ -2140,7 +2140,7 @@ class Layout extends AdminRender {
 
 		$this->add_control(
 			'wpte_product_layout_call_to_action_title_color', $this->style, [
-				'label'             => __( 'Color', 'wpte-product-layout' ),
+				'label'             => __( 'Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -2154,7 +2154,7 @@ class Layout extends AdminRender {
 
 		$this->add_control(
 			'wpte_product_layout_call_to_action_title_hover_color', $this->style, [
-				'label'             => __( 'Hover Color', 'wpte-product-layout' ),
+				'label'             => __( 'Hover Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -2169,7 +2169,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_title_margin',
 			$this->style,
 			[
-				'label'             => __( 'Margin', 'wpte-product-layout' ),
+				'label'             => __( 'Margin', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -2220,7 +2220,7 @@ class Layout extends AdminRender {
 
 		$this->add_control(
 			'wpte_product_layout_call_to_action_rating_color', $this->style, [
-				'label'             => __( 'Icon Color', 'wpte-product-layout' ),
+				'label'             => __( 'Icon Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -2235,7 +2235,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_rating_size',
 			$this->style,
 			[
-				'label'        => __( 'Icon Size', 'wpte-product-layout' ),
+				'label'        => __( 'Icon Size', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -2270,7 +2270,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_rating_margin',
 			$this->style,
 			[
-				'label'             => __( 'Margin', 'wpte-product-layout' ),
+				'label'             => __( 'Margin', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -2331,7 +2331,7 @@ class Layout extends AdminRender {
 
 		$this->add_control(
 			'wpte_product_layout_call_to_action_price_color', $this->style, [
-				'label'             => __( 'Regular Price Color', 'wpte-product-layout' ),
+				'label'             => __( 'Regular Price Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -2345,7 +2345,7 @@ class Layout extends AdminRender {
 
 		$this->add_control(
 			'wpte_product_layout_call_to_action_sale_price_color', $this->style, [
-				'label'             => __( 'Sale Price Color', 'wpte-product-layout' ),
+				'label'             => __( 'Sale Price Color', 'product-layouts' ),
 				'type'              => Controls::COLOR,
 				'default'           => '',
 				'selector'          => [
@@ -2361,7 +2361,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_price_margin',
 			$this->style,
 			[
-				'label'             => __( 'Margin', 'wpte-product-layout' ),
+				'label'             => __( 'Margin', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -2424,7 +2424,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_cart_icon_size',
 			$this->style,
 			[
-				'label'        => __( 'Size', 'wpte-product-layout' ),
+				'label'        => __( 'Size', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -2460,7 +2460,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_cart_icon_gap',
 			$this->style,
 			[
-				'label'        => __( 'Icon Gap', 'wpte-product-layout' ),
+				'label'        => __( 'Icon Gap', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -2496,8 +2496,8 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_cart_start_tabs',
 			[
 				'options' => [
-					'normal' => esc_html__( 'Normal ', 'wpte-product-layout' ),
-					'hover'  => esc_html__( 'Hover ', 'wpte-product-layout' ),
+					'normal' => esc_html__( 'Normal ', 'product-layouts' ),
+					'hover'  => esc_html__( 'Hover ', 'product-layouts' ),
 				],
 			]
 		);
@@ -2505,7 +2505,7 @@ class Layout extends AdminRender {
 			$this->add_control(
 				'wpte_product_layout_call_to_action_cart_icon_bg',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -2518,7 +2518,7 @@ class Layout extends AdminRender {
 			);
 			$this->add_control(
 				'wpte_product_layout_call_to_action_cart_icon_color', $this->style, [
-					'label'             => __( 'Color', 'wpte-product-layout' ),
+					'label'             => __( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'separator'         => 'after',
 					'default'           => '',
@@ -2537,7 +2537,7 @@ class Layout extends AdminRender {
 			$this->add_control(
 				'wpte_product_layout_call_to_action_cart_icon_bg_hover',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -2550,7 +2550,7 @@ class Layout extends AdminRender {
 			);
 			$this->add_control(
 				'wpte_product_layout_call_to_action_cart_icon_hover_color', $this->style, [
-					'label'             => __( 'Color', 'wpte-product-layout' ),
+					'label'             => __( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'separator'         => 'after',
 					'default'           => '',
@@ -2595,7 +2595,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_cart_icon_border_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => __( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -2631,7 +2631,7 @@ class Layout extends AdminRender {
 			'wpte_product_layout_call_to_action_cart_icon_padding',
 			$this->style,
 			[
-				'label'             => __( 'Padding', 'wpte-product-layout' ),
+				'label'             => __( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',

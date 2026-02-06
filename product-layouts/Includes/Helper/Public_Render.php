@@ -33,7 +33,7 @@ class Public_Render {
 	 *
 	 * @var string
 	 */
-	public $jshandle = 'wpte-product-layout';
+	public $jshandle = 'product-layouts';
 
 	/**
 	 * Style
@@ -248,9 +248,11 @@ class Public_Render {
 			'hide_empty' => false,
 			'include'    => $product_cats,
 			'orderby'    => 'include',
+			'taxonomy'   => 'product_cat',
 		];
 
-		$product_categories = get_terms( 'product_cat', $cat_args );
+		$product_categories = get_terms( $cat_args );
+
 
 		// Query arguments
 		$args = [
@@ -842,16 +844,16 @@ class Public_Render {
 			if ( $percentage ) {
 				$output[] = '<li class="onsale product-label">-' . $percentage . '% </li>';
 			} else {
-				$output[] = '<li class="onsale product-label">' . esc_html__( 'Sale', 'wpte-product-layout' ) . '</li>';
+				$output[] = '<li class="onsale product-label">' . esc_html__( 'Sale', 'product-layouts' ) . '</li>';
 			}
 		}
 
 		if ( ! $product->is_in_stock() ) {
-			$output[] = '<li class="out-of-stock product-label">' . esc_html__( 'Sold out', 'wpte-product-layout' ) . '</li>';
+			$output[] = '<li class="out-of-stock product-label">' . esc_html__( 'Sold out', 'product-layouts' ) . '</li>';
 		}
 
 		if ( $product->is_featured() ) {
-			$output[] = '<li class="featured product-label">' . esc_html__( 'Hot', 'wpte-product-layout' ) . '</li>';
+			$output[] = '<li class="featured product-label">' . esc_html__( 'Hot', 'product-layouts' ) . '</li>';
 		}
 
 		if ( $output ) {
@@ -920,9 +922,9 @@ class Public_Render {
 	 * Method new_pagination
 	 *
 	 * @param mixed  $settings .
-	 * @param number $current_page .
+	 * @param mixed $current_page .
 	 * @param number $total_page .
-	 * @param number $range .
+	 * @param mixed $range .
 	 * @param number $layoutid .
 	 * @return void
 	 */

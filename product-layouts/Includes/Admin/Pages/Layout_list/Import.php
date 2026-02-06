@@ -28,8 +28,8 @@ class Import {
             'wpte-wpl-admin-js', 'wpteImport', [
 				'ajaxUrl'     => admin_url( 'admin-ajax.php' ),
 				'wpte_nonce'  => wp_create_nonce( 'wpte-import-nonce' ),
-				'error'       => esc_html__( 'Something Went Wrong!', 'wpte-product-layout' ),
-				'importerror' => sprintf( '<strong>%s:</strong> %s', esc_html__( 'Error', 'wpte-product-layout' ), esc_html__( 'Please upload a exported valid Json file.', 'wpte-product-layout' ) ),
+				'error'       => esc_html__( 'Something Went Wrong!', 'product-layouts' ),
+				'importerror' => sprintf( '<strong>%s:</strong> %s', esc_html__( 'Error', 'product-layouts' ), esc_html__( 'Please upload a exported valid Json file.', 'product-layouts' ) ),
 			]
         );
 	}
@@ -49,7 +49,7 @@ class Import {
 						<?php
 							printf(
                                 '<h1>%s</h1>
-							<p>%s</p>', esc_html__( 'Product Layouts › Import', 'wpte-product-layout' ), esc_html__( 'WC Product Layout. Import your shortcode exported json file', 'wpte-product-layout' )
+							<p>%s</p>', esc_html__( 'Product Layouts › Import', 'product-layouts' ), esc_html__( 'WC Product Layout. Import your shortcode exported json file', 'product-layouts' )
                             );
 						?>
 					</div>
@@ -64,12 +64,12 @@ class Import {
 											<span class="dashicons dashicons-cloud-upload"></span>
 										</div>
 										<h3 class="fileuploader-input-caption">
-											<span><?php echo esc_html__( 'Drag and drop files here', 'wpte-product-layout' ); ?></span>
+											<span><?php echo esc_html__( 'Drag and drop files here', 'product-layouts' ); ?></span>
 										</h3>
-										<p><?php echo esc_html__( 'Or', 'wpte-product-layout' ); ?></p>
+										<p><?php echo esc_html__( 'Or', 'product-layouts' ); ?></p>
 										<input id="wpte-file" type="file" name="wpte_file">
 										<button type="button" class="fileuploader-input-button">
-											<span><?php echo esc_html__( 'Browse files', 'wpte-product-layout' ); ?></span>
+											<span><?php echo esc_html__( 'Browse files', 'product-layouts' ); ?></span>
 										</button>
 									</div>
 								</label>
@@ -79,7 +79,7 @@ class Import {
 									</ul>
 								</div>
 								<div class="wpte-file-import">
-									<button type="submit" id="wpte_product_layout_import" class="fileuploader-button fileuploader-input-button" disabled><?php echo esc_html__( 'Import Layout', 'wpte-product-layout' ); ?></button>
+									<button type="submit" id="wpte_product_layout_import" class="fileuploader-button fileuploader-input-button" disabled><?php echo esc_html__( 'Import Layout', 'product-layouts' ); ?></button>
 								</div>
 							</div>
 						</form>

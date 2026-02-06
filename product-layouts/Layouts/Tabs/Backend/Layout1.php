@@ -35,7 +35,7 @@ class Layout1 extends Layout {
 
 		$this->add_control(
 			'wpte_product_layout_tabs_style_1_get_layout', $this->style, [
-				'label'   => __( 'Tab Layout', 'wpte-product-layout' ),
+				'label'   => __( 'Tab Layout', 'product-layouts' ),
 				'type'    => Controls::SELECT,
 				'loader'  => true,
 				// 'multiple' => true,
@@ -59,11 +59,11 @@ class Layout1 extends Layout {
 			'wpte_pl_tabs_category_all',
 			$this->style,
 			[
-				'label'        => __( 'Enable button (All)', 'wpte-product-layout' ),
+				'label'        => __( 'Enable button (All)', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'yes',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -109,21 +109,21 @@ class Layout1 extends Layout {
 			'wpte_product_tab_style_1_tab_align',
 			$this->style,
 			[
-				'label'       => __( 'Align', 'wpte-product-layout' ),
+				'label'       => __( 'Align', 'product-layouts' ),
 				'type'        => Controls::CHOOSE,
 				'operator'    => Controls::OPERATOR_ICON,
 				'default'     => '',
 				'options'     => [
 					'start'  => [
-						'title' => __( 'Left', 'wpte-product-layout' ),
+						'title' => __( 'Left', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignleft',
 					],
 					'center' => [
-						'title' => __( 'Center', 'wpte-product-layout' ),
+						'title' => __( 'Center', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-aligncenter',
 					],
 					'end'    => [
-						'title' => __( 'Right', 'wpte-product-layout' ),
+						'title' => __( 'Right', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignright',
 					],
 				],
@@ -148,9 +148,9 @@ class Layout1 extends Layout {
 			'wpte_product_layout_tab_style_1_tabs',
 			[
 				'options' => [
-					'normal' => esc_html__( 'Normal ', 'wpte-product-layout' ),
-					'hover'  => esc_html__( 'Hover ', 'wpte-product-layout' ),
-					'active' => esc_html__( 'Active ', 'wpte-product-layout' ),
+					'normal' => esc_html__( 'Normal ', 'product-layouts' ),
+					'hover'  => esc_html__( 'Hover ', 'product-layouts' ),
+					'active' => esc_html__( 'Active ', 'product-layouts' ),
 				],
 			]
 		);
@@ -159,7 +159,7 @@ class Layout1 extends Layout {
 			$this->add_control(
 				'wpte_product_tab_style_1_normal_color',
 				$this->style, [
-					'label'    => __( 'Color', 'wpte-product-layout' ),
+					'label'    => __( 'Color', 'product-layouts' ),
 					'type'     => Controls::COLOR,
 					'default'  => '#ffffff',
 					'selector' => [
@@ -171,7 +171,7 @@ class Layout1 extends Layout {
 			$this->add_control(
 				'wpte_product_tab_style_1_normal_bg',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '#83b735',
 					'selector'          => [
@@ -209,7 +209,7 @@ class Layout1 extends Layout {
 				'wpte_product_tab_style_1_normal_border_radius',
 				$this->style,
 				[
-					'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+					'label'             => __( 'Border Radius', 'product-layouts' ),
 					'type'              => Controls::DIMENSIONS,
 					'default'           => [
 						'unit' => 'px',
@@ -246,7 +246,7 @@ class Layout1 extends Layout {
 			$this->add_control(
 				'wpte_product_tab_style_1_hove_color',
 				$this->style, [
-					'label'    => __( 'Color', 'wpte-product-layout' ),
+					'label'    => __( 'Color', 'product-layouts' ),
 					'type'     => Controls::COLOR,
 					'default'  => '#ffffff',
 					'selector' => [
@@ -258,7 +258,7 @@ class Layout1 extends Layout {
 			$this->add_control(
 				'wpte_product_tab_style_1_hover_bg',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '#669125',
 					'selector'          => [
@@ -296,7 +296,7 @@ class Layout1 extends Layout {
 				'wpte_product_tab_style_1_hover_border_radius',
 				$this->style,
 				[
-					'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+					'label'             => __( 'Border Radius', 'product-layouts' ),
 					'type'              => Controls::DIMENSIONS,
 					'default'           => [
 						'unit' => 'px',
@@ -332,7 +332,7 @@ class Layout1 extends Layout {
 			$this->add_control(
 				'wpte_product_tab_style_1_active_color',
 				$this->style, [
-					'label'    => __( 'Color', 'wpte-product-layout' ),
+					'label'    => __( 'Color', 'product-layouts' ),
 					'type'     => Controls::COLOR,
 					'default'  => '#ffffff',
 					'selector' => [
@@ -344,7 +344,7 @@ class Layout1 extends Layout {
 			$this->add_control(
 				'wpte_product_tab_style_1_active_bg',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '#da3f3f',
 					'selector'          => [
@@ -382,7 +382,7 @@ class Layout1 extends Layout {
 				'wpte_product_tab_style_1_active_border_radius',
 				$this->style,
 				[
-					'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+					'label'             => __( 'Border Radius', 'product-layouts' ),
 					'type'              => Controls::DIMENSIONS,
 					'default'           => [
 						'unit' => 'px',
@@ -419,7 +419,7 @@ class Layout1 extends Layout {
 			'wpte_product_tab_style_1_padding',
 			$this->style,
 			[
-				'label'             => __( 'Padding', 'wpte-product-layout' ),
+				'label'             => __( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -455,7 +455,7 @@ class Layout1 extends Layout {
 			'wpte_product_tab_style_1_margin',
 			$this->style,
 			[
-				'label'             => __( 'Margin', 'wpte-product-layout' ),
+				'label'             => __( 'Margin', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',

@@ -27,8 +27,8 @@ class Layout extends AdminRender {
 			'wpte-general-section-tabs',
 			[
 				'options' => [
-					'general' => __( 'Content', 'wpte-product-layout' ),
-					'style'   => __( 'Style', 'wpte-product-layout' ),
+					'general' => __( 'Content', 'product-layouts' ),
+					'style'   => __( 'Style', 'product-layouts' ),
 				],
 			]
 		);

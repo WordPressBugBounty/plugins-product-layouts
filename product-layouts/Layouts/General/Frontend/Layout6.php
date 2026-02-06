@@ -80,7 +80,7 @@ class Layout6 extends Public_Render {
 				$query->the_post();
 				$product = wc_get_product( get_the_ID() );
 				if ( ! $product ) {
-					echo esc_html__( 'Product not found!', 'wpte-product-layout' );
+					echo esc_html__( 'Product not found!', 'product-layouts' );
 					return;
 				}
 

@@ -50,7 +50,7 @@ class Layout1 extends Layout {
 		$this->add_control(
 			'wpte_product_layout_flipbox_style_1_effect',
 			$this->style, [
-				'label'   => __( 'Effects Direction', 'wpte-product-layout' ),
+				'label'   => __( 'Effects Direction', 'product-layouts' ),
 				'type'    => Controls::SELECT,
 				'loader'  => true,
 				// 'multiple' => true,
@@ -87,7 +87,7 @@ class Layout1 extends Layout {
 			$this->style,
 			[
 				'type'        => Controls::CART,
-				'default'     => __( 'Cart Icons', 'wpte-product-layout' ),
+				'default'     => __( 'Cart Icons', 'product-layouts' ),
 				'operator'    => 'icontext', // icon, text, icontext.
 				'condition'   => [
 					'wpte_flipbox_products_show_icons' => 'yes',

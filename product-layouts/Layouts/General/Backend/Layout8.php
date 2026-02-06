@@ -27,8 +27,8 @@ class Layout8 extends Layout {
 			'wpte_product_layout_general_qv_start_tabs',
 			[
 				'options' => [
-					'normal' => esc_html__( 'Normal ', 'wpte-product-layout' ),
-					'hover'  => esc_html__( 'Hover ', 'wpte-product-layout' ),
+					'normal' => esc_html__( 'Normal ', 'product-layouts' ),
+					'hover'  => esc_html__( 'Hover ', 'product-layouts' ),
 				],
 			]
 		);
@@ -36,7 +36,7 @@ class Layout8 extends Layout {
 			$this->add_control(
 				'wpte_product_layout_general_qv_icon_bg',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '#ffffff',
 					'selector'          => [
@@ -48,7 +48,7 @@ class Layout8 extends Layout {
 			);
 			$this->add_control(
 				'wpte_product_layout_general_qv_icon_color', $this->style, [
-					'label'             => __( 'Color', 'wpte-product-layout' ),
+					'label'             => __( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '#ffffff',
 					'selector'          => [
@@ -65,7 +65,7 @@ class Layout8 extends Layout {
 			$this->add_control(
 				'wpte_product_layout_general_qv_icon_bg_hover',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '#ff6f61',
 					'selector'          => [
@@ -77,7 +77,7 @@ class Layout8 extends Layout {
 			);
 			$this->add_control(
 				'wpte_product_layout_general_qv_icon_hover_color', $this->style, [
-					'label'             => __( 'Color', 'wpte-product-layout' ),
+					'label'             => __( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '#ffffff',
 					'selector'          => [
@@ -96,7 +96,7 @@ class Layout8 extends Layout {
 			'wpte_product_layout_general_qv_icon_size',
 			$this->style,
 			[
-				'label'        => __( 'Icon Size', 'wpte-product-layout' ),
+				'label'        => __( 'Icon Size', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'separator'    => 'before',
@@ -154,7 +154,7 @@ class Layout8 extends Layout {
 			'wpte_product_layout_general_qv_icon_border_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => __( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -215,7 +215,7 @@ class Layout8 extends Layout {
 			'wpte_product_layout_general_button_icon_size',
 			$this->style,
 			[
-				'label'        => __( 'Size', 'wpte-product-layout' ),
+				'label'        => __( 'Size', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -251,7 +251,7 @@ class Layout8 extends Layout {
 			'wpte_product_layout_general_button_icon_gap',
 			$this->style,
 			[
-				'label'        => __( 'Icon Gap', 'wpte-product-layout' ),
+				'label'        => __( 'Icon Gap', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -287,8 +287,8 @@ class Layout8 extends Layout {
 			'wpte_product_layout_general_button_start_tabs',
 			[
 				'options' => [
-					'normal' => esc_html__( 'Normal ', 'wpte-product-layout' ),
-					'hover'  => esc_html__( 'Hover ', 'wpte-product-layout' ),
+					'normal' => esc_html__( 'Normal ', 'product-layouts' ),
+					'hover'  => esc_html__( 'Hover ', 'product-layouts' ),
 				],
 			]
 		);
@@ -296,7 +296,7 @@ class Layout8 extends Layout {
 			$this->add_control(
 				'wpte_product_layout_general_button_icon_bg',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -309,7 +309,7 @@ class Layout8 extends Layout {
 			);
 			$this->add_control(
 				'wpte_product_layout_general_button_icon_color', $this->style, [
-					'label'             => __( 'Color', 'wpte-product-layout' ),
+					'label'             => __( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'separator'         => 'after',
 					'default'           => '',
@@ -328,7 +328,7 @@ class Layout8 extends Layout {
 			$this->add_control(
 				'wpte_product_layout_general_button_icon_bg_hover',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -341,7 +341,7 @@ class Layout8 extends Layout {
 			);
 			$this->add_control(
 				'wpte_product_layout_general_button_icon_hover_color', $this->style, [
-					'label'             => __( 'Color', 'wpte-product-layout' ),
+					'label'             => __( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'separator'         => 'after',
 					'default'           => '',
@@ -386,7 +386,7 @@ class Layout8 extends Layout {
 			'wpte_product_layout_general_button_icon_border_radius',
 			$this->style,
 			[
-				'label'             => __( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => __( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -422,7 +422,7 @@ class Layout8 extends Layout {
 			'wpte_product_layout_general_button_icon_padding',
 			$this->style,
 			[
-				'label'             => __( 'Padding', 'wpte-product-layout' ),
+				'label'             => __( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -506,7 +506,7 @@ class Layout8 extends Layout {
 			$this->style,
 			[
 				'type'        => Controls::CART,
-				'default'     => __( 'Cart Icons', 'wpte-product-layout' ),
+				'default'     => __( 'Cart Icons', 'product-layouts' ),
 				'operator'    => 'icontext', // icon, text, icontext.
 				'condition'   => [
 					'wpte_general_products_show_icons' => 'yes',
@@ -553,7 +553,7 @@ class Layout8 extends Layout {
 				$this->style,
 				[
 					'type'        => Controls::WISHLIST,
-					'default'     => __( 'WishList Icons', 'wpte-product-layout' ),
+					'default'     => __( 'WishList Icons', 'product-layouts' ),
 					'operator'    => 'icontext', // icon, text, icontext.
 					'condition'   => [
 						'wpte_general_products_show_icons' => 'yes',
@@ -581,7 +581,7 @@ class Layout8 extends Layout {
 			$this->style,
 			[
 				'type'        => Controls::QUICKVIEW,
-				'default'     => __( 'Quick View', 'wpte-product-layout' ),
+				'default'     => __( 'Quick View', 'product-layouts' ),
 				'operator'    => 'icon', // icon, text, icontext.
 				'condition'   => [
 					'wpte_general_products_show_icons' => 'yes',

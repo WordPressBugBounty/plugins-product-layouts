@@ -48,11 +48,11 @@ class Layout1 extends Layout {
 			'wpte_table_products_show_image',
 			$this->style,
 			[
-				'label'        => __( 'Show Image', 'wpte-product-layout' ),
+				'label'        => __( 'Show Image', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'no',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -61,11 +61,11 @@ class Layout1 extends Layout {
 			'wpte_table_products_show_title',
 			$this->style,
 			[
-				'label'        => __( 'Show Name', 'wpte-product-layout' ),
+				'label'        => __( 'Show Name', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'no',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -74,11 +74,11 @@ class Layout1 extends Layout {
 			'wpte_table_products_show_description',
 			$this->style,
 			[
-				'label'        => __( 'Show Description', 'wpte-product-layout' ),
+				'label'        => __( 'Show Description', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'no',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -87,11 +87,11 @@ class Layout1 extends Layout {
 			'wpte_table_products_show_price',
 			$this->style,
 			[
-				'label'        => __( 'Show Price', 'wpte-product-layout' ),
+				'label'        => __( 'Show Price', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'no',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -100,11 +100,11 @@ class Layout1 extends Layout {
 			'wpte_table_products_show_qty',
 			$this->style,
 			[
-				'label'        => __( 'Show Quantity', 'wpte-product-layout' ),
+				'label'        => __( 'Show Quantity', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'no',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -113,11 +113,11 @@ class Layout1 extends Layout {
 			'wpte_table_products_show_icons',
 			$this->style,
 			[
-				'label'        => __( 'Show Button', 'wpte-product-layout' ),
+				'label'        => __( 'Show Button', 'product-layouts' ),
 				'type'         => Controls::SWITCHER,
 				'default'      => 'no',
-				'label_on'     => __( 'Yes', 'wpte-product-layout' ),
-				'label_off'    => __( 'No', 'wpte-product-layout' ),
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
 				'css'          => 'padding-bottom:10px',
 				'return_value' => 'yes',
 			]
@@ -147,7 +147,7 @@ class Layout1 extends Layout {
 			$this->style,
 			[
 				'type'        => Controls::CART,
-				'default'     => __( 'Cart Icons', 'wpte-product-layout' ),
+				'default'     => __( 'Cart Icons', 'product-layouts' ),
 				'operator'    => 'icontext', // icon, text, icontext.
 				'condition'   => [
 					'wpte_table_products_show_icons' => 'yes',

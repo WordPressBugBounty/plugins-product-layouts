@@ -51,9 +51,14 @@ class Layout5 extends Public_Render {
 									<span>
 										<?php
 										if ( $custom_title ) {
-											echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
+											echo wp_kses( 
+												$this->text_render(
+													'wpte_filters_custom_title_text',
+													$custom_title_text
+												), wpte_plugins_allowedtags() 
+											);
 										} else {
-											echo esc_html__( 'Price Range', 'wpte-product-layout' );
+											echo esc_html__( 'Price Range', 'product-layouts' );
 										}
 										?>
 									</span>
@@ -67,9 +72,14 @@ class Layout5 extends Public_Render {
 								<span>
 									<?php
 									if ( $custom_title ) {
-										echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
+										echo wp_kses( 
+											$this->text_render(
+												'wpte_filters_custom_title_text',
+												$custom_title_text
+											), wpte_plugins_allowedtags() 
+										);
 									} else {
-										echo esc_html__( 'Price Range', 'wpte-product-layout' );
+										echo esc_html__( 'Price Range', 'product-layouts' );
 									}
 									?>
 								</span>
@@ -81,23 +91,23 @@ class Layout5 extends Public_Render {
 						<div class="<?php echo esc_attr( $wpte_dropdown ); ?>">
 							<label class="wpte-filter-option wpte-active  wpte-default-option">
 								<input type="radio" name="wpte_product_filter_price_<?php echo esc_attr( $this->wpteid ); ?>" layoutid="<?php echo esc_attr( $filter_for ); ?>" value="" class="wpte-filter-radio">
-								<span class="radio-label"><?php echo esc_html__( 'Any Price', 'wpte-product-layout' ); ?></span>
+								<span class="radio-label"><?php echo esc_html__( 'Any Price', 'product-layouts' ); ?></span>
 							</label>
 							<label class="wpte-filter-option wpte-default-option">
 								<input type="radio" name="wpte_product_filter_price_<?php echo esc_attr( $this->wpteid ); ?>" layoutid="<?php echo esc_attr( $filter_for ); ?>" value="20" class="wpte-filter-radio">
-								<span class="radio-label"><?php echo esc_html__( 'Upto $20', 'wpte-product-layout' ); ?></span>
+								<span class="radio-label"><?php echo esc_html__( 'Upto $20', 'product-layouts' ); ?></span>
 							</label>
 							<label class="wpte-filter-option">
 								<input type="radio" name="wpte_product_filter_price_<?php echo esc_attr( $this->wpteid ); ?>"layoutid="<?php echo esc_attr( $filter_for ); ?>"  value="21-40" class="wpte-filter-radio">
-								<span class="radio-label"><?php echo esc_html__( '$21-$40', 'wpte-product-layout' ); ?></span>
+								<span class="radio-label"><?php echo esc_html__( '$21-$40', 'product-layouts' ); ?></span>
 							</label>
 							<label class="wpte-filter-option">
 								<input type="radio" name="wpte_product_filter_price_<?php echo esc_attr( $this->wpteid ); ?>" layoutid="<?php echo esc_attr( $filter_for ); ?>" value="41-70" class="wpte-filter-radio">
-								<span class="radio-label"><?php echo esc_html__( '$41-$70', 'wpte-product-layout' ); ?></span>
+								<span class="radio-label"><?php echo esc_html__( '$41-$70', 'product-layouts' ); ?></span>
 							</label>
 							<label class="wpte-filter-option">
 								<input type="radio" name="wpte_product_filter_price_<?php echo esc_attr( $this->wpteid ); ?>" layoutid="<?php echo esc_attr( $filter_for ); ?>" value="70" class="wpte-filter-radio">
-								<span class="radio-label"><?php echo esc_html__( 'Above $70', 'wpte-product-layout' ); ?></span>
+								<span class="radio-label"><?php echo esc_html__( 'Above $70', 'product-layouts' ); ?></span>
 							</label>
 						</div>
 					</div>

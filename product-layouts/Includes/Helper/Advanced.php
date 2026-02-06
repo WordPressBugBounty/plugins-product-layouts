@@ -24,7 +24,7 @@ trait Advanced {
 			'wpte_product_layout_advanced_margin',
 			$this->style,
 			[
-				'label'             => esc_html__( 'Margin', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Margin', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -65,7 +65,7 @@ trait Advanced {
 			'wpte_product_layout_advanced_padding',
 			$this->style,
 			[
-				'label'             => esc_html__( 'Padding', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -115,15 +115,15 @@ trait Advanced {
 		$this->add_control(
 			'wpte_product_layout_pagination_global_display',
 			$this->style, [
-				'label'     => esc_html__( 'Pagination', 'wpte-product-layout' ),
+				'label'     => esc_html__( 'Pagination', 'product-layouts' ),
 				'type'      => Controls::SELECT,
 				'loader'    => true,
 				'default'   => 'none',
 				'separator' => 'after',
 				'options'   => [
-					'none'       => esc_html__( 'None', 'wpte-product-layout' ),
-					'pagination' => esc_html__( 'Pagination', 'wpte-product-layout' ),
-					'load_more'  => esc_html__( 'Load More Button', 'wpte-product-layout' ),
+					'none'       => esc_html__( 'None', 'product-layouts' ),
+					'pagination' => esc_html__( 'Pagination', 'product-layouts' ),
+					'load_more'  => esc_html__( 'Load More Button', 'product-layouts' ),
 				],
 			]
 		);
@@ -131,14 +131,14 @@ trait Advanced {
 		$this->add_control(
 			'wpte_product_layout_pagination_preset',
 			$this->style, [
-				'label'     => esc_html__( 'Preset', 'wpte-product-layout' ),
+				'label'     => esc_html__( 'Preset', 'product-layouts' ),
 				'type'      => Controls::SELECT,
 				'loader'    => true,
 				'default'   => 'preset_1',
 				'options'   => [
-					'preset_1' => esc_html__( 'Preset 1', 'wpte-product-layout' ),
-					'preset_2' => esc_html__( 'Preset 2', 'wpte-product-layout' ),
-					'preset_3' => esc_html__( 'Preset 3', 'wpte-product-layout' ),
+					'preset_1' => esc_html__( 'Preset 1', 'product-layouts' ),
+					'preset_2' => esc_html__( 'Preset 2', 'product-layouts' ),
+					'preset_3' => esc_html__( 'Preset 3', 'product-layouts' ),
 				],
 				'condition' => [ 'wpte_product_layout_pagination_global_display' => 'pagination' ],
 			]
@@ -166,21 +166,21 @@ trait Advanced {
 			'wpte_product_pagination_global_align',
 			$this->style,
 			[
-				'label'       => __( 'Align', 'wpte-product-layout' ),
+				'label'       => __( 'Align', 'product-layouts' ),
 				'type'        => Controls::CHOOSE,
 				'operator'    => Controls::OPERATOR_ICON,
 				'default'     => '',
 				'options'     => [
 					'start'  => [
-						'title' => esc_html__( 'Left', 'wpte-product-layout' ),
+						'title' => esc_html__( 'Left', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignleft',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'wpte-product-layout' ),
+						'title' => esc_html__( 'Center', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-aligncenter',
 					],
 					'end'    => [
-						'title' => esc_html__( 'Right', 'wpte-product-layout' ),
+						'title' => esc_html__( 'Right', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignright',
 					],
 				],
@@ -196,7 +196,7 @@ trait Advanced {
 			'wpte_product_pagination_min_width',
 			$this->style,
 			[
-				'label'        => __( 'Min Width', 'wpte-product-layout' ),
+				'label'        => __( 'Min Width', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -232,7 +232,7 @@ trait Advanced {
 			'wpte_product_pagination_min_height',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Min Height', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Min Height', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -268,9 +268,9 @@ trait Advanced {
 			'wpte_product_pagination_global_style_tabs',
 			[
 				'options'   => [
-					'normal' => esc_html__( 'Normal ', 'wpte-product-layout' ),
-					'hover'  => esc_html__( 'Hover ', 'wpte-product-layout' ),
-					'active' => esc_html__( 'Active', 'wpte-product-layout' ),
+					'normal' => esc_html__( 'Normal ', 'product-layouts' ),
+					'hover'  => esc_html__( 'Hover ', 'product-layouts' ),
+					'active' => esc_html__( 'Active', 'product-layouts' ),
 				],
 				'condition' => [ 'wpte_product_layout_pagination_global_display' => 'pagination' ],
 			]
@@ -281,7 +281,7 @@ trait Advanced {
 			$this->add_control(
 				'wpte_product_pagination_normal_bg_color',
 				$this->style, [
-					'label'             => esc_html__( 'Background', 'wpte-product-layout' ),
+					'label'             => esc_html__( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -293,7 +293,7 @@ trait Advanced {
 			);
 			$this->add_control(
 				'wpte_product_pagination_normal_color', $this->style, [
-					'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+					'label'             => esc_html__( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '',
 					'selector'          => [
@@ -334,7 +334,7 @@ trait Advanced {
 				'wpte_product_pagination_normal_border_radius',
 				$this->style,
 				[
-					'label'             => esc_html__( 'Border Radius', 'wpte-product-layout' ),
+					'label'             => esc_html__( 'Border Radius', 'product-layouts' ),
 					'type'              => Controls::DIMENSIONS,
 					'default'           => [
 						'unit' => 'px',
@@ -372,7 +372,7 @@ trait Advanced {
 			$this->add_control(
 				'wpte_product_pagination_hover_bg_color',
 				$this->style, [
-					'label'             => esc_html__( 'Background', 'wpte-product-layout' ),
+					'label'             => esc_html__( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -384,7 +384,7 @@ trait Advanced {
 			);
 			$this->add_control(
 				'wpte_product_pagination_hover_color', $this->style, [
-					'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+					'label'             => esc_html__( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '',
 					'selector'          => [
@@ -425,7 +425,7 @@ trait Advanced {
 				'wpte_product_pagination_hover_border_radius',
 				$this->style,
 				[
-					'label'             => esc_html__( 'Border Radius', 'wpte-product-layout' ),
+					'label'             => esc_html__( 'Border Radius', 'product-layouts' ),
 					'type'              => Controls::DIMENSIONS,
 					'default'           => [
 						'unit' => 'px',
@@ -463,7 +463,7 @@ trait Advanced {
 			$this->add_control(
 				'wpte_product_pagination_active_bg_color',
 				$this->style, [
-					'label'             => esc_html__( 'Background', 'wpte-product-layout' ),
+					'label'             => esc_html__( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -475,7 +475,7 @@ trait Advanced {
 			);
 			$this->add_control(
 				'wpte_product_pagination_active_color', $this->style, [
-					'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+					'label'             => esc_html__( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '',
 					'selector'          => [
@@ -511,7 +511,7 @@ trait Advanced {
 				'wpte_product_pagination_active_border_radius',
 				$this->style,
 				[
-					'label'             => esc_html__( 'Border Radius', 'wpte-product-layout' ),
+					'label'             => esc_html__( 'Border Radius', 'product-layouts' ),
 					'type'              => Controls::DIMENSIONS,
 					'default'           => [
 						'unit' => 'px',
@@ -550,7 +550,7 @@ trait Advanced {
 			'wpte_product_pagination_margin',
 			$this->style,
 			[
-				'label'             => esc_html__( 'Margin', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Margin', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -605,8 +605,8 @@ trait Advanced {
 			'wpte_product_pagination_global_prev_next_tabs',
 			[
 				'options'   => [
-					'previus' => esc_html__( 'Previus ', 'wpte-product-layout' ),
-					'next'    => esc_html__( 'Next ', 'wpte-product-layout' ),
+					'previus' => esc_html__( 'Previus ', 'product-layouts' ),
+					'next'    => esc_html__( 'Next ', 'product-layouts' ),
 				],
 				'condition' => [ 'wpte_product_layout_pagination_global_display' => 'pagination' ],
 			]
@@ -618,7 +618,7 @@ trait Advanced {
 				'wpte_product_pagination_prev_icon',
 				$this->style,
 				[
-					'label'       => esc_html__( 'Icon', 'wpte-product-layout' ),
+					'label'       => esc_html__( 'Icon', 'product-layouts' ),
 					'type'        => Controls::ICON,
 					'default'     => 'wpte-icon icon-arrow-10',
 					'description' => '',
@@ -629,9 +629,9 @@ trait Advanced {
 				'wpte_product_pagination_prev_text',
 				$this->style,
 				[
-					'label'       => esc_html__( 'Text', 'wpte-product-layout' ),
+					'label'       => esc_html__( 'Text', 'product-layouts' ),
 					'type'        => Controls::TEXT,
-					'default'     => esc_html__( 'Previus', 'wpte-product-layout' ),
+					'default'     => esc_html__( 'Previus', 'product-layouts' ),
 					'description' => '',
 				]
 			);
@@ -645,7 +645,7 @@ trait Advanced {
 			'wpte_product_pagination_next_icon',
 			$this->style,
 			[
-				'label'       => esc_html__( 'Icon', 'wpte-product-layout' ),
+				'label'       => esc_html__( 'Icon', 'product-layouts' ),
 				'type'        => Controls::ICON,
 				'default'     => 'wpte-icon icon-arrow-11',
 				'description' => '',
@@ -656,9 +656,9 @@ trait Advanced {
 			'wpte_product_pagination_next_text',
 			$this->style,
 			[
-				'label'       => esc_html__( 'Next', 'wpte-product-layout' ),
+				'label'       => esc_html__( 'Next', 'product-layouts' ),
 				'type'        => Controls::TEXT,
-				'default'     => esc_html__( 'Next', 'wpte-product-layout' ),
+				'default'     => esc_html__( 'Next', 'product-layouts' ),
 				'description' => '',
 			]
 		);
@@ -671,7 +671,7 @@ trait Advanced {
 			'wpte_product_pagination_icon_spacing',
 			$this->style,
 			[
-				'label'        => esc_html__( 'Icon Spacing', 'wpte-product-layout' ),
+				'label'        => esc_html__( 'Icon Spacing', 'product-layouts' ),
 				'type'         => Controls::SLIDER,
 				'simpleenable' => false,
 				'default'      => [
@@ -710,9 +710,9 @@ trait Advanced {
 			'wpte_product_pagination_load_more_text',
 			$this->style,
 			[
-				'label'       => esc_html__( 'Load More Text', 'wpte-product-layout' ),
+				'label'       => esc_html__( 'Load More Text', 'product-layouts' ),
 				'type'        => Controls::TEXT,
-				'default'     => esc_html__( 'Load More', 'wpte-product-layout' ),
+				'default'     => esc_html__( 'Load More', 'product-layouts' ),
 				'description' => '',
 				'condition'   => [ 'wpte_product_layout_pagination_global_display' => 'load_more' ],
 			]
@@ -736,21 +736,21 @@ trait Advanced {
 			'wpte_product_load_more_align',
 			$this->style,
 			[
-				'label'       => esc_html__( 'Align', 'wpte-product-layout' ),
+				'label'       => esc_html__( 'Align', 'product-layouts' ),
 				'type'        => Controls::CHOOSE,
 				'operator'    => Controls::OPERATOR_ICON,
 				'default'     => '',
 				'options'     => [
 					'start'  => [
-						'title' => esc_html__( 'Left', 'wpte-product-layout' ),
+						'title' => esc_html__( 'Left', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignleft',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'wpte-product-layout' ),
+						'title' => esc_html__( 'Center', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-aligncenter',
 					],
 					'end'    => [
-						'title' => esc_html__( 'Right', 'wpte-product-layout' ),
+						'title' => esc_html__( 'Right', 'product-layouts' ),
 						'icon'  => 'dashicons dashicons-editor-alignright',
 					],
 				],
@@ -766,8 +766,8 @@ trait Advanced {
 			'wpte_product_load_more_style_tabs',
 			[
 				'options'   => [
-					'normal' => esc_html__( 'Normal ', 'wpte-product-layout' ),
-					'hover'  => esc_html__( 'Hover ', 'wpte-product-layout' ),
+					'normal' => esc_html__( 'Normal ', 'product-layouts' ),
+					'hover'  => esc_html__( 'Hover ', 'product-layouts' ),
 				],
 				'condition' => [ 'wpte_product_layout_pagination_global_display' => 'load_more' ],
 			]
@@ -778,7 +778,7 @@ trait Advanced {
 			$this->add_control(
 				'wpte_product_load_more_normal_bg_color',
 				$this->style, [
-					'label'             => __( 'Background', 'wpte-product-layout' ),
+					'label'             => __( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -790,7 +790,7 @@ trait Advanced {
 			);
 			$this->add_control(
 				'wpte_product_load_more_normal_color', $this->style, [
-					'label'             => __( 'Color', 'wpte-product-layout' ),
+					'label'             => __( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '',
 					'selector'          => [
@@ -826,7 +826,7 @@ trait Advanced {
 				'wpte_product_load_more_normal_border_radius',
 				$this->style,
 				[
-					'label'             => esc_html__( 'Border Radius', 'wpte-product-layout' ),
+					'label'             => esc_html__( 'Border Radius', 'product-layouts' ),
 					'type'              => Controls::DIMENSIONS,
 					'default'           => [
 						'unit' => 'px',
@@ -864,7 +864,7 @@ trait Advanced {
 			$this->add_control(
 				'wpte_product_load_more_hover_bg_color',
 				$this->style, [
-					'label'             => esc_html__( 'Background', 'wpte-product-layout' ),
+					'label'             => esc_html__( 'Background', 'product-layouts' ),
 					'type'              => Controls::GRADIENT,
 					'default'           => '',
 					'selector'          => [
@@ -876,7 +876,7 @@ trait Advanced {
 			);
 			$this->add_control(
 				'wpte_product_load_more_hover_color', $this->style, [
-					'label'             => esc_html__( 'Color', 'wpte-product-layout' ),
+					'label'             => esc_html__( 'Color', 'product-layouts' ),
 					'type'              => Controls::COLOR,
 					'default'           => '',
 					'selector'          => [
@@ -913,7 +913,7 @@ trait Advanced {
 				'wpte_product_load_more_hover_border_radius',
 				$this->style,
 				[
-					'label'             => esc_html__( 'Border Radius', 'wpte-product-layout' ),
+					'label'             => esc_html__( 'Border Radius', 'product-layouts' ),
 					'type'              => Controls::DIMENSIONS,
 					'default'           => [
 						'unit' => 'px',
@@ -952,7 +952,7 @@ trait Advanced {
 			'wpte_product_load_more_padding',
 			$this->style,
 			[
-				'label'             => esc_html__( 'Padding', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Padding', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -995,7 +995,7 @@ trait Advanced {
 			'wpte_product_load_more_margin',
 			$this->style,
 			[
-				'label'             => esc_html__( 'Margin', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Margin', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',
@@ -1046,7 +1046,7 @@ trait Advanced {
 		$this->add_control(
 			'wpte_product_layout_advanced_padding_bg_color',
 			$this->style, [
-				'label'             => esc_html__( 'Background Color', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Background Color', 'product-layouts' ),
 				'type'              => Controls::GRADIENT,
 				'default'           => '',
 				'selector'          => [
@@ -1084,7 +1084,7 @@ trait Advanced {
 			'wpte_product_layout_advanced_border_radius',
 			$this->style,
 			[
-				'label'             => esc_html__( 'Border Radius', 'wpte-product-layout' ),
+				'label'             => esc_html__( 'Border Radius', 'product-layouts' ),
 				'type'              => Controls::DIMENSIONS,
 				'default'           => [
 					'unit' => 'px',

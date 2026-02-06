@@ -51,9 +51,14 @@ class Layout4 extends Public_Render {
 									<span>
 										<?php
 										if ( $custom_title ) {
-											echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
+											echo wp_kses( 
+												$this->text_render(
+													'wpte_filters_custom_title_text',
+													$custom_title_text
+												), wpte_plugins_allowedtags() 
+											);
 										} else {
-											echo esc_html__( 'Rating', 'wpte-product-layout' );
+											echo esc_html__( 'Rating', 'product-layouts' );
 										}
 										?>
 									</span>
@@ -67,9 +72,14 @@ class Layout4 extends Public_Render {
 								<span>
 									<?php
 									if ( $custom_title ) {
-										echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
+										echo wp_kses( 
+											$this->text_render(
+												'wpte_filters_custom_title_text',
+												$custom_title_text
+											), wpte_plugins_allowedtags() 
+										);
 									} else {
-										echo esc_html__( 'Rating', 'wpte-product-layout' );
+										echo esc_html__( 'Rating', 'product-layouts' );
 									}
 									?>
 								</span>

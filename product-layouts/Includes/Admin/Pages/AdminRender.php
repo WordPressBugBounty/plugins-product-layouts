@@ -116,7 +116,8 @@ abstract class AdminRender {
 
 		global $wpdb;
 		$this->wpdb       = $wpdb;
-		$this->wpte_table = $this->wpdb->prefix . 'wpte_product_layout_style';
+		$this->wpte_table = $wpdb->prefix . 'wpte_product_layout_style';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$this->wpteid     = ( ! empty( $_GET['styleid'] ) ? intval( $_GET['styleid'] ) : 0 );
 		$this->WRAPPER    = '.wpte-product-layout-wrapper-' . $this->wpteid;
 		$this->CSSWRAPPER = '.wpte-product-layout-wrapper-' . $this->wpteid . ' .wpte-product-row';
@@ -174,7 +175,7 @@ abstract class AdminRender {
             'wpte-wpl-editor', 'wpteEditor', [
 				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 				'wpte_nonce' => wp_create_nonce( 'wpte-editor-update-nonce' ),
-				'error'      => __( 'Something Went Wrong!', 'wpte-product-layout' ),
+				'error'      => __( 'Something Went Wrong!', 'product-layouts' ),
 			]
         );
 
@@ -182,7 +183,7 @@ abstract class AdminRender {
             'wpte-global-js', 'wpteGlobal', [
 				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 				'wpte_nonce' => wp_create_nonce( 'wpte-global-nonce' ),
-				'error'      => __( 'Something Went Wrong!', 'wpte-product-layout' ),
+				'error'      => __( 'Something Went Wrong!', 'product-layouts' ),
 			]
         );
 
@@ -273,8 +274,8 @@ abstract class AdminRender {
 		}
 		$font = wp_json_encode( $this->font );
 		global $wpdb;
-		$this->wpdb->query( $wpdb->prepare( 'UPDATE ' . $wpdb->prefix . 'wpte_product_layout_style SET stylesheet = %s WHERE id = %d', $fullcssfile, $styleid ) );
-		$this->wpdb->query( $wpdb->prepare( 'UPDATE ' . $wpdb->prefix . 'wpte_product_layout_style SET font_family = %s WHERE id = %d', $font, $styleid ) );
+		$wpdb->query( $wpdb->prepare( 'UPDATE ' . $wpdb->prefix . 'wpte_product_layout_style SET stylesheet = %s WHERE id = %d', $fullcssfile, $styleid ) );
+		$wpdb->query( $wpdb->prepare( 'UPDATE ' . $wpdb->prefix . 'wpte_product_layout_style SET font_family = %s WHERE id = %d', $font, $styleid ) );
 		exit;
 	}
 
@@ -292,22 +293,23 @@ abstract class AdminRender {
 						<div class="wpte-card">
 							<div class="wpte-card-info">
 								<div class="wpte-card-heading">
-									<span><?php echo esc_html__( 'Shortcode', 'wpte-product-layout' ); ?></span>
+									<span><?php echo esc_html__( 'Shortcode', 'product-layouts' ); ?></span>
 									<span class="dashicons dashicons-arrow-down card-icon-hide"></span>
 									<span class="dashicons dashicons-arrow-right"></span>
 								</div>
 								<div class="wpte-card-body wpte-card-body-slider">
 									<div class="wpte-single-page-shortcode">
 										<?php
+										// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 										$id = isset( $_GET['styleid'] ) ? sanitize_text_field( wp_unslash( $_GET['styleid'] ) ) : '';
-										printf( '<b>%s</b>', esc_html__( 'Shortcode for posts/pages/plugins', 'wpte-product-layout' ) );
-										printf( '<p>%s</p>', esc_html__( 'Copy & paste the shortcode directly into any WordPress post, page or Page Builder.', 'wpte-product-layout' ) );
+										printf( '<b>%s</b>', esc_html__( 'Shortcode for posts/pages/plugins', 'product-layouts' ) );
+										printf( '<p>%s</p>', esc_html__( 'Copy & paste the shortcode directly into any WordPress post, page or Page Builder.', 'product-layouts' ) );
 										printf( '<input type="text" onclick="this.setSelectionRange(0, this.value.length)" value=\'[wpte_product_layout id="%1$s"]\'>', esc_attr( $id ) );
 										?>
 										<div class="wpte-single-page-php-shortcode">
 											<?php
-												printf( '<b>%s</b>', esc_html__( 'Shortcode for templates/themes', 'wpte-product-layout' ) );
-												printf( '<p>%s</p>', esc_html__( 'Copy & paste this code into a template file to include the slideshow within your theme.', 'wpte-product-layout' ) );
+												printf( '<b>%s</b>', esc_html__( 'Shortcode for templates/themes', 'product-layouts' ) );
+												printf( '<p>%s</p>', esc_html__( 'Copy & paste this code into a template file to include the slideshow within your theme.', 'product-layouts' ) );
 												printf( '<input type="text" onclick="this.setSelectionRange(0, this.value.length)" value=\'<?php echo do_shortcode("[wpte_product_layout id=%1$s]"); ?>\'>', esc_attr( $id ) );
 											?>
 										</div>
@@ -318,7 +320,7 @@ abstract class AdminRender {
 						<div class="wpte-card">
 							<div class="wpte-card-info">
 								<div class="wpte-card-heading">
-									<span><?php echo esc_html__( 'Shortcode Name', 'wpte-product-layout' ); ?></span>
+									<span><?php echo esc_html__( 'Shortcode Name', 'product-layouts' ); ?></span>
 									<span class="dashicons dashicons-arrow-down card-icon-hide"></span>
 									<span class="dashicons dashicons-arrow-right"></span>
 								</div>
@@ -330,7 +332,7 @@ abstract class AdminRender {
 											?>
 											<input id="wpte-shortcode-name" type="text" value="<?php echo esc_html( $shortcode_name->name ); ?>">
 											<input id="wpte-shortcode-name-id" type="hidden" value="<?php echo esc_html( $id ); ?>" >
-											<button><?php echo esc_html__( 'Update', 'wpte-product-layout' ); ?></button>
+											<button><?php echo esc_html__( 'Update', 'product-layouts' ); ?></button>
 										</form>
 									</div>
 								</div>
@@ -339,15 +341,18 @@ abstract class AdminRender {
 						<div class="wpte-card">
 							<div class="wpte-card-info">
 								<div class="wpte-card-heading">
-									<span><?php echo esc_html__( 'Action', 'wpte-product-layout' ); ?></span>
+									<span><?php echo esc_html__( 'Action', 'product-layouts' ); ?></span>
 									<span class="dashicons dashicons-arrow-down card-icon-hide"></span>
 									<span class="dashicons dashicons-arrow-right"></span>
 								</div>
 								<div class="wpte-card-body wpte-card-body-slider">
 									<div class="wpte-single-page-shortcode">
-										<?php $layouts = isset( $_GET['layouts'] ) ? sanitize_text_field( wp_unslash( $_GET['layouts'] ) ) : ''; ?>
-										<button class="wpte-single-page-export"><a href="<?php echo esc_url( admin_url( 'admin.php?page=product-layouts&layouts=' . $layouts . '&styleid=' . $id . '&action=export&id=' . $id . '' ) ); ?>"><?php echo esc_html__( 'EXPORT', 'wpte-product-layout' ); ?></a></button>
-										<button class="wpte-single-page-import"> <a href="<?php echo esc_url( admin_url( 'admin.php?page=product-layouts-shortcode&action=import' ) ); ?>"><?php echo esc_html__( 'IMPORT', 'wpte-product-layout' ); ?></a></button>
+										<?php
+											// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+											$layouts = isset( $_GET['layouts'] ) ? sanitize_text_field( wp_unslash( $_GET['layouts'] ) ) : '';
+										?>
+										<button class="wpte-single-page-export"><a href="<?php echo esc_url( admin_url( 'admin.php?page=product-layouts&layouts=' . $layouts . '&styleid=' . $id . '&action=export&id=' . $id . '' ) ); ?>"><?php echo esc_html__( 'EXPORT', 'product-layouts' ); ?></a></button>
+										<button class="wpte-single-page-import"> <a href="<?php echo esc_url( admin_url( 'admin.php?page=product-layouts-shortcode&action=import' ) ); ?>"><?php echo esc_html__( 'IMPORT', 'product-layouts' ); ?></a></button>
 									</div>
 								</div>
 							</div>
@@ -370,7 +375,7 @@ abstract class AdminRender {
 			<form id="wpte-editor-update-form" action="" method="POST">
 				<div class="wpte-single-settings-card-header">
 					<div>
-						<?php echo esc_html__( 'Settings', 'wpte-product-layout' ); ?>
+						<?php echo esc_html__( 'Settings', 'product-layouts' ); ?>
 					</div>
 					<div class="wpte-editor-avatar">
 						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="28" viewBox="0 0 24 24" >
@@ -394,6 +399,7 @@ abstract class AdminRender {
 						<div class="wpte-single-settings-card-body-inner">
 							<?php
 							$this->register_controls();
+							// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 							$product_layouts_page = isset( $_GET['layouts'] ) && 'filter' !== $_GET['layouts'] ? true : false;
 							if ( $product_layouts_page ) {
 								?>
@@ -406,7 +412,7 @@ abstract class AdminRender {
 				</div>
 				<div class="wpte-single-settings-card-footer">
 					<input type="hidden" id="wpte-layouts-id" value="<?php echo esc_attr( $this->wpteid ); ?>">
-					<button id="wpte-submit-editor-form" type="submit"><?php echo esc_html__( 'Save', 'wpte-product-layout' ); ?></button>
+					<button id="wpte-submit-editor-form" type="submit"><?php echo esc_html__( 'Save', 'product-layouts' ); ?></button>
 				</div>
 			</form>
 		</aside>
@@ -425,7 +431,7 @@ abstract class AdminRender {
 				?>
 				<div class="wpte-wpl-wrapper">
 					<div class="wpte-wpl-row">
-					<?php printf( '<h1>%s</h1>', esc_html__( 'Opps! Please upgrade!', 'wpte-product-layout' ) ); ?>
+					<?php printf( '<h1>%s</h1>', esc_html__( 'Opps! Please upgrade!', 'product-layouts' ) ); ?>
 					</div>
 				</div>
 				<?php
@@ -462,7 +468,7 @@ abstract class AdminRender {
 					<div class="wpte-card">
 						<div class="wpte-card-heading">
 							<div class="wpte-single-layout-preview">
-								<?php echo esc_html__( 'Preview', 'wpte-product-layout' ); ?>
+								<?php echo esc_html__( 'Preview', 'product-layouts' ); ?>
 							</div>
 						</div>
 						<div class="wpte-card-body" id="wpte-product-preview-data" template-wrapper="<?php echo esc_attr( $this->CSSWRAPPER ); ?>">

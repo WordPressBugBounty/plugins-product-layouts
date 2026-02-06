@@ -60,7 +60,7 @@ class Layout7 extends Layout {
 		$this->add_control(
 			'wpte_product_layout_caption_style_7_effect',
 			$this->style, [
-				'label'   => __( 'Effects Direction', 'wpte-product-layout' ),
+				'label'   => __( 'Effects Direction', 'product-layouts' ),
 				'type'    => Controls::SELECT,
 				'loader'  => true,
 				// 'multiple' => true,

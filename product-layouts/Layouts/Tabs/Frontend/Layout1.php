@@ -51,7 +51,7 @@ class Layout1 extends Public_Render {
 		<div class="wpte-product-layouts-tabs-style-1-wrapper">
 			<ul class="wpte-product-layouts-tabs wpte-product-layouts-tabs-style-1-list">
 				<?php if ( $all ) { ?>
-				<li class="wpte-tab-active" id='wpte-tab-1' catid="" layoutid="<?php echo esc_html( $shortcode_id ); ?>"><?php echo esc_html__( 'All', 'wpte-product-layout' ); ?></li>
+				<li class="wpte-tab-active" id='wpte-tab-1' catid="" layoutid="<?php echo esc_html( $shortcode_id ); ?>"><?php echo esc_html__( 'All', 'product-layouts' ); ?></li>
 				<?php } ?>
 				<?php
 				$i = 0;

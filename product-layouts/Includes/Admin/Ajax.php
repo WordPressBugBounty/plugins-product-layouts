@@ -48,7 +48,7 @@ class Ajax {
 
 		$nonce = isset( $_REQUEST['_nonce'] ) && '' !== $_REQUEST['_nonce'] ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 		if ( ! wp_verify_nonce( $nonce, 'wpte-new-create-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
 		$name        = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
@@ -83,7 +83,7 @@ class Ajax {
 		if ( is_wp_error( $insert_id ) ) {
 			wp_send_json_error(
                 [
-					'message' => __( 'Data Insert Failed Please retry again!', 'wpte-product-layout' ),
+					'message' => __( 'Data Insert Failed Please retry again!', 'product-layouts' ),
 				]
             );
 		}
@@ -102,7 +102,7 @@ class Ajax {
 
 		$nonce = isset( $_REQUEST['_nonce'] ) && '' !== $_REQUEST['_nonce'] ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 		if ( ! wp_verify_nonce( $nonce, 'wpte-delete-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
 		$id = isset( $_POST['id'] ) ? intval( $_POST['id'] ) : '';
@@ -123,7 +123,7 @@ class Ajax {
 
 		$nonce = isset( $_REQUEST['_nonce'] ) && '' !== $_REQUEST['_nonce'] ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 		if ( ! wp_verify_nonce( $nonce, 'wpte-editor-update-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
 		$id       = isset( $_POST['wpteid'] ) ? intval( $_POST['wpteid'] ) : '';
@@ -163,7 +163,7 @@ class Ajax {
 
 		$nonce = isset( $_REQUEST['_nonce'] ) && '' !== $_REQUEST['_nonce'] ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 		if ( ! wp_verify_nonce( $nonce, 'wpte-editor-update-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
 		global $wpdb;
@@ -222,7 +222,7 @@ class Ajax {
 
 		$nonce = isset( $_REQUEST['_nonce'] ) && '' !== $_REQUEST['_nonce'] ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 		if ( ! wp_verify_nonce( $nonce, 'wpte-editor-update-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
 		$id   = isset( $_POST['wpteid'] ) && $_POST['wpteid'] !== '' ? intval( $_POST['wpteid'] ) : '';
@@ -250,32 +250,40 @@ class Ajax {
 	 * @since v1.0.0
 	 */
 	public function wpte_shortcode_import_layout() {
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
-		}
-
-		$nonce = isset( $_REQUEST['_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
-
-		if ( ! wp_verify_nonce( $nonce, 'wpte-import-nonce' ) ) {
-			echo esc_html__( 'You do not have sufficient permissions to access this page.', 'wpte-product-layout' );
-			exit;
-		}
-
-		$filename = ! empty( $_FILES['file']['name'] ) ? sanitize_file_name( wp_unslash( $_FILES['file']['name'] ) ) : '';
-		$folder   = $this->safe_path( WPTE_WPL_PATH . 'assets/export/' );
-		if ( ! is_dir( $folder ) ) :
-			mkdir( $folder, 0777 );
-		endif;
-		if ( is_file( $folder . $filename ) ) :
-			unlink( $folder . $filename ); // delete file.
-		endif;
-		$uploaded_file_path = isset( $_FILES['file']['tmp_name'] ) ? filter_var( $_FILES['file']['tmp_name'], FILTER_SANITIZE_SPECIAL_CHARS ) : '';
-		$files              = isset( $_FILES['file']['tmp_name'] ) ? $uploaded_file_path : '';
-		move_uploaded_file( $files, $folder . $filename );
-
-		$this->wpte_file_extract( $folder, $filename );
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
 	}
+
+	$nonce = isset( $_REQUEST['_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
+
+	if ( ! wp_verify_nonce( $nonce, 'wpte-import-nonce' ) ) {
+		echo esc_html__( 'You do not have sufficient permissions to access this page.', 'product-layouts' );
+		exit;
+	}
+
+	$filename = ! empty( $_FILES['file']['name'] ) ? sanitize_file_name( wp_unslash( $_FILES['file']['name'] ) ) : '';
+	$folder   = $this->safe_path( WPTE_WPL_PATH . 'assets/export/' );
+
+	
+	if ( ! is_dir( $folder ) ) {
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir
+		mkdir( $folder, 0777 );
+	}
+
+	if ( is_file( $folder . $filename ) ) {
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.unlink_unlink
+		unlink( $folder . $filename ); // delete file.
+	}
+
+	$uploaded_file_path = isset( $_FILES['file']['tmp_name'] ) ? filter_var( $_FILES['file']['tmp_name'], FILTER_SANITIZE_SPECIAL_CHARS ) : '';
+	$files              = isset( $_FILES['file']['tmp_name'] ) ? $uploaded_file_path : '';
+
+	// phpcs:ignore Generic.PHP.ForbiddenFunctions.Found
+	move_uploaded_file( $files, $folder . $filename );
+
+	$this->wpte_file_extract( $folder, $filename );
+}
+
 
 	/**
 	 * Import File extractor & insert.
@@ -298,11 +306,12 @@ class Ajax {
 
 			if ( ! $style_name && ! $rawdata && ! $stylesheet ) {
 				if ( is_file( $folder . $filename ) ) :
+					// phpcs:ignore WordPress.WP.AlternativeFunctions.unlink_unlink
 					unlink( $folder . $filename ); // delete file.
 				endif;
 				wp_send_json_success(
                     [
-						'failed' => __( 'Invalid JSON File! Please import a exported valid JSON file.', 'wpte-product-layout' ),
+						'failed' => __( 'Invalid JSON File! Please import a exported valid JSON file.', 'product-layouts' ),
 					]
                 );
 				return;
@@ -326,6 +335,7 @@ class Ajax {
 			wpte_layout_update_style( $insert_id, $finalData );
 
 			if ( is_file( $folder . $filename ) ) :
+				// phpcs:ignore WordPress.WP.AlternativeFunctions.unlink_unlink
 				unlink( $folder . $filename ); // delete file.
 			endif;
 
@@ -338,7 +348,7 @@ class Ajax {
 			if ( is_wp_error( $insert_id ) ) {
 				wp_send_json_error(
                     [
-						'message' => __( 'Data Insert Failed Please retry again!', 'wpte-product-layout' ),
+						'message' => __( 'Data Insert Failed Please retry again!', 'product-layouts' ),
 					]
                 );
 			}
@@ -358,7 +368,7 @@ class Ajax {
 
 		$nonce = isset( $_REQUEST['_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 		if ( ! wp_verify_nonce( $nonce, 'wpte-new-create-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
 		$id         = isset( $_POST['id'] ) ? intval( $_POST['id'] ) : '';
@@ -366,6 +376,7 @@ class Ajax {
 		$db_dataArr = json_decode( wp_json_encode( $db_data ), true );
 		$arrgg      = [ 'style' => $db_dataArr ];
 		$JsonData   = wp_json_encode( $arrgg );
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 		print_r( $JsonData );
 		exit;
 	}
@@ -383,10 +394,13 @@ class Ajax {
 
 		$nonce = isset( $_REQUEST['_nonce'] ) && '' !== $_REQUEST['_nonce'] ? sanitize_text_field( wp_unslash( $_REQUEST['_nonce'] ) ) : '';
 		if ( ! wp_verify_nonce( $nonce, 'wpte-settings-nonce' ) ) {
-			return esc_html__( 'Nonce Varification Failed!', 'wpte-product-layout' );
+			return esc_html__( 'Nonce Varification Failed!', 'product-layouts' );
 		}
 
-		$items = isset( $_POST['data'] ) && $_POST['data'] ? filter_input( INPUT_POST, 'data', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$items = isset( $_POST['data'] ) && $_POST['data']
+			? filter_input( INPUT_POST, 'data', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY )
+			: [];
 
 		$data = [];
 
@@ -398,7 +412,7 @@ class Ajax {
 
 		wp_send_json_success(
             [
-				'message' => esc_html__( 'Settings Saved', 'wpte-product-layout' ),
+				'message' => esc_html__( 'Settings Saved', 'product-layouts' ),
 			]
         );
 	}

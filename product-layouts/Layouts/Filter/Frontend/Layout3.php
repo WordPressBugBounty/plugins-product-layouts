@@ -69,9 +69,14 @@ class Layout3 extends Public_Render {
 									<span>
 										<?php
 										if ( $custom_title ) {
-											echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
+											echo wp_kses( 
+												$this->text_render(
+													'wpte_filters_custom_title_text',
+													$custom_title_text
+												), wpte_plugins_allowedtags() 
+											);
 										} else {
-											echo esc_html__( 'Category', 'wpte-product-layout' );
+											echo esc_html__( 'Category', 'product-layouts' );
 										}
 										?>
 									</span>
@@ -85,9 +90,14 @@ class Layout3 extends Public_Render {
 								<span>
 									<?php
 									if ( $custom_title ) {
-										echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
+										echo wp_kses( 
+											$this->text_render(
+												'wpte_filters_custom_title_text',
+												$custom_title_text
+											), wpte_plugins_allowedtags() 
+										);
 									} else {
-										echo esc_html__( 'Category', 'wpte-product-layout' );
+										echo esc_html__( 'Category', 'product-layouts' );
 									}
 									?>
 								</span>

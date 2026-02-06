@@ -50,9 +50,14 @@ class Layout2 extends Public_Render {
 									<span>
 										<?php
 										if ( $custom_title ) {
-											echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
+											echo wp_kses( 
+												$this->text_render(
+													'wpte_filters_custom_title_text',
+													$custom_title_text
+												), wpte_plugins_allowedtags() 
+											);
 										} else {
-											echo esc_html__( 'Show per page', 'wpte-product-layout' );
+											echo esc_html__( 'Show per page', 'product-layouts' );
 										}
 										?>
 									</span>
@@ -66,9 +71,14 @@ class Layout2 extends Public_Render {
 								<span>
 									<?php
 									if ( $custom_title ) {
-										echo $this->text_render( 'wpte_filters_custom_title_text', $custom_title_text );
+										echo wp_kses( 
+											$this->text_render(
+												'wpte_filters_custom_title_text',
+												$custom_title_text
+											), wpte_plugins_allowedtags() 
+										);
 									} else {
-										echo esc_html__( 'Show per page', 'wpte-product-layout' );
+										echo esc_html__( 'Show per page', 'product-layouts' );
 									}
 									?>
 								</span>
@@ -80,19 +90,19 @@ class Layout2 extends Public_Render {
 						<div class="<?php echo esc_attr( $wpte_dropdown ); ?>">
 							<label class="wpte-filter-option">
 								<input type="radio" name="wpte_product_filter_show_per_page_<?php echo esc_attr( $this->wpteid ); ?>" layoutid="<?php echo esc_attr( $filter_for ); ?>" value="">
-								<span class="radio-label"><?php echo esc_html__( 'Default', 'wpte-product-layout' ); ?></span>
+								<span class="radio-label"><?php echo esc_html__( 'Default', 'product-layouts' ); ?></span>
 							</label>
 							<label class="wpte-filter-option">
 								<input type="radio" name="wpte_product_filter_show_per_page_<?php echo esc_attr( $this->wpteid ); ?>" layoutid="<?php echo esc_attr( $filter_for ); ?>" value="10">
-								<span class="radio-label"><?php echo esc_html__( '10 per page', 'wpte-product-layout' ); ?></span>
+								<span class="radio-label"><?php echo esc_html__( '10 per page', 'product-layouts' ); ?></span>
 							</label>
 							<label class="wpte-filter-option">
 								<input type="radio" name="wpte_product_filter_show_per_page_<?php echo esc_attr( $this->wpteid ); ?>" layoutid="<?php echo esc_attr( $filter_for ); ?>" value="20">
-								<span class="radio-label"><?php echo esc_html__( '20 per page', 'wpte-product-layout' ); ?></span>
+								<span class="radio-label"><?php echo esc_html__( '20 per page', 'product-layouts' ); ?></span>
 							</label>
 							<label class="wpte-filter-option">
 								<input type="radio" name="wpte_product_filter_show_per_page_<?php echo esc_attr( $this->wpteid ); ?>" layoutid="<?php echo esc_attr( $filter_for ); ?>" value="30">
-								<span class="radio-label"><?php echo esc_html__( '30 per page', 'wpte-product-layout' ); ?></span>
+								<span class="radio-label"><?php echo esc_html__( '30 per page', 'product-layouts' ); ?></span>
 							</label>
 						</div>
 					</div>

@@ -51,14 +51,14 @@ class QuickView {
 			<div class="wpte-quick-view-content-area">
 				<?php if ( $in_stock || get_post_meta( $product_id, '_stock_status', true ) === 'instock' ) { ?>
 					<div class="wpte-quick-view-stock">
-						<?php echo wp_kses_post( $in_stock ) . esc_html__( 'In Stock', 'wpte-product-layout' ); ?>
+						<?php echo wp_kses_post( $in_stock ) . esc_html__( 'In Stock', 'product-layouts' ); ?>
 					</div>
 					<?php
 				}
 				if ( get_post_meta( $product_id, '_stock_status', true ) === 'outofstock' ) {
 					?>
 					<div class="wpte-quick-view-stock out-stock">
-						<?php echo esc_html__( 'Out of stock', 'wpte-product-layout' ); ?>
+						<?php echo esc_html__( 'Out of stock', 'product-layouts' ); ?>
 					</div>
 				<?php } ?>
 				<div class="wpte-quick-view-category">
@@ -80,7 +80,7 @@ class QuickView {
 					<?php echo wp_kses_post( product_rating_render( $product ) ); ?>
 					<?php
 						$review = $product->get_rating_count() ? $product->get_rating_count() : 0;
-						printf( '<a href="%s/#reviews">%s</a>', esc_url( $product_url ), '( ' . intval( $review ) . ' ' . esc_html__( 'review', 'wpte-product-layout' ) . ')' );
+						printf( '<a href="%s/#reviews">%s</a>', esc_url( $product_url ), '( ' . intval( $review ) . ' ' . esc_html__( 'review', 'product-layouts' ) . ')' );
 					?>
 				</div>
 				<div class="wpte-quick-view-price">

@@ -34,7 +34,7 @@ class Layouts_List extends \WP_List_Table {
 	 * @return void
 	 */
 	public function no_items() {
-		esc_html_e( 'No Layout found', 'wpte-product-layout' );
+		esc_html_e( 'No Layout found', 'product-layouts' );
 	}
 
 	/**
@@ -45,9 +45,9 @@ class Layouts_List extends \WP_List_Table {
 	public function get_columns() {
 		return [
 			'cb'         => '<input type="checkbox" />',
-			'name'       => __( 'Name', 'wpte-product-layout' ),
-			'style_name' => __( 'Templates', 'wpte-product-layout' ),
-			'id'         => __( 'Shortcode', 'wpte-product-layout' ),
+			'name'       => __( 'Name', 'product-layouts' ),
+			'style_name' => __( 'Templates', 'product-layouts' ),
+			'id'         => __( 'Shortcode', 'product-layouts' ),
 		];
 	}
 
@@ -87,10 +87,10 @@ class Layouts_List extends \WP_List_Table {
 
 		$actions           = [];
 		$actions['id']     = sprintf( '<span style="color:#a0a0a4">ID: %s</span>', $item->id );
-		$actions['edit']   = sprintf( '<a href="%s">%s</a>', admin_url( "admin.php?page=product-layouts&layouts=$style_name[0]&styleid=$item->id" ), __( 'Edit', 'wpte-product-layout' ), __( 'Edit', 'wpte-product-layout' ) );
-		$actions['clone']  = sprintf( '<a class="wpte-shortcode-clone" href="" datavalue="%1$s" layouts-data="wptestyle%1$sdata">%2$s</a>', $item->id, __( 'Clone', 'wpte-product-layout' ), __( 'Clone', 'wpte-product-layout' ) );
-		$actions['export'] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=product-layouts-shortcode&action=export&id=' . $item->id ), __( 'Export', 'wpte-product-layout' ), __( 'Export', 'wpte-product-layout' ) );
-		$actions['delete'] = sprintf( '<a href="%s" class="wptesubmitdelete" layoutid="%s">%s</a>', __( 'Delete', 'wpte-product-layout' ), $item->id, __( 'Delete', 'wpte-product-layout' ) );
+		$actions['edit']   = sprintf( '<a href="%s">%s</a>', admin_url( "admin.php?page=product-layouts&layouts=$style_name[0]&styleid=$item->id" ), __( 'Edit', 'product-layouts' ), __( 'Edit', 'product-layouts' ) );
+		$actions['clone']  = sprintf( '<a class="wpte-shortcode-clone" href="" datavalue="%1$s" layouts-data="wptestyle%1$sdata">%2$s</a>', $item->id, __( 'Clone', 'product-layouts' ), __( 'Clone', 'product-layouts' ) );
+		$actions['export'] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=product-layouts-shortcode&action=export&id=' . $item->id ), __( 'Export', 'product-layouts' ), __( 'Export', 'product-layouts' ) );
+		$actions['delete'] = sprintf( '<a href="%s" class="wptesubmitdelete" layoutid="%s">%s</a>', __( 'Delete', 'product-layouts' ), $item->id, __( 'Delete', 'product-layouts' ) );
 
 		$adminUrl = admin_url( "admin.php?page=product-layouts&layouts=$style_name[0]&styleid=$item->id" );
 		return sprintf( '<a href="%1$s">%2$s</a>%3$s', $adminUrl, $item->name, $this->row_actions( $actions ) );
@@ -119,7 +119,7 @@ class Layouts_List extends \WP_List_Table {
             '
 			%2$s <input type="text" onclick="this.setSelectionRange(0, this.value.length)" value=\'[wpte_product_layout id="%1$s"]\'>
 			<br>%3$s  &nbsp;<input type="text" onclick="this.setSelectionRange(0, this.value.length)" value=\'<?php echo do_shortcode("[wpte_product_layout id=%1$s]"); ?>\'
-		>', $item->id, esc_html__( 'Shortcode', 'wpte-product-layout' ), esc_html__( 'Php Code', 'wpte-product-layout' )
+		>', $item->id, esc_html__( 'Shortcode', 'product-layouts' ), esc_html__( 'Php Code', 'product-layouts' )
         );
 	}
 
@@ -144,7 +144,7 @@ class Layouts_List extends \WP_List_Table {
 	 */
 	public function get_bulk_actions() {
 		$actions = [
-			'delete' => __( 'Delete Permanently', 'wpte-product-layout' ),
+			'delete' => __( 'Delete Permanently', 'product-layouts' ),
 		];
 
 		return $actions;
@@ -157,9 +157,11 @@ class Layouts_List extends \WP_List_Table {
 	 * @return void
 	 */
 	public function extra_tablenav( $which ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$per_page_number = isset( $_GET['show_per_page'] ) ? sanitize_text_field( wp_unslash( $_GET['show_per_page'] ) ) : 7;
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$page            = isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '';
-		printf( '<span>%s</span>', esc_html__( 'Show', 'wpte-product-layout' ) );
+		printf( '<span>%s</span>', esc_html__( 'Show', 'product-layouts' ) );
 		echo ' <form id="show_per_page_form" action="" method="post">
 					<input id="show_per_page" type="number" name="show_per_page" value="' . esc_attr( $per_page_number ) . '">
 					<input type="hidden" name="page" value="' . esc_attr( $page ) . '">
@@ -177,6 +179,7 @@ class Layouts_List extends \WP_List_Table {
 	public function get_search_value( $item ) {
 		$name = strtolower( $item['name'] );
 		$id   = $item['id'];
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$data = isset( $_REQUEST['s'] ) ? strtolower( sanitize_text_field( wp_unslash( $_REQUEST['s'] ) ) ) : '';
 		if ( strpos( $name, $data ) !== false || strpos( $id, $data ) !== false ) {
 			return true;
@@ -195,7 +198,7 @@ class Layouts_List extends \WP_List_Table {
 		$sortable = $this->get_sortable_columns();
 
 		$this->_column_headers = [ $column, $hidden, $sortable ];
-
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$per_page_number = isset( $_GET['show_per_page'] ) && ! empty( $_GET['show_per_page'] ) ? intval( wp_unslash( $_GET['show_per_page'] ) ) : 7;
 
 		$per_page = $per_page_number;
@@ -206,12 +209,14 @@ class Layouts_List extends \WP_List_Table {
 			'number' => $per_page,
 			'offset' => $offset,
 		];
-
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_REQUEST['orderby'] ) && isset( $_REQUEST['order'] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$args['orderby'] = sanitize_text_field( wp_unslash( $_REQUEST['orderby'] ) );
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$args['order'] = sanitize_text_field( wp_unslash( $_REQUEST['order'] ) );
 		}
-
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_REQUEST['s'] ) && ! empty( $_REQUEST['s'] ) ) {
 			$data = wpte_get_product_layouts( $args );
 			$data = json_decode( wp_json_encode( $data ), true );
