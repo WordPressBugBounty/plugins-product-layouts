@@ -1,11 +1,11 @@
 === Product Layouts for WooCommerce ===
 
-Contributors: wpkin, richardmallick
+Contributors: oxilab, wpkin, richardmallick
 Tags: product showcase, product list, product table, product gallery, product grid
 Requires at least: 6.2
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.3.5
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -23,7 +23,7 @@ Perfect for showcasing your store items beautifully and increasing sales.
 * Use simple shortcodes anywhere — pages, posts, or widgets.
 * Import demo layouts or create your own with live preview.
 
-[youtube [https://www.youtube.com/watch?v=rYcP_MGE2X4](https://www.youtube.com/watch?v=rYcP_MGE2X4)]
+[youtube https://www.youtube.com/watch?v=rYcP_MGE2X4]
 
 👁️ [View Demo](https://product-layouts.com/demo/) | 🚀 [Get the Premium Version](https://product-layouts.com/pricing/) | 👩🏼‍💻 [Get Support](https://wordpress.org/support/plugin/product-layouts#new-post)
 
@@ -127,6 +127,20 @@ Yes — export JSON from Shortcode List and import it from the Import page.
 3. A demo layout
 
 == Changelog ==
+
+= 1.4.1 =
+* New: Added Elementor-style preview iframe in editor; resizes on Desktop/Tablet/Mobile icon clicks.
+* New: Added tooltip and inline copy button for shortcode with clipboard support.
+* Update: Removed accordion UI from shortcode editor and made content visible.
+* Update: Made accordion cards transparent; simplified header to fixed layout.
+* Update: Converted header links to button style matching Export/Import.
+* Update: Synced header device buttons with sidebar responsive switchers; opening tablet/mobile switchers from header.
+* Update: Re-designed Quick View Modal.
+* Update: Changed the brand name WPKIN to Oxilab.
+* Fix: Sidebar position and scroll with fixed header; Save footer always visible.
+* Fix: Active device button hover preserves purple background color.
+* Fix: Header dropdown hover behavior; shows only on hamburger hover and stays visible while hovering dropdown.
+* Fix: Corrected header markup structure and closing divs in editor header.
 
 = 1.3.5 =
 * **New:** Fixed the plugin title and description issue.  

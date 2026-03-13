@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Plugin Name:       Product Layouts for Woocommerce
- * Plugin URI:        https://wpkin.com
+ * Plugin URI:        https://oxilab.dev
  * Description:       This is woocommerce product layout plugin. you can design product using this plugin for your woocommerce store.
- * Version:           1.3.5
- * Author:            WPKIN
- * Author URI:        https://wpkin.com
+ * Version:           1.4.1
+ * Author:            Oxilab
+ * Author URI:        https://oxilab.dev
  * Text Domain:       product-layouts
  * License:           GPLv2 or later
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
@@ -13,25 +14,26 @@
  * @package product layouts for woocommrce.
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	wp_die( esc_html__( 'You can\'t access this page', 'product-layouts' ) );
+if (! defined('ABSPATH')) {
+	wp_die(esc_html__('You can\'t access this page', 'product-layouts'));
 }
 
 
-if ( function_exists( 'wpl_fs' ) ) {
-	wpl_fs()->set_basename( false, __FILE__ );
+if (function_exists('wpl_fs')) {
+	wpl_fs()->set_basename(false, __FILE__);
 } else {
 	/**
 	 * Included Autoload File
 	 */
 	require_once __DIR__ . '/vendor/autoload.php';
 
-	if ( ! function_exists( 'wpl_fs' ) ) {
+	if (! function_exists('wpl_fs')) {
 		// Create a helper function for easy SDK access.
-		function wpl_fs() {
+		function wpl_fs()
+		{
 			global $wpl_fs;
 
-			if ( ! isset( $wpl_fs ) ) {
+			if (! isset($wpl_fs)) {
 				$wpl_fs = fs_dynamic_init(
 					[
 						'id'                  => '11341',
@@ -59,11 +61,11 @@ if ( function_exists( 'wpl_fs' ) ) {
 		// Init Freemius.
 		wpl_fs();
 		// Signal that SDK was initiated.
-		do_action( 'wpl_fs_loaded' );
+		do_action('wpl_fs_loaded');
 	}
 
 	/** If class `Product_Layouts` doesn't exists yet. */
-	if ( ! class_exists( 'Product_Layouts' ) ) {
+	if (! class_exists('Product_Layouts')) {
 
 		/**
 		 * Sets up and initializes the plugin.
@@ -71,12 +73,13 @@ if ( function_exists( 'wpl_fs' ) ) {
 		 *
 		 * @since 1.0.0
 		 */
-		final class Product_Layouts {
+		final class Product_Layouts
+		{
 
 			/**
 			 * Plugin Version
 			 */
-			const VERSION = '1.3.5';
+			const VERSION = '1.4.1';
 
 			/**
 			 * Php Version
@@ -96,15 +99,16 @@ if ( function_exists( 'wpl_fs' ) ) {
 			/**
 			 * Class Constractor
 			 */
-			private function __construct() {
+			private function __construct()
+			{
 
 				$this->define_constance();
-				register_activation_hook( __FILE__, [ $this, 'activate' ] );
-				register_deactivation_hook( __FILE__, [ $this, 'deactivate' ] );
-				add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
-				add_action( 'admin_print_footer_scripts', 'wpte_offer_popup' );
+				register_activation_hook(__FILE__, [$this, 'activate']);
+				register_deactivation_hook(__FILE__, [$this, 'deactivate']);
+				add_action('plugins_loaded', [$this, 'init_plugin']);
+				add_action('admin_print_footer_scripts', 'wpte_offer_popup');
 				// add_action( 'admin_init', [$this, 'activation_redirect'] );.
-				add_filter( 'plugin_action_links_' . plugin_basename( WPTE_WPL_FILE ), [ __CLASS__, 'wpte_wpl_action_links' ] );
+				add_filter('plugin_action_links_' . plugin_basename(WPTE_WPL_FILE), [__CLASS__, 'wpte_wpl_action_links']);
 			}
 
 			/**
@@ -112,11 +116,12 @@ if ( function_exists( 'wpl_fs' ) ) {
 			 *
 			 * @return /Product_Layouts
 			 */
-			public static function init() {
+			public static function init()
+			{
 
 				static $instance = false;
 
-				if ( ! $instance ) {
+				if (! $instance) {
 					$instance = new self();
 				}
 
@@ -128,16 +133,17 @@ if ( function_exists( 'wpl_fs' ) ) {
 			 *
 			 * @return void
 			 */
-			public function define_constance() {
+			public function define_constance()
+			{
 
-				define( 'WPTE_WPL_VERSION', self::VERSION );
-				define( 'WPTE_WPL_FILE', __FILE__ );
-				define( 'WPTE_WPL_PATH', plugin_dir_path( __FILE__ ) );
-				define( 'WPTE_WPL_URL', plugins_url( '', WPTE_WPL_FILE ) );
-				define( 'WPTE_WPL_ASSETS', WPTE_WPL_URL . '/assets/' );
-				define( 'WPTE_WPL_MINIMUM_PHP_VERSION', self::MIN_PHP_VERSION );
-				define( 'WPTE_WPL_MINIMUM_WC_VERSION', self::MIN_WC_VERSION );
-				define( 'WPTE_WPL_MINIMUM_WP_VERSION', self::MIN_WP_VERSION );
+				define('WPTE_WPL_VERSION', self::VERSION);
+				define('WPTE_WPL_FILE', __FILE__);
+				define('WPTE_WPL_PATH', plugin_dir_path(__FILE__));
+				define('WPTE_WPL_URL', plugins_url('', WPTE_WPL_FILE));
+				define('WPTE_WPL_ASSETS', WPTE_WPL_URL . '/assets/');
+				define('WPTE_WPL_MINIMUM_PHP_VERSION', self::MIN_PHP_VERSION);
+				define('WPTE_WPL_MINIMUM_WC_VERSION', self::MIN_WC_VERSION);
+				define('WPTE_WPL_MINIMUM_WP_VERSION', self::MIN_WP_VERSION);
 			}
 
 			/**
@@ -151,7 +157,8 @@ if ( function_exists( 'wpl_fs' ) ) {
 			 *
 			 * @access public
 			 */
-			public function activate() {
+			public function activate()
+			{
 
 				new WPTE_PRODUCT_LAYOUT\Includes\Installation();
 			}
@@ -161,7 +168,8 @@ if ( function_exists( 'wpl_fs' ) ) {
 			 *
 			 * @return void
 			 */
-			public function deactivate() {
+			public function deactivate()
+			{
 
 				new WPTE_PRODUCT_LAYOUT\Includes\Uninstallation();
 			}
@@ -171,17 +179,18 @@ if ( function_exists( 'wpl_fs' ) ) {
 			 *
 			 * @return void
 			 */
-			public function init_plugin() {
+			public function init_plugin()
+			{
 
 				wpkin_frontend_script_to_admin();
 
 				new WPTE_PRODUCT_LAYOUT\Includes\Assets();
 
-				if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+				if (defined('DOING_AJAX') && DOING_AJAX) {
 					new WPTE_PRODUCT_LAYOUT\Includes\Admin\Ajax();
 				}
 
-				if ( is_admin() ) {
+				if (is_admin()) {
 					new WPTE_PRODUCT_LAYOUT\Includes\Admin();
 				}
 				new WPTE_PRODUCT_LAYOUT\Includes\Frontend();
@@ -192,12 +201,13 @@ if ( function_exists( 'wpl_fs' ) ) {
 			 *
 			 * Redirect to settings page after activation the plugin
 			 */
-			public function activation_redirect() {
+			public function activation_redirect()
+			{
 
-				if ( get_option( 'WPTE_wpl_activation_redirect', false ) ) {
-					delete_option( 'WPTE_wpl_activation_redirect' );
+				if (get_option('WPTE_wpl_activation_redirect', false)) {
+					delete_option('WPTE_wpl_activation_redirect');
 
-					wp_safe_redirect( admin_url( 'admin.php?page=product-layouts-getting-started' ) );
+					wp_safe_redirect(admin_url('admin.php?page=product-layouts-getting-started'));
 					exit();
 				}
 			}
@@ -207,9 +217,10 @@ if ( function_exists( 'wpl_fs' ) ) {
 			 *
 			 * @param mixed $links .
 			 */
-			public static function wpte_wpl_action_links( $links ) {
+			public static function wpte_wpl_action_links($links)
+			{
 
-				if ( ! current_user_can( 'manage_options' ) ) {
+				if (! current_user_can('manage_options')) {
 					return $links;
 				}
 
@@ -217,8 +228,8 @@ if ( function_exists( 'wpl_fs' ) ) {
 					[
 						sprintf(
 							'<a href="%s">%s</a>',
-							admin_url( 'admin.php?page=product-layouts' ),
-							esc_html__( 'Settings', 'product-layouts' )
+							admin_url('admin.php?page=product-layouts'),
+							esc_html__('Settings', 'product-layouts')
 						),
 					],
 					$links
@@ -227,7 +238,6 @@ if ( function_exists( 'wpl_fs' ) ) {
 				return $links;
 			}
 		}
-
 	}
 
 	/**
@@ -235,9 +245,10 @@ if ( function_exists( 'wpl_fs' ) ) {
 	 *
 	 * @return /Product_Layouts
 	 */
-	function wpte_product_layout() {
+	function wpte_product_layout()
+	{
 
-		if ( class_exists( 'Product_Layouts' ) ) {
+		if (class_exists('Product_Layouts')) {
 			return Product_Layouts::init();
 		}
 

@@ -4,7 +4,7 @@
         /**
          * Wrapper
          */
-        var WRAPPER = $('#wpte-product-preview-data').attr('template-wrapper');
+        var WRAPPER = $('#wpte-preview-wrapper').attr('template-wrapper');
         function WPTERegExp(par = '') {
             return new RegExp(par, "g");
         }
@@ -17,7 +17,7 @@
             minWidth: 210,
             maxWidth: 500,
             resize: function(event, ui) {
-                $(".wpte-editor-content").css("margin-left", ui.size.width + "px");
+                document.documentElement.style.setProperty('--wpte-sidebar-width', ui.size.width + 'px');
                 $('#wpte_setting_bar').attr('data-width', ui.size.width);
             }
         });
@@ -35,11 +35,9 @@
             if( data_visibale == "true" ) {
                 $('#wpte_setting_bar').attr('data-visibale', 'false');
                 $(this).html('<i class="wpte-icon icon-arrow-7"></i>');
-                $(".wpte-editor-content").css("margin-left", "0px");
             } else {
                 $('#wpte_setting_bar').attr('data-visibale', 'true');
                 $(this).html('<i class="wpte-icon icon-arrow-6"></i>');
-                $(".wpte-editor-content").css("margin-left", settingBarWidth + "px");
             }
         });
 
@@ -94,10 +92,18 @@
                     success: function (response) {
                         $(".wpte-product-load").removeClass('wpte-loading');
                         if ( response ) {
-                            $(".wpte-product-load").html(response);
+                            if (window.PreviewController) {
+                                window.PreviewController.updateContent(response);
+                            } else {
+                                $(".wpte-product-load").html(response);
+                            }
                             cart_icon_text_onload();
                         } else {
-                            $(".wpte-product-load").html("No product found!")
+                            if (window.PreviewController) {
+                                window.PreviewController.updateContent("No product found!");
+                            } else {
+                                $(".wpte-product-load").html("No product found!");
+                            }
                         }
                        
                     },
@@ -317,6 +323,46 @@
             wpte_editor_update_form(id, data, selector, action, saving, saved);
         });
 
+        // Header shortcode name change (new header layout)
+        $("#addonsstylenamechange").on('click', function(e){
+            e.preventDefault();
+            var $form = $('#wpte-shortcode-name-change-submit');
+            var id = $form.find('input[name="addonsstylenameid"]').val();
+            var data = $form.find('input[name="addonsstylename"]').val();
+            var selector = $(this);
+            var action = "wpte_shortcode_update_name";
+            var saving   = 'Saving...';
+            var saved   = 'Saved';
+            wpte_editor_update_form(id, data, selector, action, saving, saved);
+        });
+
+        // Copy shortcode from preview sub-header
+        $(document.body).on('click', '.wpte-copy-btn', function(e){
+            e.preventDefault();
+            var $btn = $(this);
+            var text = $btn.attr('data-shortcode') || $btn.closest('.wpte-header-shortcode').find('.wpte-shortcode-text').text().trim();
+            var orig = $btn.html();
+            var checkSVG = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>';
+            function showCopied(){ $btn.html(checkSVG); setTimeout(function(){ $btn.html(orig); }, 3000); }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function(){ showCopied(); }).catch(function(){
+                    var $temp = $('<textarea>');
+                    $('body').append($temp);
+                    $temp.val(text).select();
+                    document.execCommand('copy');
+                    $temp.remove();
+                    showCopied();
+                });
+            } else {
+                var $temp = $('<textarea>');
+                $('body').append($temp);
+                $temp.val(text).select();
+                document.execCommand('copy');
+                $temp.remove();
+                showCopied();
+            }
+        });
+
         /**
          * 
          * Responsive Controler
@@ -336,6 +382,10 @@
                 $(".wpte-product-form-responsive-laptop").removeClass('wpte-product-responsive-display-none');
                 $(".wpte-product-form-responsive-tab").addClass('wpte-product-responsive-display-none');
                 $(".wpte-product-form-responsive-mobile").addClass('wpte-product-responsive-display-none');
+                
+                if (window.PreviewController) {
+                    PreviewController.switchDevice('desktop');
+                }
             });
             $(document.body).on("click", ".wpte-form-responsive-switcher-tablet", function () {
                 $(".wpte-form-responsive-switcher-tablet").addClass('active');
@@ -343,6 +393,10 @@
                 $(".wpte-product-form-responsive-laptop").addClass('wpte-product-responsive-display-none');
                 $(".wpte-product-form-responsive-tab").removeClass('wpte-product-responsive-display-none');
                 $(".wpte-product-form-responsive-mobile").addClass('wpte-product-responsive-display-none');
+
+                if (window.PreviewController) {
+                    PreviewController.switchDevice('tablet');
+                }
             });
             $(document.body).on("click", ".wpte-form-responsive-switcher-mobile", function () {
                 $(".wpte-form-responsive-switcher-tablet").removeClass('active');
@@ -350,6 +404,10 @@
                 $(".wpte-product-form-responsive-laptop").addClass('wpte-product-responsive-display-none');
                 $(".wpte-product-form-responsive-tab").addClass('wpte-product-responsive-display-none');
                 $(".wpte-product-form-responsive-mobile").removeClass('wpte-product-responsive-display-none');
+
+                if (window.PreviewController) {
+                    PreviewController.switchDevice('mobile');
+                }
             });
         }
 
@@ -431,12 +489,16 @@
                                 if (Cval.indexOf("{{") != -1) {
                                     Cval = Wpte_Multiple_Selector_Handler(Cval);
                                 }
-                                if ($input.attr('responsive') === 'tab') {
-                                    $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
-                                } else if ($input.attr('responsive') === 'mobile') {
-                                    $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                if (window.PreviewController) {
+                                    PreviewController.injectStyles(Cval, cls, $input.attr('responsive'));
                                 } else {
-                                    $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                    if ($input.attr('responsive') === 'tab') {
+                                        $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                    } else if ($input.attr('responsive') === 'mobile') {
+                                        $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                    } else {
+                                        $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                    }
                                 }
                             });
 
@@ -476,12 +538,16 @@
                                     Cval = Wpte_Multiple_Selector_Handler(Cval);
                                 }
 
-                                if ($input.attr('responsive') === 'tab') {
-                                    $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
-                                } else if ($input.attr('responsive') === 'mobile') {
-                                    $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                if (window.PreviewController) {
+                                    PreviewController.injectStyles(Cval, cls, $input.attr('responsive'));
                                 } else {
-                                    $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                    if ($input.attr('responsive') === 'tab') {
+                                        $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                    } else if ($input.attr('responsive') === 'mobile') {
+                                        $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                    } else {
+                                        $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                    }
                                 }
                             });
                         }
@@ -511,12 +577,16 @@
                             if (Cval.indexOf("{{") != -1) {
                                 Cval = Wpte_Multiple_Selector_Handler(Cval);
                             }
-                            if ($input.attr('responsive') === 'tab') {
-                                $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
-                            } else if ($input.attr('responsive') === 'mobile') {
-                                $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                            if (window.PreviewController) {
+                                PreviewController.injectStyles(Cval, cls, $input.attr('responsive'));
                             } else {
-                                $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                if ($input.attr('responsive') === 'tab') {
+                                    $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                } else if ($input.attr('responsive') === 'mobile') {
+                                    $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                } else {
+                                    $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                }
                             }
                         });
                     } else {
@@ -554,12 +624,16 @@
                             if (Cval.indexOf("{{") != -1) {
                                 Cval = Wpte_Multiple_Selector_Handler(Cval);
                             }
-                            if ($input.attr('responsive') === 'tab') {
-                                $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
-                            } else if ($input.attr('responsive') === 'mobile') {
-                                $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                            if (window.PreviewController) {
+                                PreviewController.injectStyles(Cval, cls, $input.attr('responsive'));
                             } else {
-                                $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                if ($input.attr('responsive') === 'tab') {
+                                    $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                } else if ($input.attr('responsive') === 'mobile') {
+                                    $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                } else {
+                                    $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                }
                             }
                         });
                     }
@@ -663,12 +737,16 @@
                         Cval = Cval.replace(WPTERegExp("{{RIGHT}}"), $('#' + RIGHT).val());
                         Cval = Cval.replace(WPTERegExp("{{BOTTOM}}"), $('#' + BOTTOM).val());
                         Cval = Cval.replace(WPTERegExp("{{LEFT}}"), $('#' + LEFT).val());
-                        if ($input.attr('responsive') === 'tab') {
-                            $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
-                        } else if ($input.attr('responsive') === 'mobile') {
-                            $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                        if (window.PreviewController) {
+                            PreviewController.injectStyles(Cval, cls, $input.attr('responsive'));
                         } else {
-                            $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                            if ($input.attr('responsive') === 'tab') {
+                                $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                            } else if ($input.attr('responsive') === 'mobile') {
+                                $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                            } else {
+                                $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                            }
                         }
                     });
 
@@ -716,18 +794,26 @@
                             var cls = key.replace(WPTERegExp("{{WRAPPER}}"), WRAPPER);
                             if (o.type === 'CSS') {
                                 var Cval = o.value.replace(WPTERegExp("{{VALUE}}"), $input.val());
-                                if ($input.attr('responsive') === 'tab') {
-                                    $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
-                                } else if ($input.attr('responsive') === 'mobile') {
-                                    $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                if (window.PreviewController) {
+                                    PreviewController.injectStyles(Cval, cls, $input.attr('responsive'));
                                 } else {
-                                    $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                    if ($input.attr('responsive') === 'tab') {
+                                        $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                    } else if ($input.attr('responsive') === 'mobile') {
+                                        $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                    } else {
+                                        $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                    }
                                 }
                             } else {
-                                $.each(arr, function (i, v) {
-                                    $(cls).removeClass(v);
-                                });
-                                $(cls).addClass($input.val());
+                                if (window.PreviewController) {
+                                    PreviewController.updateClasses(cls, arr, $input.val());
+                                } else {
+                                    $.each(arr, function (i, v) {
+                                        $(cls).removeClass(v);
+                                    });
+                                    $(cls).addClass($input.val());
+                                }
                             }
 
                         });
@@ -778,12 +864,17 @@
                             }
                             var cls = el.replace(WPTERegExp("{{WRAPPER}}"), WRAPPER);
                             var Cval = obj.replace(WPTERegExp("{{VALUE}}"), $input.val());
-                            if ($input.attr('responsive') === 'tab') {
-                                $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
-                            } else if ($input.attr('responsive') === 'mobile') {
-                                $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+
+                            if (window.PreviewController) {
+                                PreviewController.injectStyles(Cval, cls, $input.attr('responsive'));
                             } else {
-                                $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                if ($input.attr('responsive') === 'tab') {
+                                    $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                } else if ($input.attr('responsive') === 'mobile') {
+                                    $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                } else {
+                                    $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                }
                             }
                         });
                         if ($input.val() === '') {
@@ -822,12 +913,16 @@
                             }
                             var cls = el.replace(WPTERegExp("{{WRAPPER}}"), WRAPPER);
                             var Cval = $VALUE;
-                            if ($input.attr('responsive') === 'tab') {
-                                $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
-                            } else if ($input.attr('responsive') === 'mobile') {
-                                $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                            if (window.PreviewController) {
+                                PreviewController.injectStyles(Cval, cls, $input.attr('responsive'));
                             } else {
-                                $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                if ($input.attr('responsive') === 'tab') {
+                                    $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                } else if ($input.attr('responsive') === 'mobile') {
+                                    $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                } else {
+                                    $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                }
                             }
                         });
                     }
@@ -875,12 +970,16 @@
                             }
                             var cls = el.replace(WPTERegExp("{{WRAPPER}}"), WRAPPER);
                             Cval = $BACKGROUND;
-                            if ($This.attr('responsive') === 'tab') {
-                                $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
-                            } else if ($This.attr('responsive') === 'mobile') {
-                                $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                            if (window.PreviewController) {
+                                PreviewController.injectStyles(Cval, cls, $This.attr('responsive'));
                             } else {
-                                $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                if ($This.attr('responsive') === 'tab') {
+                                    $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                } else if ($This.attr('responsive') === 'mobile') {
+                                    $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                } else {
+                                    $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                }
                             }
                         });
                     },
@@ -921,12 +1020,16 @@
                             var cls = key.replace(WPTERegExp("{{WRAPPER}}"), WRAPPER);
                             if (o.type === 'CSS') {
                                 var Cval = o.value.replace(WPTERegExp("{{VALUE}}"), $value);
-                                if ($input.attr('responsive') === 'tab') {
-                                    $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
-                                } else if ($input.attr('responsive') === 'mobile') {
-                                    $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                if (window.PreviewController) {
+                                    PreviewController.injectStyles(Cval, cls, $input.attr('responsive'));
                                 } else {
-                                    $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                    if ($input.attr('responsive') === 'tab') {
+                                        $("#wpte-product-preview-data").append('<style>@media only screen and (min-width : 669px) and (max-width : 993px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                    } else if ($input.attr('responsive') === 'mobile') {
+                                        $("#wpte-product-preview-data").append('<style>@media only screen and (max-width : 668px){#wpte-product-preview-data ' + cls + '{' + Cval + '}} < /style>');
+                                    } else {
+                                        $("#wpte-product-preview-data").append('<style>#wpte-product-preview-data ' + cls + '{' + Cval + '} < /style>');
+                                    }
                                 }
                             } else {
                                 $.each(arr, function (i, v) {
@@ -980,23 +1083,46 @@
 
             $('#wpte-product-cart-icon').on('change', function() {
                 var cart_icon = $(this).val();
-                $('.wpte-product-add-cart-icon .ajax_add_to_cart').html(`<i class='${cart_icon}'></i>`);
-                $('.wpte-product-add-cart-icon .product_type_simple').html(`<i class='${cart_icon}'></i>`);
+                if (window.PreviewController) {
+                    // Update icon attribute directly to preserve text if present
+                    PreviewController.updateAttribute('.wpte-product-add-cart-icon .ajax_add_to_cart i', 'class', cart_icon);
+                    PreviewController.updateAttribute('.wpte-product-add-cart-icon .product_type_simple i', 'class', cart_icon);
+                    PreviewController.updateAttribute('.wpte-product-add-cart-icon-text .ajax_add_to_cart i', 'class', cart_icon);
+                    PreviewController.updateAttribute('.wpte-product-add-cart-icon-text .product_type_simple i', 'class', cart_icon);
+                } else {
+                    $('.wpte-product-add-cart-icon .ajax_add_to_cart').html(`<i class='${cart_icon}'></i>`);
+                    $('.wpte-product-add-cart-icon .product_type_simple').html(`<i class='${cart_icon}'></i>`);
+                }
             });
 
             $('#wpte-product-grouped-icon').on('change', function() {
                 var groupde_icon = $(this).val();
-                $(".wpte-product-add-cart-icon .product_type_grouped").html(`<i class='${groupde_icon}'></i>`);
+                if (window.PreviewController) {
+                    PreviewController.updateAttribute('.wpte-product-add-cart-icon .product_type_grouped i', 'class', groupde_icon);
+                    PreviewController.updateAttribute('.wpte-product-add-cart-icon-text .product_type_grouped i', 'class', groupde_icon);
+                } else {
+                    $(".wpte-product-add-cart-icon .product_type_grouped").html(`<i class='${groupde_icon}'></i>`);
+                }
             });
 
             $('#wpte-product-external-icon').on('change', function() {
                 var external_icon = $(this).val();
-                $(".wpte-product-add-cart-icon .product_type_external").html(`<i class='${external_icon}'></i>`);
+                if (window.PreviewController) {
+                    PreviewController.updateAttribute('.wpte-product-add-cart-icon .product_type_external i', 'class', external_icon);
+                    PreviewController.updateAttribute('.wpte-product-add-cart-icon-text .product_type_external i', 'class', external_icon);
+                } else {
+                    $(".wpte-product-add-cart-icon .product_type_external").html(`<i class='${external_icon}'></i>`);
+                }
             });
 
             $('#wpte-product-variable-icon').on('change', function() {
                 var variable_icon = $(this).val();
-                $(".wpte-product-add-cart-icon .product_type_variable").html(`<i class='${variable_icon}'></i>`);
+                if (window.PreviewController) {
+                    PreviewController.updateAttribute('.wpte-product-add-cart-icon .product_type_variable i', 'class', variable_icon);
+                    PreviewController.updateAttribute('.wpte-product-add-cart-icon-text .product_type_variable i', 'class', variable_icon);
+                } else {
+                    $(".wpte-product-add-cart-icon .product_type_variable").html(`<i class='${variable_icon}'></i>`);
+                }
             });
         }
 
@@ -1127,6 +1253,16 @@
         wpte_product_dimention();
         Wpte_selector_control();
         Wpte_product_minicolor_control();
+        
+        // Dynamically update the iframe background color when color picker changes
+        $("#wpte-preview-bg-color").on("change", function (e) {
+            var $input = $(this).val();
+            var iframe = document.getElementById('wpte-preview-iframe');
+            if (iframe && iframe.contentDocument) {
+                $(iframe.contentDocument.body).css('background-color', $input);
+            }
+        });
+
         Wpte_product_gradient_color_control();
         Wpte_popover_control();
         Wpte_product_choose();
@@ -1138,6 +1274,70 @@
         Wpte_product_layout_switcher();
         Wpte_control_tabs();
         Wpte_font_family();
+        
+        function Wpte_sync_device_toggle(device){
+            var $group = $('.wpte-header-devices .wpte-device-btn');
+            $group.removeClass('active');
+            $group.filter('[data-device="' + device + '"]').addClass('active');
+        }
+
+        $(document.body).on('click', '.wpte-device-btn', function(){
+            var device = $(this).data('device');
+            
+            $('#wpte-editor-update-form').addClass('wpte-responsive-switchers-open');
+            Wpte_sync_device_toggle(device);
+            $('#wpte-editor-update-form .wpte-form-responsive-switcher-' + device).trigger('click');
+            
+            // Trigger preview device change
+            if (window.PreviewController) {
+                window.PreviewController.switchDevice(device);
+            } else {
+                console.error('PreviewController not found!');
+            }
+        });
+
+        $(document.body).on('click', '.wpte-form-responsive-switcher-desktop, .wpte-form-responsive-switcher-tablet, .wpte-form-responsive-switcher-mobile', function(){
+            var device = $(this).hasClass('wpte-form-responsive-switcher-desktop') ? 'desktop' : ($(this).hasClass('wpte-form-responsive-switcher-tablet') ? 'tablet' : 'mobile');
+            Wpte_sync_device_toggle(device);
+        });
+        
+        function Wpte_copy_shortcode(){
+            $(document.body).on('click', '.wpte-copy-shortcode', function(e){
+                e.preventDefault();
+                var $btn = $(this);
+                var $pill = $(this).closest('.wpte-shortcode-inline').find('.wpte-shortcode-pill');
+                var text = $pill.attr('data-shortcode') || $pill.text().trim();
+                text = text.replace(/\\"/g, '"');
+                if (!/id\s*=\s*"/.test(text)) {
+                    text = text.replace(/id=(["']?)([^\]"']+)(["']?)/, 'id="$2"');
+                }
+                var copied = false;
+                var orig = $btn.html();
+                var checkSVG = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>';
+                function showCopied(){ $btn.html(checkSVG); setTimeout(function(){ $btn.html(orig); }, 3000); }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(function(){
+                        copied = true;
+                        showCopied();
+                    }).catch(function(){
+                        var $temp = $('<textarea>');
+                        $('body').append($temp);
+                        $temp.val(text).select();
+                        copied = document.execCommand('copy');
+                        $temp.remove();
+                        if (copied) { showCopied(); }
+                    });
+                } else {
+                    var $temp = $('<textarea>');
+                    $('body').append($temp);
+                    $temp.val(text).select();
+                    copied = document.execCommand('copy');
+                    $temp.remove();
+                    if (copied) { showCopied(); }
+                }
+            });
+        }
+        Wpte_copy_shortcode();
 
     });
 })(jQuery);

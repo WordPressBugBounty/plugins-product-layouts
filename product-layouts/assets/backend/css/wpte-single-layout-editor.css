@@ -1,8 +1,13 @@
+:root {
+  --wpte-sidebar-width: 300px;
+}
+
 .wpte-wpl-wrapper p {
   margin: 0;
 }
 
 #wpcontent {
+	background: #fff;
   padding-left: 0 !important;
 }
 
@@ -32,32 +37,381 @@ div.fs-notice.promotion{
   display: none !important;
 }
 
-/* .wpte-editor-page{
-  display: flex;
-  position: relative;
-} */
+/* Hide browser scrollbar on main editor page only */
+body.toplevel_page_product-layouts {
+  overflow: hidden !important;
+}
 
-.wpte-wpl-wrapper {
+/* Editor page body - flex container for sidebar + preview */
+.wpte-editor-page {
+  padding-top: 56px;
+  display: flex;
+  min-height: 100vh;
+}
+
+
+/* ===================== Custom Header (matching image-hover) ===================== */
+.wpte-addons-header {
+  background: #fff;
+  padding: 0px 20px 0 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+}
+
+/* Left Side - Navigation Links */
+.wpte-addons-header-left {
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+.wpte-addons-header-left a {
+  text-decoration: none;
+  color: #5F6368;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 14px;
+  border-right: 1px solid #c5a6f7;
+  transition: all 0.2s ease;
+}
+.wpte-addons-header-left a:hover {
+  background: #F1F3F4;
+  border-color: #c5a6f7;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.wpte-addons-header-left a i {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Right Side */
+.wpte-addons-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+}
+
+/* Upgrade Button - Warning Orange Theme */
+.wpte-btn-upgrade {
+  background: #FEF7E0;
+  color: #E37400;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 1px solid #F9AB00;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.wpte-btn-upgrade:hover {
+  background: #FDE293;
+  border-color: #E37400;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  color: #E37400;
+}
+.wpte-btn-upgrade::before {
+  content: "⭐";
+  font-size: 12px;
+}
+
+/* Visit Site Button - Primary Blue Theme */
+.wpte-btn-visit {
+  background: #E8F0FE;
+  color: #9B5CFF !important;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border: 1px solid #c5a6f7;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.wpte-btn-visit:hover {
+  background: #c5a6f7;
+  border-color: #c5a6f7;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  color: #8d4ef3 !important;
+}
+.wpte-btn-visit i {
+  font-size: 12px;
+  color: inherit !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Shortcode Name Input Group */
+#wpte-shortcode-name-change-submit {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #E8EAED;
+  border-radius: 6px;
+  overflow: hidden;
+}
+#wpte-shortcode-name-change-submit:focus-within {
+  border-color: #9B5CFF;
+  box-shadow: 0 0 0 3px rgba(155, 92, 255, 0.1);
+}
+#wpte-shortcode-name-change-submit .wpte-header-name-input {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  padding: 0px 12px;
+  font-size: 13px;
+  color: #202124;
+  background: transparent;
+  min-width: 180px;
+  height: 34px;
+}
+#wpte-shortcode-name-change-submit .wpte-header-name-input::placeholder {
+  color: #5F6368;
+}
+#wpte-shortcode-name-change-submit .wpte-header-name-save-btn {
+  background: #0F9D58;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 1px solid #E8EAED;
+}
+#wpte-shortcode-name-change-submit .wpte-header-name-save-btn:hover {
+  background: #0B8043;
+}
+
+/* ===================== Preview Area (Content) ===================== */
+/* Outer grey area — provides the space on all 4 sides around the white card */
+.wpte-addons-Preview {
+  flex-grow: 1;
+  width: calc(100% - var(--wpte-sidebar-width)) !important;
+  margin-left: var(--wpte-sidebar-width) !important;
+  background: #f0f0f1;
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  height: calc(100vh - 100px);
+  transition: width 0.3s ease, margin-left 0.3s ease;
+  padding: 20px;
 }
 
-.wpte-wpl-row {
+/* Full width when sidebar is collapsed */
+#wpte_setting_bar[data-visibale='false'] ~ .wpte-addons-Preview {
+  width: 100% !important;
+  margin-left: 0 !important;
+  padding: 20px;
+}
+
+/* The actual white card — contains sub-header + scrollable content */
+.wpte-addons-Preview .wpte-addons-wrapper {
   width: 100%;
-  padding: 20px 20px 20px 40px;
-  box-sizing: border-box;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
 }
 
-.wpte-wpl-column-left {
-  width: 85%;
+/* Inner left-preview flex column (sub-header + content) */
+.wpte-addons-style-left-preview {
+  width: 100% !important;
+  float: none !important;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.wpte-wpl-column-right {
-  width: 25%;
+/* Preview Sub-Header - connected to iframe below */
+.wpte-addons-style-left-preview-heading {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  overflow: visible;
+  position: relative;
+  z-index: 100;
+}
+
+/* Preview Header Left - Shortcode and Tooltip */
+.wpte-preview-header-left {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Preview Header Center - Device Icons */
+.wpte-preview-header-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+/* Preview Header Right - Color Picker */
+.wpte-preview-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Color Picker in preview header */
+.wpte-preview-header-right .wpte-addons-minicolor {
+  width: 200px !important;
+  height: 36px !important;
+  border-radius: 4px;
+  border-color: #ddd !important;
+}
+.wpte-preview-header-right .minicolors-swatch {
+  left: 1px !important;
+  top: 1px !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 4px !important;
+}
+.wpte-preview-header-right .minicolors {
+  width: auto !important;
+}
+
+/* Tooltip */
+.wpte-header-tooltip {
+  position: relative;
+  cursor: help;
+  color: #888;
+}
+.wpte-header-tooltip:hover .wpte-tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+.wpte-tooltip-text {
+  visibility: hidden;
+  width: 220px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 99999;
+  top: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.wpte-tooltip-text::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #333 transparent;
+}
+
+/* Shortcode Display */
+.wpte-header-shortcode {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #c5a6f7;
+  border-radius: 4px;
+  padding: 0;
+  overflow: hidden;
+}
+.wpte-shortcode-text {
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 5px;
+  background: #ffffff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 14px;
+  color: #9B5CFF;
+}
+.wpte-copy-btn {
+  border: none;
+  color: #9B5CFF;
+  background: #c5a6f7;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-left: 1px solid #c5a6f7;
+}
+.wpte-copy-btn:hover {
+  background: #f8d5e0;
+}
+
+/* Device Switcher */
+.wpte-header-devices {
+  background: #fff;
+  border: 1px solid #E8EAED;
+  border-radius: 8px;
+  padding: 4px;
+  display: inline-flex;
+  gap: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.wpte-header-devices .wpte-device-btn {
+  border: 0;
+  background: transparent;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  color: #5F6368;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.wpte-device-btn svg {
+  display: block;
+}
+.wpte-device-btn:hover {
+  background: #F8F9FA;
+}
+.wpte-device-btn.active {
+  background: #f75186;
+  color: #fff;
+}
+
+/* Iframe Preview Data */
+.wpte-addons-preview-data {
+  flex-grow: 1;
+  display: flex;
+  overflow: auto;
 }
 
 .wpte-editor-left-sidebar .ui-widget-content{
@@ -94,15 +448,116 @@ div.fs-notice.promotion{
   padding: 16px 10px;
   box-sizing: border-box;
   background: #fff;
+  border-radius: 4px;
+}
+
+.wpte-shortcode-inline{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+}
+.wpte-shortcode-pill{
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 5px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 14px;
+  color: #9B5CFF;
+  background: #c5a6f7;
+}
+.wpte-copy-shortcode{
+  border: 0;
+  background: #eee5fd;
+  padding: 6px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+}
+.wpte-copy-shortcode:hover{
+	background: #e4d3fd;	
+}
+.wpte-copy-shortcode svg{
+  color: #9B5CFF;
+  width: 22px;
+  height: 18px;
+  display: block;
+}
+.wpte-tooltip{
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+.wpte-tooltip::after{
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 28px;
+  top: 0;
+  transform: none;
+  background: #23282d;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: normal;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .15s ease, visibility .15s ease;
+  z-index: 1000;
+  min-width: 280px;
+  max-width: 520px;
+}
+.wpte-tooltip:hover::after{
+  opacity: 1;
+  visibility: visible;
+}
+
+.wpte-tooltip{
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+.wpte-tooltip::after{
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 28px;
+  top: 0;
+  transform: none;
+  background: #23282d;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-family: Arial, Helvetica, sans-serif;
+  white-space: normal;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .15s ease, visibility .15s ease;
+  z-index: 1000;
+  min-width: 280px;
+  max-width: 520px;
+}
+.wpte-tooltip:hover::after{
+  opacity: 1;
+  visibility: visible;
 }
 
 .wpte-card-body form input[type="text"] {
-  width: 74%;
-  height: 40px;
+  width: 70%;
+  height: 34px;
   border: 1px solid #b6b6b6;
   border-radius: 5px 0px 0px 5px;
   padding: 5px 5px;
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .wpte-card-body form {
@@ -114,7 +569,8 @@ div.fs-notice.promotion{
 .wpte-card-body form button {
   border: none;
   background: #5bc3c8;
-  padding: 10px 20px;
+  height: 34px;
+  padding: 0 16px;
   margin-left: -3px;
   color: #fff;
   font-size: 15px;
@@ -166,36 +622,28 @@ div.fs-notice.promotion{
 
 .wpte-editor-left-sidebar{
   position: fixed;
-  top: 0;
+  top: 56px;
+  bottom: 0;
   left: 0;
-  height: 100%;
+  height: calc(100vh - 56px);
   z-index: 2;
-}
-
-.wpte-editor-content{
-  flex: 1;
-  transition: margin-left 0.3s ease;
-  margin-left: 300px;
+  width: var(--wpte-sidebar-width);
 }
 
 .wpte-single-settings-card {
-  width: 300px;
+  width: 100%;
+  height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: column;
 }
 
 .wpte-single-settings-card .wpte-single-settings-card-body {
-  height: calc( 100vh - 90px );
+  height: calc(100vh - 56px - 83px);
   background: #e3e3e3;
 }
 .wpte-single-settings-card-body-wrapper{
-  height: calc( 100vh - 90px );
-  overflow: hidden;
+  height: calc(100vh - 60px - 83px);
   padding: 0 2px;
-  visibility: hidden;
-}
-.wpte-single-settings-card .wpte-single-settings-card-body-inner,
-.wpte-single-settings-card:hover .wpte-single-settings-card-body-wrapper {
-  overflow: auto;
-  visibility: visible;
 }
 
 .wpte-sidebar-toggler{
@@ -223,7 +671,12 @@ div.fs-notice.promotion{
 #wpte_setting_bar[data-visibale='false']{
   width: 0 !important;
   max-width: none;
-  overflow: hidden;
+  overflow: visible;
+}
+#wpte_setting_bar[data-visibale='false'] .wpte-single-settings-card {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 #wpte_setting_bar{
   transition: all 200ms ease;
@@ -232,41 +685,20 @@ div.fs-notice.promotion{
 .wpte-single-settings-card .wpte-single-settings-card-header {
   display: flex;
   position: relative;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background: #9b5cff;
-  color: #fff;
-  font-size: 20px;
-  padding: 8px 14px;
+  background: #e9e6f9;
+  color: #252525;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px;
   border-bottom: 1px solid #ddd;
 }
-.wpte-editor-avatar{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.wpte-editor-avatar svg{
-  margin-top: 5px;
-  margin-bottom: -2px;
-  cursor: pointer;
-}
+.wpte-settings-title{ text-align:center; width:100%; }
+.wpte-editor-avatar{ display:none; }
+.wpte-editor-avatar svg{ display:none; }
 
-.wpte-editor-dropdown-menu{
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 26px;
-  background: #9b5cff;
-  left: auto;
-  width: 100%;
-  border-radius: 4px;
-  padding: 20px;
-  transition: all .5s;
-  z-index: 999;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  border-top: 1px solid #ababab;
-}
+.wpte-editor-dropdown-menu{ display:none; }
 .wpte-editor-dropdown-menu li{
   font-size: 1rem;
   color: #ffffff;
@@ -335,28 +767,7 @@ div.fs-notice.promotion{
   background: #2ea72e;
 }
 
-/* Scroll Bar Design */
-.wpte-single-settings-card-body-wrapper::-webkit-scrollbar {
-  width: 6px;
-  height: 150px;
-}
 
-/* Track */
-.wpte-single-settings-card-body-wrapper::-webkit-scrollbar-track {
-  background: #ffffff;
-  border-radius: 10px;
-}
-
-/* Handle */
-.wpte-single-settings-card-body-wrapper::-webkit-scrollbar-thumb {
-  background: rgb(206, 206, 206);
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-.wpte-single-settings-card-body-wrapper::-webkit-scrollbar-thumb:hover {
-  background: rgb(165, 165, 165);
-}
 
 /* ================================End sidebar=================================== */
 
@@ -446,7 +857,7 @@ div.fs-notice.promotion{
 }
 
 .wpte-start-tabs-header li.active {
-  background: #ddd;
+  background: #e9f3ff;
   border-bottom: 2px solid #9b5cff;
 }
 
@@ -1027,6 +1438,11 @@ ul.wpte-product-control-dimentions .wpte-product-form-link-dimensions.link-dimen
   color: rgb(247, 29, 29);
 }
 
+.wpte-single-page-shortcode-name{
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
 /* Export and Import Button */
 .wpte-single-page-shortcode .wpte-single-page-export,
 .wpte-single-page-shortcode .wpte-single-page-import{
@@ -1042,13 +1458,14 @@ ul.wpte-product-control-dimentions .wpte-product-form-link-dimensions.link-dimen
   font-size: 15px;
   display: block;
   box-sizing: border-box;
-  background: #f0f0f1;
+  background: #f0e9fc;
   border-radius: 5px;
+  color: #9c5cfe;
+  border: 1px solid;
 }
 .wpte-single-page-shortcode .wpte-single-page-export a:hover,
 .wpte-single-page-shortcode .wpte-single-page-import a:hover{
-  background: #cfcfcf;
-  color: #fff;
+  background: #ddccfa;
 }
 
 /** Min Color */
@@ -1078,3 +1495,123 @@ ul.wpte-product-control-dimentions .wpte-product-form-link-dimensions.link-dimen
   padding-top: 10px;
   display: none;
 }
+.wpte-single-page-shortcode button{
+  height: 34px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.wpte-single-page-shortcode button a{
+  color: inherit;
+  text-decoration: none;
+  line-height: 1;
+}
+.wpte-header-devices{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  padding: 4px;
+  display: inline-flex;
+  gap: 6px;
+}
+.wpte-device-btn{
+  border: 0;
+  background: transparent;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  color: #4a4a4a;
+  cursor: pointer;
+}
+.wpte-device-btn.active{
+  background: #9b5cff;
+  color: #fff;
+}
+.wpte-device-btn.active:hover{
+  background: #9b5cff;
+  color: #fff;
+}
+.wpte-device-btn:hover{ background: #f0f0f1; }
+
+/* Preview Wrapper for Device Simulation */
+.wpte-preview-wrapper {
+  width: 100%;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.wpte-preview-wrapper[data-device="desktop"] {
+  max-width: 100%;
+}
+
+.wpte-preview-wrapper[data-device="tablet"] {
+  max-width: 768px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.wpte-preview-wrapper[data-device="mobile"] {
+  max-width: 375px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Preview wrapper fills remaining space — iframe handles its own scroll */
+.wpte-preview-wrapper {
+  flex-grow: 1;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Iframe Styles */
+#wpte-preview-iframe {
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+}
+
+/* Editor Preloader */
+.wpte-product-layouts-editor-preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  z-index: 100000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.wpte-product-layouts-editor-preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.wpte-product-layouts-editor-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #9B5CFF; /* Brand Color */
+  border-radius: 50%;
+  animation: wpte-spin 1s linear infinite;
+}
+
+@keyframes wpte-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+

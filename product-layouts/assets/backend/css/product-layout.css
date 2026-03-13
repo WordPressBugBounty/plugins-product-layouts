@@ -197,3 +197,21 @@
 .wpte-wpl-element-icons a:hover .wpte-home-icon-tooltip{
     display: block;
 }
+
+.wpte-wpl-element-items{
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 5px 12px;
+	margin-top: 20px;
+}
+.wpte-wpl-element-items-number{
+	font-size: 16px;
+    font-weight: 500;
+    color: #9743fc;
+    margin-right: 4px;
+}
+.wpte-wpl-element-items-text{
+	font-size: 14px;
+	font-weight: 400;
+	color: #777;
+}
