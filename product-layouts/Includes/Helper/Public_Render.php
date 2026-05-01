@@ -115,7 +115,30 @@ class Public_Render {
 	 */
 	public function hooks() {
 
+		$is_admin_user = $this->user === 'admin';
+
+		// Snapshot queue before public_js() to detect newly enqueued layout-specific CSS.
+		// Shortcodes always run after wp_head() has fired, so wp_enqueue_style() inside
+		// public_js() never outputs through the normal WP queue on any context.
+		$styles_before = ! $is_admin_user ? wp_styles()->queue : [];
+
 		$this->public_js();
+
+		// Output newly enqueued layout-specific CSS as direct <link> tags.
+		if ( ! $is_admin_user ) {
+			foreach ( array_diff( wp_styles()->queue, $styles_before ) as $handle ) {
+				$obj = wp_styles()->registered[ $handle ] ?? null;
+				if ( $obj && ! empty( $obj->src ) ) {
+					$src = $obj->src;
+					if ( $obj->ver ) {
+						$src = add_query_arg( 'ver', $obj->ver, $src );
+					}
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo '<link rel="stylesheet" id="' . esc_attr( $handle ) . '-css" href="' . esc_url( $src ) . '" media="all" />';
+				}
+			}
+		}
+
 		$this->render();
 		$inlinecss = '';
 		if ( $this->CSSDATA === '' && $this->user === 'admin' ) {
@@ -132,12 +155,14 @@ class Public_Render {
 
 		if ( $inlinecss !== '' ) :
 			$inlinecss = html_entity_decode( str_replace( '<br>', '', str_replace( '&nbsp;', ' ', $inlinecss ) ) );
-			if ( $this->user === 'admin' ) {
+
+			if ( $is_admin_user ) {
 				printf( '<style>%s</style>', esc_html( $inlinecss ) );
 			} else {
-				wp_register_style( 'wpte-product-layouts', false, null, WPTE_WPL_VERSION );
-				wp_enqueue_style( 'wpte-product-layouts' );
-				wp_add_inline_style( 'wpte-product-layouts', $inlinecss );
+				// Always output inline CSS directly — shortcodes run after wp_head() so
+				// wp_add_inline_style() never outputs on any context (frontend, preview, AJAX).
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo '<style id="wpte-layout-css-' . esc_attr( $this->wpteid ) . '">' . $inlinecss . '</style>';
 			}
 		endif;
 	}

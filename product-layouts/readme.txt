@@ -1,11 +1,11 @@
 === Product Layouts for WooCommerce ===
 
-Contributors: oxilab, wpkin, richardmallick
+Contributors: oxilab, richardmallick
 Tags: product showcase, product list, product table, product gallery, product grid
 Requires at least: 6.2
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -127,6 +127,11 @@ Yes — export JSON from Shortcode List and import it from the Import page.
 3. A demo layout
 
 == Changelog ==
+
+= 1.4.2 =
+* Update: Category filter now shows all deeply nested subcategories (unlimited depth) instead of only direct children.
+* New: Added Elementor widget with proper CSS and JS loading in editor and preview.
+* Fix: Quick View and Compare modals now auto-refresh expired nonces and retry, fixing modals not opening after the page has been idle for 12+ hours.
 
 = 1.4.1 =
 * New: Added Elementor-style preview iframe in editor; resizes on Desktop/Tablet/Mobile icon clicks.

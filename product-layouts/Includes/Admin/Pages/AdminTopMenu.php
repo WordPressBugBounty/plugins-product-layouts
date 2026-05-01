@@ -115,7 +115,7 @@ trait AdminTopMenu {
 		if ( ! wpte_version_control() ) {
 			$menu .= ' <li class="wpte-wpl-upgrade"><a target="_black" href="https://product-layouts.com/pricing/">Upgrade</a></li>';
 		}
-		$menu .= ' <li class="wpte-wpl-doc"><a target="_black" href="https://wpkin.com/docs-category/product-layouts/">Docs</a></li>
+		$menu .= ' <li class="wpte-wpl-doc"><a target="_black" href="https://oxilab.dev/docs/product-layouts/">Docs</a></li>
 						<li class="wpte-wpl-support"><a target="_black" href="https://wordpress.org/support/plugin/product-layouts#new-post">Support</a></li>
 						<li class="wpte-wpl-set"><a href="' . esc_url( admin_url( 'admin.php?page=product-layouts-settings' ) ) . '"><span class="dashicons dashicons-admin-generic"></span></a></li>
 					</ul>

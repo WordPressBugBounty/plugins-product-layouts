@@ -50,7 +50,7 @@ class Support {
 										<div class="wpte-pl-support-content">
 											<h4><?php echo esc_html__( 'Documentation', 'product-layouts' ); ?></h4>
 											<p><?php echo esc_html__( 'Get started by spending some time with the documentation to get familiar with Product Layouts for Woocommerce. Build awesome Product layouts for you or your clients with ease.', 'product-layouts' ); ?></p>
-											<a href="https://wpkin.com/docs-category/product-layouts/" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Documentation', 'product-layouts' ); ?></a>
+											<a href="https://oxilab.dev/docs/product-layouts/" class="wpte-support-button" target="_blank"><?php echo esc_html__( 'Documentation', 'product-layouts' ); ?></a>
 										</div>
 									</div>
 								</div>

@@ -20,6 +20,29 @@ class Assets
 
 		add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scriptss']);
 		add_action('wp_enqueue_scripts', [$this, 'public_enqueue_scripts']);
+
+		if ( class_exists( '\Elementor\Plugin' ) ) {
+			add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'elementor_enqueue' ] );
+			add_action( 'elementor/preview/enqueue_styles', [ $this, 'elementor_enqueue' ] );
+			add_action( 'elementor/frontend/after_enqueue_scripts', [ $this, 'elementor_enqueue' ] );
+			add_action( 'elementor/preview/enqueue_scripts', [ $this, 'elementor_enqueue' ] );
+		}
+	}
+
+	public function elementor_enqueue()
+	{
+		$this->global_enqueue_css();
+		$this->elementor_enqueue_scripts();
+	}
+
+	public function elementor_enqueue_scripts()
+	{
+		wp_enqueue_script( 'wpte-serializejson' );
+		wp_enqueue_script( 'wpte-global-js' );
+		wp_enqueue_script( 'wpte-product-compare' );
+		if ( wp_script_is( 'wc-single-product', 'registered' ) ) {
+			wp_enqueue_script( 'wpte-quick-view-js' );
+		}
 	}
 
 	/**

@@ -4,7 +4,7 @@
  * Plugin Name:       Product Layouts for Woocommerce
  * Plugin URI:        https://oxilab.dev
  * Description:       This is woocommerce product layout plugin. you can design product using this plugin for your woocommerce store.
- * Version:           1.4.1
+ * Version:           1.4.2
  * Author:            Oxilab
  * Author URI:        https://oxilab.dev
  * Text Domain:       product-layouts
@@ -79,7 +79,7 @@ if (function_exists('wpl_fs')) {
 			/**
 			 * Plugin Version
 			 */
-			const VERSION = '1.4.1';
+			const VERSION = '1.4.2';
 
 			/**
 			 * Php Version
@@ -195,6 +195,10 @@ if (function_exists('wpl_fs')) {
 				}
 				new WPTE_PRODUCT_LAYOUT\Includes\Frontend();
 				new WPTE_PRODUCT_LAYOUT\Includes\ArchivePage();
+
+				if ( class_exists( '\Elementor\Plugin' ) ) {
+					new WPTE_PRODUCT_LAYOUT\Includes\PageBuilders\Elementor();
+				}
 			}
 
 			/**

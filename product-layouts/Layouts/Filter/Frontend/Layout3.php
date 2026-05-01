@@ -23,6 +23,52 @@ class Layout3 extends Public_Render {
 	}
 
 	/**
+	 * Recursively render all nested subcategories at any depth.
+	 *
+	 * @param int    $parent_id            Parent term ID.
+	 * @param array  $sub_category_ids     Allowed subcategory IDs (empty = all).
+	 * @param string $is_custom_sub_category 'yes' if custom filter is on.
+	 * @param array  $custom_sub_categories Full list of allowed sub IDs.
+	 * @param string $filter_for           Layout ID this filter targets.
+	 * @param string $switcher             'yes' to show product counts.
+	 * @return void
+	 */
+	private function render_nested_categories( $parent_id, $sub_category_ids, $is_custom_sub_category, $custom_sub_categories, $filter_for, $switcher ) {
+		if ( 'yes' === $is_custom_sub_category && empty( $custom_sub_categories ) ) {
+			return;
+		}
+
+		$args = [
+			'taxonomy' => 'product_cat',
+			'parent'   => $parent_id,
+		];
+
+		if ( 'yes' === $is_custom_sub_category ) {
+			$args['include'] = $sub_category_ids;
+		}
+
+		$children = get_terms( $args );
+
+		if ( empty( $children ) || is_wp_error( $children ) ) {
+			return;
+		}
+		?>
+		<div class="wpte-product-filter-subcategory">
+			<?php foreach ( $children as $child ) : ?>
+				<label class="wpte-filter-option">
+					<input type="checkbox" name="wpte_product_filter_cat_<?php echo esc_attr( $this->wpteid ); ?>[]" layoutid="<?php echo esc_attr( $filter_for ); ?>" value="<?php echo esc_attr( $child->term_id ); ?>" >
+					<span class="check-label"><?php echo esc_html( ucfirst( $child->name ) ); ?></span>
+					<?php if ( 'yes' === $switcher ) : ?>
+						<span class="cat-post"><?php echo intval( $child->count ); ?></span>
+					<?php endif; ?>
+				</label>
+				<?php $this->render_nested_categories( $child->term_id, $sub_category_ids, $is_custom_sub_category, $custom_sub_categories, $filter_for, $switcher ); ?>
+			<?php endforeach; ?>
+		</div>
+		<?php
+	}
+
+	/**
 	 * Method layout_render
 	 *
 	 * @param mixed  $settings .
@@ -126,56 +172,7 @@ class Layout3 extends Public_Render {
 								</label>
 								<?php
 
-								// Get the subcategories of the current category.
-								$subcategories = get_terms(
-                                    [
-										'taxonomy' => 'product_cat',
-										'parent'   => $category->term_id,
-										'include'  => $sub_category_ids,
-									]
-                                );
-
-								if ( 'yes' === $is_custom_sub_category ) {
-									if ( ! empty( $custom_sub_categories ) ) {
-										?>
-											<div class="wpte-product-filter-subcategory">
-												<?php
-												// Loop through each subcategory.
-												foreach ( $subcategories as $subcategory ) {
-													?>
-													<label class="wpte-filter-option">
-														<input type="checkbox" name="wpte_product_filter_cat_<?php echo esc_attr( $this->wpteid ); ?>[]" layoutid="<?php echo esc_attr( $filter_for ); ?>" value="<?php echo esc_attr( $subcategory->term_id ); ?>" >
-														<span class="check-label"><?php echo esc_html( ucfirst( $subcategory->name ) ); ?></span>
-														<?php if ( 'yes' === $switcher ) { ?>
-														<span class="cat-post"><?php echo intval( $subcategory->count ); ?></span>
-														<?php } ?>
-													</label>
-													<?php
-												}
-												?>
-											</div>
-										<?php
-									}
-								} else {
-									?>
-										<div class="wpte-product-filter-subcategory">
-											<?php
-											// Loop through each subcategory.
-											foreach ( $subcategories as $subcategory ) {
-												?>
-												<label class="wpte-filter-option">
-													<input type="checkbox" name="wpte_product_filter_cat_<?php echo esc_attr( $this->wpteid ); ?>[]" layoutid="<?php echo esc_attr( $filter_for ); ?>" value="<?php echo esc_attr( $subcategory->term_id ); ?>" >
-													<span class="check-label"><?php echo esc_html( ucfirst( $subcategory->name ) ); ?></span>
-													<?php if ( 'yes' === $switcher ) { ?>
-													<span class="cat-post"><?php echo intval( $subcategory->count ); ?></span>
-													<?php } ?>
-												</label>
-												<?php
-											}
-											?>
-										</div>
-									<?php
-								}
+								$this->render_nested_categories( $category->term_id, $sub_category_ids, $is_custom_sub_category, $custom_sub_categories, $filter_for, $switcher );
 							}
 							?>
 						</div>
