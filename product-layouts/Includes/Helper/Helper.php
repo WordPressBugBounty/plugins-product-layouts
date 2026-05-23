@@ -646,28 +646,44 @@ trait Helper {
 
 		$saved_cat = isset( $data[ $id ] ) ? $data[ $id ] : [];
 
-		$Categories = get_terms(
+		$top_categories = get_terms(
 			[
 				'taxonomy'   => 'product_cat',
-				'parent'     => 0,  // Only top-level categories
-				'hide_empty' => false,  // Set to true if you want to exclude empty categories
+				'parent'     => 0,
+				'hide_empty' => false,
 			]
 		);
+
+		$render_options = null;
+		$render_options = function( $parent_id, $depth ) use ( &$render_options, $saved_cat ) {
+			$subcategories = get_terms(
+				[
+					'taxonomy'   => 'product_cat',
+					'parent'     => $parent_id,
+					'hide_empty' => false,
+				]
+			);
+			if ( empty( $subcategories ) || is_wp_error( $subcategories ) ) {
+				return;
+			}
+			foreach ( $subcategories as $subcategory ) {
+				$selected = in_array( $subcategory->term_id, $saved_cat ) ? 'selected' : '';
+				$prefix   = str_repeat( '— ', $depth );
+				printf(
+					'<option value="%1$s" %2$s>%3$s</option>',
+					esc_attr( $subcategory->term_id ),
+					esc_attr( $selected ),
+					esc_html( $prefix . ucfirst( $subcategory->name ) )
+				);
+				$render_options( $subcategory->term_id, $depth + 1 );
+			}
+		};
 
 		?>
 		<select class="wpte-product-category-list" name="<?php echo esc_attr( $id ); ?>[]" id="wpte-product-<?php echo esc_attr( $id ); ?>" multiple="multiple">
 			<?php
-			foreach ( $Categories as $category ) {
-				$subcategories = get_terms(
-                    [
-						'taxonomy' => 'product_cat',
-						'parent'   => $category->term_id,
-					]
-                );
-				foreach ( $subcategories as $subcategory ) {
-					$selected = in_array( $subcategory->term_id, $saved_cat ) ? 'selected' : '';
-					printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $subcategory->term_id ), esc_attr( $selected ), esc_html( ucfirst( $subcategory->name ) ) );
-				}
+			foreach ( $top_categories as $category ) {
+				$render_options( $category->term_id, 0 );
 			}
 			?>
 		</select>

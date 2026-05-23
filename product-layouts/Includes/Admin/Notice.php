@@ -147,12 +147,18 @@ class Notice {
 	public function wpte_wpl_get_review_from_users() {
 		if ( ! ( isset( $_COOKIE['wpte-user-review'] ) && $_COOKIE['wpte-user-review'] == 1 ) ) :
 			?>
-		<div id="wpte-get-review" class="notice wpte-notice-review notice-warning is-dismissible">
-			<h2>🌟 <?php echo esc_html__( 'Product Layouts for Woocommerce', 'product-layouts' ); ?> 🌟</h2>
-			<p><?php echo esc_html__( 'Love our plugin? Leave us a 5-star review! Your feedback helps us thrive, motivating us to continuously update the plugin.', 'product-layouts' ); ?></p>
-			<button class="wpte-btn-given"><?php echo esc_html__( 'Already Given', 'product-layouts' ); ?></button>
-			<a href="https://wordpress.org/support/plugin/product-layouts/reviews/#new-post" target="__blank"><button class="wpte-btn-deserve"><?php echo esc_html__( 'You Deserve It', 'product-layouts' ); ?></button></a>
-			<button class="wpte-btn-never"><?php echo esc_html__( "Don't Show Again", 'product-layouts' ); ?></button>
+		<div id="wpte-get-review" class="notice wpte-notice-review is-dismissible">
+			<div class="wpte-review-badge">⭐</div>
+			<div class="wpte-review-body">
+				<div class="wpte-review-stars">★★★★★</div>
+				<h3><?php echo esc_html__( 'Product Layouts for Woocommerce', 'product-layouts' ); ?></h3>
+				<p><?php echo esc_html__( 'Love our plugin? Leave us a 5-star review! Your feedback helps us thrive, motivating us to continuously update the plugin.', 'product-layouts' ); ?></p>
+				<div class="wpte-review-actions">
+					<a href="https://wordpress.org/support/plugin/product-layouts/reviews/#new-post" target="__blank"><button class="wpte-btn-deserve"><?php echo esc_html__( 'You Deserve It', 'product-layouts' ); ?></button></a>
+					<button class="wpte-btn-given"><?php echo esc_html__( 'Already Given', 'product-layouts' ); ?></button>
+					<button class="wpte-btn-never"><?php echo esc_html__( "Don't Show Again", 'product-layouts' ); ?></button>
+				</div>
+			</div>
 		</div>
 			<?php
 		endif;

@@ -6,9 +6,11 @@
 		});
 		$('body').on('click', '#wpte-get-review .wpte-btn-never', function(){
 			wpteSetCookie('wpte-user-review', 1, 365*24*3600);
+			$('#wpte-get-review').fadeOut(300, function(){ $(this).remove(); });
 		});
 		$('body').on('click', '#wpte-get-review .wpte-btn-given', function(){
 			wpteSetCookie('wpte-user-review', 1, 365*24*3600);
+			$('#wpte-get-review').fadeOut(300, function(){ $(this).remove(); });
 		});
 	});
 

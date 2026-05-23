@@ -3,9 +3,9 @@
 Contributors: oxilab, richardmallick
 Tags: product showcase, product list, product table, product gallery, product grid
 Requires at least: 6.2
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GPLv2 or later
 License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -13,14 +13,14 @@ Create impressive, lightweight, responsive WooCommerce product layouts. Compatib
 
 == Description ==
 
-Use **Product Layouts for WooCommerce** to display your products with stunning styles and layouts — no coding required.
+Use **Product Layouts for WooCommerce** to display your products with stunning styles and layouts, no coding required.
 Perfect for showcasing your store items beautifully and increasing sales.
 
 **Key Features:**
 
 * Create product grids, tables, sliders, and galleries easily.
 * Fully responsive and works with all major themes and page builders.
-* Use simple shortcodes anywhere — pages, posts, or widgets.
+* Use simple shortcodes anywhere, pages, posts, or widgets.
 * Import demo layouts or create your own with live preview.
 
 [youtube https://www.youtube.com/watch?v=rYcP_MGE2X4]
@@ -67,7 +67,7 @@ Perfect for showcasing your store items beautifully and increasing sales.
 
 == Responsive & Beautiful ==
 
-**Product Layouts for WooCommerce (Product Gallery, Product Showcase, Layout Design, Product Slider, Product Grid, Product Table)** is fully responsive and optimized for performance — an important factor for SEO and eCommerce success.
+**Product Layouts for WooCommerce (Product Gallery, Product Showcase, Layout Design, Product Slider, Product Grid, Product Table)** is fully responsive and optimized for performance, an important factor for SEO and eCommerce success.
 It works smoothly across devices and displays your products beautifully with animations like sliding, fading, and folding. Customize typography, colors, alignment, and background to create professional product presentations.
 
 👁️ [View Demo](https://product-layouts.com/demo/) | 🚀 [Get the Premium Version](https://product-layouts.com/pricing/) | 👩🏼‍💻 [Get Support](https://wordpress.org/support/plugin/product-layouts#new-post)
@@ -115,10 +115,10 @@ Use shortcode: `[wpte_product_layout id="1"]` in your post or page.
 Yes, you can use shortcodes in Elementor, Divi, Beaver Builder, and others. Extensions are coming soon.
 
 = Can I clone any layout style? =
-Yes — choose your layout from the Shortcode List and click **Clone**.
+Yes, choose your layout from the Shortcode List and click **Clone**.
 
 = Can I export and import layout styles? =
-Yes — export JSON from Shortcode List and import it from the Import page.
+Yes, export JSON from Shortcode List and import it from the Import page.
 
 == Screenshots ==
 
@@ -127,6 +127,11 @@ Yes — export JSON from Shortcode List and import it from the Import page.
 3. A demo layout
 
 == Changelog ==
+
+= 1.4.3 =
+* Update: Redesigned admin review notice with modern card-style UI using brand colors.
+* Fix: "Already Given" and "Don't Show Again" buttons now immediately hide the notice after clicking.
+* Fix: Sub Categories field in Category Query now shows all nested subcategories at any depth.
 
 = 1.4.2 =
 * Update: Category filter now shows all deeply nested subcategories (unlimited depth) instead of only direct children.
