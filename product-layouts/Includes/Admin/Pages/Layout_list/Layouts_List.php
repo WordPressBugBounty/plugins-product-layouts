@@ -2,6 +2,10 @@
 
 namespace WPTE_PRODUCT_LAYOUT\Includes\Admin\Pages\Layout_list;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( 'WP_List_Table' ) ) {
 	require ABSPATH . 'wp-admin/includes/class-wp-links-list-table.php';
 }

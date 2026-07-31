@@ -4,6 +4,10 @@ namespace WPTE_PRODUCT_LAYOUT\Layouts\Call_to_action;
 
 use WPTE_PRODUCT_LAYOUT\Includes\Admin\Pages\Create;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Description of Call to Action
  *

@@ -2,6 +2,10 @@
 
 namespace WPTE_PRODUCT_LAYOUT\Includes\Admin\Pages\Layout_list;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Export Handler Class
  *

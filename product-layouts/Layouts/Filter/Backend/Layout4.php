@@ -2,6 +2,11 @@
 namespace WPTE_PRODUCT_LAYOUT\Layouts\Filter\Backend;
 
 use WPTE_PRODUCT_LAYOUT\Layouts\Filter\Layout;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Layout4
  */

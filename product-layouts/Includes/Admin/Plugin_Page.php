@@ -2,6 +2,10 @@
 
 namespace WPTE_PRODUCT_LAYOUT\Includes\Admin;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class Plugin_Page.
  *

@@ -5,6 +5,10 @@ namespace WPTE_PRODUCT_LAYOUT\Layouts\Flipbox\Backend;
 use WPTE_PRODUCT_LAYOUT\Includes\Controls;
 use WPTE_PRODUCT_LAYOUT\Layouts\Flipbox\Layout;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Layout1
  */

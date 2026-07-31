@@ -3,6 +3,11 @@
 namespace WPTE_PRODUCT_LAYOUT\Layouts\Caption;
 
 use WPTE_PRODUCT_LAYOUT\Includes\Admin\Pages\Create;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Description of Caption
  *

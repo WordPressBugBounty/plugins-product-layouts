@@ -5,6 +5,10 @@ namespace WPTE_PRODUCT_LAYOUT\Layouts\Call_to_action\Backend;
 use WPTE_PRODUCT_LAYOUT\Layouts\Call_to_action\Layout;
 use WPTE_PRODUCT_LAYOUT\Includes\Controls;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Layout1
  */

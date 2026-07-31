@@ -2,6 +2,10 @@
 
 namespace WPTE_PRODUCT_LAYOUT\Includes\Admin\Pages;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Description of Create
  *

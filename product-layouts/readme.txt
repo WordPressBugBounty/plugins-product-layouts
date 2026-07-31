@@ -5,7 +5,7 @@ Tags: product showcase, product list, product table, product gallery, product gr
 Requires at least: 6.2
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GPLv2 or later
 License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -127,6 +127,25 @@ Yes, export JSON from Shortcode List and import it from the Import page.
 3. A demo layout
 
 == Changelog ==
+
+= 1.4.4 =
+* New: Added a "Filter by Tag" style to Filter & Sorting, listing product tags as checkboxes with post counts.
+* New: Added a "Filter by Brand" style to Filter & Sorting, supporting WooCommerce core brands (9.4+) as well as third party brand plugins.
+* New: Added a Gutenberg block ("Product Layouts") so any saved layout can be inserted from the block editor, with a live server-side rendered preview.
+* New: The block editor preview now loads the plugin stylesheets inline, so layouts look the same in the editor as on the front end.
+* Update: Redesigned the Compare Products modal — product cards with title, category, rating, price and cart button, sticky attribute column and product row, colored stock badges, and chips for Color and Size attributes.
+* Update: The Compare table now hides attribute rows (SKU, Weight, Dimensions, Color, Size) when none of the compared products define them, instead of showing a column of dashes.
+* Update: Removing the last product from the Compare table now shows an empty state, and the product count in the header stays in sync.
+* Update: Quick View and Compare "Add to cart" buttons restyled with a modern gradient, plus a visible keyboard focus ring.
+* Update: Add to cart button icon and text for variable, grouped and external products are now rendered server-side instead of being swapped in with JavaScript.
+* Fix: Product title and short description were missing from the Quick View modal.
+* Fix: Product name was missing from the Compare Products table.
+* Fix: Screen reader text ("Price range: … through …", "Original price was: …") is no longer visible inside the Quick View and Compare modals on themes that do not ship the core `screen-reader-text` style.
+* Fix: The Compare table showed "N/A" for Dimensions on every product because the unit was appended to an already formatted value.
+* Fix: Star ratings were nearly invisible for products with no reviews in the Quick View and Compare modals.
+* Fix: Quick View no longer triggers a fatal error when opened for a product that has been deleted.
+* Update: Reduced the Compare table from nine repeated product queries to a single query.
+* Fix: Added the ABSPATH direct file access guard to every PHP file, resolving the Plugin Check "missing_direct_file_access_protection" error.
 
 = 1.4.3 =
 * Update: Redesigned admin review notice with modern card-style UI using brand colors.

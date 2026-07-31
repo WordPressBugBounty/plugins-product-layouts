@@ -4,6 +4,10 @@ namespace WPTE_PRODUCT_LAYOUT\Layouts\Product_list;
 
 use WPTE_PRODUCT_LAYOUT\Includes\Admin\Pages\Create;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Description of Table
  *

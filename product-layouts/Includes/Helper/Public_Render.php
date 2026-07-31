@@ -2,6 +2,10 @@
 
 namespace WPTE_PRODUCT_LAYOUT\Includes\Helper;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class Public_Render.
  */
@@ -348,6 +352,30 @@ class Public_Render {
 				'terms'    => $get_product_cats,
 				'operator' => 'IN',
 			];
+		}
+
+		// Tag tax query
+		if ( ! empty( $settings['wpte_product_layout_product_tag'] ) ) {
+			$args['tax_query'][] = [
+				'taxonomy' => 'product_tag',
+				'field'    => 'term_id',
+				'terms'    => wp_parse_id_list( $settings['wpte_product_layout_product_tag'] ),
+				'operator' => 'IN',
+			];
+		}
+
+		// Brand tax query
+		if ( ! empty( $settings['wpte_product_layout_product_brand'] ) ) {
+			$brand_taxonomy = wpte_get_brand_taxonomy();
+
+			if ( $brand_taxonomy ) {
+				$args['tax_query'][] = [
+					'taxonomy' => $brand_taxonomy,
+					'field'    => 'term_id',
+					'terms'    => wp_parse_id_list( $settings['wpte_product_layout_product_brand'] ),
+					'operator' => 'IN',
+				];
+			}
 		}
 
 		// Product type tax query
@@ -727,6 +755,14 @@ class Public_Render {
 		$product = wc_get_product( $product_id );
 
 		if ( $product ) :
+			// Resolve icon/text for this product type once — used by all operator modes.
+			switch ( $product->get_type() ) {
+				case 'variable': $type_icon = $variable; $type_text = $variableText; break;
+				case 'grouped':  $type_icon = $grouped;  $type_text = $groupedText;  break;
+				case 'external': $type_icon = $external; $type_text = $externalText; break;
+				default:         $type_icon = $addCart;  $type_text = $addCartText;  break;
+			}
+
 			if ( $operator === 'icon' ) :
 				if ( $is_cart_tooltip ) {
 					$productType = $product->get_type() ? $product->get_type() : 'Other';
@@ -765,7 +801,7 @@ class Public_Render {
 					esc_attr( $variable ),
 					$productType ? "<span class='wpte-product-tooltip wpte-tooltip-" . esc_attr( $iconPosition ) . "'>" . esc_html( $cartTooltip ) . '</span>' : ''
                 );
-					woocommerce_template_loop_add_to_cart();
+					$this->wpte_render_cart_with_content( $type_icon ? '<i class="' . esc_attr( $type_icon ) . '"></i>' : null );
 					printf( '</span></span>' );
 			elseif ( $operator === 'text' ) :
 				printf(
@@ -778,7 +814,7 @@ class Public_Render {
                     esc_attr( $externalText ),
                     esc_attr( $variableText )
 				);
-				woocommerce_template_loop_add_to_cart();
+				$this->wpte_render_cart_with_content( $type_text ?: null );
 				printf( '</span></span>' );
 			else :
 				printf(
@@ -796,10 +832,35 @@ class Public_Render {
                     esc_attr( $variable ),
                     esc_attr( $variableText )
 				);
-				woocommerce_template_loop_add_to_cart();
+				$icon_text_html = ( $type_icon ? '<i class="' . esc_attr( $type_icon ) . '"></i>' : '' )
+					. ( $type_text ? '<span class="wpte-cart-text">' . esc_html( $type_text ) . '</span>' : '' );
+				$this->wpte_render_cart_with_content( $icon_text_html ?: null );
 				printf( '</span></span>' );
 			endif;
 		endif;
+	}
+
+	/**
+	 * Render the WooCommerce loop add-to-cart button, optionally replacing
+	 * its inner HTML with custom content (icon, text, or combined HTML).
+	 * Uses a temporary filter so no JS is needed for the initial render.
+	 *
+	 * @param string|null $inner_html HTML to inject, or null to use WC default.
+	 */
+	private function wpte_render_cart_with_content( $inner_html ) {
+		if ( ! $inner_html ) {
+			woocommerce_template_loop_add_to_cart();
+			return;
+		}
+
+		$replace = $inner_html;
+		$filter  = function ( $link ) use ( $replace ) {
+			return preg_replace( '#(<a\b[^>]*>).*?(</a>)#s', '$1' . $replace . '$2', $link );
+		};
+
+		add_filter( 'woocommerce_loop_add_to_cart_link', $filter, 99 );
+		woocommerce_template_loop_add_to_cart();
+		remove_filter( 'woocommerce_loop_add_to_cart_link', $filter, 99 );
 	}
 
 	/**

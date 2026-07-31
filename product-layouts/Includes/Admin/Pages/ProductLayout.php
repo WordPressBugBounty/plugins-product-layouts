@@ -2,6 +2,10 @@
 
 namespace WPTE_PRODUCT_LAYOUT\Includes\Admin\Pages;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Admin Menu Class
  *
@@ -56,7 +60,6 @@ final class ProductLayout
 	{
 		$popular = wpte_version_control() ? 'Popular' : 'Premium';
 		$Updated = wpte_version_control() ? 'Updated' : 'Premium';
-		$New     = wpte_version_control() ? 'New' : 'Premium';
 		$New_N   = wpte_version_control() ? __('New', 'product-layouts') : __('Premium', 'product-layouts');
 		$Normal  = wpte_version_control() ? '' : __('Premium', 'product-layouts');
 		$is_pro  = wpte_version_control() ? '' : 'wpte-po-element';

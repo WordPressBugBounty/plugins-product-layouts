@@ -4,6 +4,10 @@ namespace WPTE_PRODUCT_LAYOUT\Layouts\Tabs;
 
 use WPTE_PRODUCT_LAYOUT\Includes\Admin\Pages\AdminRender;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Layout
  */

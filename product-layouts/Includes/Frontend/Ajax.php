@@ -2,6 +2,10 @@
 
 namespace WPTE_PRODUCT_LAYOUT\Includes\Frontend;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Frontend Ajax Handler Class
  */
@@ -70,9 +74,16 @@ class Ajax {
 
 		global $post, $product;
 
-		$product   = wc_get_product( $product_id );
-		$post_data = get_post( $product_id );
-		setup_postdata( $post_data );
+		$product = wc_get_product( $product_id );
+
+		if ( ! $product ) {
+			wp_send_json_error();
+		}
+
+		// The global $post must be populated, not just a local copy: template tags such as
+		// the_title() and WooCommerce's short-description template read $GLOBALS['post'].
+		$post = get_post( $product_id );
+		setup_postdata( $post );
 		ob_start();
 		?>
 		<div class="wpte-quick-view-wrapper">
@@ -318,6 +329,8 @@ class Ajax {
 		$sort_by       = '';
 		$per_page      = '';
 		$category      = [];
+		$tag           = [];
+		$brand         = [];
 		$rating        = [];
 		$min_max_price = '';
 		$attributes    = [];
@@ -330,6 +343,12 @@ class Ajax {
 			}
 			if ( isset( $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ] ) {
 				$category = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ];
+			}
+			if ( isset( $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_tag_$id" ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_tag_$id" ] ) {
+				$tag = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_tag_$id" ];
+			}
+			if ( isset( $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_brand_$id" ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_brand_$id" ] ) {
+				$brand = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_brand_$id" ];
 			}
 			if ( isset( $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ] ) {
 				$rating = $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ];
@@ -350,6 +369,12 @@ class Ajax {
 		}
 		if ( $category ) {
 			$settings['wpte_product_layout_product_category'] = $category;
+		}
+		if ( $tag ) {
+			$settings['wpte_product_layout_product_tag'] = $tag;
+		}
+		if ( $brand ) {
+			$settings['wpte_product_layout_product_brand'] = $brand;
 		}
 		if ( $rating ) {
 			$settings['wpte_product_layout_product_rating'] = $rating;
@@ -462,6 +487,8 @@ class Ajax {
 		$sort_by       = '';
 		$per_page      = '';
 		$category      = [];
+		$tag           = [];
+		$brand         = [];
 		$rating        = [];
 		$min_max_price = '';
 		foreach ( $ids as $id ) {
@@ -474,6 +501,12 @@ class Ajax {
 			if ( isset( $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ] ) {
 				$category = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ];
 			}
+			if ( isset( $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_tag_$id" ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_tag_$id" ] ) {
+				$tag = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_tag_$id" ];
+			}
+			if ( isset( $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_brand_$id" ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_brand_$id" ] ) {
+				$brand = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_brand_$id" ];
+			}
 			if ( isset( $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ] ) {
 				$rating = $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ];
 			}
@@ -484,6 +517,12 @@ class Ajax {
 
 		if ( $category ) {
 			$settings['wpte_product_layout_product_category'] = $category;
+		}
+		if ( $tag ) {
+			$settings['wpte_product_layout_product_tag'] = $tag;
+		}
+		if ( $brand ) {
+			$settings['wpte_product_layout_product_brand'] = $brand;
 		}
 		if ( $per_page ) {
 			$settings['wpte_product_layout_product_number'] = $per_page;
@@ -552,6 +591,8 @@ class Ajax {
 		$sort_by       = '';
 		$per_page      = '';
 		$category      = [];
+		$tag           = [];
+		$brand         = [];
 		$rating        = [];
 		$min_max_price = '';
 		foreach ( $ids as $id ) {
@@ -564,6 +605,12 @@ class Ajax {
 			if ( isset( $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ] ) {
 				$category = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_cat_$id" ];
 			}
+			if ( isset( $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_tag_$id" ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_tag_$id" ] ) {
+				$tag = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_tag_$id" ];
+			}
+			if ( isset( $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_brand_$id" ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_brand_$id" ] ) {
+				$brand = $data[ "wpte-product-filter-form-$id" ][ "wpte_product_filter_brand_$id" ];
+			}
 			if ( isset( $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ] ) && '' !== $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ] ) {
 				$rating = $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_rating_' . $id ];
 			}
@@ -574,6 +621,12 @@ class Ajax {
 
 		if ( $category ) {
 			$settings['wpte_product_layout_product_category'] = $category;
+		}
+		if ( $tag ) {
+			$settings['wpte_product_layout_product_tag'] = $tag;
+		}
+		if ( $brand ) {
+			$settings['wpte_product_layout_product_brand'] = $brand;
 		}
 		if ( $per_page ) {
 			$settings['wpte_product_layout_product_number'] = $per_page;

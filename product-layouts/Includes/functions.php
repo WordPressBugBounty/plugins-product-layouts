@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Method wpte_layout_insert.
  *
@@ -874,4 +878,31 @@ function wpte_get_product_price( $product ) {
             return wc_price( $regular_price );
         }
     }
+}
+
+/**
+ * Method wpte_get_brand_taxonomy.
+ * Resolve the product brand taxonomy registered on this store.
+ *
+ * WooCommerce ships Brands in core from 9.4 as `product_brand`, but stores on an
+ * older version — or using a third party brands plugin — register it under a
+ * different name. The first registered candidate wins.
+ *
+ * @since 1.4.4
+ * @return string Taxonomy name, or an empty string when the store has no brands.
+ */
+function wpte_get_brand_taxonomy() {
+
+	$candidates = apply_filters(
+		'wpte_product_layout_brand_taxonomies',
+		[ 'product_brand', 'pwb-brand', 'yith_product_brand', 'berocket_brand', 'pa_brand' ]
+	);
+
+	foreach ( (array) $candidates as $taxonomy ) {
+		if ( taxonomy_exists( $taxonomy ) ) {
+			return $taxonomy;
+		}
+	}
+
+	return '';
 }

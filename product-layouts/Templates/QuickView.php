@@ -2,6 +2,10 @@
 
 namespace WPTE_PRODUCT_LAYOUT\Templates;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Quick View Class
  *

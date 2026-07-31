@@ -4,6 +4,11 @@ namespace WPTE_PRODUCT_LAYOUT\Layouts\Filter;
 
 use WPTE_PRODUCT_LAYOUT\Includes\Admin\Pages\AdminRender;
 use WPTE_PRODUCT_LAYOUT\Includes\Controls;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Layout
  */
@@ -245,6 +250,81 @@ class Layout extends AdminRender {
 				'label_off'    => __( 'No', 'product-layouts' ),
 				'return_value' => 'yes',
 				'description'  => 'Hide attribute if no post available',
+			]
+		);
+
+		$this->end_controls_section();
+	}
+
+	/**
+	 * Method wpte_filter_for_term_shortcode_list.
+	 * Layouts section for the taxonomy term filters (Tag, Brand).
+	 *
+	 * @param string $label Taxonomy label used in the control descriptions.
+	 */
+	protected function wpte_filter_for_term_shortcode_list( $label = '' ) {
+
+		$this->start_controls_section(
+			'wpte_settings',
+			[
+				'label'   => 'Layouts',
+				'showing' => true,
+			]
+		);
+
+		$this->add_control(
+			'wpte_filter_for_shortcode', $this->style, [
+				'label'       => __( 'Filter for', 'product-layouts' ),
+				'type'        => Controls::SELECT,
+				'loader'      => true,
+				'default'     => '',
+				'options'     => wpte_get_shortcode_list(),
+				'description' => 'Select a style. This filter will effect the shortcode',
+			]
+		);
+
+		$this->add_control(
+			'wpte_filters_preset',
+			$this->style, [
+				'label'       => esc_html__( 'Preset', 'product-layouts' ),
+				'type'        => Controls::SELECT,
+				'loader'      => true,
+				'default'     => 'normal',
+				'css'         => 'margin-bottom: 20px',
+				'description' => 'Change the filter style.',
+				'options'     => [
+					'normal'   => esc_html__( 'Normal', 'product-layouts' ),
+					'dropdown' => esc_html__( 'DropDown', 'product-layouts' ),
+				],
+			]
+		);
+
+		$this->add_control(
+			'wpte_product_filter_post_count_switcher',
+			$this->style,
+			[
+				'label'        => __( 'Show Post Count', 'product-layouts' ),
+				'type'         => Controls::SWITCHER,
+				'default'      => 'yes',
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
+				'return_value' => 'yes',
+				'description'  => 'Display the number of posts.',
+			]
+		);
+
+		$this->add_control(
+			'wpte_f_hide_empty',
+			$this->style,
+			[
+				'label'        => __( 'Hide Empty', 'product-layouts' ),
+				'type'         => Controls::SWITCHER,
+				'default'      => 'yes',
+				'label_on'     => __( 'Yes', 'product-layouts' ),
+				'label_off'    => __( 'No', 'product-layouts' ),
+				'return_value' => 'yes',
+				/* translators: %s: taxonomy label, e.g. tag or brand. */
+				'description'  => sprintf( 'Hide %s if no product available', $label ),
 			]
 		);
 

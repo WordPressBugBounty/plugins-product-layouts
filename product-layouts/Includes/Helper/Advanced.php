@@ -4,6 +4,10 @@ namespace WPTE_PRODUCT_LAYOUT\Includes\Helper;
 
 use WPTE_PRODUCT_LAYOUT\Includes\Controls;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 trait Advanced {
 
 	/**

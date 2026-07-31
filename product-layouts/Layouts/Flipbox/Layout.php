@@ -5,6 +5,10 @@ namespace WPTE_PRODUCT_LAYOUT\Layouts\Flipbox;
 use WPTE_PRODUCT_LAYOUT\Includes\Admin\Pages\AdminRender;
 use WPTE_PRODUCT_LAYOUT\Includes\Controls;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Layout
  */

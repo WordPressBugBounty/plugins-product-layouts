@@ -44,6 +44,32 @@
     wpte_compare_popup( $(this), $(this).attr('product_id'), false );
   });
 
+  /**
+   * Keep the modal coherent after a column is removed: refresh the product
+   * count in the header and swap in the empty state once nothing is left.
+   */
+  function wpte_compare_refresh(context) {
+    var $box   = (context || $(document)).find('#wpte-product-compare-box'),
+      $count   = $box.find('.wpte-compare-table-count'),
+      $table   = $box.find('.wpte-compare-table'),
+      $empty   = $box.find('.wpte-compare-empty'),
+      remaining = $table.find('.wpte-compare-head-row .wpte-compare-product-col:visible').length;
+
+    if ( $count.length ) {
+      if ( remaining === 0 ) {
+        $count.text( $count.attr('data-empty') || '' );
+      } else {
+        var template = remaining === 1 ? $count.attr('data-singular') : $count.attr('data-plural');
+        $count.text( (template || '%s').replace('%s', remaining) );
+      }
+    }
+
+    if ( remaining === 0 ) {
+      $table.hide();
+      $empty.show();
+    }
+  }
+
   function wpte_compare_remove(product_id, is_retry) {
     $.ajax({
       type: 'POST',
@@ -63,6 +89,7 @@
           return;
         }
         $('.wpte-remove-'+product_id).hide();
+        wpte_compare_refresh();
       },
       complete : function() {
 

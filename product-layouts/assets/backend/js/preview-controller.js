@@ -620,6 +620,27 @@
                     },
                     success: function (response) {
                         $doc.find('.wpte-remove-'+product_id).hide();
+
+                        // Keep the header count in sync and show the empty state
+                        // once every product column has been removed.
+                        const $box = $doc.find('#wpte-product-compare-box');
+                        const $count = $box.find('.wpte-compare-table-count');
+                        const $table = $box.find('.wpte-compare-table');
+                        const remaining = $table.find('.wpte-compare-head-row .wpte-compare-product-col:visible').length;
+
+                        if ($count.length) {
+                            if (remaining === 0) {
+                                $count.text($count.attr('data-empty') || '');
+                            } else {
+                                const template = remaining === 1 ? $count.attr('data-singular') : $count.attr('data-plural');
+                                $count.text((template || '%s').replace('%s', remaining));
+                            }
+                        }
+
+                        if (remaining === 0) {
+                            $table.hide();
+                            $box.find('.wpte-compare-empty').show();
+                        }
                     }
                 });
             });

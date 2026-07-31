@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "product-layouts/product-layouts",
+	"version": "1.0.0",
+	"title": "Product Layouts",
+	"category": "woocommerce",
+	"icon": "layout",
+	"description": "Display WooCommerce products using Product Layouts for WooCommerce.",
+	"keywords": [ "woocommerce", "products", "layout", "shop" ],
+	"textdomain": "product-layouts",
+	"attributes": {
+		"layoutId": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"editorScript": "wpte-product-layouts-block-editor"
+}
