@@ -1,0 +1,213 @@
+/*
+ * Product Layouts: System Status page.
+ * Loaded after account.css, which supplies the color tokens, the hero and
+ * the hero button (the wrapper carries .wpte-wpl-account and
+ * .wpte-wpl-status). The header menu comes from admin.css and top-menu.css
+ * like on the plugin's other pages.
+ */
+
+/* Hero: overall result and Copy report */
+
+.wpte-wpl-status-badge {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 7px 14px;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.4;
+	border-radius: 999px;
+}
+
+.wpte-wpl-status-badge .dashicons {
+	width: 18px;
+	height: 18px;
+	font-size: 18px;
+}
+
+.wpte-wpl-status-badge.is-ok {
+	color: var(--wpl-success);
+	background: var(--wpl-success-soft);
+}
+
+.wpte-wpl-status-badge.is-warn {
+	color: var(--wpl-accent-strong);
+	background: var(--wpl-accent-soft);
+}
+
+.wpte-wpl-status .wpte-wpl-acc-btn {
+	cursor: pointer;
+	font-family: inherit;
+}
+
+.wpte-wpl-status .wpte-wpl-acc-btn.is-done,
+.wpte-wpl-status .wpte-wpl-acc-btn.is-done:hover {
+	color: var(--wpl-success);
+	border-color: #75e0a7;
+}
+
+/* Cards */
+
+.wpte-wpl-status-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 24px;
+	align-items: start;
+}
+
+.wpte-wpl-status-card {
+	overflow: hidden;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line);
+	border-radius: var(--wpl-radius);
+	box-shadow: var(--wpl-shadow);
+}
+
+.wpte-wpl-status .wpte-wpl-status-card-title {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 0;
+	padding: 18px 24px;
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+	border-bottom: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-status-card-title .dashicons {
+	flex: none;
+	width: 36px;
+	height: 36px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	color: var(--wpl-brand);
+	background: var(--wpl-brand-soft);
+	border-radius: 10px;
+}
+
+/* Rows */
+
+.wpte-wpl-status .wpte-wpl-status-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.wpte-wpl-status .wpte-wpl-status-row {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin: 0;
+	padding: 14px 24px;
+}
+
+.wpte-wpl-status .wpte-wpl-status-row + .wpte-wpl-status-row {
+	border-top: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-status-icon.dashicons {
+	flex: none;
+	width: 28px;
+	height: 28px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 20px;
+	border-radius: 50%;
+}
+
+.wpte-wpl-status-row.is-ok .wpte-wpl-status-icon {
+	color: var(--wpl-success);
+	background: var(--wpl-success-soft);
+}
+
+.wpte-wpl-status-row.is-warn .wpte-wpl-status-icon {
+	font-size: 16px;
+	color: var(--wpl-accent-strong);
+	background: var(--wpl-accent-soft);
+}
+
+.wpte-wpl-status-name {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.wpte-wpl-status-name strong {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+}
+
+.wpte-wpl-status-name small {
+	font-size: 12px;
+	line-height: 1.4;
+	color: var(--wpl-ink-3);
+}
+
+.wpte-wpl-status-name em {
+	margin-top: 4px;
+	font-size: 12px;
+	font-style: normal;
+	line-height: 1.5;
+	color: var(--wpl-accent-strong);
+}
+
+.wpte-wpl-status .wpte-wpl-status-name code {
+	align-self: flex-start;
+	margin: 2px 0 0;
+	padding: 1px 6px;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 11px;
+	line-height: 1.6;
+	color: var(--wpl-ink-3);
+	background: #f2f4f7;
+	border-radius: 4px;
+}
+
+.wpte-wpl-status-value {
+	flex: none;
+	max-width: 55%;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--wpl-ink);
+	text-align: right;
+	overflow-wrap: anywhere;
+	font-variant-numeric: tabular-nums;
+}
+
+.wpte-wpl-status-row.is-warn .wpte-wpl-status-value {
+	color: var(--wpl-accent-strong);
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+	.wpte-wpl-status-grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (max-width: 782px) {
+	.wpte-wpl-status .wpte-wpl-acc-hero .wpte-wpl-status-badge {
+		order: 3;
+	}
+
+	.wpte-wpl-status .wpte-wpl-acc-hero .wpte-wpl-acc-btn {
+		order: 4;
+	}
+
+	.wpte-wpl-status .wpte-wpl-status-row,
+	.wpte-wpl-status .wpte-wpl-status-card-title {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+}

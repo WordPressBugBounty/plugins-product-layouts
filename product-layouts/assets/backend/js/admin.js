@@ -1,59 +1,4 @@
 (function ($) {
-  function delete_layout(id, This) {
-    $.ajax({
-      type: 'POST',
-      url: wpteAdmin.ajaxUrl,
-      data: {
-        action: 'wpte_delete_shortcode',
-        _nonce: wpteAdmin.wpte_nonce,
-        id: id,
-      },
-      beforeSend: function () {
-        var element = This.parents('tr');
-        element.addClass('before-delete-shortcode-row');
-      },
-      success: function (response) {
-        var element = This.parents('tr');
-        element.removeClass('before-delete-shortcode-row');
-        element.addClass('delete-shortcode-row');
-        setTimeout(() => {
-          element.hide();
-        }, 100);
-      },
-      error: function (data) {
-        console.log('Error');
-      },
-    });
-  }
-
-  $('.wptesubmitdelete').on('click', function (e) {
-    e.preventDefault();
-    var confirmation = confirm(wpteAdmin.message);
-    if (confirmation) {
-      var This = $(this),
-        id = $(this).attr('layoutid');
-      delete_layout(id, This);
-    }
-  });
-
-  $('.wpte-wpl-list-data-table #doaction').on('click', function (e) {
-    e.preventDefault();
-    var selectedvalue = $('.wpte-wpl-list-data-table #bulk-action-selector-top')
-      .find(':selected')
-      .val();
-
-    if (selectedvalue == 'delete') {
-      var confirmation = confirm(wpteAdmin.message);
-      if (confirmation) {
-        $('.wpte-shortcode-check:checked').each(function () {
-          var This = $(this),
-            id = $(this).val();
-          delete_layout(id, This);
-        });
-      }
-    }
-  });
-
   function formatBytes(bytes, decimals = 2) {
     if (bytes === 0) return '0 Bytes';
 
@@ -166,22 +111,6 @@
         console.log('Error');
       },
     });
-  });
-
-  $(document).ready(function () {
-    function wpte_support_reSizeArea(e) {
-      var arr = $.makeArray(e);
-      var ah = $.map(arr, function (h) {
-        return $(h).height();
-      });
-      var mh = Math.max.apply($(this).height(), ah);
-      e.height(mh);
-    }
-
-    if ($(window).width() > 768) {
-      window.onload = wpte_support_reSizeArea($('.wpte-pl-support-content'));
-      window.onresize = wpte_support_reSizeArea($('.wpte-pl-support-content'));
-    }
   });
 
   $(document).ready(function() {

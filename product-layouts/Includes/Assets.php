@@ -112,12 +112,67 @@ class Assets
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ('toplevel_page_product-layouts' === $current_screen && ! isset($_GET['layouts']) && ! isset($_GET['styleid'])) {
-			wp_enqueue_style('wpte-wpl-product-layout', WPTE_WPL_ASSETS . 'backend/css/product-layout.css', null, filemtime(WPTE_WPL_PATH . 'assets/backend/css/product-layout.css'));
+			// Layout picker: same tokens, hero and buttons as the other plugin pages.
+			wp_enqueue_style('wpte-wpl-account', WPTE_WPL_ASSETS . 'backend/css/account.css', ['wpte-wpl-top-menu'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/account.css'));
+			wp_enqueue_style('wpte-wpl-settings', WPTE_WPL_ASSETS . 'backend/css/settings.css', ['wpte-wpl-account'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/settings.css'));
+			wp_enqueue_style('wpte-wpl-picker', WPTE_WPL_ASSETS . 'backend/css/picker.css', ['wpte-wpl-settings'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/picker.css'));
 		}
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ('product-layouts-getting-started' === $current_page || 'product-layouts-shortcode' === $current_page || ('toplevel_page_product-layouts' === $current_screen && isset($_GET['layouts']) && ! isset($_GET['styleid']))) {
+		// Bootstrap: the Import page and the layout picker. The Shortcode List itself no longer needs it.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$is_import = 'product-layouts-shortcode' === $current_page && isset($_GET['action']) && 'import' === $_GET['action'];
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ($is_import || ('toplevel_page_product-layouts' === $current_screen && isset($_GET['layouts']) && ! isset($_GET['styleid']))) {
 			wp_enqueue_style('wpte-wpl-bootstrap-css', WPTE_WPL_ASSETS . 'lib/bootstrap/bootstrap.min.css', null, filemtime(WPTE_WPL_PATH . 'assets/lib/bootstrap/bootstrap.min.css'));
+		}
+
+		// Layout type pages (Create New): new frame around the unchanged previews.
+		// Bootstrap above keeps loading here so the previews look exactly as before.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ('toplevel_page_product-layouts' === $current_screen && isset($_GET['layouts']) && ! isset($_GET['styleid'])) {
+			wp_enqueue_style('wpte-wpl-account', WPTE_WPL_ASSETS . 'backend/css/account.css', ['wpte-wpl-top-menu'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/account.css'));
+			wp_enqueue_style('wpte-wpl-settings', WPTE_WPL_ASSETS . 'backend/css/settings.css', ['wpte-wpl-account'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/settings.css'));
+			wp_enqueue_style('wpte-wpl-layouts', WPTE_WPL_ASSETS . 'backend/css/layouts.css', ['wpte-wpl-settings'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/layouts.css'));
+		}
+
+		// Shortcode List: the Settings page's buttons and dialogs plus its own table.
+		if ('product-layouts-shortcode' === $current_page && ! $is_import) {
+			wp_enqueue_style('wpte-wpl-account', WPTE_WPL_ASSETS . 'backend/css/account.css', ['wpte-wpl-top-menu'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/account.css'));
+			wp_enqueue_style('wpte-wpl-settings', WPTE_WPL_ASSETS . 'backend/css/settings.css', ['wpte-wpl-account'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/settings.css'));
+			wp_enqueue_style('wpte-wpl-shortcodes', WPTE_WPL_ASSETS . 'backend/css/shortcodes.css', ['wpte-wpl-settings'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/shortcodes.css'));
+		}
+
+		// Freemius Account page: the header menu and our own scoped styles only,
+		// no admin.css or Bootstrap, so Freemius' forms and dialogs keep working.
+		if ('product-layouts-account' === $current_page) {
+			wp_enqueue_style('wpte-wpl-top-menu', WPTE_WPL_ASSETS . 'backend/css/top-menu.css', null, filemtime(WPTE_WPL_PATH . 'assets/backend/css/top-menu.css'));
+			wp_enqueue_style('wpte-wpl-account', WPTE_WPL_ASSETS . 'backend/css/account.css', ['wpte-wpl-top-menu'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/account.css'));
+		}
+
+		// Settings page: same tokens and hero, laid out like the Flipbox settings.
+		if ('product-layouts-settings' === $current_page) {
+			wp_enqueue_style('wpte-wpl-account', WPTE_WPL_ASSETS . 'backend/css/account.css', ['wpte-wpl-top-menu'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/account.css'));
+			wp_enqueue_style('wpte-wpl-settings', WPTE_WPL_ASSETS . 'backend/css/settings.css', ['wpte-wpl-account'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/settings.css'));
+		}
+
+		// Getting Started page: same tokens and hero, no Bootstrap.
+		if ('product-layouts-getting-started' === $current_page) {
+			wp_enqueue_style('wpte-wpl-account', WPTE_WPL_ASSETS . 'backend/css/account.css', ['wpte-wpl-top-menu'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/account.css'));
+			wp_enqueue_style('wpte-wpl-getting-started', WPTE_WPL_ASSETS . 'backend/css/getting-started.css', ['wpte-wpl-account'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/getting-started.css'));
+		}
+
+		// System Status page: the Account page's tokens and hero, plus its own cards.
+		if ('product-layouts-status' === $current_page) {
+			wp_enqueue_style('wpte-wpl-account', WPTE_WPL_ASSETS . 'backend/css/account.css', ['wpte-wpl-top-menu'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/account.css'));
+			wp_enqueue_style('wpte-wpl-status', WPTE_WPL_ASSETS . 'backend/css/status.css', ['wpte-wpl-account'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/status.css'));
+		}
+
+		// Freemius Affiliation page: shares the Account page's header and tokens.
+		if ('product-layouts-affiliation' === $current_page) {
+			wp_enqueue_style('wpte-wpl-top-menu', WPTE_WPL_ASSETS . 'backend/css/top-menu.css', null, filemtime(WPTE_WPL_PATH . 'assets/backend/css/top-menu.css'));
+			wp_enqueue_style('wpte-wpl-account', WPTE_WPL_ASSETS . 'backend/css/account.css', ['wpte-wpl-top-menu'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/account.css'));
+			wp_enqueue_style('wpte-wpl-affiliation', WPTE_WPL_ASSETS . 'backend/css/affiliation.css', ['wpte-wpl-account'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/affiliation.css'));
 		}
 
 		wp_enqueue_style('wpte-wpl-admin-global-style', WPTE_WPL_ASSETS . 'backend/css/admin-global.css', null, filemtime(WPTE_WPL_PATH . 'assets/backend/css/admin-global.css'));

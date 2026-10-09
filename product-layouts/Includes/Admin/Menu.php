@@ -22,7 +22,28 @@ class Menu {
 	 */
 	public function __construct() {
 		add_action( 'admin_menu', [ $this, 'regiter_admin_menu' ] );
+		add_filter( 'admin_body_class', [ $this, 'status_body_class' ] );
 		$this->admin_menu();
+	}
+
+	/**
+	 * The Status, Getting Started and Settings pages share account.css, whose
+	 * body class rules keep the header menu from overflowing on phones.
+	 *
+	 * @param string $classes Admin body classes.
+	 * @return string
+	 */
+	public function status_body_class( $classes ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['page'] ) && in_array( $_GET['page'], [ 'product-layouts-status', 'product-layouts-getting-started', 'product-layouts-settings', 'product-layouts-shortcode' ], true ) ) {
+			$classes .= ' wpte-wpl-account-page';
+		}
+		// The layout picker and the layout type pages, not the layout editor.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['page'] ) && 'product-layouts' === $_GET['page'] && ! isset( $_GET['styleid'] ) ) {
+			$classes .= ' wpte-wpl-account-page';
+		}
+		return $classes;
 	}
 
 	/**
@@ -85,7 +106,6 @@ class Menu {
 	 */
 	public function product_settings() {
 		apply_filters( 'wpte_product_layout_admin_menu', true );
-		wp_enqueue_script( 'wpte-wpl-select2-js' );
 		wp_enqueue_script( 'wpte-wpl-settings-js' );
 		wp_localize_script(
             'wpte-wpl-settings-js', 'wpteSettings', [

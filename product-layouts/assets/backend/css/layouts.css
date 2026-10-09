@@ -1,0 +1,185 @@
+/*
+ * Product Layouts: layout type pages (Product Layouts > a type, e.g.
+ * admin.php?page=product-layouts&layouts=general).
+ * Loaded after account.css (tokens, hero) and settings.css (buttons, pills,
+ * dialog). Bootstrap and admin.css still load here because the design
+ * previews are the real frontend layouts and must look exactly as before,
+ * so every rule is scoped to .wpte-wpl-lay and only the frame around the
+ * previews is restyled.
+ */
+
+.wpte-wpl-account.wpte-wpl-lay {
+	max-width: 1480px;
+}
+
+/* Hero */
+
+.wpte-wpl-lay .wpte-wpl-acc-hero {
+	align-items: flex-start;
+}
+
+.wpte-wpl-lay .wpte-wpl-acc-hero-logo {
+	object-fit: contain;
+}
+
+.wpte-wpl-lay .wpte-wpl-acc-title {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+}
+
+.wpte-wpl-lay-count {
+	padding: 2px 10px;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.5;
+	letter-spacing: 0;
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+	border-radius: 999px;
+}
+
+.wpte-wpl-lay .wpte-wpl-lay-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 18px;
+	margin: 10px 0 0;
+}
+
+.wpte-wpl-lay .wpte-wpl-lay-links a {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--wpl-brand-strong);
+	text-decoration: none;
+	border-radius: 4px;
+}
+
+.wpte-wpl-lay .wpte-wpl-lay-links a:hover {
+	text-decoration: underline;
+}
+
+.wpte-wpl-lay .wpte-wpl-lay-links a:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--wpl-brand-ring);
+}
+
+.wpte-wpl-lay .wpte-wpl-lay-links .dashicons {
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+}
+
+.wpte-wpl-lay .wpte-wpl-acc-hero > .wpte-wpl-set-btn {
+	flex: none;
+	align-self: center;
+}
+
+/* Design cards */
+
+.wpte-wpl-lay-list {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.wpte-wpl-lay-card {
+	overflow: hidden;
+	scroll-margin-top: 48px;
+}
+
+.wpte-wpl-lay-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 16px 20px;
+	border-bottom: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-lay-title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-width: 0;
+}
+
+.wpte-wpl-lay .wpte-wpl-lay-title h2 {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+}
+
+.wpte-wpl-lay .wpte-wpl-lay-head .wpte-wpl-set-btn {
+	flex: none;
+}
+
+/* Card buttons: soft tints like the Shortcode List actions, so a page of
+   designs is not a column of solid buttons. Indigo to use a design, the
+   logo's orange for Pro. */
+.wpte-wpl-lay .wpte-wpl-lay-head .wpte-wpl-set-btn.is-primary {
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+	border-color: transparent;
+	box-shadow: none;
+}
+
+.wpte-wpl-lay .wpte-wpl-lay-head .wpte-wpl-set-btn.is-primary:hover {
+	color: var(--wpl-brand-strong);
+	background: #e0e2ff;
+	border-color: transparent;
+}
+
+.wpte-wpl-lay .wpte-wpl-lay-head .wpte-wpl-set-btn.wpte-po-element {
+	color: var(--wpl-accent-strong);
+	background: var(--wpl-accent-soft);
+	border-color: transparent;
+	box-shadow: none;
+}
+
+.wpte-wpl-lay .wpte-wpl-lay-head .wpte-wpl-set-btn.wpte-po-element:hover {
+	color: var(--wpl-accent-strong);
+	background: #ffe8c7;
+	border-color: transparent;
+}
+
+.wpte-wpl-lay .wpte-wpl-lay-head .wpte-wpl-set-btn:focus {
+	box-shadow: 0 0 0 4px var(--wpl-brand-ring);
+}
+
+/* The preview area keeps its original background and inner padding; only
+   the old float and corner radius are replaced to fit the card. */
+.wpte-wpl-lay .wpte-wpl-lay-card .wpte-product-style-preview-top {
+	display: flow-root;
+	float: none;
+	width: auto;
+	border-radius: 0;
+}
+
+.wpte-wpl-lay-card.is-locked .wpte-wpl-lay-head {
+	background: linear-gradient(135deg, var(--wpl-accent-soft) 0%, #ffffff 70%);
+}
+
+/* Responsive */
+
+@media (max-width: 782px) {
+	.wpte-wpl-lay .wpte-wpl-acc-hero > .wpte-wpl-set-btn {
+		order: 3;
+	}
+
+	.wpte-wpl-lay-head {
+		flex-wrap: wrap;
+		padding: 14px 16px;
+	}
+
+	.wpte-wpl-lay .wpte-wpl-lay-head .wpte-wpl-set-btn {
+		width: 100%;
+		justify-content: center;
+	}
+}

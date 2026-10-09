@@ -5,7 +5,7 @@ Tags: product showcase, product list, product table, product gallery, product gr
 Requires at least: 6.2
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.4.4
+Stable tag: 1.4.5
 License: GPLv2 or later
 License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -127,6 +127,22 @@ Yes, export JSON from Shortcode List and import it from the Import page.
 3. A demo layout
 
 == Changelog ==
+
+= 1.4.5 =
+* Update: Redesigned the Account page with the plugin header menu, a page header and a card layout in the Product Layouts colors, and restyled the license, license key, change user and email dialogs to match.
+* Update: The Account page now always shows the Billing and Payments cards for licensed sites, with a clear message when the license was bought with a different account.
+* Update: Redesigned the Affiliation page with a commission badge, a program summary, a cleaner application form and a "How it works" guide.
+* Update: Redesigned the System Status page with pass or warning checks for each requirement, clearly labelled memory limits and a "Copy report" button for support requests.
+* Update: Redesigned the Getting Started page with the overview video, a three step quick start and cards for documentation, tutorials, bug reports and support.
+* Update: Redesigned the Settings page: a license card, a Google Fonts switch and the category page options on one page, saved automatically as you change them.
+* Update: Redesigned the Shortcode List page: one row per layout with a one-click Copy for the shortcode and PHP code, Edit, Clone, Export and Delete buttons, and clone and delete confirmations in place of browser popups.
+* Update: Redesigned the Product Layouts page: one card per layout type showing how many designs it offers and how many you have saved, with Tutorial, Docs and Demo links always visible.
+* Fix: The "Coming soon" Accordion card opened an empty page. It is no longer a link.
+* Update: Redesigned the layout type pages (General, Caption, Table and the rest): each design in its own card with a "Use this design" button, tutorial, docs and demo links at the top, and a cleaner name dialog. The live design previews are unchanged.
+* Fix: Searching the Shortcode List only looked through the layouts on the current page. It now searches all layouts.
+* New: Danger zone in Settings. Choose to remove all Product Layouts data when the plugin is deleted (off by default), or delete every layout and setting right away after typing DELETE to confirm.
+* Fix: Turning Google Fonts off in Settings had no effect, so the fonts kept loading. The setting is now respected.
+* Fix: The System Status page showed WordPress' memory constants as "Available Memory" and "Memory Limit"; it now also shows the actual PHP memory limit, with each value named after its setting.
 
 = 1.4.4 =
 * New: Added a "Filter by Tag" style to Filter & Sorting, listing product tags as checkboxes with post counts.

@@ -1,0 +1,1167 @@
+/*
+ * Product Layouts: Freemius Account page.
+ * Loaded only on this page, after top-menu.css. Colors come from the
+ * Product Layouts logo: indigo #5156FC (5.1:1 on white, so it can fill
+ * buttons) with the bag handle's orange #FF9B0F as the accent. Orange is
+ * too light for text, so orange labels use the darker #B54708.
+ * Freemius rules go through .wpte-wpl-account #fs_account so they outrank
+ * Freemius' own #fs_account rules and never reach its dialogs.
+ */
+
+/* Header menu: full width, as admin.css does on the other plugin pages. */
+
+body.wpte-wpl-account-page #wpcontent {
+	padding-left: 0;
+	background: #f1f1f8;
+}
+
+/* #wpcontent is only as tall as the page content, so on a short page the
+   body shows below it: white where Bootstrap loads (the layout pages), the
+   WordPress grey elsewhere. Same color on the body, so it reaches the bottom. */
+body.wpte-wpl-account-page {
+	background: #f1f1f8;
+}
+
+body.wpte-wpl-account-page .wpte-wpl-wrapper {
+	width: 100%;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+body.wpte-wpl-account-page .wpte-wpl-wrapper ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+body.wpte-wpl-account-page .wpte-wpl-wrapper a {
+	text-decoration: none;
+	box-shadow: none;
+}
+
+/* Page */
+
+.wpte-wpl-account {
+	--wpl-brand: #5156fc;
+	--wpl-brand-strong: #3b40e0;
+	--wpl-brand-soft: #eef0ff;
+	--wpl-brand-line: #c7c9fe;
+	--wpl-brand-ring: rgba(81, 86, 252, 0.25);
+	--wpl-accent: #ff9b0f;
+	--wpl-accent-strong: #b54708;
+	--wpl-accent-soft: #fff4e5;
+	--wpl-ink: #101828;
+	--wpl-ink-2: #475467;
+	--wpl-ink-3: #667085;
+	--wpl-line: #eaecf0;
+	--wpl-line-2: #d0d5dd;
+	--wpl-surface: #ffffff;
+	--wpl-success: #067647;
+	--wpl-success-soft: #ecfdf3;
+	--wpl-danger: #b42318;
+	--wpl-danger-soft: #fef3f2;
+	--wpl-radius: 14px;
+	--wpl-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+
+	max-width: 1260px;
+	margin: 24px auto 48px;
+	padding: 0 20px;
+	color: var(--wpl-ink);
+	font-size: 14px;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+.wpte-wpl-account *,
+.wpte-wpl-account *::before,
+.wpte-wpl-account *::after {
+	box-sizing: border-box;
+}
+
+.wpte-wpl-account .wrap.fs-section {
+	margin: 0;
+}
+
+/* Hero */
+
+.wpte-wpl-acc-hero {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	margin-bottom: 24px;
+	padding: 24px 28px;
+	overflow: hidden;
+	background:
+		radial-gradient(520px 180px at 100% 0%, rgba(81, 86, 252, 0.14), transparent 70%),
+		radial-gradient(360px 160px at 78% 120%, rgba(255, 155, 15, 0.12), transparent 70%),
+		linear-gradient(135deg, #ffffff 0%, #f5f5ff 100%);
+	border: 1px solid var(--wpl-line);
+	border-radius: var(--wpl-radius);
+	box-shadow: var(--wpl-shadow);
+}
+
+.wpte-wpl-acc-hero::before {
+	content: "";
+	position: absolute;
+	inset: 0 auto 0 0;
+	width: 4px;
+	background: linear-gradient(180deg, var(--wpl-brand), var(--wpl-accent));
+}
+
+.wpte-wpl-account .wpte-wpl-acc-hero-logo {
+	flex: none;
+	width: 52px;
+	height: 52px;
+	padding: 9px;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-brand-soft);
+	border-radius: 14px;
+	box-shadow: 0 6px 16px rgba(81, 86, 252, 0.22);
+}
+
+.wpte-wpl-acc-hero-text {
+	flex: 1;
+	min-width: 0;
+}
+
+.wpte-wpl-account .wpte-wpl-acc-title {
+	margin: 0;
+	padding: 0;
+	font-size: 24px;
+	line-height: 1.25;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	color: var(--wpl-ink);
+}
+
+.wpte-wpl-account .wpte-wpl-acc-subtitle {
+	margin: 4px 0 0;
+	font-size: 14px;
+	color: var(--wpl-ink-2);
+}
+
+.wpte-wpl-account .wpte-wpl-acc-btn {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 40px;
+	padding: 9px 18px;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+	text-decoration: none;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+	box-shadow: var(--wpl-shadow);
+	transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.wpte-wpl-account .wpte-wpl-acc-btn .dashicons {
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+}
+
+.wpte-wpl-account .wpte-wpl-acc-btn:hover {
+	color: var(--wpl-brand-strong);
+	border-color: var(--wpl-brand);
+}
+
+.wpte-wpl-account .wpte-wpl-acc-btn:focus {
+	color: var(--wpl-brand-strong);
+	outline: none;
+	box-shadow: 0 0 0 4px var(--wpl-brand-ring);
+}
+
+/* Notices that WordPress moves below the hero */
+
+.wpte-wpl-account .wpte-notice-review.notice {
+	margin: 0 0 24px;
+}
+
+/* "Is this your client's site?" banner */
+
+.wpte-wpl-account .fs-notice.fs-slug-product-layouts {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 0 0 20px;
+	padding: 12px 16px;
+	font-size: 13px;
+	color: var(--wpl-ink-2);
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line);
+	border-left: 4px solid var(--wpl-brand);
+	border-radius: 10px;
+	box-shadow: var(--wpl-shadow);
+}
+
+.wpte-wpl-account .fs-notice.fs-slug-product-layouts .fs-plugin-title {
+	display: none;
+}
+
+.wpte-wpl-account .fs-notice.fs-slug-product-layouts .fs-notice-body {
+	margin: 0;
+	padding: 0;
+}
+
+.wpte-wpl-account .fs-notice.fs-slug-product-layouts a {
+	font-weight: 600;
+	color: var(--wpl-brand-strong);
+}
+
+/* Layout: details on the left, billing and payments on the right */
+
+.wpte-wpl-account #poststuff {
+	padding-top: 0;
+	min-width: 0;
+}
+
+.wpte-wpl-account #fs_account .has-sidebar,
+.wpte-wpl-account #fs_account .has-sidebar-content {
+	float: none;
+	margin: 0;
+	width: auto;
+}
+
+.wpte-wpl-account #fs_account .has-sidebar-content {
+	display: grid;
+	grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+	gap: 24px;
+	align-items: start;
+}
+
+.wpte-wpl-account #fs_account .has-sidebar-content > .postbox:first-child {
+	grid-row: span 2;
+}
+
+/* No payments yet: Freemius shows only Account Details, so it takes the row. */
+.wpte-wpl-account #fs_account .has-sidebar-content > .postbox:only-child {
+	grid-column: 1 / -1;
+	grid-row: auto;
+}
+
+/* Cards */
+
+.wpte-wpl-account #fs_account .postbox {
+	position: relative;
+	max-width: none;
+	min-width: 0;
+	margin: 0;
+	overflow: hidden;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line);
+	border-radius: var(--wpl-radius);
+	box-shadow: var(--wpl-shadow);
+}
+
+.wpte-wpl-account #fs_account .postbox .inside {
+	margin: 0;
+	padding: 0;
+}
+
+.wpte-wpl-account #fs_account h3 {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 0;
+	padding: 18px 24px;
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+	border-bottom: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-account #fs_account h3 .dashicons {
+	flex: none;
+	width: 36px;
+	height: 36px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	color: var(--wpl-brand);
+	background: var(--wpl-brand-soft);
+	border-radius: 10px;
+}
+
+.wpte-wpl-account #fs_account h3 .dashicons::before {
+	width: 18px;
+	height: 18px;
+	font-size: 18px;
+	line-height: 18px;
+}
+
+/* Header actions: Billing & Invoices, Deactivate License, Sync */
+
+.wpte-wpl-account #fs_account .fs-header-actions {
+	top: 22px;
+	right: 20px;
+	font-size: 12px;
+}
+
+.wpte-wpl-account #fs_account .fs-header-actions ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin: 0;
+}
+
+.wpte-wpl-account #fs_account .fs-header-actions li {
+	float: none;
+	margin: 0;
+}
+
+/* The "•" separators between the links. */
+.wpte-wpl-account #fs_account .fs-header-actions li:nth-child(even) {
+	display: none;
+}
+
+.wpte-wpl-account #fs_account .fs-header-actions li a {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 4px 10px;
+	font-weight: 600;
+	color: var(--wpl-ink-2);
+	text-decoration: none;
+	background: #f9fafb;
+	border: 1px solid var(--wpl-line);
+	border-radius: 999px;
+	transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.wpte-wpl-account #fs_account .fs-header-actions li a:hover {
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+	border-color: var(--wpl-brand-line);
+}
+
+.wpte-wpl-account #fs_account .fs-header-actions li a.fs-deactivate-license:hover {
+	color: var(--wpl-danger);
+	background: var(--wpl-danger-soft);
+	border-color: #fecdca;
+}
+
+.wpte-wpl-account #fs_account .fs-header-actions i.dashicons {
+	width: 14px;
+	height: 14px;
+	font-size: 14px;
+}
+
+/* Account details */
+
+.wpte-wpl-account #fs_account .fs-key-value-table {
+	border-collapse: collapse;
+}
+
+.wpte-wpl-account #fs_account .fs-key-value-table tr,
+.wpte-wpl-account #fs_account .fs-key-value-table tr.alternate {
+	background: none;
+}
+
+.wpte-wpl-account #fs_account .fs-key-value-table tr + tr {
+	border-top: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-account #fs_account .fs-key-value-table td {
+	padding: 13px 24px;
+	vertical-align: middle;
+}
+
+.wpte-wpl-account #fs_account .fs-key-value-table td:first-child {
+	width: 120px;
+	padding-right: 8px;
+	text-align: left;
+}
+
+.wpte-wpl-account #fs_account .fs-key-value-table td:first-child nobr {
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--wpl-ink-3);
+}
+
+.wpte-wpl-account #fs_account .fs-key-value-table code,
+.wpte-wpl-account #fs_account .fs-key-value-table input[type="text"] {
+	padding: 0;
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--wpl-ink);
+	background: none;
+	word-break: break-word;
+}
+
+/* Long technical values read better in monospace. */
+.wpte-wpl-account #fs_account .fs-field-site_public_key code,
+.wpte-wpl-account #fs_account .fs-field-site_secret_key code,
+.wpte-wpl-account #fs_account .fs-field-site_secret_key input[type="text"],
+.wpte-wpl-account #fs_account .fs-field-license_key code,
+.wpte-wpl-account #fs_account .fs-field-license_key input[type="text"] {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--wpl-ink-2);
+	white-space: nowrap;
+	word-break: normal;
+}
+
+.wpte-wpl-account #fs_account .fs-field-plan code {
+	display: inline-flex;
+	align-items: center;
+	padding: 3px 12px;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	color: var(--wpl-success);
+	background: var(--wpl-success-soft);
+	border-radius: 999px;
+}
+
+/* "Premium version" after the version number, only when Pro is active. */
+.wpte-wpl-account.is-premium #fs_account .fs-field-version td:nth-child(2) code::after {
+	content: var(--wpl-premium-label);
+	display: inline-flex;
+	align-items: center;
+	margin-left: 10px;
+	padding: 2px 10px;
+	font-family: inherit;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0;
+	color: var(--wpl-success);
+	background: var(--wpl-success-soft);
+	border-radius: 999px;
+	vertical-align: 1px;
+}
+
+/* Freemius' own status tags (trial, renews in, expires in). */
+.wpte-wpl-account #fs_account .fs-tag {
+	display: inline-flex;
+	align-items: center;
+	margin-left: 8px;
+	padding: 2px 10px;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: none;
+	border-radius: 999px;
+}
+
+.wpte-wpl-account #fs_account .fs-tag.fs-success {
+	color: var(--wpl-success);
+	background: var(--wpl-success-soft);
+}
+
+.wpte-wpl-account #fs_account .fs-tag.fs-warn {
+	color: var(--wpl-accent-strong);
+	background: var(--wpl-accent-soft);
+}
+
+.wpte-wpl-account #fs_account .fs-tag.fs-error {
+	color: var(--wpl-danger);
+	background: var(--wpl-danger-soft);
+}
+
+.wpte-wpl-account #fs_account .fs-field-plan .button-group {
+	margin-left: 10px;
+	vertical-align: middle;
+}
+
+.wpte-wpl-account #fs_account .fs-key-value-table td.fs-right {
+	padding-left: 8px;
+	white-space: nowrap;
+}
+
+/* Buttons inside Freemius sections */
+
+.wpte-wpl-account #fs_account .button {
+	min-height: 30px;
+	margin: 0 0 0 6px;
+	padding: 4px 12px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 20px;
+	color: var(--wpl-ink);
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+	box-shadow: var(--wpl-shadow);
+	transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.wpte-wpl-account #fs_account .fs-field-plan .button {
+	margin-left: 0;
+}
+
+.wpte-wpl-account #fs_account .button:hover {
+	color: var(--wpl-brand-strong);
+	border-color: var(--wpl-brand);
+}
+
+/* Upgrade and Activate License: the one filled button on the page. */
+.wpte-wpl-account #fs_account .button.button-primary {
+	color: #ffffff;
+	background: var(--wpl-brand);
+	border-color: var(--wpl-brand);
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08), 0 4px 12px rgba(81, 86, 252, 0.25);
+}
+
+.wpte-wpl-account #fs_account .button.button-primary:hover {
+	color: #ffffff;
+	background: var(--wpl-brand-strong);
+	border-color: var(--wpl-brand-strong);
+}
+
+.wpte-wpl-account #fs_account .button:focus {
+	outline: none;
+	box-shadow: 0 0 0 4px var(--wpl-brand-ring);
+}
+
+/* Billing */
+
+.wpte-wpl-account #fs_account #fs_billing_address {
+	margin: 0;
+	padding: 18px 20px 20px;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+.wpte-wpl-account #fs_account #fs_billing_address tr td {
+	padding: 4px;
+}
+
+.wpte-wpl-account #fs_account #fs_billing_address span {
+	display: block;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--wpl-ink-3);
+}
+
+.wpte-wpl-account #fs_account #fs_billing_address input,
+.wpte-wpl-account #fs_account #fs_billing_address select {
+	height: 40px;
+	min-height: 40px;
+	margin-top: 4px;
+	padding: 0 12px;
+	line-height: 38px;
+	font-size: 14px;
+	color: var(--wpl-ink);
+	background-color: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+	box-shadow: none;
+}
+
+.wpte-wpl-account #fs_account #fs_billing_address input:focus,
+.wpte-wpl-account #fs_account #fs_billing_address select:focus {
+	border-color: var(--wpl-brand);
+	outline: none;
+	box-shadow: 0 0 0 4px var(--wpl-brand-ring);
+}
+
+/* Read mode: label above, value in a quiet tile, empty tiles stay blank. */
+.wpte-wpl-account #fs_account #fs_billing_address.fs-read-mode input,
+.wpte-wpl-account #fs_account #fs_billing_address.fs-read-mode select {
+	font-weight: 500;
+	color: var(--wpl-ink);
+	background: #f9fafb;
+	border: 1px solid var(--wpl-line);
+	pointer-events: none;
+}
+
+.wpte-wpl-account #fs_account #fs_billing_address.fs-read-mode input::placeholder {
+	color: transparent;
+}
+
+.wpte-wpl-account #fs_account #fs_billing_address.fs-read-mode select {
+	-webkit-appearance: none;
+	appearance: none;
+	background-image: none;
+}
+
+.wpte-wpl-account #fs_account #fs_billing_address button {
+	display: inline-flex;
+	width: auto;
+	margin: 12px 0 0;
+	padding: 6px 18px;
+	font-size: 13px;
+}
+
+/* Payments */
+
+.wpte-wpl-account #fs_account #fs_payments .widefat {
+	max-width: none;
+	margin: 0;
+	border: 0;
+	border-collapse: collapse;
+	box-shadow: none;
+}
+
+.wpte-wpl-account #fs_account #fs_payments .widefat thead th {
+	padding: 10px 24px;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--wpl-ink-3);
+	background: #f9fafb;
+	border-bottom: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-account #fs_account #fs_payments .widefat tbody tr,
+.wpte-wpl-account #fs_account #fs_payments .widefat tbody tr.alternate {
+	background: none;
+}
+
+.wpte-wpl-account #fs_account #fs_payments .widefat tbody tr + tr {
+	border-top: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-account #fs_account #fs_payments .widefat tbody tr:hover {
+	background: #fafaff;
+}
+
+.wpte-wpl-account #fs_account #fs_payments .widefat td {
+	padding: 12px 24px;
+	font-size: 13px;
+	color: var(--wpl-ink-2);
+	vertical-align: middle;
+}
+
+.wpte-wpl-account #fs_account #fs_payments .widefat td:nth-child(3) {
+	font-weight: 600;
+	color: var(--wpl-ink);
+	font-variant-numeric: tabular-nums;
+}
+
+.wpte-wpl-account #fs_account #fs_payments .widefat td .button {
+	margin: 0;
+}
+
+/* No payments on this account (Account.php adds the card). */
+.wpte-wpl-account #fs_account #fs_payments .wpte-wpl-acc-empty {
+	margin: 0;
+	padding: 20px 24px 22px;
+	font-size: 13px;
+	line-height: 1.6;
+	color: var(--wpl-ink-3);
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+	.wpte-wpl-account #fs_account .has-sidebar-content {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.wpte-wpl-account #fs_account .has-sidebar-content > .postbox:first-child {
+		grid-row: auto;
+	}
+}
+
+@media (max-width: 782px) {
+	/* top-menu.css has no narrow layout; scroll the menu instead of the page. */
+	body.wpte-wpl-account-page .wpte-wpl-admin-top-menu {
+		overflow-x: auto;
+	}
+
+	body.wpte-wpl-account-page .wpte-wpl-admin-top-logo img {
+		width: 160px;
+		height: 33px;
+	}
+
+	body.wpte-wpl-account-page .wpte-wpl-admin-top-logo a {
+		margin-right: 12px;
+	}
+
+	body.wpte-wpl-account-page .wpte-wpl-admin-top-nav {
+		width: auto;
+		flex: none;
+	}
+
+	.wpte-wpl-acc-hero {
+		flex-wrap: wrap;
+		padding: 20px;
+	}
+
+	.wpte-wpl-acc-hero-text {
+		flex: 1 1 calc(100% - 70px);
+	}
+
+	.wpte-wpl-account .wpte-wpl-acc-btn {
+		order: 3;
+	}
+
+	.wpte-wpl-account #fs_account .fs-header-actions {
+		position: static;
+		margin: 0;
+		padding: 12px 16px 0;
+	}
+
+	.wpte-wpl-account #fs_account h3,
+	.wpte-wpl-account #fs_account .fs-key-value-table td,
+	.wpte-wpl-account #fs_account #fs_payments .widefat td,
+	.wpte-wpl-account #fs_account #fs_payments .widefat thead th {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	.wpte-wpl-account #fs_account .fs-key-value-table td:first-child {
+		width: auto;
+		padding-bottom: 0;
+	}
+
+	.wpte-wpl-account #fs_account .fs-key-value-table td.fs-right {
+		padding-top: 0;
+		text-align: left;
+		white-space: normal;
+	}
+
+	.wpte-wpl-account #fs_account .fs-key-value-table td.fs-right:empty {
+		display: none;
+	}
+
+	/* Freemius' phone rules use two IDs; match them to keep the row indent and the plan badge. */
+	.wpte-wpl-account #fs_account #fs_account_details tr td:nth-child(2) {
+		padding: 2px 16px 12px;
+	}
+
+	.wpte-wpl-account #fs_account #fs_account_details tr.fs-field-plan td:nth-child(2) code {
+		padding: 3px 12px;
+	}
+
+	.wpte-wpl-account #fs_account #fs_account_details tr.fs-field-plan td:nth-child(2) .button-group {
+		margin: 0 0 0 10px;
+	}
+
+	.wpte-wpl-account #fs_account #fs_payments {
+		overflow-x: auto;
+	}
+}
+
+/*
+ * Freemius dialogs (Update License, Send License Key, Change User, Email
+ * address update) on the Product Layouts pages. Freemius prints them in the
+ * footer, outside every plugin wrapper, so they are scoped through the body
+ * class. The SDK's own dialog-boxes.css stays in charge of opening and
+ * closing them; these rules only restyle. Colors are written out because the
+ * tokens live on .wpte-wpl-account, which the dialogs are not inside.
+ */
+
+body.wpte-wpl-account-page .fs-modal {
+	background: rgba(16, 24, 40, 0.55);
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-dialog {
+	width: 520px;
+	margin-left: -260px;
+	padding-bottom: 0;
+	overflow: hidden;
+	background: #ffffff;
+	border-radius: 16px;
+	box-shadow: 0 24px 48px -12px rgba(16, 24, 40, 0.3);
+	font-size: 14px;
+	line-height: 1.5;
+	color: #101828;
+}
+
+body.wpte-wpl-account-page .fs-modal.active .fs-modal-dialog {
+	top: 12%;
+	animation: wpte-wpl-fs-pop 0.18s ease;
+}
+
+@keyframes wpte-wpl-fs-pop {
+	from { opacity: 0; transform: translateY(8px) scale(0.98); }
+	to { opacity: 1; transform: none; }
+}
+
+/* Header: title in normal case, an icon tile for each dialog */
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 0;
+	padding: 22px 56px 18px 24px;
+	background: #ffffff;
+	border-bottom: 1px solid #eaecf0;
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-header::before {
+	content: "\f112";
+	flex: none;
+	width: 40px;
+	height: 40px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-family: dashicons;
+	font-size: 20px;
+	color: #5156fc;
+	background: #eef0ff;
+	border-radius: 10px;
+}
+
+body.wpte-wpl-account-page .fs-modal-license-key-resend .fs-modal-header::before {
+	content: "\f465";
+}
+
+body.wpte-wpl-account-page .fs-modal-change-user .fs-modal-header::before {
+	content: "\f110";
+}
+
+body.wpte-wpl-account-page .fs-modal-email-address-update .fs-modal-header::before {
+	content: "\f466";
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-header h4 {
+	font-size: 17px;
+	font-weight: 600;
+	line-height: 1.4;
+	letter-spacing: 0;
+	text-transform: none;
+	text-shadow: none;
+	color: #101828;
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-header .fs-close {
+	top: 50%;
+	right: 16px;
+	width: 32px;
+	height: 32px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	color: #667085;
+	text-decoration: none;
+	border: 0;
+	border-radius: 8px;
+	transform: translateY(-50%);
+	box-shadow: none;
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-header .fs-close:hover {
+	color: #101828;
+	background: #f2f4f7;
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-header .fs-close:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(81, 86, 252, 0.25);
+}
+
+/* Body */
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-body {
+	padding: 20px 24px 22px;
+	background: #ffffff;
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-body > div {
+	margin-top: 0;
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-body p {
+	margin: 0 0 14px;
+	font-size: 14px;
+	line-height: 1.55;
+	color: #475467;
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-body p:empty {
+	display: none;
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-body a {
+	font-weight: 500;
+	color: #3b40e0;
+	text-decoration: none;
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-body a:hover {
+	text-decoration: underline;
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-body a:focus {
+	outline: none;
+	border-radius: 4px;
+	box-shadow: 0 0 0 3px rgba(81, 86, 252, 0.25);
+}
+
+/* Error box, shown by Freemius with jQuery .show() */
+body.wpte-wpl-account-page .fs-modal .fs-modal-panel > .notice.inline {
+	margin: 0 0 14px;
+	padding: 10px 14px;
+	background: #fef3f2;
+	border: 1px solid #fecdca;
+	border-left-width: 4px;
+	border-left-color: #d92d20;
+	border-radius: 8px;
+	box-shadow: none;
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-panel > .notice.inline p {
+	margin: 0;
+	color: #b42318;
+}
+
+/* Fields */
+
+body.wpte-wpl-account-page .fs-modal input[type="text"] {
+	box-sizing: border-box;
+	height: 40px;
+	min-height: 40px;
+	margin: 0;
+	padding: 0 12px;
+	font-size: 14px;
+	line-height: normal;
+	color: #101828;
+	background: #ffffff;
+	border: 1px solid #d0d5dd;
+	border-radius: 8px;
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+body.wpte-wpl-account-page .fs-modal input[type="text"]:focus {
+	border-color: #5156fc;
+	outline: none;
+	box-shadow: 0 0 0 4px rgba(81, 86, 252, 0.25);
+}
+
+body.wpte-wpl-account-page .fs-modal input[type="text"][readonly] {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 12.5px;
+	color: #475467;
+	background: #f9fafb;
+	border-color: #eaecf0;
+	box-shadow: none;
+}
+
+body.wpte-wpl-account-page .fs-modal input[type="radio"],
+body.wpte-wpl-account-page .fs-modal input[type="checkbox"] {
+	margin: 0;
+	accent-color: #5156fc;
+	border-color: #98a2b3;
+}
+
+body.wpte-wpl-account-page .fs-modal input[type="radio"]:checked {
+	border-color: #5156fc;
+}
+
+body.wpte-wpl-account-page .fs-modal input[type="radio"]:checked::before {
+	background-color: #5156fc;
+}
+
+body.wpte-wpl-account-page .fs-modal input[type="radio"]:focus,
+body.wpte-wpl-account-page .fs-modal input[type="checkbox"]:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(81, 86, 252, 0.25);
+}
+
+/* Update License: the saved key and "Other" as two aligned rows */
+
+body.wpte-wpl-account-page .fs-license-options-container table,
+body.wpte-wpl-account-page .fs-user-change-options-container table {
+	border-collapse: separate;
+	border-spacing: 0 10px;
+	margin: -10px 0 0;
+}
+
+body.wpte-wpl-account-page .fs-license-options-container table td,
+body.wpte-wpl-account-page .fs-user-change-options-container table td {
+	padding: 0;
+	vertical-align: middle;
+}
+
+body.wpte-wpl-account-page .fs-license-options-container table td:first-child,
+body.wpte-wpl-account-page .fs-user-change-options-container table td:first-child {
+	padding-right: 12px;
+}
+
+/* Freemius gives this box a fixed 30px height with overflow hidden, which
+   cuts off WordPress' 40px inputs. */
+body.wpte-wpl-account-page .fs-license-options-container table .fs-other-license-key-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+body.wpte-wpl-account-page .fs-license-options-container table .fs-other-license-key-container label {
+	float: none;
+	top: 0;
+	margin: 0;
+	font-weight: 500;
+	color: #344054;
+}
+
+body.wpte-wpl-account-page .fs-license-options-container table .fs-other-license-key-container div {
+	flex: 1;
+	height: auto;
+	overflow: visible;
+	top: 0;
+}
+
+body.wpte-wpl-account-page .fs-modal a.show-license-resend-modal {
+	margin-top: 4px;
+	font-size: 13px;
+}
+
+body.wpte-wpl-account-page .fs-modal .ownership-change-option-container {
+	margin-top: 14px;
+	padding: 12px 14px;
+	background: #f9fafb;
+	border: 1px solid #eaecf0;
+	border-radius: 8px;
+}
+
+body.wpte-wpl-account-page .fs-modal .ownership-change-option-container label {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+/* Send License Key and Change User */
+
+body.wpte-wpl-account-page .fs-modal-license-key-resend .email-address-container {
+	overflow: visible;
+	padding-right: 0;
+}
+
+body.wpte-wpl-account-page .fs-modal-license-key-resend.fs-freemium label {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 12px;
+	color: #344054;
+}
+
+body.wpte-wpl-account-page .fs-modal-license-key-resend.fs-freemium input.email-address {
+	flex: 1;
+	width: auto;
+}
+
+body.wpte-wpl-account-page .fs-modal-license-key-resend .button-container {
+	margin-top: 6px;
+	text-align: right;
+}
+
+body.wpte-wpl-account-page .fs-user-change-options-container table tr {
+	margin-bottom: 0;
+}
+
+body.wpte-wpl-account-page .fs-user-change-options-container table .fs-other-email-address-container > div label {
+	padding: 0 10px 0 0;
+	font-weight: 500;
+	color: #344054;
+	vertical-align: middle;
+}
+
+body.wpte-wpl-account-page .fs-modal-email-address-update ul {
+	margin: 12px 0 0;
+}
+
+body.wpte-wpl-account-page .fs-modal-email-address-update ul li {
+	margin-bottom: 8px;
+}
+
+/* Footer and buttons */
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-footer {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	padding: 16px 24px;
+	background: #f9fafb;
+	border-top: 1px solid #eaecf0;
+}
+
+body.wpte-wpl-account-page .fs-modal .fs-modal-footer > .button,
+body.wpte-wpl-account-page .fs-modal .fs-modal-footer > .button:last-of-type {
+	margin: 0;
+}
+
+/* Main action last, whatever order Freemius prints the buttons in. */
+body.wpte-wpl-account-page .fs-modal .fs-modal-footer > .button-primary {
+	order: 2;
+}
+
+body.wpte-wpl-account-page .fs-modal .button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 40px;
+	padding: 0 18px;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1;
+	color: #101828;
+	text-decoration: none;
+	background: #ffffff;
+	border: 1px solid #d0d5dd;
+	border-radius: 8px;
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+	transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+body.wpte-wpl-account-page .fs-modal .button:hover {
+	color: #3b40e0;
+	background: #ffffff;
+	border-color: #5156fc;
+}
+
+body.wpte-wpl-account-page .fs-modal .button.button-primary {
+	color: #ffffff;
+	background: #5156fc;
+	border-color: #5156fc;
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08), 0 4px 12px rgba(81, 86, 252, 0.25);
+}
+
+body.wpte-wpl-account-page .fs-modal .button.button-primary:hover {
+	color: #ffffff;
+	background: #3b40e0;
+	border-color: #3b40e0;
+}
+
+body.wpte-wpl-account-page .fs-modal .button:focus {
+	outline: none;
+	box-shadow: 0 0 0 4px rgba(81, 86, 252, 0.25);
+}
+
+body.wpte-wpl-account-page .fs-modal .button.disabled,
+body.wpte-wpl-account-page .fs-modal .button:disabled,
+body.wpte-wpl-account-page .fs-modal .button.button-primary.disabled,
+body.wpte-wpl-account-page .fs-modal .button.button-primary:disabled {
+	color: #98a2b3 !important;
+	background: #f2f4f7 !important;
+	border-color: #eaecf0 !important;
+	box-shadow: none !important;
+	cursor: not-allowed;
+}
+
+@media (max-width: 650px) {
+	body.wpte-wpl-account-page .fs-modal .fs-modal-dialog {
+		left: 12px;
+		width: calc(100% - 24px);
+		margin-left: 0;
+		padding: 0;
+	}
+
+	body.wpte-wpl-account-page .fs-modal .fs-modal-header,
+	body.wpte-wpl-account-page .fs-modal .fs-modal-body,
+	body.wpte-wpl-account-page .fs-modal .fs-modal-footer {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	body.wpte-wpl-account-page .fs-modal .fs-modal-footer {
+		flex-direction: column-reverse;
+	}
+}

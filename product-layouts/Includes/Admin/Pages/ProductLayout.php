@@ -200,78 +200,158 @@ final class ProductLayout
 	}
 
 	/**
+	 * Number of designs each layout type offers, read from its json_data()
+	 * without running its constructor (which would render the type page).
+	 *
+	 * @since 1.4.5
+	 * @param string $type Layout type key, e.g. "call_to_action".
+	 * @return int
+	 */
+	private function design_count( $type ) {
+		$class = 'WPTE_PRODUCT_LAYOUT\Layouts\\' . ucfirst( $type ) . '\\' . ucfirst( $type );
+		if ( ! class_exists( $class ) ) {
+			return 0;
+		}
+		try {
+			$layout = ( new \ReflectionClass( $class ) )->newInstanceWithoutConstructor();
+			$layout->json_data();
+			return is_array( $layout->TEMPLATE ) ? count( $layout->TEMPLATE ) : 0;
+		} catch ( \Throwable $e ) {
+			return 0;
+		}
+	}
+
+	/**
+	 * Saved layouts per type. Each saved layout's style_name starts with its
+	 * type, e.g. "general-2" or "call_to_action-1".
+	 *
+	 * @since 1.4.5
+	 * @return array<string,int>
+	 */
+	private function saved_counts() {
+		global $wpdb;
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		$rows   = $wpdb->get_results( "SELECT SUBSTRING_INDEX(style_name, '-', 1) AS type, COUNT(*) AS total FROM {$wpdb->prefix}wpte_product_layout_style GROUP BY type", ARRAY_A );
+		$counts = [];
+		foreach ( (array) $rows as $row ) {
+			$counts[ $row['type'] ] = (int) $row['total'];
+		}
+		return $counts;
+	}
+
+	/**
 	 * Elements Render
+	 *
+	 * Link rules are unchanged from before the redesign: a type marked
+	 * "Premium" (free plan only) links back to this page and carries
+	 * wpte-po-element, which opens the upgrade popup instead.
 	 *
 	 * @since 1.0.0
 	 */
 	public function elements_render()
 	{
-
-		$Elements = $this->elements();
-
-?>
-		<div class="wpte-wpl-row">
-			<div class="wpte-wpl-wrapper">
-				<div class="wpte-wpl-row">
-					<?php
-					foreach ($Elements as $key => $elements) {
-						$pre            = 'Extension';
-						$elementshtml   = '';
-						$elementsnumber = 0;
-
-						foreach ($elements as $k => $value) {
-							if ($value['status'] === 'Premium') {
-								$wpllink = wpte_version_control() ? 'admin.php?page=product-layouts&layouts=' . $k : 'admin.php?page=product-layouts';
-							} else {
-								$wpllink = 'admin.php?page=product-layouts&layouts=' . $k;
-							}
-							$pro     = $value['status'] === 'Premium' ? 'pro-status' : '';
-							$_items  = isset($value['items']) && $value['items'] ? $value['items'] : '';
-							$Updated = $value['status'] === 'Updated' || $value['status'] === 'Coming...' ? 'Updated-status' : '';
-							$status  = $value['status'] ? '<div class="wpte-wpl-element-status ' . $Updated . ' ' . $pro . '">' . esc_html($value['status_n']) . '</div>' : '';
-							$video   = $value['video'] ? $value['video'] : '';
-							$doc     = $value['doc'] ? $value['doc'] : '';
-							$demo    = $value['demo'] ? $value['demo'] : '';
-							$icons   = $doc ? '<div class="wpte-wpl-element-icons">
-													<a href="' . esc_url($video) . '" target="_blank"><span class="wpte-home-icon-tooltip">Tutorial</span><span class="dashicons dashicons-youtube"></span></a>
-													<a href="' . esc_url($doc) . '" target="_blank"><span class="wpte-home-icon-tooltip">Doc</span><span class="dashicons dashicons-media-document"></span></a>
-													<a href="' . esc_url($demo) . '" target="_blank"><span class="wpte-home-icon-tooltip">Demo</span><span class="dashicons dashicons-desktop"></span></a>
-												</div>' : '';
-							$items = $_items ? '<div class="wpte-wpl-element-items"><span class="wpte-wpl-element-items-number">' . intval($_items) . '</span><span class="wpte-wpl-element-items-text">Styles</span></div>' : '';
-							++$elementsnumber;
-							$elementshtml .= ' <div class="wpte-wpl-element-import" id="' . $value['name'] . '" wpte-wpl-search="' . $value['name'] . '">
-													' . $icons . '
-													<a class="addons-pre-check ' . $value['is_pro'] . '" href="' . admin_url($wpllink) . '" wpte-type="' . $pre . '">
-														' . $status . '
-														<div class="wpte-wpl-element-import-top">
-														<img src="' . $value['icon'] . '" >
-														</div>
-														<div class="wpte-wpl-element-import-bottom">
-															<span>' . name_converter($value['name']) . '</span>
-														</div>
-														' . $items . '
-													</a>
-												</div>';
-						}
-						if ($elementsnumber > 0) {
-							echo '  <div class="wpte-wpl-text-blocks-body-wrapper">
-										<div class="wpte-wpl-text-blocks-body">
-											<div class="wpte-wpl-text-blocks">
-												<div class="wpte-wpl-text-blocks-heading">' . esc_html($key) . '</div>
-												<div class="wpte-wpl-text-blocks-border">
-													<div class="wpte-wpl-text-block-border"></div>
-												</div>
-												<div class="wpte-wpl-text-blocks-content">Available (' . intval($elementsnumber) . ')</div>
-											</div>
-										</div>
-									</div>';
-							echo '<div class="wpte-wpl-elements-list">' . wp_kses($elementshtml, wpte_plugins_allowedtags()) . '</div>';
-						}
-					}
-					?>
+		$elements = $this->elements();
+		$saved    = $this->saved_counts();
+		$total    = array_sum( $saved );
+		$sections = [
+			'Product Layouts' => __( 'Product layouts', 'product-layouts' ),
+			'Addons'          => __( 'Addons', 'product-layouts' ),
+		];
+		$pills    = [
+			'Popular'   => 'is-popular',
+			'New'       => 'is-new',
+			'Updated'   => 'is-updated',
+			'Premium'   => 'is-pro',
+			'Coming...' => 'is-soon',
+		];
+		?>
+		<div class="wpte-wpl-account wpte-wpl-settings wpte-wpl-pick">
+			<header class="wpte-wpl-acc-hero">
+				<img class="wpte-wpl-acc-hero-logo" src="<?php echo esc_url( WPTE_WPL_URL . '/Image/wpl-icon.svg' ); ?>" alt="" width="52" height="52">
+				<div class="wpte-wpl-acc-hero-text">
+					<h1 class="wpte-wpl-acc-title"><?php esc_html_e( 'Product Layouts', 'product-layouts' ); ?></h1>
+					<p class="wpte-wpl-acc-subtitle"><?php esc_html_e( 'Choose a layout type to browse its designs. Every layout you create gets a shortcode you can place on any page.', 'product-layouts' ); ?></p>
 				</div>
-			</div>
+				<a class="wpte-wpl-set-btn" href="<?php echo esc_url( admin_url( 'admin.php?page=product-layouts-shortcode' ) ); ?>">
+					<span class="dashicons dashicons-shortcode" aria-hidden="true"></span><?php esc_html_e( 'Your layouts', 'product-layouts' ); ?>
+					<span class="wpte-wpl-pick-total"><?php echo esc_html( number_format_i18n( $total ) ); ?></span>
+				</a>
+			</header>
+			<hr class="wp-header-end">
+
+			<?php foreach ( $elements as $group => $items ) : ?>
+				<?php if ( empty( $items ) ) { continue; } ?>
+				<section class="wpte-wpl-pick-section" aria-labelledby="wpte-wpl-pick-<?php echo esc_attr( sanitize_title( $group ) ); ?>">
+					<h2 class="wpte-wpl-pick-heading" id="wpte-wpl-pick-<?php echo esc_attr( sanitize_title( $group ) ); ?>">
+						<?php echo esc_html( isset( $sections[ $group ] ) ? $sections[ $group ] : $group ); ?>
+						<span class="wpte-wpl-pick-heading-count"><?php echo esc_html( number_format_i18n( count( $items ) ) ); ?></span>
+					</h2>
+					<div class="wpte-wpl-pick-grid">
+						<?php
+						foreach ( $items as $type => $value ) :
+							$soon    = 'Coming...' === $value['status'];
+							$premium = 'Premium' === $value['status'];
+							// Same link as before: Premium (free plan) types stay on this page.
+							$link    = $premium && ! wpte_version_control() ? 'admin.php?page=product-layouts' : 'admin.php?page=product-layouts&layouts=' . $type;
+							$name    = name_converter( $value['name'] );
+							$name    = '' !== $name ? $name : ucwords( str_replace( [ '-', '_' ], ' ', $value['name'] ) );
+							$designs = $soon ? 0 : $this->design_count( $type );
+							$mine    = isset( $saved[ $type ] ) ? $saved[ $type ] : 0;
+							$locked  = '' !== $value['is_pro'];
+							?>
+							<div class="wpte-wpl-pick-card<?php echo $soon ? ' is-soon' : ''; ?><?php echo $locked ? ' is-locked' : ''; ?>" id="<?php echo esc_attr( $value['name'] ); ?>">
+								<?php if ( $value['status'] ) : ?>
+									<?php
+									// Color by the label shown (status_n); fall back to status when the label is translated.
+									$pill = isset( $pills[ $value['status_n'] ] ) ? $pills[ $value['status_n'] ] : ( isset( $pills[ $value['status'] ] ) ? $pills[ $value['status'] ] : '' );
+									?>
+									<span class="wpte-wpl-pick-pill <?php echo esc_attr( $pill ); ?>">
+										<?php if ( $premium ) : ?><span class="dashicons dashicons-lock" aria-hidden="true"></span><?php endif; ?>
+										<?php echo esc_html( $soon ? __( 'Coming soon', 'product-layouts' ) : $value['status_n'] ); ?>
+									</span>
+								<?php endif; ?>
+								<span class="wpte-wpl-pick-icon"><img src="<?php echo esc_url( $value['icon'] ); ?>" alt="" width="32" height="32"></span>
+								<h3 class="wpte-wpl-pick-name">
+									<?php if ( $soon ) : ?>
+										<?php echo esc_html( $name ); ?>
+									<?php else : ?>
+										<a class="wpte-wpl-pick-link addons-pre-check <?php echo esc_attr( $value['is_pro'] ); ?>" href="<?php echo esc_url( admin_url( $link ) ); ?>"><?php echo esc_html( $name ); ?></a>
+									<?php endif; ?>
+								</h3>
+								<p class="wpte-wpl-pick-meta">
+									<?php
+									if ( $soon ) {
+										esc_html_e( 'On its way in a future update.', 'product-layouts' );
+									} else {
+										/* translators: %s: number of designs */
+										echo esc_html( sprintf( _n( '%s design', '%s designs', $designs, 'product-layouts' ), number_format_i18n( $designs ) ) );
+										if ( $mine > 0 ) {
+											echo ' <span aria-hidden="true">&middot;</span> ';
+											/* translators: %s: number of saved layouts */
+											echo esc_html( sprintf( _n( '%s saved', '%s saved', $mine, 'product-layouts' ), number_format_i18n( $mine ) ) );
+										}
+									}
+									?>
+								</p>
+								<?php if ( ! empty( $value['doc'] ) || ! empty( $value['video'] ) || ! empty( $value['demo'] ) ) : ?>
+									<div class="wpte-wpl-pick-links">
+										<?php if ( ! empty( $value['video'] ) ) : ?>
+											<a href="<?php echo esc_url( $value['video'] ); ?>" target="_blank" rel="noopener"><span class="dashicons dashicons-video-alt3" aria-hidden="true"></span><?php esc_html_e( 'Tutorial', 'product-layouts' ); ?></a>
+										<?php endif; ?>
+										<?php if ( ! empty( $value['doc'] ) ) : ?>
+											<a href="<?php echo esc_url( $value['doc'] ); ?>" target="_blank" rel="noopener"><span class="dashicons dashicons-media-document" aria-hidden="true"></span><?php esc_html_e( 'Docs', 'product-layouts' ); ?></a>
+										<?php endif; ?>
+										<?php if ( ! empty( $value['demo'] ) ) : ?>
+											<a href="<?php echo esc_url( $value['demo'] ); ?>" target="_blank" rel="noopener"><span class="dashicons dashicons-visibility" aria-hidden="true"></span><?php esc_html_e( 'Demo', 'product-layouts' ); ?></a>
+										<?php endif; ?>
+									</div>
+								<?php endif; ?>
+							</div>
+						<?php endforeach; ?>
+					</div>
+				</section>
+			<?php endforeach; ?>
 		</div>
-<?php
+		<?php
 	}
 }

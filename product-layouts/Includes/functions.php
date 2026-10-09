@@ -235,8 +235,8 @@ function wpte_thumbnail_sizes() {
  * @param mixed $data .
  */
 function font_familly_validation( $data = [] ) {
-	$wepte_pl_settings = get_option( 'wpte_pl_settings' ) ? get_option( 'wpte_google_font' ) : [];
-	$google_font = isset( $wepte_pl_settings['wpte_google_font'] ) && $wepte_pl_settings['wpte_google_font'] ? $wepte_pl_settings['wpte_google_font'] : '';
+	$wepte_pl_settings = get_option( 'wpte_pl_settings' );
+	$google_font       = is_array( $wepte_pl_settings ) && isset( $wepte_pl_settings['wpte_google_font'] ) ? $wepte_pl_settings['wpte_google_font'] : '';
 	if ( $google_font !== 'no' && $data ) {
 		foreach ( $data as $value ) {
 			wp_enqueue_style( '' . esc_attr( $value ) . '', 'https://fonts.googleapis.com/css?family=' . $value . '', null, WPTE_WPL_VERSION );

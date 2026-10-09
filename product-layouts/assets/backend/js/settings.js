@@ -1,81 +1,187 @@
 ;(function($){
 
-	// Have the previously selected tab open
-	if ( sessionStorage.activeTab ) {
-
-		$('.wpte-pl-tab-content ' + sessionStorage.activeTab).show().siblings().hide();
-		$(".wpte-pl-tab-button li a[href=" + "\"" + sessionStorage.activeTab + "\"" + "]").parent().addClass('active').siblings().removeClass('active');
-
+	var $page = $('.wpte-wpl-settings');
+	if ( ! $page.length ) {
+		return;
 	}
 
-	// Enable, disable and switch tabs on click
-	$('.wpte-pl-tab-button > .btn > a').on('click', function(e)  {
+	var timers = {};
 
+	// The wpte_settings_form action replaces the whole wpte_pl_settings
+	// option, so every save sends all fields, not just the one that changed.
+	// Disabled (Pro only) selects are read too, so their saved values stay.
+	function collect() {
+		return [
+			{ name: 'wpte_google_font', value: $('#wpte_google_font').is(':checked') ? 'yes' : 'no' },
+			{ name: 'wpte-settings-category-select', value: $('#wpte-settings-category-select').val() || '' },
+			{ name: 'wpte-settings-filter-select', value: $('#wpte-settings-filter-select').val() || '' }
+		];
+	}
+
+	function setStatus( name, state ) {
+		var $status = $page.find('[data-status-for="' + name + '"]');
+		clearTimeout( timers[ name ] );
+		$status.attr('data-state', state).text( $page.data( state ) );
+		if ( 'saved' === state ) {
+			timers[ name ] = setTimeout(function () {
+				$status.removeAttr('data-state').text('');
+			}, 2000);
+		}
+	}
+
+	function save( name ) {
+		setStatus( name, 'saving' );
+		$.ajax({
+			type: 'POST',
+			url: wpteSettings.ajaxUrl,
+			data: {
+				action: 'wpte_settings_form',
+				_nonce: wpteSettings.wpte_nonce,
+				data: collect()
+			}
+		}).done(function ( response ) {
+			setStatus( name, response && response.success ? 'saved' : 'error' );
+		}).fail(function () {
+			setStatus( name, 'error' );
+		});
+	}
+
+	// Danger zone switch: its own option and AJAX action, not part of wpte_pl_settings.
+	function saveOwn( input ) {
+		setStatus( input.id, 'saving' );
+		$.ajax({
+			type: 'POST',
+			url: wpteSettings.ajaxUrl,
+			data: {
+				action: $(input).data('action'),
+				_nonce: wpteSettings.wpte_nonce,
+				value: input.checked ? 'yes' : 'no'
+			}
+		}).done(function ( response ) {
+			setStatus( input.id, response && response.success ? 'saved' : 'error' );
+		}).fail(function () {
+			setStatus( input.id, 'error' );
+		});
+	}
+
+	$('#wpte-settings-form').on('change', 'input[type="checkbox"], select', function () {
+		if ( $(this).data('action') ) {
+			saveOwn( this );
+		} else {
+			save( this.name );
+		}
+	}).on('submit', function ( e ) {
 		e.preventDefault();
+	});
 
-		var currentAttrValue = $(this).attr('href');
-		var activeTab = $(this).attr('href');
+	// Danger zone: "Delete all data" asks for DELETE to be typed first.
+	var $dialog       = $('#wpte-wpl-delete-dialog'),
+		$confirm      = $('#wpte-wpl-delete-confirm'),
+		$submit       = $('#wpte-wpl-delete-submit'),
+		$dialogStatus = $dialog.find('.wpte-wpl-set-dialog-status'),
+		lastFocus     = null,
+		deleting      = false;
 
-		if( activeTab.length ) {	 
-			// Show/Hide Tabs
-			$('.wpte-pl-tab-content ' + currentAttrValue).fadeIn('fast').siblings().hide();
-			sessionStorage.activeTab = currentAttrValue;
+	function openDialog( trigger ) {
+		lastFocus = trigger;
+		$confirm.val('');
+		$submit.prop('disabled', true);
+		$dialogStatus.removeAttr('data-state').text('');
+		$dialog.prop('hidden', false);
+		$('body').addClass('wpte-wpl-set-dialog-open');
+		setTimeout(function () {
+			$confirm.trigger('focus');
+		}, 50);
+	}
 
-			$(this).parent('li').addClass('active').siblings().removeClass('active');  
+	function closeDialog() {
+		if ( deleting ) {
+			return;
+		}
+		$dialog.prop('hidden', true);
+		$('body').removeClass('wpte-wpl-set-dialog-open');
+		if ( lastFocus ) {
+			lastFocus.focus();
+		}
+	}
+
+	$page.on('click', '[data-wpl-open]', function () {
+		openDialog( this );
+	});
+
+	$dialog.on('click', '[data-wpl-close]', closeDialog);
+
+	$(document).on('keydown', function ( e ) {
+		if ( 'Escape' === e.key && ! $dialog.prop('hidden') ) {
+			closeDialog();
+		}
+	});
+
+	$confirm.on('input', function () {
+		$submit.prop('disabled', 'DELETE' !== $confirm.val().trim());
+	}).on('keydown', function ( e ) {
+		if ( 'Enter' === e.key && ! $submit.prop('disabled') ) {
+			$submit.trigger('click');
+		}
+	});
+
+	$submit.on('click', function () {
+		if ( 'DELETE' !== $confirm.val().trim() || deleting ) {
+			return;
+		}
+		deleting = true;
+		$submit.prop('disabled', true);
+		$confirm.prop('disabled', true);
+		$dialogStatus.attr('data-state', 'saving').text( $dialogStatus.data('deleting') );
+
+		function failed() {
+			deleting = false;
+			$confirm.prop('disabled', false);
+			$submit.prop('disabled', false);
+			$dialogStatus.attr('data-state', 'error').text( $dialogStatus.data('error') );
 		}
 
+		$.ajax({
+			type: 'POST',
+			url: wpteSettings.ajaxUrl,
+			data: {
+				action: 'wpte_delete_all_data',
+				_nonce: wpteSettings.wpte_nonce,
+				confirm: 'DELETE'
+			}
+		}).done(function ( response ) {
+			if ( ! response || ! response.success ) {
+				failed();
+				return;
+			}
+			$dialogStatus.attr('data-state', 'saved').text( $dialogStatus.data('done') );
+			setTimeout(function () {
+				window.location.reload();
+			}, 1200);
+		}).fail( failed );
 	});
 
-	$("#wpte-settings-category-select").select2();
-	$("#wpte-settings-filter-select").select2();
+	// Copy the category page shortcode.
+	$page.on('click', '.wpte-wpl-set-copy-btn', function () {
+		var $button = $(this),
+			$label  = $button.find('.wpte-wpl-set-copy-label'),
+			text    = $label.text(),
+			input   = $( $button.data('copy') ).get(0);
 
-    function wpte_settings( data ) {
-        $.ajax({
-            type: 'POST',
-            url: wpteSettings.ajaxUrl,
-            data: {
-                action: "wpte_settings_form",
-                _nonce: wpteSettings.wpte_nonce,
-                data: data,
-            },
-            beforeSend: function () {
-				$('.wpte-setting-btn-loader').removeClass('dashicons-yes');
-                $('.wpte-setting-btn-loader').addClass('dashicons-admin-generic');
-                $('.wpte-setting-btn-text').text('Saving...');
-            },
-            success: function (response) {
+		function done() {
+			$label.text( $page.data('copied') );
+			setTimeout(function () {
+				$label.text( text );
+			}, 2000);
+		}
 
-				if ( response.success ) {
-					$('.wpte-setting-btn-loader').removeClass('dashicons-admin-generic');
-					$('.wpte-setting-btn-text').text(response.data.message);
-					$('.wpte-setting-btn-loader').addClass('dashicons-yes');
-				}
-               
-            },
-            complete: function(){
-				setTimeout(() => {
-					$('.wpte-setting-btn-text').text('Save Changes');
-				}, 3000);
-            },
-            error: function (data) {
-                console.log(wpteSettings.error)
-            }
-        });
-    }
-
-	$('#wpte-settings-form').on('submit', function(e) {
-		e.preventDefault();
-		const formData = $(this).serializeArray();
-		wpte_settings( formData );
-	});
-
-	$('.settings-pre-check').each(function(){
-		$(this).prepend(`
-			<div class="pro-badge">
-				<i class="dashicons dashicons-lock"></i>
-				<div class="pro-tooltip">Available in Pro</div>
-			</div>	
-		`);
+		if ( navigator.clipboard && window.isSecureContext ) {
+			navigator.clipboard.writeText( input.value ).then( done );
+		} else {
+			input.select();
+			document.execCommand('copy');
+			done();
+		}
 	});
 
 })(jQuery);

@@ -28,6 +28,8 @@ class Ajax
 		add_action('wp_ajax_wpte_shortcode_import_layout', [$this, 'wpte_shortcode_import_layout']);
 		add_action('wp_ajax_wpte_clone_layout', [$this, 'wpte_clone_layout']);
 		add_action('wp_ajax_wpte_settings_form', [$this, 'wpte_settings_form']);
+		add_action('wp_ajax_wpte_delete_data_on_uninstall', [$this, 'wpte_delete_data_on_uninstall']);
+		add_action('wp_ajax_wpte_delete_all_data', [$this, 'wpte_delete_all_data']);
 		add_action('wp_ajax_wpte_preview_frame', [$this, 'wpte_preview_frame']);
 	}
 
@@ -433,6 +435,40 @@ class Ajax
 				'message' => esc_html__('Settings Saved', 'product-layouts'),
 			]
 		);
+	}
+
+	/**
+	 * Danger zone: delete all data when the plugin is deleted.
+	 *
+	 * @since 1.4.5
+	 */
+	public function wpte_delete_data_on_uninstall()
+	{
+		if (! current_user_can('manage_options') || ! check_ajax_referer('wpte-settings-nonce', '_nonce', false)) {
+			wp_send_json_error(null, 403);
+		}
+		$value = isset($_POST['value']) && 'yes' === $_POST['value'] ? 'yes' : 'no';
+		update_option(\WPTE_PRODUCT_LAYOUT\Includes\Data_Cleaner::UNINSTALL_OPTION, $value, false);
+		wp_send_json_success();
+	}
+
+	/**
+	 * Danger zone: delete every layout and setting right now.
+	 *
+	 * The typed confirmation is checked here too, not only in the browser.
+	 *
+	 * @since 1.4.5
+	 */
+	public function wpte_delete_all_data()
+	{
+		if (! current_user_can('manage_options') || ! check_ajax_referer('wpte-settings-nonce', '_nonce', false)) {
+			wp_send_json_error(null, 403);
+		}
+		if (! isset($_POST['confirm']) || 'DELETE' !== $_POST['confirm']) {
+			wp_send_json_error(null, 400);
+		}
+		\WPTE_PRODUCT_LAYOUT\Includes\Data_Cleaner::delete_now();
+		wp_send_json_success();
 	}
 
 	/**

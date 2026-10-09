@@ -1,0 +1,236 @@
+/*
+ * Product Layouts: layout picker (Product Layouts menu page).
+ * Loaded after account.css (tokens, hero) and settings.css (buttons). The
+ * wrapper carries .wpte-wpl-account, .wpte-wpl-settings and .wpte-wpl-pick;
+ * admin.css also loads here, so every rule is scoped.
+ */
+
+.wpte-wpl-account.wpte-wpl-pick {
+	max-width: 1480px;
+}
+
+.wpte-wpl-pick .wpte-wpl-acc-hero > .wpte-wpl-set-btn {
+	flex: none;
+}
+
+.wpte-wpl-pick-total {
+	padding: 1px 8px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+	border-radius: 999px;
+}
+
+/* Sections */
+
+.wpte-wpl-pick-section + .wpte-wpl-pick-section {
+	margin-top: 36px;
+}
+
+.wpte-wpl-pick .wpte-wpl-pick-heading {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0 0 16px;
+	padding: 0;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+}
+
+.wpte-wpl-pick-heading-count {
+	padding: 1px 9px;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--wpl-ink-3);
+	background: #e9ebf3;
+	border-radius: 999px;
+}
+
+.wpte-wpl-pick-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 20px;
+}
+
+/* Cards: the whole card opens the type; Tutorial, Docs and Demo sit above
+   that link so they stay separately clickable. */
+
+.wpte-wpl-pick-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding: 22px;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line);
+	border-radius: var(--wpl-radius);
+	box-shadow: var(--wpl-shadow);
+	transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.wpte-wpl-pick-card:not(.is-soon):hover {
+	border-color: var(--wpl-brand-line);
+	box-shadow: 0 10px 28px rgba(81, 86, 252, 0.12);
+	transform: translateY(-2px);
+}
+
+.wpte-wpl-pick-card:focus-within {
+	border-color: var(--wpl-brand);
+	box-shadow: 0 0 0 4px var(--wpl-brand-ring);
+}
+
+/* The icons carry their own soft background, so no extra tile. */
+.wpte-wpl-pick-icon {
+	display: inline-flex;
+	width: 56px;
+	height: 56px;
+}
+
+.wpte-wpl-pick .wpte-wpl-pick-icon img {
+	width: 56px;
+	height: 56px;
+	object-fit: contain;
+}
+
+.wpte-wpl-pick .wpte-wpl-pick-name {
+	margin: 16px 0 4px;
+	padding: 0;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+}
+
+.wpte-wpl-pick .wpte-wpl-pick-link {
+	color: inherit;
+	text-decoration: none;
+	box-shadow: none;
+	outline: none;
+}
+
+.wpte-wpl-pick .wpte-wpl-pick-link::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	border-radius: var(--wpl-radius);
+}
+
+.wpte-wpl-pick-card:not(.is-soon):hover .wpte-wpl-pick-link {
+	color: var(--wpl-brand-strong);
+}
+
+.wpte-wpl-pick .wpte-wpl-pick-meta {
+	flex: 1;
+	margin: 0;
+	font-size: 13px;
+	color: var(--wpl-ink-3);
+}
+
+.wpte-wpl-pick-links {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 14px;
+	margin-top: 16px;
+	padding-top: 14px;
+	border-top: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-pick .wpte-wpl-pick-links a {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 12.5px;
+	font-weight: 600;
+	color: var(--wpl-ink-2);
+	text-decoration: none;
+	border-radius: 4px;
+}
+
+.wpte-wpl-pick .wpte-wpl-pick-links a:hover {
+	color: var(--wpl-brand-strong);
+}
+
+.wpte-wpl-pick .wpte-wpl-pick-links a:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--wpl-brand-ring);
+}
+
+.wpte-wpl-pick .wpte-wpl-pick-links .dashicons {
+	width: 15px;
+	height: 15px;
+	font-size: 15px;
+}
+
+/* Status pills */
+
+.wpte-wpl-pick-pill {
+	position: absolute;
+	top: 18px;
+	right: 18px;
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 3px 10px;
+	font-size: 11.5px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--wpl-ink-2);
+	background: #f2f4f7;
+	border-radius: 999px;
+}
+
+.wpte-wpl-pick-pill .dashicons {
+	width: 13px;
+	height: 13px;
+	font-size: 13px;
+}
+
+.wpte-wpl-pick-pill.is-popular {
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+}
+
+.wpte-wpl-pick-pill.is-new {
+	color: var(--wpl-success);
+	background: var(--wpl-success-soft);
+}
+
+.wpte-wpl-pick-pill.is-updated,
+.wpte-wpl-pick-pill.is-pro {
+	color: var(--wpl-accent-strong);
+	background: var(--wpl-accent-soft);
+}
+
+/* Coming soon: not a link, quieter. */
+.wpte-wpl-pick-card.is-soon {
+	background: #fafbfc;
+	border-style: dashed;
+	box-shadow: none;
+}
+
+.wpte-wpl-pick-card.is-soon .wpte-wpl-pick-icon {
+	filter: grayscale(1);
+	opacity: 0.7;
+}
+
+.wpte-wpl-pick-card.is-soon .wpte-wpl-pick-name {
+	color: var(--wpl-ink-3);
+}
+
+/* Responsive */
+
+@media (max-width: 782px) {
+	.wpte-wpl-pick .wpte-wpl-acc-hero > .wpte-wpl-set-btn {
+		order: 3;
+	}
+
+	.wpte-wpl-pick-grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}

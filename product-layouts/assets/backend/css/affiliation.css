@@ -1,0 +1,494 @@
+/*
+ * Product Layouts: Freemius Affiliation page.
+ * Loaded after account.css, which supplies the header menu rules, the color
+ * tokens, the hero and the hero button (the wrapper carries both
+ * .wpte-wpl-account and .wpte-wpl-affiliation).
+ * Freemius prints its own affiliation.css later in the footer, with
+ * "#fs_affiliation_content_wrapper ..." rules and a few !important font
+ * sizes, so every rule here starts with .wpte-wpl-affiliation to outrank it.
+ */
+
+/* Hero: commission badge */
+
+.wpte-wpl-aff-rate {
+	flex: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-width: 112px;
+	padding: 10px 18px;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-brand-line);
+	border-radius: 12px;
+	box-shadow: 0 6px 16px rgba(81, 86, 252, 0.14);
+}
+
+.wpte-wpl-aff-rate-value {
+	font-size: 28px;
+	font-weight: 800;
+	line-height: 1.1;
+	letter-spacing: -0.02em;
+	color: var(--wpl-brand);
+}
+
+.wpte-wpl-aff-rate-label {
+	margin-top: 2px;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--wpl-ink-3);
+}
+
+/* Freemius' status messages, which WordPress moves below the hero */
+
+.wpte-wpl-affiliation > .updated,
+.wpte-wpl-affiliation > .error,
+.wpte-wpl-affiliation > .notice-warning {
+	margin: 0 0 20px;
+	padding: 12px 16px;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line);
+	border-left-width: 4px;
+	border-radius: 10px;
+	box-shadow: var(--wpl-shadow);
+}
+
+.wpte-wpl-affiliation > .updated {
+	border-left-color: #12b76a;
+}
+
+.wpte-wpl-affiliation > .error {
+	border-left-color: #f04438;
+}
+
+.wpte-wpl-affiliation > .notice-warning {
+	border-left-color: var(--wpl-accent);
+}
+
+.wpte-wpl-affiliation > .updated p,
+.wpte-wpl-affiliation > .error p,
+.wpte-wpl-affiliation > .notice-warning p {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--wpl-ink);
+}
+
+.wpte-wpl-affiliation > .updated a {
+	font-weight: 600;
+	color: var(--wpl-brand-strong);
+}
+
+/* Layout: Freemius' card on the left, "How it works" on the right */
+
+.wpte-wpl-aff-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 340px;
+	gap: 24px;
+	align-items: start;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper {
+	margin: 0;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper #poststuff {
+	padding-top: 0;
+	min-width: 0;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper .postbox {
+	margin: 0;
+	min-width: 0;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line);
+	border-radius: var(--wpl-radius);
+	box-shadow: var(--wpl-shadow);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper .postbox .inside {
+	margin: 0;
+	padding: 28px;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper #messages {
+	margin: 0;
+}
+
+/* Intro */
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper #application_messages_container {
+	margin-bottom: 24px;
+	padding: 20px 22px;
+	background:
+		radial-gradient(260px 120px at 100% 0%, rgba(255, 155, 15, 0.12), transparent 70%),
+		var(--wpl-brand-soft);
+	border-radius: 12px;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper #application_messages_container p {
+	margin: 0;
+	font-size: 14px !important;
+	line-height: 1.6 !important;
+	color: var(--wpl-ink-2);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper #application_messages_container p:first-child {
+	margin-bottom: 4px;
+	font-size: 17px !important;
+	font-weight: 700;
+	color: var(--wpl-ink);
+}
+
+/* Program summary */
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper h3 {
+	margin: 0 0 14px;
+	padding: 0;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper .entry-content > ul {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper .entry-content > ul li {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	margin: 0;
+	padding: 12px 14px;
+	font-size: 13px !important;
+	line-height: 1.55 !important;
+	color: var(--wpl-ink-2);
+	background: #fafaff;
+	border: 1px solid var(--wpl-line);
+	border-radius: 10px;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper .entry-content > ul li::before {
+	content: "\f147";
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 22px;
+	height: 22px;
+	margin: 0;
+	font-family: dashicons;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 1;
+	color: var(--wpl-success);
+	background: var(--wpl-success-soft);
+	border-radius: 50%;
+}
+
+/* Buttons: Become an affiliate, Cancel, Apply */
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper .button {
+	display: inline-flex;
+	align-items: center;
+	height: auto;
+	min-height: 42px;
+	margin: 24px 8px 0 0;
+	padding: 9px 22px;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+	box-shadow: var(--wpl-shadow);
+	transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper .button:hover {
+	color: var(--wpl-brand-strong);
+	border-color: var(--wpl-brand);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper .button.button-primary {
+	color: #ffffff;
+	background: var(--wpl-brand);
+	border-color: var(--wpl-brand);
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08), 0 4px 12px rgba(81, 86, 252, 0.25);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper .button.button-primary:hover {
+	color: #ffffff;
+	background: var(--wpl-brand-strong);
+	border-color: var(--wpl-brand-strong);
+}
+
+/* Apply stays disabled until the terms checkbox is ticked. */
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper .button.disabled,
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper .button.button-primary.disabled {
+	color: #98a2b3 !important;
+	background: #f2f4f7 !important;
+	border-color: var(--wpl-line) !important;
+	box-shadow: none !important;
+	cursor: not-allowed;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper .button:focus {
+	outline: none;
+	box-shadow: 0 0 0 4px var(--wpl-brand-ring);
+}
+
+/* Application form */
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper #application_form_container {
+	margin-top: 28px;
+	padding-top: 24px;
+	border-top: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form .input-container {
+	margin-bottom: 18px;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form .input-container .input-label {
+	margin-bottom: 6px;
+	font-size: 13px !important;
+	font-weight: 600;
+	line-height: 1.4 !important;
+	color: var(--wpl-ink);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form .input-container label:not(.input-label) {
+	font-size: 14px !important;
+	line-height: 1.5 !important;
+	color: var(--wpl-ink-2);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form input[type="text"],
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form textarea {
+	width: 100%;
+	max-width: 560px;
+	min-height: 42px;
+	padding: 8px 12px;
+	font-size: 14px;
+	line-height: 1.5;
+	color: var(--wpl-ink);
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+	box-shadow: none;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form textarea {
+	min-height: 110px;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form input[type="text"]:focus,
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form textarea:focus {
+	border-color: var(--wpl-brand);
+	outline: none;
+	box-shadow: 0 0 0 4px var(--wpl-brand-ring);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form input[readonly],
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form textarea[readonly] {
+	color: var(--wpl-ink-2);
+	background: #f9fafb;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form .description {
+	max-width: 560px;
+	margin: 6px 0 0;
+	font-size: 12px;
+	line-height: 1.5;
+	color: var(--wpl-ink-3);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form #add_domain,
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form .remove-domain {
+	margin-top: 6px;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--wpl-brand-strong);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form #add_domain.disabled {
+	color: #98a2b3;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form input[type="checkbox"] {
+	margin: 0 8px 0 0;
+	border-color: var(--wpl-line-2);
+	border-radius: 4px;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form input[type="checkbox"]:checked {
+	background: var(--wpl-brand);
+	border-color: var(--wpl-brand);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form input[type="checkbox"]:checked::before {
+	filter: brightness(0) invert(1);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form input[type="checkbox"]:focus {
+	box-shadow: 0 0 0 4px var(--wpl-brand-ring);
+}
+
+/* The terms checkbox, last in the form */
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper #application_form_container > div:last-child {
+	padding: 14px 16px;
+	background: #fafaff;
+	border: 1px solid var(--wpl-line);
+	border-radius: 10px;
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper #application_form_container > div:last-child label {
+	font-size: 14px !important;
+	line-height: 1.5 !important;
+	color: var(--wpl-ink-2);
+}
+
+.wpte-wpl-affiliation #fs_affiliation_content_wrapper form a {
+	font-weight: 600;
+	color: var(--wpl-brand-strong);
+}
+
+/* "How it works" */
+
+.wpte-wpl-aff-card {
+	padding: 24px;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line);
+	border-radius: var(--wpl-radius);
+	box-shadow: var(--wpl-shadow);
+}
+
+.wpte-wpl-affiliation .wpte-wpl-aff-card-title {
+	margin: 0 0 18px;
+	padding: 0;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+}
+
+.wpte-wpl-affiliation .wpte-wpl-aff-steps {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: wpl-step;
+}
+
+.wpte-wpl-affiliation .wpte-wpl-aff-steps li {
+	position: relative;
+	margin: 0;
+	padding: 0 0 20px 46px;
+	counter-increment: wpl-step;
+}
+
+.wpte-wpl-affiliation .wpte-wpl-aff-steps li:last-child {
+	padding-bottom: 0;
+}
+
+/* Numbered dot, joined to the next step by a thin line. */
+.wpte-wpl-affiliation .wpte-wpl-aff-steps li::before {
+	content: counter(wpl-step);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--wpl-brand);
+	background: var(--wpl-brand-soft);
+	border-radius: 50%;
+}
+
+.wpte-wpl-affiliation .wpte-wpl-aff-steps li:not(:last-child)::after {
+	content: "";
+	position: absolute;
+	top: 34px;
+	bottom: 4px;
+	left: 14px;
+	width: 2px;
+	background: var(--wpl-line);
+	border-radius: 1px;
+}
+
+.wpte-wpl-affiliation .wpte-wpl-aff-steps strong {
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 30px;
+	color: var(--wpl-ink);
+}
+
+.wpte-wpl-affiliation .wpte-wpl-aff-steps span {
+	display: block;
+	font-size: 13px;
+	line-height: 1.55;
+	color: var(--wpl-ink-3);
+}
+
+.wpte-wpl-affiliation .wpte-wpl-aff-card .wpte-wpl-acc-btn {
+	width: 100%;
+	justify-content: center;
+	margin-top: 22px;
+}
+
+.wpte-wpl-affiliation .wpte-wpl-acc-btn.is-primary {
+	color: #ffffff;
+	background: var(--wpl-brand);
+	border-color: var(--wpl-brand);
+}
+
+.wpte-wpl-affiliation .wpte-wpl-acc-btn.is-primary:hover,
+.wpte-wpl-affiliation .wpte-wpl-acc-btn.is-primary:focus {
+	color: #ffffff;
+	background: var(--wpl-brand-strong);
+	border-color: var(--wpl-brand-strong);
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+	.wpte-wpl-aff-layout {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (max-width: 782px) {
+	.wpte-wpl-affiliation .wpte-wpl-aff-rate {
+		order: 3;
+		flex-direction: row;
+		gap: 8px;
+		min-width: 0;
+		padding: 8px 14px;
+	}
+
+	.wpte-wpl-aff-rate-value {
+		font-size: 20px;
+	}
+
+	.wpte-wpl-affiliation #fs_affiliation_content_wrapper .postbox .inside {
+		padding: 20px 16px;
+	}
+
+	.wpte-wpl-affiliation #fs_affiliation_content_wrapper .entry-content > ul {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}

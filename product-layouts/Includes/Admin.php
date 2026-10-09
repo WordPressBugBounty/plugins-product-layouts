@@ -21,5 +21,7 @@ class Admin {
 	public function __construct() {
 		new Admin\Menu();
 		new Admin\Notice();
+		new Admin\Pages\Account();
+		new Admin\Pages\Affiliation();
 	}
 }

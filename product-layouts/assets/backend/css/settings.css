@@ -1,0 +1,965 @@
+/*
+ * Product Layouts: Settings page.
+ * Same layout as the Flipbox Settings page, in the Product Layouts colors.
+ * Loaded after account.css, which supplies the color tokens and the hero
+ * (the wrapper carries .wpte-wpl-account and .wpte-wpl-settings). Every
+ * rule is scoped to .wpte-wpl-settings so admin.css, which also loads on
+ * this screen, cannot reach in.
+ */
+
+.wpte-wpl-settings p,
+.wpte-wpl-settings h2,
+.wpte-wpl-settings ul,
+.wpte-wpl-settings dl {
+	margin: 0;
+	padding: 0;
+}
+
+/* Hero: autosave note */
+
+.wpte-wpl-set-autosave {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 12px;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--wpl-ink-2);
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line);
+	border-radius: 999px;
+}
+
+.wpte-wpl-set-autosave-dot {
+	width: 8px;
+	height: 8px;
+	background: #17b26a;
+	border-radius: 50%;
+	box-shadow: 0 0 0 3px rgba(23, 178, 106, 0.18);
+}
+
+/* Layout */
+
+.wpte-wpl-set-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 300px;
+	gap: 24px;
+	align-items: start;
+}
+
+.wpte-wpl-set-main {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	min-width: 0;
+}
+
+.wpte-wpl-set-aside {
+	position: sticky;
+	top: 52px;
+}
+
+/* Cards */
+
+.wpte-wpl-set-card {
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line);
+	border-radius: var(--wpl-radius);
+	box-shadow: var(--wpl-shadow);
+}
+
+.wpte-wpl-set-card-head {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 20px 24px;
+	border-bottom: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-set-card-text {
+	flex: 1;
+	min-width: 0;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-card-icon {
+	flex: none;
+	width: 40px;
+	height: 40px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 20px;
+	color: var(--wpl-brand);
+	background: var(--wpl-brand-soft);
+	border-radius: 10px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-card-icon::before {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	line-height: 20px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-card-title {
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-card-sub {
+	margin-top: 2px;
+	font-size: 13px;
+	color: var(--wpl-ink-3);
+}
+
+/* Rows */
+
+.wpte-wpl-set-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	padding: 18px 24px;
+}
+
+.wpte-wpl-set-row + .wpte-wpl-set-row {
+	border-top: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-set-row-text {
+	flex: 1;
+	min-width: 0;
+	max-width: 520px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-label {
+	display: block;
+	margin: 0;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--wpl-ink);
+	cursor: pointer;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-desc {
+	margin-top: 4px;
+	font-size: 13px;
+	line-height: 1.55;
+	color: var(--wpl-ink-3);
+}
+
+.wpte-wpl-set-row-control {
+	flex: none;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 12px;
+}
+
+/* Switch */
+
+.wpte-wpl-set-switch {
+	position: relative;
+	display: inline-flex;
+	width: 44px;
+	height: 24px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-switch input {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.wpte-wpl-set-switch-track {
+	width: 100%;
+	height: 100%;
+	background: #d0d5dd;
+	border-radius: 999px;
+	transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wpte-wpl-set-switch-thumb {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 20px;
+	height: 20px;
+	background: #ffffff;
+	border-radius: 50%;
+	box-shadow: 0 1px 3px rgba(16, 24, 40, 0.2);
+	transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* On: pale indigo track with an indigo knob, from the logo color. */
+.wpte-wpl-set-switch input:checked + .wpte-wpl-set-switch-track {
+	background: var(--wpl-brand-soft);
+	box-shadow: inset 0 0 0 1px var(--wpl-brand-line);
+}
+
+.wpte-wpl-set-switch input:checked + .wpte-wpl-set-switch-track .wpte-wpl-set-switch-thumb {
+	background: var(--wpl-brand);
+	box-shadow: 0 1px 2px rgba(59, 64, 224, 0.3);
+	transform: translateX(20px);
+}
+
+.wpte-wpl-set-switch input:focus-visible + .wpte-wpl-set-switch-track {
+	box-shadow: inset 0 0 0 1px var(--wpl-brand-line), 0 0 0 4px var(--wpl-brand-ring);
+}
+
+.wpte-wpl-set-switch:hover input:not(:checked) + .wpte-wpl-set-switch-track {
+	background: #b8bec9;
+}
+
+/* Select and text input */
+
+.wpte-wpl-settings .wpte-wpl-set-select,
+.wpte-wpl-settings .wpte-wpl-set-input {
+	width: 240px;
+	max-width: 100%;
+	min-height: 40px;
+	margin: 0;
+	padding: 8px 12px;
+	font-size: 14px;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+	background-color: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+	box-shadow: var(--wpl-shadow);
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-select {
+	padding-right: 36px;
+	cursor: pointer;
+	-webkit-appearance: none;
+	appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5l5 5 5-5' stroke='%23667085' stroke-width='1.67' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: 18px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-select:hover,
+.wpte-wpl-settings .wpte-wpl-set-input:hover {
+	border-color: #98a2b3;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-select:focus,
+.wpte-wpl-settings .wpte-wpl-set-input:focus {
+	color: var(--wpl-ink);
+	border-color: var(--wpl-brand);
+	outline: none;
+	box-shadow: 0 0 0 4px var(--wpl-brand-ring);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-select:disabled {
+	color: #98a2b3;
+	background-color: #f9fafb;
+	border-color: var(--wpl-line);
+	box-shadow: none;
+	cursor: not-allowed;
+}
+
+/* Shortcode with a Copy button */
+
+.wpte-wpl-set-copy {
+	gap: 8px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-copy .wpte-wpl-set-input {
+	width: 330px;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 12px;
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+	border-color: var(--wpl-brand-line);
+	box-shadow: none;
+}
+
+/* Save status */
+
+.wpte-wpl-set-status {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 12px;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.wpte-wpl-set-status:empty {
+	display: none;
+}
+
+.wpte-wpl-set-status[data-state] {
+	padding: 3px 10px;
+	border-radius: 999px;
+	animation: wpte-wpl-set-fade 0.2s ease;
+}
+
+.wpte-wpl-set-status[data-state="saving"] {
+	color: var(--wpl-ink-2);
+	background: #f2f4f7;
+}
+
+.wpte-wpl-set-status[data-state="saving"]::before {
+	content: "";
+	width: 10px;
+	height: 10px;
+	border: 2px solid #d0d5dd;
+	border-top-color: var(--wpl-brand);
+	border-radius: 50%;
+	animation: wpte-wpl-set-spin 0.7s linear infinite;
+}
+
+.wpte-wpl-set-status[data-state="saved"] {
+	color: var(--wpl-success);
+	background: var(--wpl-success-soft);
+}
+
+.wpte-wpl-set-status[data-state="saved"]::before {
+	content: "";
+	width: 10px;
+	height: 6px;
+	margin-top: -3px;
+	border-left: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: rotate(-45deg);
+}
+
+.wpte-wpl-set-status[data-state="error"] {
+	color: var(--wpl-danger);
+	background: var(--wpl-danger-soft);
+}
+
+@keyframes wpte-wpl-set-spin {
+	to { transform: rotate(360deg); }
+}
+
+@keyframes wpte-wpl-set-fade {
+	from { opacity: 0; transform: translateY(2px); }
+	to { opacity: 1; transform: none; }
+}
+
+/* Pills: license state, Pro */
+
+.wpte-wpl-set-pill {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 12px;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--wpl-ink-2);
+	background: #f2f4f7;
+	border-radius: 999px;
+}
+
+.wpte-wpl-set-pill::before {
+	content: "";
+	width: 6px;
+	height: 6px;
+	background: currentColor;
+	border-radius: 50%;
+}
+
+.wpte-wpl-set-pill.is-active {
+	color: var(--wpl-success);
+	background: var(--wpl-success-soft);
+}
+
+.wpte-wpl-set-pill.is-trial {
+	color: var(--wpl-accent-strong);
+	background: var(--wpl-accent-soft);
+}
+
+.wpte-wpl-set-pill.is-expired {
+	color: var(--wpl-danger);
+	background: var(--wpl-danger-soft);
+}
+
+.wpte-wpl-set-pill.is-pro {
+	gap: 4px;
+	color: var(--wpl-accent-strong);
+	background: var(--wpl-accent-soft);
+}
+
+.wpte-wpl-set-pill.is-pro::before {
+	display: none;
+}
+
+.wpte-wpl-set-pill.is-pro .dashicons {
+	width: 14px;
+	height: 14px;
+	font-size: 14px;
+}
+
+/* License card */
+
+.wpte-wpl-set-license-body {
+	padding: 20px 24px 22px;
+}
+
+.wpte-wpl-set-license.is-free .wpte-wpl-set-license-body,
+.wpte-wpl-set-license.is-expired .wpte-wpl-set-license-body {
+	background: linear-gradient(135deg, #f5f5ff 0%, #ffffff 60%);
+	border-radius: 0 0 var(--wpl-radius) var(--wpl-radius);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-license-facts {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 12px;
+	margin: 0 0 16px;
+}
+
+.wpte-wpl-set-license-facts > div {
+	min-width: 0;
+	padding: 12px 14px;
+	background: #f9fafb;
+	border: 1px solid var(--wpl-line);
+	border-radius: 10px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-license-facts dt {
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--wpl-ink-3);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-license-facts dd {
+	margin: 2px 0 0;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--wpl-ink);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-license-key {
+	overflow: hidden;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 12px !important;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-license-text {
+	font-size: 14px;
+	color: var(--wpl-ink-2);
+}
+
+.wpte-wpl-set-license-note {
+	font-size: 13px;
+	color: var(--wpl-ink-3);
+}
+
+/* Buttons and links */
+
+.wpte-wpl-set-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px 12px;
+	margin-top: 16px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 40px;
+	padding: 9px 18px;
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+	text-decoration: none;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+	box-shadow: var(--wpl-shadow);
+	cursor: pointer;
+	transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-btn .dashicons {
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-btn:hover {
+	color: var(--wpl-brand-strong);
+	border-color: var(--wpl-brand);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-btn.is-primary {
+	color: #ffffff;
+	background: var(--wpl-brand);
+	border-color: var(--wpl-brand);
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08), 0 4px 12px rgba(81, 86, 252, 0.25);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-btn.is-primary:hover {
+	color: #ffffff;
+	background: var(--wpl-brand-strong);
+	border-color: var(--wpl-brand-strong);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-btn:focus,
+.wpte-wpl-settings .wpte-wpl-set-link:focus {
+	outline: none;
+	box-shadow: 0 0 0 4px var(--wpl-brand-ring);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-copy-btn {
+	min-height: 40px;
+	padding: 8px 14px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-link {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--wpl-brand-strong);
+	text-decoration: none;
+	border-radius: 4px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-link:hover {
+	text-decoration: underline;
+}
+
+/* Category pages on the free plan */
+
+.wpte-wpl-set-category.is-locked .wpte-wpl-set-row {
+	opacity: 0.6;
+}
+
+.wpte-wpl-set-upsell {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px 16px;
+	padding: 16px 24px;
+	background: linear-gradient(135deg, var(--wpl-accent-soft) 0%, #f5f5ff 100%);
+	border-top: 1px solid var(--wpl-line);
+	border-radius: 0 0 var(--wpl-radius) var(--wpl-radius);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-upsell p {
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--wpl-ink);
+}
+
+/* Danger zone */
+
+.wpte-wpl-set-danger {
+	border-color: #fecdca;
+}
+
+.wpte-wpl-set-danger .wpte-wpl-set-card-head {
+	border-bottom-color: #fee4e2;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-danger .wpte-wpl-set-card-icon {
+	color: var(--wpl-danger);
+	background: var(--wpl-danger-soft);
+}
+
+.wpte-wpl-set-danger .wpte-wpl-set-row + .wpte-wpl-set-row {
+	border-top-color: #fee4e2;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-danger .wpte-wpl-set-desc a {
+	font-weight: 500;
+	color: var(--wpl-brand-strong);
+	text-decoration: none;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-danger .wpte-wpl-set-desc a:hover {
+	text-decoration: underline;
+}
+
+.wpte-wpl-set-danger .wpte-wpl-set-switch input:checked + .wpte-wpl-set-switch-track {
+	background: #fee4e2;
+	box-shadow: inset 0 0 0 1px #fecdca;
+}
+
+.wpte-wpl-set-danger .wpte-wpl-set-switch input:checked + .wpte-wpl-set-switch-track .wpte-wpl-set-switch-thumb {
+	background: #d92d20;
+	box-shadow: 0 1px 2px rgba(180, 35, 24, 0.25);
+}
+
+.wpte-wpl-set-danger .wpte-wpl-set-switch input:focus-visible + .wpte-wpl-set-switch-track {
+	box-shadow: inset 0 0 0 1px #fecdca, 0 0 0 4px rgba(217, 45, 32, 0.2);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-btn.is-danger {
+	color: var(--wpl-danger);
+	background: var(--wpl-surface);
+	border-color: #fda29b;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-btn.is-danger:hover {
+	color: #ffffff;
+	background: #d92d20;
+	border-color: #d92d20;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-btn.is-danger-solid {
+	color: #ffffff;
+	background: #d92d20;
+	border-color: #d92d20;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-btn.is-danger-solid:hover {
+	color: #ffffff;
+	background: #b42318;
+	border-color: #b42318;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-btn.is-danger:focus,
+.wpte-wpl-settings .wpte-wpl-set-btn.is-danger-solid:focus {
+	box-shadow: 0 0 0 4px rgba(217, 45, 32, 0.25);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-btn:disabled,
+.wpte-wpl-settings .wpte-wpl-set-btn:disabled:hover {
+	color: #98a2b3;
+	background: #f2f4f7;
+	border-color: var(--wpl-line);
+	box-shadow: none;
+	cursor: not-allowed;
+}
+
+/* Confirmation dialog */
+
+.wpte-wpl-settings .wpte-wpl-set-dialog[hidden] {
+	display: none !important;
+}
+
+.wpte-wpl-set-dialog {
+	position: fixed;
+	inset: 0;
+	z-index: 100050;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px;
+}
+
+.wpte-wpl-set-dialog-backdrop {
+	position: absolute;
+	inset: 0;
+	background: rgba(16, 24, 40, 0.55);
+	animation: wpte-wpl-set-fade 0.15s ease;
+}
+
+.wpte-wpl-set-dialog-box {
+	position: relative;
+	width: 100%;
+	max-width: 460px;
+	max-height: calc(100vh - 32px);
+	overflow-y: auto;
+	padding: 28px;
+	background: var(--wpl-surface);
+	border-radius: 16px;
+	box-shadow: 0 24px 48px -12px rgba(16, 24, 40, 0.3);
+	animation: wpte-wpl-set-pop 0.18s ease;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-dialog-icon {
+	box-sizing: content-box;
+	width: 48px;
+	height: 48px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: -8px 0 8px -8px;
+	font-size: 24px;
+	color: var(--wpl-danger);
+	background: var(--wpl-danger-soft);
+	border: 8px solid #fffbfa;
+	border-radius: 50%;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-dialog-icon::before {
+	width: 24px;
+	height: 24px;
+	font-size: 24px;
+	line-height: 24px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-dialog-title {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--wpl-ink);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-dialog-text {
+	margin-top: 8px;
+	font-size: 14px;
+	color: var(--wpl-ink-2);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-dialog-list {
+	margin: 8px 0 0;
+	padding: 12px 14px 12px 32px;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--wpl-ink);
+	list-style: disc;
+	background: #fffbfa;
+	border: 1px solid #fee4e2;
+	border-radius: 10px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-dialog-list li {
+	margin: 2px 0;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-dialog-label {
+	display: block;
+	margin: 20px 0 6px;
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--wpl-ink-2);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-dialog-label code {
+	padding: 1px 6px;
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--wpl-danger);
+	background: var(--wpl-danger-soft);
+	border-radius: 4px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-dialog .wpte-wpl-set-input {
+	width: 100%;
+}
+
+/* The "type DELETE" field in the Danger zone dialog. */
+.wpte-wpl-settings #wpte-wpl-delete-dialog .wpte-wpl-set-input {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	letter-spacing: 0.08em;
+}
+
+.wpte-wpl-settings #wpte-wpl-delete-dialog .wpte-wpl-set-input:focus {
+	border-color: #f04438;
+	box-shadow: 0 0 0 4px rgba(217, 45, 32, 0.2);
+}
+
+/* Non-destructive dialogs (create, clone) use the brand icon. */
+.wpte-wpl-settings .wpte-wpl-set-dialog-icon.is-brand {
+	color: var(--wpl-brand);
+	background: var(--wpl-brand-soft);
+	border-color: #f7f7ff;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-dialog-status {
+	min-height: 20px;
+	margin-top: 10px;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.wpte-wpl-set-dialog-status[data-state="saving"] {
+	color: var(--wpl-ink-2);
+}
+
+.wpte-wpl-set-dialog-status[data-state="saved"] {
+	color: var(--wpl-success);
+}
+
+.wpte-wpl-set-dialog-status[data-state="error"] {
+	color: var(--wpl-danger);
+}
+
+.wpte-wpl-set-dialog-actions {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+	margin-top: 12px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-dialog-actions .wpte-wpl-set-btn {
+	justify-content: center;
+}
+
+body.wpte-wpl-set-dialog-open {
+	overflow: hidden;
+}
+
+@keyframes wpte-wpl-set-pop {
+	from { opacity: 0; transform: translateY(8px) scale(0.98); }
+	to { opacity: 1; transform: none; }
+}
+
+/* Help card */
+
+.wpte-wpl-set-help {
+	padding: 22px;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-links {
+	margin-top: 14px;
+	list-style: none;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-links li {
+	margin: 0;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-links a {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0 -10px;
+	padding: 9px 10px;
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--wpl-ink);
+	text-decoration: none;
+	border-radius: 8px;
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.wpte-wpl-settings .wpte-wpl-set-links a:hover {
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-links a:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--wpl-brand-ring);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-links .dashicons {
+	width: 18px;
+	height: 18px;
+	font-size: 18px;
+	color: var(--wpl-ink-3);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-links a:hover .dashicons {
+	color: var(--wpl-brand);
+}
+
+.wpte-wpl-settings .wpte-wpl-set-links .wpte-wpl-set-ext {
+	width: 14px;
+	height: 14px;
+	margin-left: auto;
+	font-size: 14px;
+	opacity: 0.6;
+}
+
+.wpte-wpl-set-meta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 16px;
+	padding-top: 16px;
+	font-size: 12px;
+	color: var(--wpl-ink-3);
+	border-top: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-set-plan {
+	padding: 2px 10px;
+	font-weight: 600;
+	color: var(--wpl-ink-2);
+	background: #f2f4f7;
+	border-radius: 999px;
+}
+
+.wpte-wpl-set-plan.is-pro {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	color: var(--wpl-success);
+	background: var(--wpl-success-soft);
+}
+
+.wpte-wpl-set-plan.is-pro::before {
+	content: "";
+	width: 6px;
+	height: 6px;
+	background: currentColor;
+	border-radius: 50%;
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+	.wpte-wpl-set-layout {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.wpte-wpl-set-aside {
+		position: static;
+	}
+}
+
+@media (max-width: 782px) {
+	.wpte-wpl-set-autosave {
+		order: 3;
+	}
+
+	.wpte-wpl-set-card-head,
+	.wpte-wpl-set-row,
+	.wpte-wpl-set-license-body,
+	.wpte-wpl-set-upsell {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	.wpte-wpl-set-card-head {
+		flex-wrap: wrap;
+	}
+
+	.wpte-wpl-set-row {
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.wpte-wpl-set-row-text {
+		flex-basis: 100%;
+		max-width: none;
+	}
+
+	.wpte-wpl-set-row-control {
+		width: 100%;
+		justify-content: space-between;
+		flex-direction: row-reverse;
+	}
+
+	.wpte-wpl-settings .wpte-wpl-set-select,
+	.wpte-wpl-settings .wpte-wpl-set-input,
+	.wpte-wpl-settings .wpte-wpl-set-copy .wpte-wpl-set-input {
+		width: 100%;
+	}
+
+	.wpte-wpl-set-copy {
+		flex-direction: row;
+	}
+
+	.wpte-wpl-settings .wpte-wpl-set-copy .wpte-wpl-set-input {
+		flex: 1;
+		min-width: 0;
+	}
+}

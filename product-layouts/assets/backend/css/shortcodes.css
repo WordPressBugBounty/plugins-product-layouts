@@ -1,0 +1,552 @@
+/*
+ * Product Layouts: Shortcode List page.
+ * Same layout as the Flipbox list page, in the Product Layouts colors.
+ * Loaded after account.css (tokens, hero) and settings.css (buttons, select,
+ * dialogs); the wrapper carries .wpte-wpl-account, .wpte-wpl-settings and
+ * .wpte-wpl-shortcodes. admin.css also loads here, so every rule is scoped.
+ */
+
+.wpte-wpl-account.wpte-wpl-shortcodes {
+	max-width: 1480px;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-acc-title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.wpte-wpl-sc-count {
+	padding: 2px 10px;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.5;
+	letter-spacing: 0;
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+	border-radius: 999px;
+}
+
+.wpte-wpl-sc-hero-actions {
+	flex: none;
+	display: flex;
+	gap: 10px;
+}
+
+/* Toolbar: search and page size */
+
+.wpte-wpl-sc-card {
+	overflow: hidden;
+}
+
+.wpte-wpl-sc-toolbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 16px 20px;
+	border-bottom: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-sc-search {
+	position: relative;
+	display: block;
+	width: 320px;
+	max-width: 100%;
+}
+
+.wpte-wpl-sc-search .dashicons {
+	position: absolute;
+	top: 50%;
+	left: 12px;
+	width: 18px;
+	height: 18px;
+	font-size: 18px;
+	color: #98a2b3;
+	transform: translateY(-50%);
+	pointer-events: none;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-search input {
+	display: block;
+	width: 100%;
+	height: 40px;
+	margin: 0;
+	padding: 0 12px 0 38px;
+	font-size: 14px;
+	color: var(--wpl-ink);
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+	box-shadow: var(--wpl-shadow);
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-search input:focus {
+	border-color: var(--wpl-brand);
+	outline: none;
+	box-shadow: 0 0 0 4px var(--wpl-brand-ring);
+}
+
+.wpte-wpl-sc-per-page {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--wpl-ink-3);
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-per-page .wpte-wpl-set-select {
+	width: auto;
+	min-height: 36px;
+	padding: 6px 32px 6px 10px;
+	font-size: 13px;
+}
+
+/* Table */
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-table {
+	width: 100%;
+	margin: 0;
+	border: 0;
+	border-collapse: collapse;
+	background: none;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-table.is-empty {
+	display: none;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-table thead th {
+	padding: 12px 20px;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-align: left;
+	text-transform: uppercase;
+	color: var(--wpl-ink-3);
+	background: #f9fafb;
+	border: 0;
+	border-bottom: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-table tbody tr {
+	background: none;
+	transition: background-color 0.15s ease, opacity 0.25s ease;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-table tbody tr[hidden] {
+	display: none;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-table tbody tr:not([hidden]) ~ tr:not([hidden]) td {
+	border-top: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-table tbody tr:hover {
+	background: #fcfcfd;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-table tbody tr.is-removing {
+	opacity: 0;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-table td {
+	padding: 16px 20px;
+	vertical-align: middle;
+	border: 0;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-title {
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--wpl-ink);
+	text-decoration: none;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-title:hover {
+	color: var(--wpl-brand-strong);
+}
+
+.wpte-wpl-sc-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px 10px;
+	margin-top: 4px;
+	font-size: 12px;
+	color: var(--wpl-ink-3);
+}
+
+.wpte-wpl-sc-id {
+	font-variant-numeric: tabular-nums;
+}
+
+.wpte-wpl-sc-template {
+	padding: 1px 8px;
+	font-weight: 600;
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+	border-radius: 999px;
+}
+
+/* Shortcode chip and copy */
+
+.wpte-wpl-sc-code {
+	display: inline-flex;
+	align-items: center;
+	max-width: 100%;
+	background: #f9fafb;
+	border: 1px solid var(--wpl-line);
+	border-radius: 8px;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-code code {
+	overflow: hidden;
+	padding: 7px 12px;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 12.5px;
+	color: var(--wpl-ink);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	background: none;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-copy {
+	flex: none;
+	align-self: stretch;
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	margin: 0;
+	padding: 0 12px;
+	font-family: inherit;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--wpl-ink-2);
+	background: var(--wpl-surface);
+	border: 0;
+	border-left: 1px solid var(--wpl-line);
+	border-radius: 0 8px 8px 0;
+	cursor: pointer;
+	transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-copy .dashicons {
+	width: 14px;
+	height: 14px;
+	font-size: 14px;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-copy:hover {
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-copy.is-copied,
+.wpte-wpl-shortcodes .wpte-wpl-sc-copy-php.is-copied {
+	color: var(--wpl-success);
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-copy.is-copied {
+	background: var(--wpl-success-soft);
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-copy-php {
+	display: block;
+	margin: 6px 0 0;
+	padding: 0;
+	font-family: inherit;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--wpl-ink-3);
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-copy-php:hover {
+	color: var(--wpl-brand-strong);
+	text-decoration: underline;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-copy:focus-visible,
+.wpte-wpl-shortcodes .wpte-wpl-sc-copy-php:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--wpl-brand-ring);
+}
+
+/* Row actions: soft tinted buttons with icon and label */
+
+.wpte-wpl-sc-actions-col {
+	width: 1%;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-table td.wpte-wpl-sc-actions {
+	white-space: nowrap;
+}
+
+.wpte-wpl-sc-actions-wrap {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-action {
+	--sc-fg: var(--wpl-ink-2);
+	--sc-bg: #f2f4f7;
+	--sc-bg-hover: #e4e7ec;
+	--sc-ring: rgba(102, 112, 133, 0.25);
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	height: 34px;
+	margin: 0;
+	padding: 0 12px;
+	font-family: inherit;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1;
+	color: var(--sc-fg);
+	text-decoration: none;
+	background: var(--sc-bg);
+	border: 0;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-action .dashicons {
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-action:hover {
+	color: var(--sc-fg);
+	background: var(--sc-bg-hover);
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-action:focus {
+	outline: none;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-action:focus-visible {
+	box-shadow: 0 0 0 3px var(--sc-ring);
+}
+
+/* Edit in the logo's indigo, Clone in its orange. */
+.wpte-wpl-shortcodes .wpte-wpl-sc-action.is-edit {
+	--sc-fg: var(--wpl-brand-strong);
+	--sc-bg: var(--wpl-brand-soft);
+	--sc-bg-hover: #e0e2ff;
+	--sc-ring: var(--wpl-brand-ring);
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-action.is-clone {
+	--sc-fg: var(--wpl-accent-strong);
+	--sc-bg: var(--wpl-accent-soft);
+	--sc-bg-hover: #ffe8c7;
+	--sc-ring: rgba(255, 155, 15, 0.3);
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-action.is-export {
+	--sc-fg: var(--wpl-success);
+	--sc-bg: var(--wpl-success-soft);
+	--sc-bg-hover: #d1fadf;
+	--sc-ring: rgba(23, 178, 106, 0.25);
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-action.is-delete {
+	--sc-fg: var(--wpl-danger);
+	--sc-bg: var(--wpl-danger-soft);
+	--sc-bg-hover: #fee4e2;
+	--sc-ring: rgba(217, 45, 32, 0.25);
+}
+
+/* No matches, footer and pagination */
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-no-match {
+	margin: 0;
+	padding: 40px 20px;
+	font-size: 14px;
+	text-align: center;
+	color: var(--wpl-ink-3);
+}
+
+.wpte-wpl-sc-footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 14px 20px;
+	border-top: 1px solid var(--wpl-line);
+}
+
+.wpte-wpl-sc-info {
+	font-size: 13px;
+	color: var(--wpl-ink-3);
+}
+
+.wpte-wpl-sc-pages {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-page {
+	min-width: 34px;
+	height: 34px;
+	margin: 0;
+	padding: 0 10px;
+	font-family: inherit;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--wpl-ink-2);
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+	cursor: pointer;
+	transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-page:hover:not(:disabled) {
+	color: var(--wpl-brand-strong);
+	border-color: var(--wpl-brand);
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-page.is-current {
+	color: #ffffff;
+	background: var(--wpl-brand);
+	border-color: var(--wpl-brand);
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-page.is-current:hover {
+	color: #ffffff;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-page:disabled {
+	color: #d0d5dd;
+	background: none;
+	border-color: transparent;
+	cursor: default;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-page:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--wpl-brand-ring);
+}
+
+/* Empty state */
+
+.wpte-wpl-sc-empty {
+	padding: 48px 24px;
+	text-align: center;
+}
+
+.wpte-wpl-sc-empty-icon.dashicons {
+	width: 56px;
+	height: 56px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 14px;
+	font-size: 28px;
+	color: var(--wpl-brand);
+	background: var(--wpl-brand-soft);
+	border-radius: 14px;
+}
+
+.wpte-wpl-sc-empty .wpte-wpl-set-actions {
+	justify-content: center;
+}
+
+/* Dialogs */
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-dialog-code {
+	margin-top: 12px;
+}
+
+.wpte-wpl-shortcodes .wpte-wpl-sc-dialog-code code {
+	display: inline-block;
+	padding: 6px 10px;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 12.5px;
+	color: var(--wpl-ink);
+	background: #f9fafb;
+	border: 1px solid var(--wpl-line);
+	border-radius: 8px;
+}
+
+/* Responsive */
+
+@media (max-width: 1180px) {
+	.wpte-wpl-sc-actions-wrap {
+		flex-wrap: wrap;
+		justify-content: flex-start;
+	}
+
+	.wpte-wpl-shortcodes .wpte-wpl-sc-table td.wpte-wpl-sc-actions {
+		white-space: normal;
+	}
+}
+
+@media (max-width: 782px) {
+	.wpte-wpl-sc-hero-actions {
+		order: 3;
+		width: 100%;
+	}
+
+	.wpte-wpl-sc-hero-actions .wpte-wpl-set-btn {
+		flex: 1;
+		justify-content: center;
+	}
+
+	.wpte-wpl-sc-toolbar {
+		flex-wrap: wrap;
+		padding: 14px 16px;
+	}
+
+	.wpte-wpl-sc-search {
+		width: 100%;
+	}
+
+	/* One card per layout instead of table columns. */
+	.wpte-wpl-shortcodes .wpte-wpl-sc-table thead {
+		display: none;
+	}
+
+	.wpte-wpl-shortcodes .wpte-wpl-sc-table,
+	.wpte-wpl-shortcodes .wpte-wpl-sc-table tbody,
+	.wpte-wpl-shortcodes .wpte-wpl-sc-table tr:not([hidden]),
+	.wpte-wpl-shortcodes .wpte-wpl-sc-table td {
+		display: block;
+		width: 100%;
+	}
+
+	.wpte-wpl-shortcodes .wpte-wpl-sc-table td {
+		padding: 0 16px 12px;
+	}
+
+	.wpte-wpl-shortcodes .wpte-wpl-sc-table td.wpte-wpl-sc-name {
+		padding-top: 16px;
+	}
+
+	.wpte-wpl-shortcodes .wpte-wpl-sc-table td.wpte-wpl-sc-actions {
+		padding-bottom: 16px;
+	}
+
+	.wpte-wpl-shortcodes .wpte-wpl-sc-table tbody tr:not([hidden]) ~ tr:not([hidden]) td {
+		border-top: 0;
+	}
+
+	.wpte-wpl-shortcodes .wpte-wpl-sc-table tbody tr:not([hidden]) ~ tr:not([hidden]) {
+		border-top: 1px solid var(--wpl-line);
+	}
+
+	.wpte-wpl-sc-footer {
+		padding: 14px 16px;
+	}
+}

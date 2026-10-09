@@ -1,88 +1,122 @@
+/**
+ * Product Layouts: layout type page (Create New).
+ * "Use this design" asks for a name, then sends the design's saved settings
+ * (the hidden textarea next to its preview) to wpte_create_new_layout and
+ * opens the new layout in the editor.
+ */
 ;(function ($) {
 
-    function Product_Layout_Create_New( name, style_name, rawdata, stylesheet) {
+    var $dialog   = $('#wpte-product-layout-create-modal'),
+        $form     = $('#wpte-wpl-create-modal-form'),
+        $name     = $('#style-name'),
+        $status   = $dialog.find('.wpte-wpl-set-dialog-status'),
+        lastFocus = null,
+        busy      = false;
+
+    if ( ! $dialog.length ) {
+        return;
+    }
+
+    function setStatus( state ) {
+        if ( state ) {
+            $status.attr('data-state', state).text( $status.attr('data-' + state) );
+        } else {
+            $status.removeAttr('data-state').text('');
+        }
+    }
+
+    function setBusy( on ) {
+        busy = on;
+        $form.find('button, input').prop('disabled', on);
+    }
+
+    function openDialog( trigger ) {
+        lastFocus = trigger;
+        setStatus('');
+        $dialog.prop('hidden', false);
+        $('body').addClass('wpte-wpl-set-dialog-open');
+        setTimeout(function () {
+            $name.trigger('focus')[0].select();
+        }, 50);
+    }
+
+    function closeDialog() {
+        if ( busy ) {
+            return;
+        }
+        $dialog.prop('hidden', true);
+        $('body').removeClass('wpte-wpl-set-dialog-open');
+        if ( lastFocus ) {
+            lastFocus.focus();
+        }
+    }
+
+    $('.wpte-product-layout-template-create').on('click', function (e) {
+        e.preventDefault();
+        $('#wptestyledata').val( $(this).attr('layouts-data') );
+        $name.val( $(this).attr('data-name') || '' );
+        openDialog( this );
+    });
+
+    $dialog.on('click', '[data-wpl-close]', closeDialog);
+    $(document).on('keydown', function (e) {
+        if ( 'Escape' === e.key && ! $dialog.prop('hidden') ) {
+            closeDialog();
+        }
+    });
+
+    $form.on('submit', function (e) {
+        e.preventDefault();
+        var name = $.trim( $name.val() ),
+            data;
+
+        if ( busy ) {
+            return;
+        }
+        if ( ! name ) {
+            $name.trigger('focus');
+            return;
+        }
+
+        // getElementById, not a jQuery selector: the id is only ever looked up, never parsed.
+        var source = document.getElementById( $('#wptestyledata').val() );
+        try {
+            data = source ? JSON.parse( source.value ) : null;
+        } catch ( err ) {
+            data = null;
+        }
+        if ( ! data || ! data.style ) {
+            setStatus('error');
+            return;
+        }
+
+        function failed() {
+            setBusy( false );
+            setStatus('error');
+        }
+
+        setBusy( true );
+        setStatus('saving');
 
         $.ajax({
             type: 'POST',
             url : wpteLayout.ajaxUrl,
             data: {
-                action: "wpte_create_new_layout",
-                _nonce: wpteLayout.wpte_nonce, 
+                action: 'wpte_create_new_layout',
+                _nonce: wpteLayout.wpte_nonce,
                 name: name,
-                style_name: style_name,
-                rawdata: rawdata,
-                stylesheet: stylesheet,
-            },
-            beforeSend: function () {
-               $("#create-loader").addClass("create-loader");
-            },
-            success: function(response){
-                if ( response.success ) {
-                    setTimeout(function(){ 
-                        document.location.href = response.data.url;
-                    }, 2000);
-                } 
-            },
-            complete: function(){
-               
-            },
-            error: function(data) {
-               
+                style_name: data.style.style_name,
+                rawdata: data.style.rawdata,
+                stylesheet: data.style.stylesheet,
             }
-
-        }); 
-    }
-
-    function get_product_layout_by_id( id ) {
-
-        $.ajax({
-            type: 'POST',
-            url : wpteLayout.ajaxUrl,
-            data: {
-                action: "wpte_clone_layout",
-                _nonce: wpteLayout.wpte_nonce, 
-                id: id
-            },
-            beforeSend: function () {
-
-            },
-            success: function(response){
-                $('.wpte-wpl-list-data-table').append(`<textarea style="display:none" id="wptestyle${id}data">${response}</textarea>`)
-            },
-            error: function(data) {
-                console.log("Error");
+        }).done(function ( response ) {
+            if ( response && response.success && response.data && response.data.url ) {
+                setStatus('saved');
+                document.location.href = response.data.url;
+                return;
             }
-
-        })
-    }
-
-    $(".wpte-product-layout-template-create").on("click", function (e) {
-        e.preventDefault();
-        $('#style-name').val('');
-        $('#wptestyledata').val($(this).attr('layouts-data'));
-        $("#wpte-product-layout-create-modal").modal("show");
+            failed();
+        }).fail( failed );
     });
 
-    $(".wpte-shortcode-clone").on("click", function (e) {
-        e.preventDefault();
-        var id = $(this).attr('datavalue');
-        get_product_layout_by_id( id );
-        $('#style-name').val('');
-        $('#wptestyledata').val($(this).attr('layouts-data'));
-        $("#wpte-product-layout-create-modal").modal("show");
-    });
-
-    $("#wpte-wpl-create-modal-form").submit(function (e) {
-        e.preventDefault();
-        $a = $('#wptestyledata').val();
-        var s_name = $('#style-name').val(),
-            data = JSON.parse($('#' + $a).val()),
-            name = s_name,
-            style_name = data.style.style_name,
-            rawdata = data.style.rawdata,
-            stylesheet = data.style.stylesheet;
-
-        Product_Layout_Create_New( name, style_name, rawdata, stylesheet);
-    });
-
-})(jQuery)
+})(jQuery);

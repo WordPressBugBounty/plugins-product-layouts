@@ -3,7 +3,7 @@
         'name' => 'wpkin/product-layouts',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'c137df73902938b7c9ec8be13f3601d198e6cd9b',
+        'reference' => 'dc16bcabd0ed314cc46466b5238ac2257bd9f877',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'freemius/wordpress-sdk' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '241fbfc91151f85d8ebeb75343caf29bda1d3208',
+            'reference' => 'fa43eb92ae9dffa0d9f5ae11b5a1739bd7222308',
             'type' => 'library',
             'install_path' => __DIR__ . '/../freemius/wordpress-sdk',
             'aliases' => array(
@@ -24,7 +24,7 @@
         'wpkin/product-layouts' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'c137df73902938b7c9ec8be13f3601d198e6cd9b',
+            'reference' => 'dc16bcabd0ed314cc46466b5238ac2257bd9f877',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
