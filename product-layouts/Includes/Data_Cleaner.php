@@ -37,9 +37,9 @@ class Data_Cleaner {
 	const SETTINGS = [ 'wpte_pl_settings' ];
 
 	/**
-	 * Internal options (install state).
+	 * Internal options (install state and the review notice dismissal).
 	 */
-	const OPTIONS = [ 'WPTE_wpl_installed', 'WPTE_wpl_version', 'WPTE_wpl_activation_redirect' ];
+	const OPTIONS = [ 'WPTE_wpl_installed', 'WPTE_wpl_version', 'WPTE_wpl_activation_redirect', 'wpte_wpl_review_nobug', 'wpte_wpl_review_snooze_until' ];
 
 	/**
 	 * Cached header menu.

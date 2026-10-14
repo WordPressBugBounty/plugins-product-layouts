@@ -323,6 +323,12 @@
             wpte_editor_update_form(id, data, selector, action, saving, saved);
         });
 
+        // Footer Reload: throw away unsaved changes by loading the saved layout again.
+        $("#wpte-reload-editor").on('click', function (e) {
+            e.preventDefault();
+            window.location.reload();
+        });
+
         // Header shortcode name change (new header layout)
         $("#addonsstylenamechange").on('click', function(e){
             e.preventDefault();
@@ -1303,9 +1309,14 @@
         
         function Wpte_copy_shortcode(){
             $(document.body).on('click', '.wpte-copy-shortcode', function(e){
-                e.preventDefault();
                 var $btn = $(this);
                 var $pill = $(this).closest('.wpte-shortcode-inline').find('.wpte-shortcode-pill');
+                // The preview header's copy button also carries this class and is handled by
+                // the .wpte-copy-btn handler above; without a pill this one would copy an empty text over it.
+                if ( ! $pill.length ) {
+                    return;
+                }
+                e.preventDefault();
                 var text = $pill.attr('data-shortcode') || $pill.text().trim();
                 text = text.replace(/\\"/g, '"');
                 if (!/id\s*=\s*"/.test(text)) {

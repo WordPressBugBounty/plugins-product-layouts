@@ -3,9 +3,9 @@
 Contributors: oxilab, richardmallick
 Tags: product showcase, product list, product table, product gallery, product grid
 Requires at least: 6.2
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 License: GPLv2 or later
 License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -122,11 +122,32 @@ Yes, export JSON from Shortcode List and import it from the Import page.
 
 == Screenshots ==
 
-1. Dashboard Settings Page
-2. How to use per product
-3. A demo layout
+1. The layout editor: change any setting and the live preview updates as you go. Hover a product to see its compare, quick view and cart buttons.
+2. Pick a layout type to start from: General, Call To Action, Product Table, Product List, Caption and Flipbox, plus Product Tabs, Carousel and Filter & Sorting in Pro.
+3. Every layout type comes with ready made designs, shown with your own products.
+4. Give your new layout a name, then the editor opens.
+5. The Style tab sets colors, typography and spacing for every part of the product card.
+6. Check how your layout looks on desktop, tablet and mobile before you add it to a page.
+7. Quick View lets shoppers see a product and add it to the cart without leaving the page.
+8. Shoppers can compare products side by side: price, availability, description and SKU.
+9. The Shortcode List: copy a layout's shortcode or PHP code, or edit, clone, export and delete it.
+10. Show your own layout and filter on WooCommerce category pages (Pro).
 
 == Changelog ==
+
+= 1.4.6 =
+* Security: Quick View no longer shows draft, pending, scheduled, private or password-protected products to visitors who are not allowed to see them. Published products work as before.
+* Security: The product filter, pagination and "Load more" requests now accept only sensible product counts from visitors, so nobody can ask the store for its whole catalog in one request.
+* Security: A layout's CSS can no longer close its style tag on the storefront, so CSS from an imported layout file can't run scripts.
+* Security: Importing a layout no longer saves the uploaded file in the plugin folder. The file is read directly and never stored.
+* Security: The layout editor's live preview request now also checks that the user is an administrator.
+* Fix: Product filter, pagination, "Load more" and compare requests no longer cause a critical error when the layout was deleted or the compare cookie is damaged.
+* Fix: Creating or importing a layout whose CSS lacks the layout's wrapper class no longer garbles that CSS.
+* Fix: The Quick View stock badge read "15In Stock". It now reads "15 In Stock".
+* Fix: The Account page no longer shows the Billing card when the license belongs to a different Freemius account, since editing it changed the connected account's billing details instead of the license owner's. Free localhost licenses now say they have no payments or invoices.
+* Update: Redesigned the layout editor: a cleaner top bar, the layout name above the settings, Content, Style and Advanced as tabs, settings grouped in cards, and a Reload button next to Save. The live preview, all settings and how they are saved are unchanged.
+* Fix: The copy button next to the shortcode in the layout editor copied nothing. It now copies the shortcode.
+* Fix: "Don't Show Again" and "Already Given" on the review notice now hide it for good. The choice was only saved in the browser, so the notice came back after logging out, in another browser or when cookies were cleared. It is now saved on the site, and the notice only shows to administrators.
 
 = 1.4.5 =
 * Update: Redesigned the Account page with the plugin header menu, a page header and a card layout in the Product Layouts colors, and restyled the license, license key, change user and email dialogs to match.

@@ -55,7 +55,12 @@ class QuickView {
 			<div class="wpte-quick-view-content-area">
 				<?php if ( $in_stock || get_post_meta( $product_id, '_stock_status', true ) === 'instock' ) { ?>
 					<div class="wpte-quick-view-stock">
-						<?php echo wp_kses_post( $in_stock ) . esc_html__( 'In Stock', 'product-layouts' ); ?>
+						<?php
+						// "15 In Stock": the count only when it's a positive number, with a space before the label.
+						$stock_count = '' !== $in_stock ? wc_stock_amount( $in_stock ) : 0;
+						echo $stock_count > 0 ? esc_html( $stock_count ) . ' ' : '';
+						echo esc_html__( 'In Stock', 'product-layouts' );
+						?>
 					</div>
 					<?php
 				}

@@ -43,6 +43,11 @@ class Menu {
 		if ( isset( $_GET['page'] ) && 'product-layouts' === $_GET['page'] && ! isset( $_GET['styleid'] ) ) {
 			$classes .= ' wpte-wpl-account-page';
 		}
+		// The layout editor: editor-skin.css only ever applies under this class.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['page'], $_GET['layouts'], $_GET['styleid'] ) && 'product-layouts' === $_GET['page'] ) {
+			$classes .= ' wpte-wpl-editor';
+		}
 		return $classes;
 	}
 

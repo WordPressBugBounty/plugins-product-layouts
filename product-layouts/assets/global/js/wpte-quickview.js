@@ -18,6 +18,11 @@
             Quick_view_popup(product_id, This, true);
             return;
           }
+          // Product not found or not viewable: open nothing instead of an empty popup.
+          if ( ! response || ! response.success || ! response.data || ! response.data.data ) {
+            This.removeClass('loading');
+            return;
+          }
           $('.wpte-popup-display').addClass('wpte-popup-display-block');
           $('.wpte-popup-display-block').append(response.data.data);
           $('.wpte-quick-view-wrapper .woocommerce div.product .wpte_quick_view_product_addtocart_button_container form.cart div.quantity').append(`<div class='wpte-quick-view-quantity-minus'>-</div><div class='wpte-quick-view-quantity-plus'>+</div>`);

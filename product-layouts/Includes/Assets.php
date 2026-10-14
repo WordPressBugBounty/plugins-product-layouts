@@ -108,6 +108,8 @@ class Assets
 			wp_enqueue_style('wpte-icon-picker', WPTE_WPL_ASSETS . 'lib/iconpicker/fontawesome-iconpicker.css', null, filemtime(WPTE_WPL_PATH . 'assets/lib/iconpicker/fontawesome-iconpicker.css'));
 			wp_enqueue_style('wpte-nouislider-style', WPTE_WPL_ASSETS . 'lib/nouislider/nouislider.css', null, filemtime(WPTE_WPL_PATH . 'assets/lib/nouislider/nouislider.css'));
 			wp_enqueue_style('wpte-single-layout-editor', WPTE_WPL_ASSETS . 'backend/css/wpte-single-layout-editor.css', null, filemtime(WPTE_WPL_PATH . 'assets/backend/css/wpte-single-layout-editor.css'));
+			// Visual layer of the editor, scoped to body.wpte-wpl-editor (Admin\Menu::status_body_class()).
+			wp_enqueue_style('wpte-wpl-editor-skin', WPTE_WPL_ASSETS . 'backend/css/editor-skin.css', ['wpte-single-layout-editor'], filemtime(WPTE_WPL_PATH . 'assets/backend/css/editor-skin.css'));
 		}
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -269,6 +271,16 @@ class Assets
 				'button_url'  => $popup_data[4],
 			]
 		);
+		if (\WPTE_PRODUCT_LAYOUT\Includes\Admin\Notice::review_notice_due()) {
+			wp_localize_script(
+				'wpte-global-admin-js',
+				'wpteReview',
+				[
+					'ajaxUrl' => admin_url('admin-ajax.php'),
+					'nonce'   => wp_create_nonce('wpte-review-notice'),
+				]
+			);
+		}
 	}
 
 	/**

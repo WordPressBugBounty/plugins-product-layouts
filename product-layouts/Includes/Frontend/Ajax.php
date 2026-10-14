@@ -60,6 +60,83 @@ class Ajax {
 	}
 
 	/**
+	 * Most products a visitor may ask for per page. The filter offers 10, 20 and 30.
+	 */
+	const MAX_PER_PAGE = 100;
+
+	/**
+	 * Most products "Load more" may return at once. Each click asks for all
+	 * products loaded so far, so this is far above what shoppers reach.
+	 */
+	const MAX_LOAD_MORE = 1000;
+
+	/**
+	 * Loads a saved layout and its frontend class, or stops with an error,
+	 * so an unknown or deleted layout id can't cause a fatal error.
+	 *
+	 * @since 1.4.6
+	 * @param int $layoutid Layout id from the request.
+	 * @return array The layout row and the layout object.
+	 */
+	private function load_layout( $layoutid ) {
+		global $wpdb;
+		$dbData    = $layoutid ? $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . 'wpte_product_layout_style WHERE id = %d ', $layoutid ), ARRAY_A ) : null;
+		$StyleName = $dbData ? explode( '-', ucfirst( (string) $dbData['style_name'] ) ) : [];
+		$cls       = isset( $StyleName[1] ) ? '\WPTE_PRODUCT_LAYOUT\Layouts\\' . $StyleName[0] . '\Frontend\Layout' . $StyleName[1] : '';
+
+		if ( ! $cls || ! class_exists( $cls ) || ! method_exists( $cls, 'layout_render' ) ) {
+			wp_send_json_error( null, 400 );
+		}
+
+		return [ $dbData, new $cls( [ 'id' => $dbData['id'] ], 'admin' ) ];
+	}
+
+	/**
+	 * A product count sent by the visitor: a whole number from 1 to $max,
+	 * or '' (use the layout's own setting) for anything else, such as -1 for "all".
+	 *
+	 * @since 1.4.6
+	 * @param mixed $value Value from the request.
+	 * @param int   $max   Upper limit.
+	 * @return int|string
+	 */
+	private function visitor_count( $value, $max ) {
+		$value = is_scalar( $value ) ? (int) $value : 0;
+		return $value > 0 ? min( $value, $max ) : '';
+	}
+
+	/**
+	 * Whether the current visitor may see this product, by WordPress' own rules.
+	 *
+	 * Published products are public, unless password protected and the
+	 * password has not been entered. Drafts, pending, scheduled and private
+	 * products need the matching capability (read_post maps to edit_post for
+	 * unpublished products and read_private_products for private ones).
+	 * A variation is checked through its parent product.
+	 *
+	 * @since 1.4.6
+	 * @param \WC_Product $product Product to check.
+	 * @return bool
+	 */
+	private function can_view_product( $product ) {
+		$post_id = $product->is_type( 'variation' ) ? $product->get_parent_id() : $product->get_id();
+		if ( ! $post_id || 'product' !== get_post_type( $post_id ) ) {
+			return false;
+		}
+		if ( current_user_can( 'edit_post', $post_id ) ) {
+			return true;
+		}
+		$status = get_post_status( $post_id );
+		if ( 'publish' === $status ) {
+			return ! post_password_required( $post_id );
+		}
+		if ( 'private' === $status ) {
+			return current_user_can( 'read_post', $post_id );
+		}
+		return false;
+	}
+
+	/**
 	 * Method wpte_quick_view_popup.
 	 */
 	public function wpte_quick_view_popup() {
@@ -76,7 +153,8 @@ class Ajax {
 
 		$product = wc_get_product( $product_id );
 
-		if ( ! $product ) {
+		// Same answer for "not found" and "not allowed", so nobody can probe which IDs exist.
+		if ( ! $product || ! $this->can_view_product( $product ) ) {
 			wp_send_json_error();
 		}
 
@@ -165,6 +243,7 @@ class Ajax {
 
 		$_ids = filter_input( INPUT_COOKIE, 'wpte_product_compare_id', FILTER_SANITIZE_STRING );
 		$ids  = isset( $_COOKIE['wpte_product_compare_id'] ) ? json_decode( $_ids ) : [];
+		$ids  = is_array( $ids ) ? $ids : [];
 
 		if ( ! in_array( $product_id, $ids ) ) {
 			$this->products_list[] = absint( $product_id );
@@ -205,6 +284,7 @@ class Ajax {
 		if ( isset( $_COOKIE['wpte_product_compare_id'] ) ) {
 			$_ids        = filter_input( INPUT_COOKIE, 'wpte_product_compare_id', FILTER_SANITIZE_STRING );
 			$product_ids = isset( $_COOKIE['wpte_product_compare_id'] ) ? json_decode( $_ids ) : [];
+			$product_ids = is_array( $product_ids ) ? $product_ids : [];
 
 			if ( ! in_array( $product_id, $product_ids ) ) {
 				if ( $product_ids ) {
@@ -265,6 +345,7 @@ class Ajax {
 
 		$_ids = filter_input( INPUT_COOKIE, 'wpte_product_compare_id', FILTER_SANITIZE_STRING );
 		$ids  = isset( $_COOKIE['wpte_product_compare_id'] ) ? json_decode( $_ids ) : [];
+		$ids  = is_array( $ids ) ? $ids : [];
 
 		if ( in_array( $product_id, $ids ) ) {
 			$key = array_search( $product_id, $ids );
@@ -311,18 +392,14 @@ class Ajax {
 			$this->send_nonce_expired();
 		}
 
-		global $wpdb;
 		$ids            = isset( $_POST['id'] ) ? filter_input( INPUT_POST, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
 		$layoutid       = isset( $_POST['layoutid'] ) ? intval( $_POST['layoutid'] ) : '';
 		$data           = ! empty( $_POST['data'] ) ? filter_input( INPUT_POST, 'data', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
 		$wpte_attribute = ! empty( $_POST['wpte_attribute'] ) ? filter_input( INPUT_POST, 'wpte_attribute', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
+		$ids            = is_array( $ids ) ? $ids : [];
 
-		$user      = 'admin';
-		$dbData    = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . 'wpte_product_layout_style WHERE id = %d ', $layoutid ), ARRAY_A );
-		$StyleName = explode( '-', ucfirst( $dbData['style_name'] ) );
-
-		$cls     = '\WPTE_PRODUCT_LAYOUT\Layouts\\' . $StyleName[0] . '\Frontend\Layout' . $StyleName[1];
-		$clas = new $cls( [ 'id' => $dbData['id'] ], 'admin' );
+		$user = 'admin';
+		list( $dbData, $clas ) = $this->load_layout( $layoutid );
 
 		$settings = json_decode( $dbData['rawdata'], true );
 
@@ -360,6 +437,7 @@ class Ajax {
 				$attributes[ $wpte_attribute[ $id ] ] = $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_attribute_' . $id ];
 			}
 		}
+		$per_page = $this->visitor_count( $per_page, self::MAX_PER_PAGE );
 
 		if ( $sort_by ) {
 			$settings['wpte_product_layout_product_sort_by'] = $sort_by;
@@ -429,16 +507,11 @@ class Ajax {
 			$this->send_nonce_expired();
 		}
 
-		global $wpdb;
 		$catid    = isset( $_POST['catid'] ) ? intval( $_POST['catid'] ) : '';
 		$layoutid = isset( $_POST['layoutid'] ) ? intval( $_POST['layoutid'] ) : '';
 
-		$user      = 'admin';
-		$dbData    = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . 'wpte_product_layout_style WHERE id = %d ', $layoutid ), ARRAY_A );
-		$StyleName = explode( '-', ucfirst( $dbData['style_name'] ) );
-
-		$cls     = '\WPTE_PRODUCT_LAYOUT\Layouts\\' . $StyleName[0] . '\Frontend\Layout' . $StyleName[1];
-		$clas = new $cls( [ 'id' => $dbData['id'] ], 'admin' );
+		$user = 'admin';
+		list( $dbData, $clas ) = $this->load_layout( $layoutid );
 
 		$settings = json_decode( $dbData['rawdata'], true );
 
@@ -469,18 +542,14 @@ class Ajax {
 			$this->send_nonce_expired();
 		}
 
-		global $wpdb;
 		$ids      = isset( $_POST['id'] ) ? filter_input( INPUT_POST, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
 		$page_id  = isset( $_POST['page_id'] ) ? intval( $_POST['page_id'] ) : '';
 		$layoutid = isset( $_POST['layoutid'] ) ? intval( $_POST['layoutid'] ) : '';
 		$data     = ! empty( $_POST['data'] ) ? filter_input( INPUT_POST, 'data', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
+		$ids      = is_array( $ids ) ? $ids : [];
 
-		$user      = 'admin';
-		$dbData    = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . 'wpte_product_layout_style WHERE id = %d ', $layoutid ), ARRAY_A );
-		$StyleName = explode( '-', ucfirst( $dbData['style_name'] ) );
-
-		$cls     = '\WPTE_PRODUCT_LAYOUT\Layouts\\' . $StyleName[0] . '\Frontend\Layout' . $StyleName[1];
-		$clas = new $cls( [ 'id' => $dbData['id'] ], 'admin' );
+		$user = 'admin';
+		list( $dbData, $clas ) = $this->load_layout( $layoutid );
 
 		$settings = json_decode( $dbData['rawdata'], true );
 
@@ -514,6 +583,7 @@ class Ajax {
 				$min_max_price = $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_price_' . $id ];
 			}
 		}
+		$per_page = $this->visitor_count( $per_page, self::MAX_PER_PAGE );
 
 		if ( $category ) {
 			$settings['wpte_product_layout_product_category'] = $category;
@@ -572,19 +642,15 @@ class Ajax {
 			$this->send_nonce_expired();
 		}
 
-		global $wpdb;
 		$ids          = isset( $_POST['id'] ) ? filter_input( INPUT_POST, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
-		$add_page     = isset( $_POST['add_page'] ) ? intval( $_POST['add_page'] ) : '';
+		$add_page     = isset( $_POST['add_page'] ) ? $this->visitor_count( wp_unslash( $_POST['add_page'] ), self::MAX_LOAD_MORE ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- cast to int in visitor_count().
 		$layoutid     = isset( $_POST['layoutid'] ) ? intval( $_POST['layoutid'] ) : '';
 		$current_page = isset( $_POST['current_page'] ) ? intval( $_POST['current_page'] ) : '';
 		$data         = ! empty( $_POST['data'] ) ? filter_input( INPUT_POST, 'data', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) : [];
+		$ids          = is_array( $ids ) ? $ids : [];
 
-		$user      = 'admin';
-		$dbData    = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . 'wpte_product_layout_style WHERE id = %d ', $layoutid ), ARRAY_A );
-		$StyleName = explode( '-', ucfirst( $dbData['style_name'] ) );
-
-		$cls     = '\WPTE_PRODUCT_LAYOUT\Layouts\\' . $StyleName[0] . '\Frontend\Layout' . $StyleName[1];
-		$clas = new $cls( [ 'id' => $dbData['id'] ], 'admin' );
+		$user = 'admin';
+		list( $dbData, $clas ) = $this->load_layout( $layoutid );
 
 		$settings = json_decode( $dbData['rawdata'], true );
 
@@ -618,6 +684,7 @@ class Ajax {
 				$min_max_price = $data[ "wpte-product-filter-form-$id" ][ 'wpte_product_filter_price_' . $id ];
 			}
 		}
+		$per_page = $this->visitor_count( $per_page, self::MAX_PER_PAGE );
 
 		if ( $category ) {
 			$settings['wpte_product_layout_product_category'] = $category;

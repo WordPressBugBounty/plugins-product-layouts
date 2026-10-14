@@ -165,6 +165,9 @@ class Public_Render {
 			} else {
 				// Always output inline CSS directly — shortcodes run after wp_head() so
 				// wp_add_inline_style() never outputs on any context (frontend, preview, AJAX).
+				// "</" is written as "<\/" (the same text in CSS) so saved or imported CSS
+				// can never close this style tag and start HTML or a script.
+				$inlinecss = str_replace( '</', '<\/', $inlinecss );
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo '<style id="wpte-layout-css-' . esc_attr( $this->wpteid ) . '">' . $inlinecss . '</style>';
 			}

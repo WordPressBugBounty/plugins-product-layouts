@@ -14,6 +14,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Notice {
 
 	/**
+	 * Option set to "yes" when the review notice is dismissed for good.
+	 */
+	const REVIEW_NOBUG = 'wpte_wpl_review_nobug';
+
+	/**
+	 * Option holding the time until which the review notice is snoozed.
+	 */
+	const REVIEW_SNOOZE = 'wpte_wpl_review_snooze_until';
+
+	/**
 	 * Notice class constructor
 	 *
 	 * @since 1.0.0
@@ -149,8 +159,10 @@ class Notice {
 	 * @access public
 	 */
 	public function wpte_wpl_get_review_from_users() {
-		if ( ! ( isset( $_COOKIE['wpte-user-review'] ) && $_COOKIE['wpte-user-review'] == 1 ) ) :
-			?>
+		if ( ! self::review_notice_due() ) {
+			return;
+		}
+		?>
 		<div id="wpte-get-review" class="notice wpte-notice-review is-dismissible">
 			<div class="wpte-review-badge">⭐</div>
 			<div class="wpte-review-body">
@@ -164,7 +176,56 @@ class Notice {
 				</div>
 			</div>
 		</div>
-			<?php
-		endif;
+		<?php
+	}
+
+	/**
+	 * Whether the review notice should show to the current user.
+	 *
+	 * The dismissal is saved on the site, so it survives logging out, other
+	 * browsers and cleared cookies. The old cookie is still respected, so
+	 * anyone who dismissed the notice before 1.4.6 doesn't see it again.
+	 *
+	 * @since 1.4.6
+	 *
+	 * @return bool
+	 */
+	public static function review_notice_due() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return false;
+		}
+		if ( 'yes' === get_option( self::REVIEW_NOBUG ) ) {
+			return false;
+		}
+		if ( (int) get_option( self::REVIEW_SNOOZE, 0 ) > time() ) {
+			return false;
+		}
+		if ( isset( $_COOKIE['wpte-user-review'] ) && '1' === $_COOKIE['wpte-user-review'] ) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Saves the review notice dismissal (AJAX).
+	 *
+	 * "later" (the corner ×) hides it for 7 days; "never" ("Already Given" or
+	 * "Don't Show Again") hides it for good.
+	 *
+	 * @since 1.4.6
+	 */
+	public static function dismiss_review_notice() {
+		if ( ! current_user_can( 'manage_options' ) || ! check_ajax_referer( 'wpte-review-notice', '_nonce', false ) ) {
+			wp_send_json_error( null, 403 );
+		}
+		$mode = isset( $_POST['mode'] ) ? sanitize_key( wp_unslash( $_POST['mode'] ) ) : '';
+		if ( 'never' === $mode ) {
+			update_option( self::REVIEW_NOBUG, 'yes' );
+		} elseif ( 'later' === $mode ) {
+			update_option( self::REVIEW_SNOOZE, time() + 7 * DAY_IN_SECONDS );
+		} else {
+			wp_send_json_error( null, 400 );
+		}
+		wp_send_json_success();
 	}
 }

@@ -31,6 +31,7 @@ class Ajax
 		add_action('wp_ajax_wpte_delete_data_on_uninstall', [$this, 'wpte_delete_data_on_uninstall']);
 		add_action('wp_ajax_wpte_delete_all_data', [$this, 'wpte_delete_all_data']);
 		add_action('wp_ajax_wpte_preview_frame', [$this, 'wpte_preview_frame']);
+		add_action('wp_ajax_wpte_review_notice', [Notice::class, 'dismiss_review_notice']);
 	}
 
 	/**
@@ -78,12 +79,7 @@ class Ajax
 			]
 		);
 
-		$names       = [];
-		$is_match    = preg_match_all('/(wpte-product-layout-wrapper-)[0-9]+/', $stylesheet, $names);
-		$replaceData = "wpte-product-layout-wrapper-$insert_id";
-		$get_match   = $names[0][0];
-		$finalData   = preg_replace("/$get_match/i", $replaceData, $stylesheet);
-		wpte_layout_update_style($insert_id, $finalData);
+		wpte_layout_update_style($insert_id, $this->wrapper_for($stylesheet, $insert_id));
 
 		wp_send_json_success(
 			[
@@ -175,7 +171,11 @@ class Ajax
 	public function wpte_w_get_productc()
 	{
 
-		$nonce = isset($_REQUEST['_nonce']) && '' !== $_REQUEST['_nonce'] ? sanitize_text_field(wp_unslash($_REQUEST['_nonce'])) : '';
+		if (! current_user_can('manage_options')) {
+			return;
+		}
+
+		$nonce =isset($_REQUEST['_nonce']) && '' !== $_REQUEST['_nonce'] ? sanitize_text_field(wp_unslash($_REQUEST['_nonce'])) : '';
 		if (! wp_verify_nonce($nonce, 'wpte-editor-update-nonce')) {
 			return esc_html__('Nonce Varification Failed!', 'product-layouts');
 		}
@@ -278,99 +278,79 @@ class Ajax
 			exit;
 		}
 
-		$filename = ! empty($_FILES['file']['name']) ? sanitize_file_name(wp_unslash($_FILES['file']['name'])) : '';
-		$folder   = $this->safe_path(WPTE_WPL_PATH . 'assets/export/');
+		// Read the upload straight from PHP's temporary file. Before 1.4.6 it was
+		// first moved into the plugin's public assets/export/ folder under its own
+		// name, which left any uploaded file reachable from the web.
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- a server-side temp path, checked with is_uploaded_file().
+		$tmp_name = isset($_FILES['file']['tmp_name']) && is_string($_FILES['file']['tmp_name']) ? $_FILES['file']['tmp_name'] : '';
+		$FileData = '' !== $tmp_name && is_uploaded_file($tmp_name) ? file_get_contents($tmp_name) : '';
 
-
-		if (! is_dir($folder)) {
-			// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir
-			mkdir($folder, 0777);
-		}
-
-		if (is_file($folder . $filename)) {
-			// phpcs:ignore WordPress.WP.AlternativeFunctions.unlink_unlink
-			unlink($folder . $filename); // delete file.
-		}
-
-		$uploaded_file_path = isset($_FILES['file']['tmp_name']) ? filter_var($_FILES['file']['tmp_name'], FILTER_SANITIZE_SPECIAL_CHARS) : '';
-		$files              = isset($_FILES['file']['tmp_name']) ? $uploaded_file_path : '';
-
-		// phpcs:ignore Generic.PHP.ForbiddenFunctions.Found
-		move_uploaded_file($files, $folder . $filename);
-
-		$this->wpte_file_extract($folder, $filename);
+		$this->wpte_import_json((string) $FileData);
 	}
 
 
 	/**
-	 * Import File extractor & insert.
+	 * Creates a layout from an exported JSON file's contents.
 	 *
-	 * @param mixed $folder  .
-	 * @param mixed $filename  .
-	 * @since v1.0.0
+	 * @param string $FileData File contents.
+	 * @since 1.4.6
 	 */
-	public function wpte_file_extract($folder, $filename)
+	public function wpte_import_json($FileData)
 	{
+		$params = json_decode($FileData, true);
+		$style  = is_array($params) && isset($params['style']) && is_array($params['style']) ? $params['style'] : [];
 
-		if (is_file($folder . $filename)) {
-			$FileData = file_get_contents($folder . $filename);
-			$params   = json_decode($FileData, true);
+		$name        = isset($style['name']) && is_scalar($style['name']) ? sanitize_text_field($style['name']) : '';
+		$style_name  = isset($style['style_name']) && is_scalar($style['style_name']) ? sanitize_text_field($style['style_name']) : '';
+		$rawdata     = isset($style['rawdata']) && is_scalar($style['rawdata']) ? stripslashes(sanitize_text_field($style['rawdata'])) : '';
+		$stylesheet  = isset($style['stylesheet']) && is_scalar($style['stylesheet']) ? sanitize_text_field($style['stylesheet']) : '';
+		$font_family = isset($style['font_family']) && is_scalar($style['font_family']) ? sanitize_text_field($style['font_family']) : '';
 
-			$name        = isset($params['style']['name']) ? sanitize_text_field($params['style']['name']) : '';
-			$style_name  = isset($params['style']['style_name']) ? sanitize_text_field($params['style']['style_name']) : '';
-			$rawdata     = isset($params['style']['rawdata']) ? stripslashes(sanitize_text_field($params['style']['rawdata'])) : '';
-			$stylesheet  = isset($params['style']['stylesheet']) ? sanitize_text_field($params['style']['stylesheet']) : '';
-			$font_family = isset($params['style']['font_family']) ? sanitize_text_field($params['style']['font_family']) : '';
-
-			if (! $style_name && ! $rawdata && ! $stylesheet) {
-				if (is_file($folder . $filename)) :
-					// phpcs:ignore WordPress.WP.AlternativeFunctions.unlink_unlink
-					unlink($folder . $filename); // delete file.
-				endif;
-				wp_send_json_success(
-					[
-						'failed' => __('Invalid JSON File! Please import a exported valid JSON file.', 'product-layouts'),
-					]
-				);
-				return;
-			}
-
-			$insert_id = wpte_layout_insert(
-				[
-					'name'        => $name,
-					'style_name'  => $style_name,
-					'rawdata'     => $rawdata,
-					'stylesheet'  => $stylesheet,
-					'font_family' => $font_family,
-				]
-			);
-
-			$names       = [];
-			$is_match    = preg_match_all('/(wpte-product-layout-wrapper-)[0-9]+/', $stylesheet, $names);
-			$replaceData = "wpte-product-layout-wrapper-$insert_id";
-			$get_match   = $names[0][0];
-			$finalData   = preg_replace("/$get_match/i", $replaceData, $stylesheet);
-			wpte_layout_update_style($insert_id, $finalData);
-
-			if (is_file($folder . $filename)) :
-				// phpcs:ignore WordPress.WP.AlternativeFunctions.unlink_unlink
-				unlink($folder . $filename); // delete file.
-			endif;
-
+		if (! $style_name && ! $rawdata && ! $stylesheet) {
 			wp_send_json_success(
 				[
-					'url' => $this->url_conveter([$style_name, $insert_id]),
+					'failed' => __('Invalid JSON File! Please import a exported valid JSON file.', 'product-layouts'),
 				]
 			);
-
-			if (is_wp_error($insert_id)) {
-				wp_send_json_error(
-					[
-						'message' => __('Data Insert Failed Please retry again!', 'product-layouts'),
-					]
-				);
-			}
+			return;
 		}
+
+		$insert_id = wpte_layout_insert(
+			[
+				'name'        => $name,
+				'style_name'  => $style_name,
+				'rawdata'     => $rawdata,
+				'stylesheet'  => $stylesheet,
+				'font_family' => $font_family,
+			]
+		);
+
+		wpte_layout_update_style($insert_id, $this->wrapper_for($stylesheet, $insert_id));
+
+		wp_send_json_success(
+			[
+				'url' => $this->url_conveter([$style_name, $insert_id]),
+			]
+		);
+	}
+
+	/**
+	 * Points a layout's CSS at its new id (wpte-product-layout-wrapper-N).
+	 *
+	 * Before 1.4.6, CSS without that class was replaced with an empty pattern,
+	 * which pasted the class name between every character.
+	 *
+	 * @param string $stylesheet Layout CSS.
+	 * @param int    $id         New layout id.
+	 * @return string
+	 * @since 1.4.6
+	 */
+	private function wrapper_for($stylesheet, $id)
+	{
+		if (! preg_match('/wpte-product-layout-wrapper-[0-9]+/', $stylesheet, $match)) {
+			return $stylesheet;
+		}
+		return preg_replace('/' . preg_quote($match[0], '/') . '/i', 'wpte-product-layout-wrapper-' . (int) $id, $stylesheet);
 	}
 
 	/**

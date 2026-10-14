@@ -337,7 +337,7 @@ abstract class AdminRender
 				<form method="post" id="wpte-shortcode-name-change-submit">
 					<input type="hidden" name="addonsstylenameid" value="<?php echo esc_attr($id); ?>">
 					<input type="text" class="wpte-header-name-input" name="addonsstylename" placeholder="<?php echo esc_attr__('Set Your Shortcode Name', 'product-layouts'); ?>" value="<?php echo isset($shortcode_name->name) ? esc_attr($shortcode_name->name) : ''; ?>">
-					<button type="button" class="wpte-header-name-save-btn" id="addonsstylenamechange"><?php esc_html_e('Save', 'product-layouts'); ?></button>
+					<button type="button" class="wpte-header-name-save-btn" id="addonsstylenamechange"><?php esc_html_e('Rename', 'product-layouts'); ?></button>
 				</form>
 			</div>
 		</div>
@@ -355,7 +355,8 @@ abstract class AdminRender
 		<aside id="wpte_setting_bar" data-visibale="true" class="ui-widget-content wpte-single-settings-card">
 			<form id="wpte-editor-update-form" action="" method="POST">
 				<div class="wpte-single-settings-card-header">
-					<div class="wpte-settings-title"><?php echo esc_html__('Settings', 'product-layouts'); ?></div>
+					<?php // The design this layout was made from, e.g. "General 1". ?>
+					<div class="wpte-settings-title"><?php echo esc_html( ! empty( $this->dbdata['style_name'] ) ? ucwords( str_replace( [ '-', '_' ], ' ', $this->dbdata['style_name'] ) ) : __( 'Settings', 'product-layouts' ) ); ?></div>
 				</div>
 				<div class="wpte-single-settings-card-body">
 					<div class="wpte-single-settings-card-body-wrapper">
@@ -375,6 +376,8 @@ abstract class AdminRender
 				</div>
 				<div class="wpte-single-settings-card-footer">
 					<input type="hidden" id="wpte-layouts-id" value="<?php echo esc_attr($this->wpteid); ?>">
+					<?php // Reload discards unsaved changes, like the Image Hover editor. type="button" so it never submits the form. ?>
+					<button id="wpte-reload-editor" type="button"><?php echo esc_html__('Reload', 'product-layouts'); ?></button>
 					<button id="wpte-submit-editor-form" type="submit"><?php echo esc_html__('Save', 'product-layouts'); ?></button>
 				</div>
 			</form>

@@ -3,16 +3,28 @@
 	$(document).ready(function(){
 		$('body').on('click', '#wpte-get-review .notice-dismiss', function(){
 			wpteSetCookie('wpte-user-review', 1, 7*24*3600);
+			wpteSaveReviewDismissal('later');
 		});
 		$('body').on('click', '#wpte-get-review .wpte-btn-never', function(){
 			wpteSetCookie('wpte-user-review', 1, 365*24*3600);
+			wpteSaveReviewDismissal('never');
 			$('#wpte-get-review').fadeOut(300, function(){ $(this).remove(); });
 		});
 		$('body').on('click', '#wpte-get-review .wpte-btn-given', function(){
 			wpteSetCookie('wpte-user-review', 1, 365*24*3600);
+			wpteSaveReviewDismissal('never');
 			$('#wpte-get-review').fadeOut(300, function(){ $(this).remove(); });
 		});
 	});
+
+	// The cookie only covers this browser; saving on the site keeps the
+	// notice hidden after logging out or on another browser.
+	function wpteSaveReviewDismissal(mode) {
+		if (typeof wpteReview === 'undefined') {
+			return;
+		}
+		$.post(wpteReview.ajaxUrl, { action: 'wpte_review_notice', _nonce: wpteReview.nonce, mode: mode });
+	}
 
 	function wpteSetCookie(cookieName, cookieValue, expiryInSeconds) {
 		var expiryDate = new Date();

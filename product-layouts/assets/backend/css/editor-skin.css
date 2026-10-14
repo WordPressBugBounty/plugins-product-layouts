@@ -1,0 +1,740 @@
+/*
+ * Product Layouts: layout editor, visual layer.
+ *
+ * Same look as the Image Hover Effects Ultimate editor, in the Product
+ * Layouts colors. Loaded after wpte-single-layout-editor.css on the editor
+ * page only, and every rule is scoped to body.wpte-wpl-editor (added in
+ * Admin\Menu::status_body_class()). It only changes how things look: no
+ * field name, id or class the editor scripts use is changed, and the sizes
+ * they rely on stay as they are (the 56px header, the sidebar width set in
+ * --wpte-sidebar-width by the resize handle, the collapse toggle).
+ * The live preview is an iframe with its own document, so nothing here
+ * reaches the layout preview or the shop.
+ */
+
+body.wpte-wpl-editor {
+	--wpl-brand: #5156fc;
+	--wpl-brand-strong: #3b40e0;
+	--wpl-brand-soft: #eef0ff;
+	--wpl-brand-line: #c7c9fe;
+	--wpl-brand-ring: rgba(81, 86, 252, 0.22);
+	--wpl-ink: #101828;
+	--wpl-ink-2: #344054;
+	--wpl-ink-3: #667085;
+	--wpl-ink-4: #98a2b3;
+	--wpl-line: #eaecf0;
+	--wpl-line-2: #d0d5dd;
+	--wpl-canvas: #f4f5fa;
+	--wpl-surface: #ffffff;
+	--wpl-save: #16a34a;
+	--wpl-save-strong: #15803d;
+	background: var(--wpl-canvas);
+}
+
+body.wpte-wpl-editor #wpwrap,
+body.wpte-wpl-editor #wpcontent,
+body.wpte-wpl-editor #wpbody-content {
+	background: var(--wpl-canvas);
+}
+
+/* ---------------------------------------------------------------------------
+ * Top bar
+ * ------------------------------------------------------------------------- */
+
+body.wpte-wpl-editor .wpte-addons-header {
+	background: var(--wpl-surface);
+	border-bottom: 1px solid var(--wpl-line);
+	box-shadow: none;
+}
+
+body.wpte-wpl-editor .wpte-addons-header-left a {
+	color: var(--wpl-ink-2);
+	border-right-color: var(--wpl-line);
+	transition: color 0.15s, background-color 0.15s;
+}
+
+body.wpte-wpl-editor .wpte-addons-header-left a:hover {
+	color: var(--wpl-brand-strong);
+	background: #fcfcfd;
+	border-color: var(--wpl-line);
+	box-shadow: none;
+}
+
+body.wpte-wpl-editor .wpte-addons-header-left a:focus {
+	outline: none;
+	box-shadow: inset 0 0 0 2px var(--wpl-brand-ring);
+}
+
+body.wpte-wpl-editor .wpte-btn-visit {
+	height: 36px;
+	padding: 0 14px;
+	color: var(--wpl-ink-2) !important;
+	font-weight: 600;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+body.wpte-wpl-editor .wpte-btn-visit:hover {
+	color: var(--wpl-brand-strong) !important;
+	background: var(--wpl-surface);
+	border-color: var(--wpl-brand-line);
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+body.wpte-wpl-editor .wpte-btn-upgrade {
+	height: 36px;
+	padding: 0 14px;
+	color: #b54708;
+	background: #fff4e5;
+	border: 1px solid #fedf89;
+	border-radius: 8px;
+	box-shadow: none;
+}
+
+body.wpte-wpl-editor .wpte-btn-upgrade:hover {
+	color: #93370d;
+	background: #fef0c7;
+	border-color: #fec84b;
+}
+
+body.wpte-wpl-editor #wpte-shortcode-name-change-submit {
+	height: 36px;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+}
+
+body.wpte-wpl-editor #wpte-shortcode-name-change-submit:focus-within {
+	border-color: var(--wpl-brand);
+	box-shadow: 0 0 0 3px var(--wpl-brand-ring);
+}
+
+body.wpte-wpl-editor #wpte-shortcode-name-change-submit .wpte-header-name-input {
+	height: 34px;
+	color: var(--wpl-ink);
+}
+
+body.wpte-wpl-editor #wpte-shortcode-name-change-submit .wpte-header-name-save-btn {
+	height: 34px;
+	padding: 0 16px;
+	color: #ffffff;
+	font-weight: 600;
+	background: var(--wpl-brand);
+	border: 0;
+}
+
+body.wpte-wpl-editor #wpte-shortcode-name-change-submit .wpte-header-name-save-btn:hover {
+	background: var(--wpl-brand-strong);
+}
+
+/* ---------------------------------------------------------------------------
+ * Sidebar
+ * ------------------------------------------------------------------------- */
+
+body.wpte-wpl-editor .wpte-single-settings-card {
+	background: var(--wpl-surface);
+	border-right: 1px solid var(--wpl-line);
+}
+
+/* Header and footer heights changed, so the settings list takes whatever
+ * height is left instead of the old fixed calc(100vh - 56px - 83px).
+ * The form is the element that holds header, list and footer, so it is the
+ * column that shares out the height. */
+body.wpte-wpl-editor #wpte-editor-update-form {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	min-height: 0;
+}
+
+body.wpte-wpl-editor .wpte-single-settings-card .wpte-single-settings-card-body {
+	flex: 1 1 auto;
+	height: auto;
+	min-height: 0;
+	background: var(--wpl-surface);
+}
+
+body.wpte-wpl-editor .wpte-single-settings-card-body-wrapper {
+	height: 100%;
+	padding: 0;
+}
+
+/* The design name, e.g. "General 1". */
+body.wpte-wpl-editor .wpte-single-settings-card .wpte-single-settings-card-header {
+	flex: none;
+	justify-content: flex-start;
+	padding: 14px 16px;
+	color: var(--wpl-ink);
+	font-size: 15px;
+	font-weight: 600;
+	background: var(--wpl-surface);
+	border-bottom: 1px solid var(--wpl-line);
+}
+
+body.wpte-wpl-editor .wpte-settings-title {
+	text-align: left;
+}
+
+/* Content / Style / Advanced: a segmented control. */
+body.wpte-wpl-editor .wpte-start-tabs-header {
+	gap: 4px;
+	margin: 12px 12px 4px;
+	padding: 4px;
+	background: #eceef2;
+	border-radius: 10px;
+}
+
+body.wpte-wpl-editor .wpte-start-tabs-header li {
+	padding: 7px 8px;
+	color: var(--wpl-ink-3);
+	font-size: 13px;
+	font-weight: 600;
+	border: 0;
+	border-radius: 7px;
+	transition: color 0.15s, background-color 0.15s, box-shadow 0.15s;
+}
+
+body.wpte-wpl-editor .wpte-start-tabs-header li:hover {
+	color: var(--wpl-ink);
+}
+
+body.wpte-wpl-editor .wpte-start-tabs-header li.active {
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-surface);
+	border: 0;
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08);
+}
+
+/* Section cards (Layouts, Hide & Show, Product Query, ...). */
+body.wpte-wpl-editor .wpte-ac-admin-section-area {
+	display: flow-root; /* holds floated fields without clipping open popovers */
+	margin: 8px 12px;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line);
+	border-radius: 12px;
+}
+
+body.wpte-wpl-editor .wpte-ac-admin-section-head {
+	position: relative;
+	padding: 0 40px 0 14px;
+	color: var(--wpl-ink);
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 44px;
+	border-bottom: 0;
+	transition: color 0.15s;
+}
+
+body.wpte-wpl-editor .wpte-ac-admin-section-head:hover {
+	color: var(--wpl-brand-strong);
+}
+
+/* The open / closed arrow moves to the right edge, like the Image Hover editor. */
+body.wpte-wpl-editor .wpte-ac-admin-section-head .dashicons {
+	position: absolute;
+	top: 50%;
+	right: 12px;
+	width: 18px;
+	height: 18px;
+	margin: -9px 0 0;
+	color: var(--wpl-ink-4);
+	font-size: 18px;
+	line-height: 18px;
+}
+
+body.wpte-wpl-editor .wpte-ac-admin-section-body {
+	padding-top: 14px;
+	border-top: 1px solid var(--wpl-line);
+}
+
+/* ---------------------------------------------------------------------------
+ * Fields
+ * ------------------------------------------------------------------------- */
+
+body.wpte-wpl-editor .wpte-product-form-control {
+	padding: 0 14px 14px;
+}
+
+body.wpte-wpl-editor .wpte-product-form-control-title {
+	color: var(--wpl-ink-2);
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 26px;
+}
+
+body.wpte-wpl-editor .wpte-product-form-control-description {
+	margin-top: 4px;
+	color: var(--wpl-ink-4);
+	font-size: 12px;
+	font-style: normal;
+	line-height: 1.45;
+}
+
+body.wpte-wpl-editor .wpte-product-form-control-description:empty {
+	display: none;
+}
+
+body.wpte-wpl-editor .wpte-product-form-control-content input,
+body.wpte-wpl-editor .wpte-product-form-control-content select,
+body.wpte-wpl-editor .wpte-product-form-control-content textarea {
+	height: 34px;
+	min-height: 34px;
+	padding: 0 10px;
+	color: var(--wpl-ink);
+	font-size: 13px;
+	background: var(--wpl-surface);
+	border-radius: 8px;
+	transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+body.wpte-wpl-editor .wpte-product-form-control-content textarea {
+	height: auto;
+	padding: 8px 10px;
+}
+
+body.wpte-wpl-editor .wpte-product-form-control-content input:not(:focus),
+body.wpte-wpl-editor .wpte-product-form-control-content select:not(:focus),
+body.wpte-wpl-editor .wpte-product-form-control-content textarea:not(:focus) {
+	border-color: var(--wpl-line-2);
+}
+
+body.wpte-wpl-editor .wpte-product-form-control-content input:focus,
+body.wpte-wpl-editor .wpte-product-form-control-content select:focus,
+body.wpte-wpl-editor .wpte-product-form-control-content textarea:focus {
+	border-color: var(--wpl-brand);
+	box-shadow: 0 0 0 3px var(--wpl-brand-ring);
+}
+
+/* Radio and checkbox inputs keep their own size. */
+body.wpte-wpl-editor .wpte-product-form-control-content input[type="radio"],
+body.wpte-wpl-editor .wpte-product-form-control-content input[type="checkbox"] {
+	height: auto;
+	min-height: 0;
+	padding: 0;
+}
+
+/* Desktop / tablet / mobile buttons next to a label. */
+body.wpte-wpl-editor .wpte-product-from-lable a.wpte-form-responsive-switcher {
+	color: var(--wpl-ink-3);
+	background-color: #eceef2;
+	transition: color 0.15s, background-color 0.15s;
+}
+
+body.wpte-wpl-editor .wpte-product-from-lable a.wpte-form-responsive-switcher:hover,
+body.wpte-wpl-editor .wpte-product-from-lable a.wpte-form-responsive-switcher.active,
+body.wpte-wpl-editor .wpte-product-from-lable a.wpte-form-responsive-switcher.active:hover {
+	color: #ffffff;
+	background-color: var(--wpl-brand);
+}
+
+/* Select boxes (Select2). */
+body.wpte-wpl-editor .select2-container--default .select2-selection--single {
+	height: 34px;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+	transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+body.wpte-wpl-editor .select2-container--default .select2-selection--single .select2-selection__rendered {
+	padding-left: 10px;
+	color: var(--wpl-ink);
+	font-size: 13px;
+	line-height: 32px;
+}
+
+body.wpte-wpl-editor .select2-container--default .select2-selection--single .select2-selection__arrow {
+	height: 32px;
+}
+
+body.wpte-wpl-editor .select2-container--default .select2-selection--multiple {
+	min-height: 34px;
+	border-color: var(--wpl-line-2);
+	border-radius: 8px;
+}
+
+body.wpte-wpl-editor .select2-container--default .select2-selection--multiple .select2-selection__choice {
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+	border-color: var(--wpl-brand-line);
+	border-radius: 6px;
+}
+
+body.wpte-wpl-editor .select2-container--default.select2-container--open .select2-selection--single,
+body.wpte-wpl-editor .select2-container--default.select2-container--focus .select2-selection--single,
+body.wpte-wpl-editor .select2-container--default.select2-container--focus .select2-selection--multiple {
+	border-color: var(--wpl-brand);
+	box-shadow: 0 0 0 3px var(--wpl-brand-ring);
+}
+
+body.wpte-wpl-editor .select2-dropdown {
+	overflow: hidden;
+	border-color: var(--wpl-line-2);
+	border-radius: 8px;
+	box-shadow: 0 12px 24px -6px rgba(16, 24, 40, 0.16);
+}
+
+/* The current choice: light indigo. Hover (below) still wins. */
+body.wpte-wpl-editor .select2-container--default .select2-results__option[aria-selected=true],
+body.wpte-wpl-editor .select2-container--default .select2-results__option--selected {
+	color: var(--wpl-brand-strong);
+	font-weight: 600;
+	background: #f7f7ff;
+}
+
+body.wpte-wpl-editor .select2-container--default .select2-results__option--highlighted[aria-selected],
+body.wpte-wpl-editor .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+}
+
+body.wpte-wpl-editor .select2-container--default .select2-search--dropdown .select2-search__field {
+	border-color: var(--wpl-line-2);
+	border-radius: 6px;
+}
+
+body.wpte-wpl-editor .select2-container--default .select2-search--dropdown .select2-search__field:focus {
+	border-color: var(--wpl-brand);
+	outline: 0;
+	box-shadow: 0 0 0 3px var(--wpl-brand-ring);
+}
+
+/* Units (PX EM %). */
+body.wpte-wpl-editor .wpte-product-form-units-choices label {
+	color: var(--wpl-ink-4);
+	font-weight: 600;
+}
+
+body.wpte-wpl-editor .wpte-product-form-units-choices input:checked + label {
+	color: var(--wpl-brand-strong);
+}
+
+/* Yes / No switches: the brand color when on. */
+body.wpte-wpl-editor .wpte-product-switcher input[type="checkbox"]:checked + span {
+	background: var(--wpl-brand);
+}
+
+body.wpte-wpl-editor .wpte-product-switcher input[type="checkbox"]:not(:checked) + span {
+	background: #eceef2;
+}
+
+/* Choice buttons (left / center / right, ...). */
+body.wpte-wpl-editor .wpte-product-form-choices {
+	height: 34px;
+	line-height: 34px;
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+}
+
+body.wpte-wpl-editor .wpte-product-form-control .wpte-product-form-choices-label {
+	color: var(--wpl-ink-3);
+	background: var(--wpl-surface);
+	border-right-color: var(--wpl-line-2);
+}
+
+body.wpte-wpl-editor .wpte-product-form-choices input:checked + .wpte-product-form-choices-label {
+	color: var(--wpl-brand-strong);
+	background-color: var(--wpl-brand-soft);
+	border-color: var(--wpl-brand-line);
+}
+
+/* Normal / Hover and similar tabs inside a section. */
+body.wpte-wpl-editor .wpte-product-type-control-tab-child {
+	color: var(--wpl-ink-3);
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 32px;
+	background: var(--wpl-surface);
+	border-color: var(--wpl-line-2);
+	transition: color 0.15s, background-color 0.15s;
+}
+
+body.wpte-wpl-editor .wpte-product-control-type-tabs .wpte-product-type-control-tab-child:first-child {
+	border-left-color: var(--wpl-line-2);
+	border-radius: 8px 0 0 8px;
+}
+
+body.wpte-wpl-editor .wpte-product-control-type-tabs .wpte-product-type-control-tab-child:last-child {
+	border-radius: 0 8px 8px 0;
+}
+
+body.wpte-wpl-editor .wpte-product-type-control-tab-child.wpte-product-control-tab-active,
+body.wpte-wpl-editor .wpte-product-control-type-tabs .wpte-product-control-tab-active.wpte-product-type-control-tab-child:first-child {
+	color: var(--wpl-brand-strong);
+	background-color: var(--wpl-brand-soft);
+	border-color: var(--wpl-brand-line);
+}
+
+/* Four-value fields (padding, margin, radius). */
+body.wpte-wpl-editor ul.wpte-product-control-dimentions li.wpte-product-control-dimention input {
+	border-radius: 0;
+}
+
+body.wpte-wpl-editor ul.wpte-product-control-dimentions li.wpte-product-control-dimention:first-child input {
+	border-radius: 8px 0 0 8px;
+}
+
+body.wpte-wpl-editor ul.wpte-product-control-dimentions .wpte-product-form-link-dimensions {
+	height: 34px;
+	background-color: var(--wpl-brand-soft);
+	border-color: var(--wpl-line-2);
+	border-radius: 0 8px 8px 0;
+}
+
+body.wpte-wpl-editor ul.wpte-product-control-dimentions .wpte-product-form-link-dimensions span {
+	color: var(--wpl-brand-strong);
+}
+
+body.wpte-wpl-editor ul.wpte-product-control-dimentions .wpte-product-form-link-dimensions.link-dimensions-unlink {
+	background-color: var(--wpl-surface);
+}
+
+body.wpte-wpl-editor ul.wpte-product-control-dimentions .wpte-product-form-link-dimensions.link-dimensions-unlink span {
+	color: var(--wpl-ink-4);
+}
+
+body.wpte-wpl-editor .wpte-product-control-dimension-label {
+	color: var(--wpl-ink-4);
+}
+
+/* Sliders. */
+body.wpte-wpl-editor .noUi-horizontal.wpte-product-form-slider {
+	height: 4px;
+	background: var(--wpl-line);
+	border: 0;
+	border-radius: 999px;
+	box-shadow: none;
+}
+
+body.wpte-wpl-editor .wpte-product-form-slider .noUi-connect {
+	background: var(--wpl-brand);
+}
+
+body.wpte-wpl-editor .wpte-product-form-slider .noUi-handle {
+	background: var(--wpl-surface);
+	border: 2px solid var(--wpl-brand);
+	box-shadow: 0 1px 3px rgba(16, 24, 40, 0.18);
+}
+
+/* Popover buttons (typography, box shadow, ...). */
+body.wpte-wpl-editor .wpte-product-popover-set {
+	height: 34px;
+	color: var(--wpl-ink-3);
+	background: var(--wpl-surface);
+	border-color: var(--wpl-line-2);
+	border-radius: 8px;
+	transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+}
+
+body.wpte-wpl-editor .wpte-product-popover-set:hover,
+body.wpte-wpl-editor .wpte-product-form-control.popover-active .wpte-product-popover-set {
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+	border-color: var(--wpl-brand-line);
+}
+
+body.wpte-wpl-editor .wpte-product-form-control-content-popover-body {
+	border: 1px solid var(--wpl-line);
+	border-radius: 12px;
+	box-shadow: 0 16px 32px -8px rgba(16, 24, 40, 0.2);
+}
+
+/* Color fields. */
+body.wpte-wpl-editor .wpte-product-form-control-wrapper .minicolors-theme-bootstrap .minicolors-swatch {
+	top: 50%;
+	left: 6px;
+	width: 22px;
+	height: 22px;
+	margin-top: -11px;
+	border-radius: 5px;
+}
+
+/* !important: minicolors.css forces padding-left: 28px !important. */
+body.wpte-wpl-editor .wpte-product-form-control-wrapper .minicolors-theme-bootstrap > .minicolors-input {
+	padding-right: 8px;
+	padding-left: 34px !important;
+}
+
+/* Separators between groups of fields. */
+body.wpte-wpl-editor .wpte_product_layout_before_separator,
+body.wpte-wpl-editor .wpte_product_layout_after_separator,
+body.wpte-wpl-editor .wpte-product-layout-separator {
+	border-top-color: var(--wpl-line);
+}
+
+/* ---------------------------------------------------------------------------
+ * Save bar
+ * ------------------------------------------------------------------------- */
+
+body.wpte-wpl-editor .wpte-single-settings-card-footer {
+	flex: none;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 14px;
+	background: var(--wpl-surface);
+	border-top: 1px solid var(--wpl-line);
+}
+
+body.wpte-wpl-editor .wpte-single-settings-card-footer button {
+	height: 36px;
+	margin: 0;
+	padding: 0 16px;
+	font-size: 13px;
+	font-weight: 600;
+	border-radius: 8px;
+	transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+}
+
+body.wpte-wpl-editor .wpte-single-settings-card-footer #wpte-reload-editor {
+	color: var(--wpl-ink-2);
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+}
+
+body.wpte-wpl-editor .wpte-single-settings-card-footer #wpte-reload-editor:hover {
+	color: var(--wpl-ink);
+	background: #f9fafb;
+	border-color: var(--wpl-ink-4);
+}
+
+body.wpte-wpl-editor .wpte-single-settings-card-footer #wpte-submit-editor-form {
+	min-width: 112px;
+	margin-left: auto;
+	padding: 0 22px;
+	color: #ffffff;
+	background: var(--wpl-save);
+	border: 1px solid var(--wpl-save);
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08), 0 4px 12px rgba(22, 163, 74, 0.24);
+}
+
+body.wpte-wpl-editor .wpte-single-settings-card-footer #wpte-submit-editor-form:hover {
+	background: var(--wpl-save-strong);
+	border-color: var(--wpl-save-strong);
+}
+
+body.wpte-wpl-editor .wpte-single-settings-card-footer button:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--wpl-brand-ring);
+}
+
+/* Sidebar collapse button. */
+body.wpte-wpl-editor .wpte-sidebar-toggler {
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line);
+	border-left: 0;
+	box-shadow: none;
+}
+
+body.wpte-wpl-editor .wpte-sidebar-toggler:hover {
+	background: var(--wpl-brand-soft);
+}
+
+/* ---------------------------------------------------------------------------
+ * Preview
+ * ------------------------------------------------------------------------- */
+
+body.wpte-wpl-editor .wpte-addons-Preview {
+	background: var(--wpl-canvas);
+}
+
+body.wpte-wpl-editor .wpte-addons-Preview .wpte-addons-wrapper {
+	overflow: hidden;
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line);
+	border-radius: 14px;
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+body.wpte-wpl-editor .wpte-addons-style-left-preview-heading {
+	background: #fcfcfd;
+	border-bottom: 1px solid var(--wpl-line);
+}
+
+body.wpte-wpl-editor .wpte-header-tooltip {
+	color: var(--wpl-ink-4);
+}
+
+/* Open from the icon towards the right, so the card edge never cuts it off. */
+body.wpte-wpl-editor .wpte-tooltip-text {
+	left: -8px;
+	padding: 8px 12px;
+	text-align: left;
+	background-color: var(--wpl-ink);
+	border-radius: 8px;
+	transform: none;
+}
+
+body.wpte-wpl-editor .wpte-tooltip-text::after {
+	left: 16px;
+	border-color: transparent transparent var(--wpl-ink) transparent;
+}
+
+body.wpte-wpl-editor .wpte-header-shortcode {
+	background: var(--wpl-surface);
+	border: 1px solid var(--wpl-line-2);
+	border-radius: 8px;
+}
+
+body.wpte-wpl-editor .wpte-shortcode-text {
+	padding: 0 10px;
+	color: var(--wpl-ink-2);
+	font-size: 13px;
+}
+
+body.wpte-wpl-editor .wpte-copy-btn {
+	display: inline-flex;
+	align-items: center;
+	align-self: stretch;
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-brand-soft);
+	border: 0;
+	border-left: 1px solid var(--wpl-line);
+	transition: color 0.15s, background-color 0.15s;
+}
+
+body.wpte-wpl-editor .wpte-copy-btn:hover {
+	color: #ffffff;
+	background: var(--wpl-brand);
+}
+
+/* Desktop / tablet / mobile. */
+body.wpte-wpl-editor .wpte-header-devices {
+	gap: 2px;
+	padding: 3px;
+	background: #eceef2;
+	border: 0;
+	border-radius: 10px;
+	box-shadow: none;
+}
+
+body.wpte-wpl-editor .wpte-header-devices .wpte-device-btn {
+	color: var(--wpl-ink-3);
+	background: transparent;
+	border-radius: 7px;
+}
+
+body.wpte-wpl-editor .wpte-header-devices .wpte-device-btn:hover {
+	color: var(--wpl-ink);
+	background: transparent;
+}
+
+body.wpte-wpl-editor .wpte-header-devices .wpte-device-btn.active,
+body.wpte-wpl-editor .wpte-header-devices .wpte-device-btn.active:hover {
+	color: var(--wpl-brand-strong);
+	background: var(--wpl-surface);
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08);
+}
+
+body.wpte-wpl-editor .wpte-preview-header-right .wpte-addons-minicolor {
+	border-color: var(--wpl-line-2) !important;
+	border-radius: 8px;
+}
+
+/* Loading spinner while the editor opens. */
+body.wpte-wpl-editor .wpte-product-layouts-editor-spinner {
+	border-color: var(--wpl-line);
+	border-top-color: var(--wpl-brand);
+}

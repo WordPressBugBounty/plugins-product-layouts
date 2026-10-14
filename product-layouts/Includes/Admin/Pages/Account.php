@@ -46,10 +46,16 @@ class Account {
 	 * Show the Billing and Payments cards for every licensed site.
 	 *
 	 * Freemius only shows them when the connected Freemius user has payments
-	 * for this plugin, so a license bought with another account leaves the
-	 * page with a single card. This runs inside the card grid, after Account
-	 * Details, and adds Freemius' own Billing template (it loads and saves the
-	 * address by itself) plus a Payments card with an empty state.
+	 * for this plugin, so a license without payments in this account (a free
+	 * localhost license, or one bought with another account) leaves the page
+	 * with a single card. This runs inside the card grid, after Account
+	 * Details, and adds a Payments card that says why it is empty.
+	 *
+	 * Freemius' Billing template reads and saves the connected user's own
+	 * billing profile (user scope billing.json), never the license owner's.
+	 * So it is only added when the connected user owns the license; for a
+	 * license from another account, editing it would change an unrelated
+	 * profile while that license's invoices stay in the other account.
 	 *
 	 * @return void
 	 */
@@ -69,14 +75,16 @@ class Account {
 			return;
 		}
 
-		$this->added_billing = true;
-		$slug                = $fs->get_slug();
-		$user                = $fs->get_user();
-		$other_owner         = is_object( $user ) && (string) $license->user_id !== (string) $user->id;
+		$slug        = $fs->get_slug();
+		$user        = $fs->get_user();
+		$other_owner = is_object( $user ) && (string) $license->user_id !== (string) $user->id;
 
-		// Freemius takes the template params by reference, so they need a variable.
-		$view_params = [ 'id' => $fs->get_id() ];
-		fs_require_once_template( 'account/billing.php', $view_params );
+		if ( ! $other_owner ) {
+			$this->added_billing = true;
+			// Freemius takes the template params by reference, so they need a variable.
+			$view_params = [ 'id' => $fs->get_id() ];
+			fs_require_once_template( 'account/billing.php', $view_params );
+		}
 		?>
 		<div class="postbox">
 			<div id="fs_payments">
@@ -94,7 +102,11 @@ class Account {
 					</table>
 					<p class="wpte-wpl-acc-empty">
 						<?php
-						if ( $other_owner ) {
+						// A free localhost license has no payments in any account, so
+						// that message comes first, even when another account owns it.
+						if ( ! empty( $license->is_free_localhost ) ) {
+							esc_html_e( 'This is a free localhost license, so it has no payments or invoices.', 'product-layouts' );
+						} elseif ( $other_owner ) {
 							esc_html_e( 'This license was bought with a different account, so its payments and invoices are listed in that account.', 'product-layouts' );
 						} else {
 							esc_html_e( 'No payments yet.', 'product-layouts' );
